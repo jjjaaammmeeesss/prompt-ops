@@ -1,0 +1,38 @@
+# Parent-Child Communication Coach - Prompt Optimization Config
+# Optimizing v1.7 修复感知版 System Prompt
+# Dataset: 96 examples (82 v1.7-generated + 14 hand-labeled)
+# Split: train ~66 (69%), val ~16 (17%), test ~14 (14%)
+# Ordering: generated first → training; hand-labeled last → val+test
+
+system_prompt:
+  file: "system_prompt.txt"
+
+# Dataset configuration
+dataset:
+  path: "dataset.json"
+  input_field: "question"
+  golden_output_field: "answer"
+  adapter_class: "standard_json"
+  train_size: 0.69
+  validation_size: 0.17
+
+# Model configuration - using DeepSeek
+model:
+  name: "deepseek/deepseek-chat"
+  task_model: "deepseek/deepseek-chat"
+  proposer_model: "deepseek/deepseek-chat"
+
+# Metric configuration - evaluate JSON fields
+metric:
+  class: "prompt_ops.core.metrics.StandardJSONMetric"
+  output_field: "answer"
+  evaluation_mode: "selected_fields_comparison"
+  output_fields:
+    - "should_popup"
+    - "tone"
+    - "popup_insight"
+  strict_json: false
+
+# Optimization settings
+optimization:
+  strategy: "basic"
