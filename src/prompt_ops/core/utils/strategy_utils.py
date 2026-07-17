@@ -12,14 +12,17 @@ from typing import Literal, Optional
 
 def map_auto_mode_to_dspy(
     auto_mode: Optional[Literal["basic", "intermediate", "advanced"]],
-) -> str:
+) -> Optional[str]:
     """Map our naming convention to DSPy's expected values.
 
     Args:
         auto_mode: Our naming convention ('basic', 'intermediate', 'advanced')
 
     Returns:
-        The corresponding DSPy auto mode ('light', 'medium', 'heavy')
+        The corresponding DSPy auto mode ('light', 'medium', 'heavy'),
+        or None if auto_mode is None (caller should use num_candidates instead).
     """
+    if auto_mode is None:
+        return None
     mapping = {"basic": "light", "intermediate": "medium", "advanced": "heavy"}
     return mapping.get(auto_mode, "light")  # Default to light if not found

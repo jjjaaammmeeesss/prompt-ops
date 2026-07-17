@@ -98,7 +98,11 @@ class Evaluator:
             If return_outputs is False, returns the average score.
             If return_outputs is True, returns (score, outputs).
         """
-        return self._dspy_evaluator(program, return_outputs=return_outputs)
+        # DSPy 3.x: Evaluate.__call__ returns EvaluationResult, no return_outputs param
+        result = self._dspy_evaluator(program)
+        if return_outputs:
+            return result.score, getattr(result, 'outputs', [])
+        return result.score
 
 
 class StatisticalEvaluator(Evaluator):
@@ -151,8 +155,8 @@ class StatisticalEvaluator(Evaluator):
         all_scores = []
 
         for _ in range(self.n_runs):
-            score = self._dspy_evaluator(program, **kwargs)
-            all_scores.append(score)
+            result = self._dspy_evaluator(program)
+            all_scores.append(result.score)
 
         stats_dict = self.calculate_statistics(all_scores)
 

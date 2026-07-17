@@ -388,23 +388,29 @@ class BasicOptimizationStrategy(BaseStrategy):
                 prompt_model = prompt_model._model
 
             # Configure the optimizer with all parameters
-            optimizer = dspy.MIPROv2(
-                metric=self.metric,
-                prompt_model=prompt_model,
-                task_model=task_model,
-                max_bootstrapped_demos=self.max_bootstrapped_demos,
-                max_labeled_demos=self.max_labeled_demos,
-                auto=dspy_auto_mode,  # Use the mapped value
-                num_candidates=self.num_candidates,
-                num_threads=self.num_threads,
-                max_errors=self.max_errors,
-                seed=self.seed,
-                init_temperature=self.init_temperature,
-                verbose=self.verbose,
-                track_stats=self.track_stats,
-                log_dir=self.log_dir,
-                metric_threshold=self.metric_threshold,
-            )
+            # NOTE: auto and num_candidates are mutually exclusive in DSPy >=3.x.
+            # When auto is set, num_candidates must be omitted (auto overrides it).
+            # When auto is None, auto must be omitted and num_candidates used instead.
+            optimizer_kwargs = {
+                "metric": self.metric,
+                "prompt_model": prompt_model,
+                "task_model": task_model,
+                "max_bootstrapped_demos": self.max_bootstrapped_demos,
+                "max_labeled_demos": self.max_labeled_demos,
+                "num_threads": self.num_threads,
+                "max_errors": self.max_errors,
+                "seed": self.seed,
+                "init_temperature": self.init_temperature,
+                "verbose": self.verbose,
+                "track_stats": self.track_stats,
+                "log_dir": self.log_dir,
+                "metric_threshold": self.metric_threshold,
+            }
+            if dspy_auto_mode is not None:
+                optimizer_kwargs["auto"] = dspy_auto_mode
+            else:
+                optimizer_kwargs["num_candidates"] = self.num_candidates
+            optimizer = dspy.MIPROv2(**optimizer_kwargs)
 
             # Initialize proposer_kwargs if not already present
             optimizer.proposer_kwargs = getattr(optimizer, "proposer_kwargs", {}) or {}
