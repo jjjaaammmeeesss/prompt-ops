@@ -11,8 +11,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "check-deps": "node check-deps.js",
-    "setup": "npm install && cd backend && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
-    "clean": "rm -rf node_modules backend/venv backend/uploaded_datasets/* && npm cache clean --force"
+    "setup": "npm install && cd backend && python -m venv venv && venv/Scripts/python -m pip install -r requirements.txt",
+    "clean": "node -e \"require('fs').rmSync('node_modules',{recursive:true,force:true});require('fs').rmSync('backend/venv',{recursive:true,force:true})\" && npm cache clean --force"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.1.1",

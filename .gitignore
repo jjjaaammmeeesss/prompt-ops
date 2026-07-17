@@ -100,12 +100,9 @@ tests/functional/test_with_dox*.py
 configs/joule*.yaml
 examples/joule_*.sh
 examples/joule_*.py
-src/llama_prompt_ops/datasets/joule/
 tests/functional/test_with_joule*.py
 
 test_with_config_client.py
-src/llama_prompt_ops/datasets/dox/
-src/llama_prompt_ops/datasets/joule/
 src/prompt_ops/datasets/dox/
 src/prompt_ops/datasets/joule/
 
@@ -115,6 +112,11 @@ use-cases/dox/
 datasets/dropbox_qa/dropbox_data.json
 publish.sh
 web-app/docs
-frontend/package-lock.json
 docs/changelogs/
 experimental/
+
+# Backend build/runtime artifacts
+frontend/backend/coverage.json
+frontend/backend/backend.log
+frontend/backend/uploaded_datasets/*
+!frontend/backend/uploaded_datasets/.gitkeep
