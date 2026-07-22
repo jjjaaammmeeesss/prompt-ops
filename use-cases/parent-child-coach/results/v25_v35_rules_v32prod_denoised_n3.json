@@ -1,0 +1,139 @@
+{
+  "n_runs": 3,
+  "prompts": {
+    "master": "v3.5",
+    "perception": "v2.5",
+    "production": "v3.2",
+    "rules": "enabled"
+  },
+  "elapsed": 355.59597063064575,
+  "aggregate": {
+    "m1": 1.0,
+    "m5": 0.8333333333333334,
+    "m6": 3.6944444444444446,
+    "m7": 4.861111111111112,
+    "overall": 0.8766666666666667
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "sys_tone": "diagnostic",
+      "gold_tone": "diagnostic",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 4.0,
+      "m7": 4.0,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    },
+    {
+      "case_id": "C10-002",
+      "sys_tone": "diagnostic",
+      "gold_tone": "diagnostic",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 4.0,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    },
+    {
+      "case_id": "C10-003",
+      "sys_tone": "diagnostic",
+      "gold_tone": "diagnostic",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 4.0,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=0.67, error_runs=0]"
+    },
+    {
+      "case_id": "C10-005",
+      "sys_tone": "diagnostic",
+      "gold_tone": "diagnostic",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 4.0,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    },
+    {
+      "case_id": "C10-006",
+      "sys_tone": "diagnostic",
+      "gold_tone": "diagnostic",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 3.0,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    },
+    {
+      "case_id": "C10-008",
+      "sys_tone": "empowering",
+      "gold_tone": "diagnostic",
+      "m1": 1.0,
+      "m5": 0.0,
+      "m6": 3.3333333333333335,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    },
+    {
+      "case_id": "C10-004",
+      "sys_tone": "empowering",
+      "gold_tone": "empowering",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 4.0,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    },
+    {
+      "case_id": "C11-001",
+      "sys_tone": "empowering",
+      "gold_tone": "empowering",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 3.0,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=0.67, error_runs=0]"
+    },
+    {
+      "case_id": "C11-004",
+      "sys_tone": "empowering",
+      "gold_tone": "empowering",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 4.0,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    },
+    {
+      "case_id": "C11-006",
+      "sys_tone": "empowering",
+      "gold_tone": "empowering",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 3.6666666666666665,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    },
+    {
+      "case_id": "C11-009",
+      "sys_tone": "empowering",
+      "gold_tone": "empowering",
+      "m1": 1.0,
+      "m5": 1.0,
+      "m6": 3.3333333333333335,
+      "m7": 5.0,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    },
+    {
+      "case_id": "C11-010",
+      "sys_tone": "diagnostic",
+      "gold_tone": "empowering",
+      "m1": 1.0,
+      "m5": 0.0,
+      "m6": 4.0,
+      "m7": 4.333333333333333,
+      "info": "[denoised: n_runs=3, tone_consistency=1.00, error_runs=0]"
+    }
+  ]
+}

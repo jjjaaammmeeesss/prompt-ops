@@ -1,0 +1,85 @@
+{
+  "iteration": 3,
+  "version": "v3.2",
+  "kept": false,
+  "reason": "综合分未提升: 0.824 → 0.780 (Δ=-0.044)",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.2,
+    "m6_insight_quality": 4.0,
+    "m7_safety_score": 4.4,
+    "overall_score": 0.78
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "孩子兴冲冲地跑来分享科学课的成功，你心里却只想着数学成绩。你担心孩子骄傲，怕他偏科，但那一刻，你其实用分数堵住了他所有表达的出口。孩子感受到的不是关心，而是“你只有考高分才值得被看见”。\n——\n你可以这么说：“哇，火山喷发听起来好酷！先跟我说说实验，然后我们一起看数学卷子。”",
+      "sys_main_contradiction": "家长用单一分数定义孩子价值，忽视孩子在其他领域的成就和情感需求，导致孩子从兴奋转向压抑。",
+      "gold_tone": "diagnostic",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你真的很累了，但还是接住了孩子递来的画。那句‘等我看得进去了再看’，不是敷衍，是你对自己状态的诚实，也是对孩子的一份承诺。只是这个‘等一下’的循环，孩子已经等了很久——他画蓝色的太阳，就是在告诉你：我懂你的累，但我也需要你看见我的难过。\n——\n你可以这么说：‘谢谢你告诉我太阳会变蓝，妈妈记住了。等我看完画，我们一起聊聊蓝色好不好？’",
+      "sys_main_contradiction": "家长在疲惫中挣扎于‘想回应’与‘无力回应’之间，孩子的情感需求被部分看见但未完全满足。",
+      "gold_tone": "empowering",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你从催促变成了挠背，这个转弯很关键。孩子真正需要的不是答案，而是你愿意陪他一起面对那些胡思乱想。他问猫会不会想妈妈，其实是在问自己：如果我不够好，你还会爱我吗？你的耐心已经给了他安全感，但那份对失败的恐惧，还藏在被窝里。\n——\n你可以这么说：'你怕说错被笑，但妈妈觉得敢举手就比嘲笑厉害。'",
+      "sys_main_contradiction": "家长成功安抚了当下的焦虑，但孩子深层的情感需求（对失败的恐惧、对依恋的思考）尚未被充分看见和讨论。",
+      "gold_tone": "diagnostic",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你刚才在紧张中做了件很了不起的事——你停下来，说'等妈妈不生气再走'。那一刻你没有继续用惩罚去压制孩子，而是先照顾自己的情绪。这背后其实有个隐藏的信念：你觉得孩子'每次看见喜欢的东西就忘了路'，所以必须用更严厉的控制才能防止危险。但孩子听到的是'妈妈不相信我会改'，他越抗议，你越觉得他不懂事。其实他刚才已经回来了，也承诺了，只是你还在后怕。\n——\n你可以这么说：'妈妈刚才很害怕，现在还在抖，但不是你的错，是妈妈需要缓一缓。'",
+      "sys_main_contradiction": "家长的安全焦虑与孩子的自主渴望之间的张力，同时家长有自我调节的积极信号。",
+      "gold_tone": "empowering",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你发现了吗？当孩子问‘是不是我昨天不听话’，他已经把爸爸离开归因到自己身上了。你说‘大人的事跟你没关系’，本意是保护他，但他听到的却是‘你不需要知道，你也改变不了’。这种封闭解释反而放大了他的不安，让他更拼命地想用行动（打电话、开门）来抓住爸爸。孩子需要的不是一个‘没关系’的结论，而是一个能让他安心的解释——比如‘爸爸妈妈之间出了问题，但我们都很爱你，这不是你的错’。\n——\n你可以这么说：‘爸爸妈妈吵架了，需要分开冷静一下，但我们都永远爱你，这不是你的错。’",
+      "sys_main_contradiction": "母亲用‘大人的事跟你没关系’封闭解释，回避孩子对安全感的根本需求，导致孩子自我归因和焦虑升级。",
+      "gold_tone": "empowering",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    }
+  ]
+}

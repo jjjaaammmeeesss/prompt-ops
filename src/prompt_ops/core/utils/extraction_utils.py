@@ -53,16 +53,16 @@ def extract_value(obj: Any, key: str, default: Any = None) -> Any:
     if hasattr(obj, key):
         return getattr(obj, key)
 
-    # Dictionary access
-    if isinstance(obj, dict) and key in obj:
-        return obj[key]
+    # Dictionary access: missing keys fall back to the provided default
+    if isinstance(obj, dict):
+        return obj.get(key, default)
 
     # Text attribute (Prediction objects)
     if hasattr(obj, "text"):
         return obj.text
 
-    # Fallback to string representation
-    if hasattr(obj, "__str__") and not isinstance(obj, (str, bytes, bytearray)):
-        return str(obj)
+    # String/bytes are values themselves (e.g. a raw JSON string passed as gold)
+    if isinstance(obj, (str, bytes, bytearray)):
+        return obj
 
     return default

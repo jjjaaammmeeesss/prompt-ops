@@ -1,0 +1,72 @@
+{
+  "version": "v3.1-master+v3.1-prod",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.2,
+    "m6_insight_quality": 4.0,
+    "m7_safety_score": 4.2,
+    "overall_score": 0.77
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你正在用分数这把尺子丈量孩子的全部世界。当孩子兴奋地分享科学实验的成功时，你只看到数学成绩的下降，并迅速用质问和命令切断了他的表达。这个模式让他感到：只有符合你标准的事才值得被看见，而他的热情和兴趣是次要的。\n——\n你可以这么说：“哇，火山喷发听起来好酷！先跟我说说实验的过程，然后我们再看数学卷子。”",
+      "sys_main_contradiction": "家长用单一价值（分数）否定孩子的多元成就（科学实验），导致孩子情感需求被忽视，关系陷入追-逃。",
+      "gold_tone": "diagnostic",
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "sys_tone": "mixed",
+      "sys_popup_text": "你在疲惫中仍然接住了孩子的情绪，这很不容易。但你也看到自己从烦躁转向内疚的过程——内疚感可能会让你在下次想说“等一下”时更犹豫，反而更难设立边界。孩子已经学会用你的情绪来调整自己，但你的疲惫也需要被看见。\n——\n你可以这么说：“妈妈现在需要休息10分钟，然后一定认真看你的画。”",
+      "sys_main_contradiction": "家长在疲惫中仍能克服惯性倾听孩子，但内疚感可能成为后续互动的隐患。",
+      "gold_tone": "empowering",
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "sys_tone": "empowering",
+      "sys_popup_text": "你从催促变成了倾听，从解释变成了陪伴。当孩子说'你每次都说明天'时，你没有辩解，而是立刻调整——用挠背这个动作告诉他：我在这里，不走了。这个瞬间，你修复了信任。",
+      "sys_main_contradiction": "家长克服了最初的不耐烦，选择了倾听和安抚，但孩子对“明天再说”的回避仍有残留的不信任，需要持续的情感在场来巩固安全感。",
+      "gold_tone": "diagnostic",
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "sys_tone": "mixed",
+      "sys_popup_text": "你做到了在情绪激动时暂停，这避免了冲突升级。但你在恐惧中不自觉地把孩子的一次行为说成了‘每次’，这个‘每次’会让孩子觉得你不再信任他。他追小狗不只是冲动，他还在担心小狗会丢——这份同情心被你忽略了。\n——\n你可以这么说：‘妈妈知道你喜欢小狗，也担心它走丢，但马路上追很危险，下次我们一起找主人好不好？’",
+      "sys_main_contradiction": "家长在恐惧驱动下用单一解释框住孩子，忽视了孩子的好奇与同情，同时有暂停情绪的能力但未用于修复关系。",
+      "gold_tone": "empowering",
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "sys_tone": "mixed",
+      "sys_popup_text": "你努力否认孩子的自我归因，也尝试用拥抱安抚他，这很珍贵。但'跟你没关系'和'大人之间的事'这类话，反而让孩子更困惑——他没法理解为什么与他无关的事却让他失去了爸爸的陪伴。他需要的不只是解释，而是你承认他的害怕是合理的，并且告诉他：即使爸爸暂时不在，妈妈也完全接得住他的情绪。\n——\n你可以这么说：'妈妈知道你想爸爸，很难过。这不是你的错，是爸爸妈妈需要一点时间。但妈妈会一直陪着你，我们一起来想办法，好吗？'",
+      "sys_main_contradiction": "母亲用'成人问题'封闭沟通，孩子因分离焦虑自我归因，双方情感需求未对接。",
+      "gold_tone": "empowering",
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 4.0,
+      "error": ""
+    }
+  ]
+}

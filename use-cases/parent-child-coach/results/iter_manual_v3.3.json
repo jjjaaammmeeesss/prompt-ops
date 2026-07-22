@@ -1,0 +1,82 @@
+{
+  "version": "v3.3",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.4,
+    "m6_insight_quality": 4.0,
+    "m7_safety_score": 4.0,
+    "overall_score": 0.79
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你刚才其实看到了孩子眼里的光——他跑过来跟你分享火山实验的兴奋，那是他今天最高光的时刻。但你心里装着数学卷子，所以那束光刚亮起来，就被你掐灭了。你担心成绩下滑，这很正常，可当孩子每次兴冲冲地来，都被你拉回‘成绩’这个单一标准上，他慢慢就不敢再跟你分享他的快乐了。\n——\n你可以这么说：“哇，火山喷得最高？快给我讲讲，你是怎么做到的？”",
+      "sys_main_contradiction": "家长将成绩下降归因为孩子不努力，忽视孩子的兴趣和成就，导致孩子情感被压制，亲子关系陷入追-逃模式。",
+      "gold_tone": "diagnostic",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_tone": "empowering",
+      "sys_popup_text": "你在极度疲惫时，依然接住了孩子递来的画，还承诺休息后再看。这份在惯性中刹车的努力，让对话从对抗变成了等待。",
+      "sys_main_contradiction": "家长在疲惫中仍能克服惯性回应孩子，展现了积极转变，但深层信念（累时优先自我照顾）未完全松动。",
+      "gold_tone": "empowering",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你从催促到挠背，这步转弯很棒。但孩子真正需要的不是被哄睡，而是被听见——他担心小组长、担心猫妈妈，这些焦虑被挠背轻轻带过了。下次可以在挠背时轻声说：'你刚才说怕同学笑你，妈妈听着呢。' 身体的安抚加上情感的确认，孩子才能真正安心。\n——\n你可以这么说：'挠背的时候，你也可以继续跟我说说你的担心。'",
+      "sys_main_contradiction": "家长用身体安抚替代了情感对话，孩子需要的是被看见焦虑而非被哄睡。",
+      "gold_tone": "diagnostic",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你刚才在害怕中抓住了孩子的手，又在愤怒中选择了暂停——这两件事同时发生，说明你已经在打破那个控制-反抗的循环。但底层那个‘他每次都会忘’的标签还在，它让你看不见孩子刚才其实已经回来了、也承认了错误。这个标签才是循环的燃料。\n——\n你可以这么说：‘你刚才自己走回来了，妈妈看到了。下次我们一起想个办法，让你记得看车。’",
+      "sys_main_contradiction": "家长在恐惧驱动下用控制保护孩子安全，同时有暂停的积极时刻，但底层信念（灾难化、贴标签）未变，导致控制-反抗循环持续。",
+      "gold_tone": "empowering",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你很想安抚孩子，但一句'大人的事跟你没关系'，其实把孩子推到了更远的地方。他问'是不是我昨天不听话'，说明他已经在用自责来理解这件事——你的回避让他感到自己的恐惧没有被看见。\n——\n你可以这么说：'爸爸不回家，妈妈也很难过。你害怕他不要你了，对吗？'",
+      "sys_main_contradiction": "母亲用回避策略应对孩子的分离焦虑，但孩子需要被纳入家庭事件并获得情感确认；母亲有安抚意图但未能真正看见孩子的恐惧。",
+      "gold_tone": "empowering",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 3.0,
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "config": {
+    "task_model": "deepseek-v4-pro",
+    "judge_model": "claude-opus-4-8",
+    "n_test": 12
+  },
+  "phase1": {
+    "0": {
+      "k": 0,
+      "mean": 0.7004289215686273,
+      "std": 0.15183258497692353,
+      "prompt_len": 4152,
+      "dim_avgs": {
+        "acknowledgment": 4.416666666666667,
+        "insight_accuracy": 4.083333333333333,
+        "pattern_revelation": 2.5833333333333335,
+        "invitational_tone": 3.3333333333333335,
+        "actionability": 4.5,
+        "naturalness": 3.5,
+        "focus": 3.9166666666666665
+      }
+    },
+    "8": {
+      "k": 8,
+      "mean": 0.6803921568627452,
+      "std": 0.16324753016025007,
+      "prompt_len": 8371,
+      "dim_avgs": {
+        "acknowledgment": 4.583333333333333,
+        "insight_accuracy": 3.8333333333333335,
+        "pattern_revelation": 1.9166666666666667,
+        "invitational_tone": 3.75,
+        "actionability": 3.8,
+        "naturalness": 3.5,
+        "focus": 3.8333333333333335
+      }
+    },
+    "16": {
+      "k": 16,
+      "mean": 0.7517156862745099,
+      "std": 0.11627312517774917,
+      "prompt_len": 13324,
+      "dim_avgs": {
+        "acknowledgment": 4.5,
+        "insight_accuracy": 4.166666666666667,
+        "pattern_revelation": 2.3333333333333335,
+        "invitational_tone": 3.8333333333333335,
+        "actionability": 4.3,
+        "naturalness": 4.0,
+        "focus": 4.333333333333333
+      }
+    },
+    "24": {
+      "k": 24,
+      "mean": 0.7053921568627451,
+      "std": 0.16748985721039444,
+      "prompt_len": 24164,
+      "dim_avgs": {
+        "acknowledgment": 4.583333333333333,
+        "insight_accuracy": 3.9166666666666665,
+        "pattern_revelation": 2.3333333333333335,
+        "invitational_tone": 3.5833333333333335,
+        "actionability": 4.125,
+        "naturalness": 3.75,
+        "focus": 3.9166666666666665
+      }
+    }
+  },
+  "phase2": {
+    "12": {
+      "k": 12,
+      "mean": 0.6787377450980392,
+      "std": 0.16463213354964118,
+      "prompt_len": 11070,
+      "dim_avgs": {
+        "acknowledgment": 4.333333333333333,
+        "insight_accuracy": 3.6666666666666665,
+        "pattern_revelation": 2.0,
+        "invitational_tone": 3.9166666666666665,
+        "actionability": 4.0,
+        "naturalness": 3.75,
+        "focus": 3.9166666666666665
+      }
+    },
+    "20": {
+      "k": 20,
+      "mean": 0.7197916666666667,
+      "std": 0.0929070903136868,
+      "prompt_len": 18853,
+      "dim_avgs": {
+        "acknowledgment": 4.5,
+        "insight_accuracy": 3.9166666666666665,
+        "pattern_revelation": 2.1666666666666665,
+        "invitational_tone": 4.083333333333333,
+        "actionability": 4.090909090909091,
+        "naturalness": 3.75,
+        "focus": 4.083333333333333
+      }
+    }
+  },
+  "best_k": 16,
+  "best_score": 0.7517156862745099,
+  "baseline_score": 0.7004289215686273
+}

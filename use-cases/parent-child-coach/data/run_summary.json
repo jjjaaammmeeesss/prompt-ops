@@ -1,0 +1,27 @@
+{
+  "run_completed": true,
+  "exit_code": 0,
+  "results_files": [
+    "results/config_20260708_170157.json",
+    "results/config_20260708_170157.yaml"
+  ],
+  "trial_count": 11,
+  "best_score": 66.67,
+  "trial_scores": [0.0, 52.08, 33.33, 39.58, 33.33, 52.08, 33.33, 37.5, 66.67, 37.5, 66.67],
+  "distinct_scores": 6,
+  "methodology_preserved": false,
+  "keywords_found": [],
+  "errors": [
+    "Post-optimization test-set evaluation failed with DeepSeek API error: 'This response_format_type is unavailable now' followed by DSPy parallelizer shutdown RuntimeError. This occurred after optimization was already complete and results were saved."
+  ],
+  "duration_seconds": 337,
+  "notes": {
+    "winning_instruction": "Instruction 1 (simplified prompt, 374 chars)",
+    "losing_instruction": "Instruction 0 (rich v1.7 methodology prompt with 三维六格/盲区二分/七层结构, ~3000+ chars)",
+    "instruction_comparison": "The simpler prompt (Instruction 1) scored up to 66.67%, while the rich methodology prompt (Instruction 0) maxed at 52.08%. The optimized prompt selected by MIPROv2 contains NONE of the core methodology keywords.",
+    "dataset_split": "66 train / 16 val / 14 test",
+    "model": "deepseek/deepseek-chat",
+    "mipro_params": {"num_trials": 10, "num_fewshot_candidates": 6, "num_instruct_candidates": 3, "num_threads": 18},
+    "post_optimization_error": "harmless - occurred during optional test-set evaluation after optimization already completed and saved results"
+  }
+}

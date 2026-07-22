@@ -1,0 +1,85 @@
+{
+  "iteration": 1,
+  "version": "v3.1",
+  "kept": false,
+  "reason": "C10-004: M5 口吻从匹配退化为不匹配",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.2,
+    "m6_insight_quality": 4.0,
+    "m7_safety_score": 5.0,
+    "overall_score": 0.81
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "孩子兴冲冲地跟你分享科学实验的成功，你却只盯着数学成绩的下降。你心里可能觉得，分数才是硬道理，其他都是虚的。但你知道吗？孩子那一刻的兴奋和成就感，是他在学习中找到乐趣和自信的重要来源。你用单一标准否定了他的多元成就，也关上了他主动沟通的门。\n——\n你可以这么说：“哇，火山喷发听起来好酷！下次也教教妈妈怎么做，好吗？数学卷子我们待会儿一起看。”",
+      "sys_main_contradiction": "家长用单一分数标准否定孩子的多元成就与兴趣，忽视孩子的积极体验和主体性。",
+      "gold_tone": "diagnostic",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你真的很累了，但还是接住了孩子的情感邀请。那句‘好吧，给我看看’是你从回避转向在场的关键一步。虽然一开始你因为疲惫而拒绝，但孩子用‘蓝色太阳’的比喻让你看到了他的内心世界——他不仅需要被看见，还在用他的方式理解你的疲惫。这种双向的共情，正是修复关系的开始。\n——\n你可以这么说：‘谢谢你用蓝色太阳告诉我你的心情，我休息好了就认真看。’",
+      "sys_main_contradiction": "孩子渴望情感被看见的需求与家长因疲惫而暂时无法在场之间的矛盾，但家长最终展现了修复意愿。",
+      "gold_tone": "empowering",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_tone": "empowering",
+      "sys_popup_text": "你从催促到挠背，完成了情绪转弯。你放下了对时间的执念，选择了连接。",
+      "sys_main_contradiction": "家长在规则与情感之间成功转弯，但需要巩固这种积极信念。",
+      "gold_tone": "diagnostic",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你从担心孩子的安全，到忍不住把刚才的惊险放大成‘每次看见喜欢的东西就忘了路’。其实孩子当时在关心那只小狗会不会丢，他的注意力被同情和好奇占满了，不是故意不听话。你真正想保护的是他的安全，可一旦把一次行为说成‘每次’，孩子听到的是‘妈妈不相信我能改’，反而更想争回自主权。你最后选择‘等妈妈不生气再走’，这个暂停很珍贵——它让情绪有机会降温，而不是在恐惧里继续较劲。\n——\n你可以这么说：‘刚才妈妈很担心你，因为车真的很快。但我知道你不是故意的，你是在想那只小狗对不对？下次我们约定好，过马路时先专心看路，过了马路再一起看小狗，好吗？’",
+      "sys_main_contradiction": "家长的安全恐惧导致收缩信念（将一次行为固化为孩子特质），而孩子渴望自主和被信任，双方在控制与反抗中循环，真实需求未被看见。",
+      "gold_tone": "empowering",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你努力用‘大人的事跟你没关系’来保护孩子，但他感受到的不是安全，而是被推开。他一遍遍追问，不是不听话，是在拼命确认自己不会被抛弃。你越回避，他越恐慌。\n——\n你可以这么说：‘妈妈知道你很怕爸爸不回来，我也很怕。但爸爸永远是你爸爸，我们只是需要一点时间。’",
+      "sys_main_contradiction": "孩子对安全感和确定性的强烈需求与母亲回避、无力满足之间形成主要矛盾。",
+      "gold_tone": "empowering",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    }
+  ]
+}
