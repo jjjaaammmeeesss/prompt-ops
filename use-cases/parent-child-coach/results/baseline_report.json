@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "model": "deepseek-chat",
+    "num_cases": 5,
+    "timestamp": "2026-07-16T20:49:35"
+  },
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.4,
+    "m6_insight_quality": 3.8,
+    "m7_safety_score": 3.8,
+    "overall_score": 0.766
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_should_popup": true,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你急着问成绩，是因为担心孩子掉队。但孩子兴冲冲分享科学课的成就时，你直接打断，他感受到的是‘我的快乐不重要，只有分数才值得被看见’。一次成绩波动被你放大成‘未来完蛋’，这种焦虑反而让孩子关上心门，连错题都不愿主动面对。\n——\n你可以这么说：'哇，火山实验听起来好酷！等改完错题，你教教我怎么做，好吗？'",
+      "sys_main_contradiction": "家长用单一成绩标准否定孩子的多元价值（科学成就），导致孩子从兴奋分享转向沉默退缩，核心矛盾是'家长对成绩的焦虑'与'孩子对认可的需求'的冲突。",
+      "gold_should_popup": true,
+      "gold_tone": "diagnostic",
+      "gold_reference_popup": "你希望孩子重视主科——但孩子带着科学课的巨大兴奋冲过来，你用一个'嗯'和一个'别哗了'截断了两次。他说'但是科学课那个实验真的很厉害'——他在争取被看见。你说'科学好有什么用'——这句话告诉他：你的热情不重要，只有分数算数。孩子从兴奋到沉默，只用了四句话。\n-\n你可以这么说：哇，火山喷发实验听起来好酷！等改完错题，你好好给妈妈讲讲，你是怎么做到喷得最高的。",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_should_popup": true,
+      "sys_tone": "empowering",
+      "sys_popup_text": "你从疲惫中挣扎出来，接住了孩子递来的蓝色太阳。",
+      "sys_main_contradiction": "家长从回避转向在场，但关系根缺未完全打开，孩子需要持续被看见。",
+      "gold_should_popup": true,
+      "gold_tone": "empowering",
+      "gold_reference_popup": "你说“等一下”“你很累”，是希望在更好的状态时可以更好的回应孩子的画与心情。你没有只是用'等一下'敷衍她，而是诚实地告诉她'等我看得进去了再看'，让孩子在失落中得到了一个具体的约定，而不是一个空洞的等待。",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_should_popup": true,
+      "sys_tone": "child_insight",
+      "sys_popup_text": "你的孩子可能是用‘猫想妈妈’来试探你：你愿意接住我的分离焦虑吗？他真正在意的不是猫，而是自己离开妈妈（你）时会不会难过。\n——\n你可以这么说：‘猫离开妈妈会难过，但你离开妈妈时，妈妈也会想你，但妈妈知道你会好好回来。’",
+      "sys_main_contradiction": "家长通过肢体安抚有效缓解了孩子的即时焦虑，但对话中未触及孩子社交焦虑和分离焦虑的根源，安抚可能只是暂时转移而非真正解决。",
+      "gold_should_popup": true,
+      "gold_tone": "diagnostic",
+      "gold_reference_popup": "你想让孩子快点睡着，是担心孩子没有充足睡眠。孩子翻来覆去一个小时，不是不想睡，是因为脑子里有事情。小组长、被笑、猫想妈妈——这些不是'乱七八糟'的事，是一个孩子睡前真实的内心世界。你说'明天再说'，但孩子需要的不是答案，是需要有人陪他走完这些念头。\n-\n你可以这么说：妈妈刚才太着急让你睡了。来，我们聊聊这些事——你想先聊哪个？聊完可能就睡得着了。",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 3.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_should_popup": true,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你刚才在恐惧中抓住了孩子的手腕，那一刻你害怕的是车，但孩子感受到的只是疼。你后来停下来，说‘妈妈手还在抖’，这句诚实的话比任何控制都更有力量——它让孩子看见你的害怕，而不是你的愤怒。恐惧和在场可以共存，你已经在从控制转向真实的路上。\n——\n你可以这么说：‘妈妈刚才太怕你被车碰到，所以抓疼了你。我不是要凶你，是心里很紧张。’",
+      "sys_main_contradiction": "家长的安全焦虑与孩子的探索需求冲突，但家长在控制中展现了修复可能——恐惧与在场并存。",
+      "gold_should_popup": true,
+      "gold_tone": "empowering",
+      "gold_reference_popup": "你怕孩子冲到马路上，所以第一反应是抓住他、让他立刻停下，这个判断是必要的。但如果还总结出一个贴标签的行为：“你每次看见喜欢的东西就忘了路”，孩子听到的可能就不是自己的冲动，而是自己是一个不好的小孩。他身体回到安全处之后，心最好也能回到安全处。\n——\n这么说更好：小狗看起来是很可爱，很想去摸一下，但看见的东西再喜欢，依然要把安全放在第一，马路上必须牵手，这个不能商量。",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_should_popup": true,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你努力用解释来安抚孩子，但他要的不是答案，而是你和他一起面对那个‘爸爸可能不回来’的恐惧。当他拒绝拥抱时，你仍留在原地，这份坚持很珍贵。只是孩子现在卡在‘具体行动’里（开门等爸爸），因为抽象的解释（大人的事、过几天）装不下他的害怕。他需要你先接住那个恐惧，而不是解释它。\n——\n你可以这么说：‘妈妈知道你很怕爸爸不回来，妈妈也怕。但妈妈保证，不管发生什么，妈妈都在你身边。’",
+      "sys_main_contradiction": "妈妈用理性解释安抚孩子，但孩子需要的是情感确认和安全感修复——解释与情感在场之间的裂缝。",
+      "gold_should_popup": true,
+      "gold_tone": "empowering",
+      "gold_reference_popup": "你想保护他，所以说“大人的事跟你没关系”，这个发心是好的。但在爸爸突然不回家的空白里，孩子会自己找原因；他说“是不是我昨天不听话”，就是在把分开和自己的错连起来。这里最要紧的不是解释所有大人细节，而是反复、明确地告诉他：这不是你造成的。\n——                                                                           \n这么说更好：爸爸妈妈分开不是因为你。你没有做错，我们都爱你，你想问什么都可以问.",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    }
+  ]
+}

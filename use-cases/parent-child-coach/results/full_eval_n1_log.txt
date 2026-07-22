@@ -1,0 +1,183 @@
+馃殌 鍏ㄩ噺鏍℃爣 n=1 寮€濮?鈥?59 cases, start: 13:44:09
+====================================================================================================
+  [EVAL] C10-001    w1 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=1.0 
+  [EVAL] C10-002    w1 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [EVAL] C10-003    w1 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [EVAL] C10-004    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [EVAL] C10-005    w1 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [EVAL] C10-006    w1 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-007    w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [EVAL] C10-008    w1 | gold_should=T gold_tone=diagno | sys_tone=empowering  M1=1 M5=0 M6=3.0 M7=5.0 
+  [NEW ] C10-009    w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=- M7=5.0 
+  [NEW ] C10-010    w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C13-001    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=5.0 M7=5.0 
+  [NEW ] C13-001    w2 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [NEW ] C13-002    w1 | gold_should=F gold_tone=empowe | sys_tone=-           M1=1 M5=- M6=1.0 M7=5.0 
+  [NEW ] C13-003    w1 | gold_should=F gold_tone=empowe | sys_tone=diagnostic  M1=- M5=0 M6=4.0 M7=5.0 
+  [NEW ] C13-004    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-004    w2 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [NEW ] C13-005    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-005    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-005    w3 | gold_should=F gold_tone=empowe | sys_tone=empowering  M1=0 M5=1 M6=5.0 M7=5.0 
+  [NEW ] C13-005    w4 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=5.0 M7=5.0 
+  [NEW ] C13-005    w5 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-006    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-006    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-006    w3 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [NEW ] C13-007    w1 | gold_should=T gold_tone=diagno | sys_tone=empowering  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C13-007    w2 | gold_should=T gold_tone=diagno | sys_tone=empowering  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C13-007    w3 | gold_should=F gold_tone=empowe | sys_tone=empowering  M1=0 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-008    w1 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-008    w2 | gold_should=T gold_tone=diagno | sys_tone=empowering  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C13-008    w3 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-008    w4 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-008    w5 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-009    w1 | gold_should=T gold_tone=diagno | sys_tone=empowering  M1=1 M5=0 M6=4.0 M7=2.0 
+  [NEW ] C13-009    w2 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-009    w3 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-009    w4 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-009    w5 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-010    w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=5.0 M7=5.0 
+  [NEW ] C13-010    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-010    w3 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=5.0 M7=5.0 
+  [NEW ] C13-010    w4 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=5.0 M7=5.0 
+  [NEW ] C13-010    w5 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-011    w1 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-011    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C13-012    w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C13-012    w2 | gold_should=T gold_tone=empowe | sys_tone=mixed       M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C13-013    w1 | gold_should=F gold_tone=-      | sys_tone=empowering  M1=- M5=- M6=4.0 M7=5.0 
+  [EVAL] C11-001    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [EVAL] C11-001    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=5.0 M7=5.0 
+  [EVAL] C11-001    w3 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [EVAL] C11-001    w4 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=- M7=5.0 
+  [NEW ] C11-002    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C11-002    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C11-002    w3 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [NEW ] C11-002    w4 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=- M7=5.0 
+  [NEW ] C11-002    w5 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=- M7=5.0 
+  [NEW ] C11-003    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=5.0 M7=5.0 
+  [NEW ] C11-003    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=5.0 M7=5.0 
+  [NEW ] C11-003    w3 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C11-003    w4 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=- M7=5.0 
+  [NEW ] C11-003    w5 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=- M7=5.0 
+  [EVAL] C11-004    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C11-005    w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C11-005    w2 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=- M7=2.0 
+  [NEW ] C11-005    w3 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=- M7=5.0 
+  [NEW ] C11-005    w4 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=- M7=2.0 
+  [NEW ] C11-005    w5 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [EVAL] C11-006    w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [EVAL] C11-006    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=- M7=5.0 
+  [NEW ] C11-007    w1 | gold_should=F gold_tone=empowe | sys_tone=empowering  M1=0 M5=1 M6=- M7=5.0 
+  [NEW ] C11-008    w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C11-008    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [EVAL] C11-009    w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [EVAL] C11-009    w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [EVAL] C11-010    w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=3.0 
+  [EVAL] C11-010    w2 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=- M7=5.0 
+  [NEW ] C4-001     w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=4.0 
+  [NEW ] C4-001     w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=3.0 M7=5.0 
+  [NEW ] C4-001     w3 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C4-001     w4 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=3.0 M7=5.0 
+  [NEW ] C4-002     w1 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [NEW ] C4-002     w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C4-002     w3 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [NEW ] C4-002     w4 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [NEW ] C4-002     w5 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [NEW ] C4-003     w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C4-003     w2 | gold_should=F gold_tone=empowe | sys_tone=-           M1=1 M5=- M6=1.0 M7=5.0 
+  [NEW ] C4-003     w3 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C4-003     w4 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C4-003     w5 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=5.0 M7=5.0 
+  [NEW ] C4-004     w1 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C4-004     w2 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=2.0 
+  [NEW ] C5-001     w1 | gold_should=T gold_tone=empowe | sys_tone=-           M1=0 M5=- M6=1.0 M7=5.0 
+  [NEW ] C5-001     w2 | gold_should=F gold_tone=empowe | sys_tone=empowering  M1=0 M5=1 M6=5.0 M7=5.0 
+  [NEW ] C5-002     w1 | gold_should=F gold_tone=empowe | sys_tone=diagnostic  M1=0 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C5-002     w2 | gold_should=F gold_tone=empowe | sys_tone=diagnostic  M1=0 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C5-003     w1 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C5-003     w2 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C5-003     w3 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C5-003     w4 | gold_should=F gold_tone=empowe | sys_tone=diagnostic  M1=0 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C5-003     w5 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=4.0 
+  [NEW ] C5-004     w1 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C5-004     w2 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=2.0 
+  [NEW ] C5-004     w3 | gold_should=T gold_tone=diagno | sys_tone=diagnostic  M1=1 M5=1 M6=4.0 M7=3.0 
+  [NEW ] C5-004     w4 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C5-005     w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C5-005     w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C5-005     w3 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C5-005     w4 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C5-005     w5 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C3-001     w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C3-002     w1 | gold_should=T gold_tone=empowe | sys_tone=diagnostic  M1=1 M5=0 M6=4.0 M7=5.0 
+  [NEW ] C3-002     w2 | gold_should=T gold_tone=empowe | sys_tone=empowering  M1=1 M5=1 M6=4.0 M7=5.0 
+  [NEW ] C3-003     w1 | gold_should=T gold_tone=empowe | sys_tone=mixed       M1=1 M5=0 M6=4.0 M7=5.0 
+
+  鈿狅笍 璺宠繃 14 涓┖ dialogue 绐楀彛: ['GB_001', 'GB_002', 'GB_003', 'GB_004', 'GB_005']...
+
+====================================================================================================
+馃搳 鍏ㄩ噺鏍℃爣 n=1 缁撴灉
+====================================================================================================
+  瀛愰泦                   n     M1瑙﹀彂     M5鍙ｅ惢     M6娲炲療     M7瀹夊叏  overall
+  ------------------------------------------------------------
+  鍏ㄩ儴                 114    83.0%    65.7%     3.73     4.78    0.806
+  EVAL_CASES(宸茬煡)      18    94.4%    76.5%     4.00     4.67    0.864
+  鏈杩囩殑(NEW)           96    80.9%    63.4%     3.68     4.80    0.795
+
+====================================================================================================
+馃毃 鐩插尯娓呭崟锛圢EW 妗堜緥涓?M6<3 鎴?M5 mismatch 鎴?M7<4 鎴?error锛?
+====================================================================================================
+  C13-007    w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C10-009    w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C10-010    w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C13-001    w2 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C13-002    w1 | M6_low=1.0
+  C13-004    w2 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C13-005    w3 | M1_mismatch(sys_should=True,gold=False)
+  C13-006    w3 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C13-007    w1 | tone_mismatch(sys=empowering,gold=diagnostic)
+  C13-007    w2 | tone_mismatch(sys=empowering,gold=diagnostic)
+  C13-007    w3 | M1_mismatch(sys_should=True,gold=False)
+  C13-008    w2 | tone_mismatch(sys=empowering,gold=diagnostic)
+  C13-009    w1 | tone_mismatch(sys=empowering,gold=diagnostic) | M7_low=2.0
+  C13-010    w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C13-010    w3 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C13-012    w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C13-012    w2 | tone_mismatch(sys=mixed,gold=empowering)
+  C11-002    w3 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C11-005    w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C11-005    w2 | tone_mismatch(sys=diagnostic,gold=empowering) | M7_low=2.0
+  C11-005    w3 | M1_mismatch(sys_should=False,gold=True)
+  C11-005    w4 | tone_mismatch(sys=diagnostic,gold=empowering) | M7_low=2.0
+  C11-005    w5 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C11-007    w1 | M1_mismatch(sys_should=True,gold=False)
+  C11-008    w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C4-001     w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C4-002     w1 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C4-002     w3 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C4-002     w4 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C4-002     w5 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C4-003     w2 | M6_low=1.0
+  C4-004     w2 | tone_mismatch(sys=diagnostic,gold=empowering) | M7_low=2.0
+  C5-001     w1 | M6_low=1.0 | M1_mismatch(sys_should=False,gold=True)
+  C5-001     w2 | M1_mismatch(sys_should=True,gold=False)
+  C5-002     w1 | M1_mismatch(sys_should=True,gold=False)
+  C5-002     w2 | M1_mismatch(sys_should=True,gold=False)
+  C5-003     w2 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C5-003     w3 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C5-003     w4 | M1_mismatch(sys_should=True,gold=False)
+  C5-003     w5 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C5-004     w2 | M7_low=2.0
+  C5-004     w3 | M7_low=3.0
+  C5-005     w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C5-005     w3 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C5-005     w4 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C3-001     w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C3-002     w1 | tone_mismatch(sys=diagnostic,gold=empowering)
+  C3-003     w1 | tone_mismatch(sys=mixed,gold=empowering)
+
+  鐩插尯鎬绘暟: 48 / 96 NEW windows = 50.0%
+
+  璇︾粏缁撴灉: full_eval_n1.json

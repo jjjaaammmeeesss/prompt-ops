@@ -1,0 +1,351 @@
+{
+  "method": "rubric-based expert alignment (type, insight, conflict, forbidden)",
+  "n_matches": 15,
+  "summary": {
+    "r5": {
+      "n": 14,
+      "composite_mean": 0.6904761904761905,
+      "type_match_rate": 0.5,
+      "avg_insight_coverage": 2.5714285714285716,
+      "avg_conflict_alignment": 2.7857142857142856,
+      "forbidden_clear_rate": 1.0
+    },
+    "v17": {
+      "n": 15,
+      "composite_mean": 0.7422222222222222,
+      "type_match_rate": 0.6,
+      "avg_insight_coverage": 2.8,
+      "avg_conflict_alignment": 3,
+      "forbidden_clear_rate": 0.9333333333333333
+    }
+  },
+  "results": [
+    {
+      "file": "GB_018.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "diagnostic",
+      "type_match": 1,
+      "insight_coverage": 4,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 1,
+      "brief_reason": "AI 准确采用诊断式，命中家长的脆弱（怕掉下去）与孩子被看见的诉求，核心矛盾（只盯分数、没接住孩子的热情）与专家一致，且未提建议、未用生硬语气；略欠对'从兴奋到安静只用四句话'这一客观事实链的具体呈现。"
+    },
+    {
+      "file": "GB_018.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "diagnostic",
+      "type_match": 1,
+      "insight_coverage": 4,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 0,
+      "brief_reason": "AI 准确诊断了'单极价值'盲区并复现了'四句话从兴奋到沉默'的核心矛盾，与专家高度对齐；但结尾'要不要试试...听他说一分钟'直接给家长提行为建议，触碰了'给家长提建议要求其鼓励孩子'的红线。"
+    },
+    {
+      "file": "GB_028.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 2,
+      "core_conflict_alignment": 3,
+      "forbidden_check": 1,
+      "brief_reason": "AI 弹窗准确采用了鼓励式语气并避开了红线，但只命中了「肯定家长积极意图」这一点（且用「承受失望/关系不断裂」的框架替代了专家的「帮他学会守约」），完全没有给出专家要求的那句指向核心痛点的建议句。"
+    },
+    {
+      "file": "GB_028.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 2,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "AI 整体是鼓励式且避开了红线，但只泛泛肯定家长「双向规则/不退让」，漏掉了专家真正的两个洞察点——「用明确选择帮他学会守约」的积极动机，以及针对「你每次都这样」这一核心痛点的建议句；且结尾把主要矛盾错锚定在「规则双向」而非孩子的关系委屈，方向偏离。"
+    },
+    {
+      "file": "GB_029.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 2,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "专家要纯鼓励（肯定家长'不替孩子分配、只当计时员'的信任式教练姿态），AI 开头虽有肯定但主体转向诊断与建议（说家长像裁判/翻译/监工、该退到观众席），既偏离了 empowering 类型，也与专家'难得的信任、在旁做教练'的核心判断相反。"
+    },
+    {
+      "file": "GB_029.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 4,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 1,
+      "brief_reason": "AI准确采用鼓励式语气，肯定了家长引导协商、不直接裁判的做法，与专家核心洞察一致；但未突出家长'只当计时员、让孩子自己谈时间'这一'难得的信任/教练不介入'的本质点，稍逊于专家表达。"
+    },
+    {
+      "file": "GB_030.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 4,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 1,
+      "brief_reason": "AI 弹窗准确认出这是鼓励式场景，肯定了家长'接住情绪'和'在允许情绪的同时守住原则/界限'两大洞察点，与专家核心判断同向，只是更偏'不把关系撕碎/尊严界限'的表达，略少提及'对方有拒绝权利、双方可表达但不能嘲讽'的原理层面。"
+    },
+    {
+      "file": "GB_030.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 2,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "语气是鼓励式（类型对），但只夸了「行为/动机切割」这个次要点，漏掉了专家两个核心洞察——家长稳稳接住情绪、以及「因被排斥而攻击反而更被排斥」的原则，且末尾还多加了一条建议，偏离了纯鼓励的意图。"
+    },
+    {
+      "file": "GB_033.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "diagnostic",
+      "type_match": 0,
+      "insight_coverage": 1,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "专家要诊断（点破餐桌变权力角斗场、把孩子真实感受关在门外），AI 却整体在鼓励/肯定家长的修复动作，类型不符、未命中任一诊断洞察点，且只关注了后段修复瞬间而错过了核心矛盾。"
+    },
+    {
+      "file": "GB_033.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "diagnostic",
+      "type_match": 0,
+      "insight_coverage": 1,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "专家要诊断家长把餐桌变成权力角斗场、把孩子真实感受当成找理由的盲区，AI 却转向鼓励家长后半程的妥协与修复行为，类型错位且完全没命中三个洞察点，只擦到‘从命令到商量’的边而错失主要矛盾。"
+    },
+    {
+      "file": "GB_035.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 3,
+      "core_conflict_alignment": 3,
+      "forbidden_check": 1,
+      "brief_reason": "AI正确采用鼓励式且肯定了家长接住恐惧的转变，但未点出'你已经很累了想让他快点睡'这一看见家长情绪的洞察，也未明确'恐惧不需要客观对象才真实'的认知校正，核心矛盾方向对但不够精准。"
+    },
+    {
+      "file": "GB_035.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 3,
+      "core_conflict_alignment": 3,
+      "forbidden_check": 1,
+      "brief_reason": "AI正确采用鼓励式语气并肯定了家长把恐惧还原为感受、'一起确认'的在场；但未点明专家核心洞察'恐惧不需要客观对象才真实'与'你已经很累了想让他快点睡'这一看见家长情绪的关键点，覆盖不全。"
+    },
+    {
+      "file": "GB_038.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "diagnostic",
+      "type_match": 0,
+      "insight_coverage": 1,
+      "core_conflict_alignment": 1,
+      "forbidden_check": 1,
+      "brief_reason": "专家要诊断家长丧失边界、需温柔而坚定、长期会溺爱惯坏，AI 却反向安慰家长「你不是没原则、你在乎、孩子知道你在管他」，方向完全相反，未命中任何洞察点。"
+    },
+    {
+      "file": "GB_038.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "diagnostic",
+      "type_match": 1,
+      "insight_coverage": 4,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 1,
+      "brief_reason": "AI 准确诊断出家长边界丧失、妥协教会孩子'哭有用'的核心矛盾，与专家高度对齐；命中了边界意识缺失和溺爱惯坏两点，但未强调'温柔且坚定'中'温柔/爱的表达'这一维度，故洞察覆盖略打折扣。"
+    },
+    {
+      "file": "GB_039.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "error": "no_text_block",
+      "raw": "{'model': 'claude-opus-4-8', 'id': 'msg_011Cd54VNpzNoRCdBP3pnW58', 'type': 'message', 'role': 'assistant', 'content': [{'type': 'thinking', 'thinking': '', 'signature': 'EoEhCokBCA8YAipAgh5xNqvRBNlT2m"
+    },
+    {
+      "file": "GB_039.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 3,
+      "core_conflict_alignment": 3,
+      "forbidden_check": 1,
+      "brief_reason": "AI准确采用鼓励式语气，肯定家长把成就感留给孩子，但聚焦在'角色互换/成就感'这一点，未命中专家最看重的'真实边界而非恐惧控制'与'学到的不只是做饭'的核心洞察。"
+    },
+    {
+      "file": "GB_040.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 3,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 1,
+      "brief_reason": "AI 弹窗最终落在与专家一致的核心矛盾（孩子怕的是'没人在后面'、你在他才敢再上），且引用了具体触发句、语气偏肯定，属 empowering；但主体篇幅用在'可惜/顿一秒'的自我解读上，专家真正在意的'一遍遍让他确认妈妈还在的可感安全感'只在结尾点到，且缺一个可执行小调整，故洞察覆盖与矛盾对齐未满分。"
+    },
+    {
+      "file": "GB_040.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 4,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 1,
+      "brief_reason": "AI准确捕捉了'又敢了'这个具体触发窗口，肯定妈妈把勇气归还给孩子，与专家'安全感托住让孩子有胆量'的核心一致，语气为鼓励式且避开泛泛红线；只是未明确给出一个可执行小调整。"
+    },
+    {
+      "file": "GB_046.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 1,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "AI 弹窗虽有一句肯定开头，但整体是诊断式（重构成「怕被抛弃/确认爱」），偏离了专家期望的鼓励式；完全没命中「一句『都一样』否决了孩子审美与选择」这个核心洞察，抓的是次要矛盾（抛弃威胁）而非主要矛盾（愿望/选择被直接否定、缺乏商量），仅避雷项因无红线而通过。"
+    },
+    {
+      "file": "GB_046.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 1,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "专家要的是鼓励式并看见“一句都一样否决了孩子审美与选择”这个点，AI 却做成诊断式，聚焦在“谁听谁的权力战场/分输赢”，既跑偏了类型、完全没命中该洞察，也只沾到对抗升级的边而错过了核心矛盾（愿望被直接否定、缺少商量）。"
+    },
+    {
+      "file": "GB_046.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 3,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "专家要鼓励式，AI 却以「诊断孩子被抛弃恐惧」为主，且核心矛盾锁在依恋/爱的确认上，绕开了专家真正关注的「规则变威胁、愿望被直接否定、需先商量买糖计划」这一主要矛盾。"
+    },
+    {
+      "file": "GB_046.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 4,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 1,
+      "brief_reason": "AI准确抓住了「从买糖滑向权力斗争、分输赢」这一核心矛盾，与专家参考弹窗方向高度一致，但专家期望的是鼓励式（肯定家长已做到的），AI却是诊断+给建议的口吻，类型不匹配。"
+    },
+    {
+      "file": "GB_046.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 2,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "AI 开头虽有肯定，但主体是对孩子内心的诊断式重构（怕被抛弃、确认爱），偏离了专家期望的 empowering 语气；且核心落在“不要你了”的抛弃焦虑上，错过了专家真正的主要矛盾（规则变威胁、愿望需被商量），并完全漏掉“他可以哭但不能是丢人”这一关键洞察，仅部分触及“躺地上是情绪无处安放”。"
+    },
+    {
+      "file": "GB_046.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 1,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "专家期望鼓励式并点出'哭但不能丢人'与'情绪无处安放'，但AI采用诊断+建议的方式分析权力斗争，类型不符也未命中专家洞察点。"
+    },
+    {
+      "file": "GB_047.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 3,
+      "core_conflict_alignment": 3,
+      "forbidden_check": 1,
+      "brief_reason": "专家要鼓励式（肯定家长、还权给孩子决定发型），AI 却做了大段诊断解读（“喊救命”“较劲”），语气与类型不符；虽命中“她想为自己做主/身体边界”一点，但漏掉“让她参与约定优于电视威胁”，且把核心从‘决定权’偏移到了‘恐惧’，未踩红线。"
+    },
+    {
+      "file": "GB_047.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 4,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 1,
+      "brief_reason": "AI准确抓住了孩子想为自己身体做主的核心矛盾，但整体语气偏诊断式（指出家长的双重标准和思维盲区），与专家期望的鼓励式肯定家长发心的取向不完全一致。"
+    },
+    {
+      "file": "GB_052.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "empowering",
+      "type_match": 1,
+      "insight_coverage": 3,
+      "core_conflict_alignment": 3,
+      "forbidden_check": 1,
+      "brief_reason": "AI 整体在肯定家长、语气温柔，符合鼓励式期望，也捕捉到「孩子不是故意跟你杠」这一层，但把核心矛盾重构成了「孩子在试探妈妈还爱不爱我」的依恋叙事，偏离了专家 golden 的主线——「你爽约在先＋情绪没过去所以吃不下、规则可以等」，且没有精准命中「你就是故意闹」这个贴标签洞察。"
+    },
+    {
+      "file": "GB_052.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "empowering",
+      "type_match": 0,
+      "insight_coverage": 3,
+      "core_conflict_alignment": 3,
+      "forbidden_check": 1,
+      "brief_reason": "AI命中了'贴标签-你就是故意闹'这个洞察点，但整体是诊断式（指出对抗升级、给框架和建议），而专家期望的是鼓励式，类型不匹配。"
+    },
+    {
+      "file": "GB_055.json",
+      "window": "甲",
+      "version": "r5",
+      "expected_tone": "diagnostic",
+      "type_match": 1,
+      "insight_coverage": 4,
+      "core_conflict_alignment": 4,
+      "forbidden_check": 1,
+      "brief_reason": "AI 弹窗采用诊断式语气，准确点出了专家关注的核心矛盾——母子陷入「谁赢谁输」的权力斗争（对应专家的「纯粹的权力斗争」「互相威胁扔东西」），类型与主要矛盾都对齐；但 AI 更侧重「偏心弟弟」这一次要情绪，且未触及专家给出的「提前商量玩具预算、以尊重换自控」的关键出路，故未满分。"
+    },
+    {
+      "file": "GB_055.json",
+      "window": "甲",
+      "version": "v17",
+      "expected_tone": "diagnostic",
+      "type_match": 1,
+      "insight_coverage": 2,
+      "core_conflict_alignment": 2,
+      "forbidden_check": 1,
+      "brief_reason": "AI 正确采用诊断式且未触雷，但它诊断的是「用过去评判未来、不给孩子证明机会」，而专家 golden_popup 的主要矛盾是「威胁式权力斗争导致互相扔东西、关系对立，需靠尊重和预算约定化解」——AI 抓了次要的信任问题，漏掉了核心的权力斗争升级这一主矛盾。"
+    }
+  ]
+}

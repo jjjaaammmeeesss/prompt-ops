@@ -1,0 +1,36 @@
+# Stage 0 Diagnostic Config - Micro MIPROv2 Trial
+system_prompt:
+  file: "system_prompt.txt"
+
+dataset:
+  path: "data/stage0_5_examples.json"
+  input_field: "question"
+  golden_output_field: "answer"
+  adapter_class: "standard_json"
+  train_size: 0.4
+  validation_size: 0.4
+  seed: 42
+
+model:
+  name: "deepseek/deepseek-chat"
+  task_model: "deepseek/deepseek-chat"
+  proposer_model: "deepseek/deepseek-chat"
+  temperature: 0.0
+  max_tokens: 1024
+
+metric:
+  class: "prompt_ops.core.metrics.StandardJSONMetric"
+  output_field: "answer"
+  evaluation_mode: "selected_fields_comparison"
+  output_fields:
+    - "should_popup"
+    - "tone"
+    - "popup_insight"
+  strict_json: false
+
+optimization:
+  strategy: "basic"
+  auto: "light"
+  num_threads: 2
+  max_bootstrapped_demos: 2
+  max_labeled_demos: 2

@@ -1,0 +1,85 @@
+{
+  "iteration": 2,
+  "version": "v3.2",
+  "kept": false,
+  "reason": "综合分未提升: 0.824 → 0.740 (Δ=-0.084)",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.2,
+    "m6_insight_quality": 4.0,
+    "m7_safety_score": 3.6,
+    "overall_score": 0.74
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "孩子兴冲冲地跑来说科学实验，你心里想的却是数学成绩。你担心他偏科、掉队，所以急着把话题拉回分数上。可你越追，他越躲——他分享快乐，你泼冷水；他解释原因，你继续追问。他最后低头说'嗯'，不是认错，是放弃了沟通。你其实怕的是他不够好，但这样追下去，他只会觉得：妈妈只爱分数，不爱我。\n——\n你可以这么说：'哇，火山实验听起来好酷！来，先给我讲讲怎么做的，然后我们一起看数学卷子。'",
+      "sys_main_contradiction": "家长以单一分数标准否定孩子的多元价值，导致孩子情感需求被忽视，关系陷入追-逃模式。",
+      "gold_tone": "diagnostic",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你真的很累，却还是接住了孩子那句‘你看一眼嘛’。那一刻你选择了停下，而不是继续回避。但你也发现，这种‘临时调整’很消耗自己——因为你的疲惫没有被真正看见，而孩子的需求又那么迫切。其实，你不需要每次都‘撑住’，而是可以提前告诉孩子：‘妈妈现在很累，需要休息一会儿，等我有力气了再好好看你的画。’这样既保护了自己，也给了孩子一个确定的期待。\n——\n你可以这么说：‘妈妈现在需要充电10分钟，然后一定认真看你的画。’",
+      "sys_main_contradiction": "家长在疲惫时容易陷入回避模式，但孩子用情感表达成功唤醒了家长的共情，矛盾在于家长能否将这种临时调整转化为稳定的在场能力。",
+      "gold_tone": "empowering",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你从催促到倾听，再到挠背安抚，已经成功接住了孩子的情绪。但孩子心里还藏着两件事：怕被同学笑，和担心猫想妈妈。这背后是一个敏感又善良的孩子，他需要的不只是安抚，更是被真正看见和理解的时刻。\n——\n你可以这么说：“你担心同学笑你，也担心猫想妈妈，这两件事都让你睡不着，对吗？”",
+      "sys_main_contradiction": "家长成功从控制转向安抚，但孩子的情感需求（社交恐惧和共情担忧）尚未被完全看见和解决。",
+      "gold_tone": "diagnostic",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你刚刚在情绪顶点时停下来，告诉孩子‘妈妈手还在抖’，这是一个非常珍贵的时刻——你从恐惧中抽身，用真实感受代替了指责。但你也看到，当孩子承诺‘不会了’时，你依然坚持‘等妈妈不生气再走’，这背后是你对安全的绝对化信念：你害怕一旦放松，危险就会发生。其实，孩子已经用‘我听话’和‘我不看小狗了’在向你妥协，他渴望的是你的信任，而不是惩罚性的等待。\n——\n你可以这么说：‘妈妈知道你想摸小狗，但刚才太危险了，我到现在还紧张。我们一起深呼吸三次，然后手拉手过马路，好吗？’",
+      "sys_main_contradiction": "家长的安全焦虑（绝对化控制）与孩子的自主渴望（冲动探索）之间的冲突，同时家长在情绪顶点时展现了自我觉察的积极时刻。",
+      "gold_tone": "empowering",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你努力用理性解释安抚孩子，说‘这是大人的事’，但孩子听到的是‘你的感受不重要’。他反复追问、甚至想开门等爸爸，其实是在确认自己不会被抛弃。你越回避情感，他越恐惧。\n——\n你可以这么说：‘妈妈知道你很怕爸爸不回来，其实妈妈也有点怕。但不管怎样，妈妈永远在你身边。’",
+      "sys_main_contradiction": "妈妈试图用理性解释安抚孩子，却回避了孩子最核心的情感需求——确认自己不会被抛弃。",
+      "gold_tone": "empowering",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 4.0,
+      "error": ""
+    }
+  ]
+}

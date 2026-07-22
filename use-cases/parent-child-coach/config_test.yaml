@@ -1,0 +1,22 @@
+# Test config — 5 examples, quick validation
+system_prompt:
+  file: "system_prompt.txt"
+
+dataset:
+  path: "dataset_5_test.json"
+  input_field: "question"
+  golden_output_field: "answer"
+  adapter_class: "standard_json"
+  train_size: 0.60
+  validation_size: 0.20
+
+model:
+  name: "deepseek/deepseek-chat"
+  task_model: "deepseek/deepseek-chat"
+  proposer_model: "deepseek/deepseek-chat"
+
+metric:
+  class: "scripts/llm_judge_metric.py"
+
+optimization:
+  strategy: "basic"

@@ -1,0 +1,85 @@
+{
+  "iteration": 1,
+  "version": "v3.2",
+  "kept": false,
+  "reason": "综合分未提升: 0.824 → 0.760 (Δ=-0.064)",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.2,
+    "m6_insight_quality": 4.0,
+    "m7_safety_score": 4.0,
+    "overall_score": 0.76
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你刚才急着追问数学成绩，打断了孩子分享科学实验的兴奋。那一刻，你传递的信息是：成绩比他的兴趣和快乐更重要。孩子感受到的不是关心，而是压力，所以他安静下来，不再说了。\n——\n你可以这么说：“哇，火山喷发听起来好酷！等会儿做完作业，你教教我怎么做，好吗？”",
+      "sys_main_contradiction": "家长对成绩的焦虑与孩子对兴趣分享的渴望之间的冲突，导致孩子情感退缩和关系疏离。",
+      "gold_tone": "diagnostic",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你很累的时候，孩子还在追着你，你本能想逃，但你还是停下来了。你承认自己累，也愿意听他说太阳为什么是蓝色的——这一步很难，但你做到了。不过，你心里可能还是觉得孩子的请求是负担，这种惯性会在下次疲惫时再次出现。真正的挑战是：你能否在累的时候，依然告诉自己'他的需要和我的一样重要'。\n——\n你可以这么说：'妈妈现在很累，但你的画很重要。等我休息5分钟，我们一起看，好吗？'",
+      "sys_main_contradiction": "家长在疲惫时本能回避孩子的情感需求，但能通过孩子引导和自我调整实现短暂修复，深层矛盾是家长能否持续克服惯性、保持情感在场。",
+      "gold_tone": "empowering",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你从催促转向了安抚，这很关键。但你有没有发现，孩子真正需要的不是挠背和承诺明天再聊，而是此刻就被看见——他害怕被嘲笑、担心猫想妈妈，这些情绪需要你当场接住，而不是用睡觉来转移。当你说明天再聊时，他听到的是'现在不重要'，这反而让焦虑延续了。\n——\n你可以这么说：'你怕同学笑你，也怕猫难过，这些事让你心里乱乱的，对吗？'",
+      "sys_main_contradiction": "家长虽有安抚行为，但核心矛盾是孩子的情感需求（分离焦虑）未被真正理解，家长仍以‘睡觉’为优先，而非完全共情。",
+      "gold_tone": "diagnostic",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 4.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你刚才在路口紧张到发抖，却还是停下来等自己平复——这份觉察很难得。但你说'你每次看见喜欢的东西就忘了路'，其实孩子不是忘了路，而是被小狗的安危牵住了。他问'它会丢吗'，那是他的善意，不是对抗。你急着护他安全，却把他的关心压成了'不听话'。\n——\n你可以这么说：'妈妈知道你是担心小狗走丢，但马路上太危险，我们先过完马路再一起想办法帮它找主人。'",
+      "sys_main_contradiction": "家长的安全焦虑与孩子的自主需求之间的冲突，家长通过控制（身体约束、取消奖励）来应对，但同时也展现了自我觉察和情绪调节的积极时刻。",
+      "gold_tone": "empowering",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你努力想安抚孩子，但一句‘大人的事跟你没关系’反而让他更害怕。他问‘是不是我昨天不听话’，其实是在确认自己是否被抛弃。你越回避，他越追着要答案，因为孩子需要的是确定感——知道爸爸还会回来，自己没有被丢下。\n——\n你可以这么说：‘爸爸和妈妈需要一点时间，但我们都爱你。他周末就会来看你，我们拉勾。’",
+      "sys_main_contradiction": "母亲回避孩子对父亲离开的恐惧与自责，用‘大人的事’封闭对话，导致孩子安全感崩塌。",
+      "gold_tone": "empowering",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 4.0,
+      "error": ""
+    }
+  ]
+}

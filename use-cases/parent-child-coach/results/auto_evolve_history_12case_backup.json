@@ -1,0 +1,42 @@
+[
+  {
+    "iteration": 1,
+    "target": "perception",
+    "version": "v2.6",
+    "overall": 0.8357828282828282,
+    "kept": false,
+    "reason": "综合分未提升: 0.878 → 0.836 (Δ=-0.043)"
+  },
+  {
+    "iteration": 2,
+    "target": "perception",
+    "version": "v2.7",
+    "overall": 0.8755555555555556,
+    "kept": false,
+    "reason": "综合分未提升: 0.878 → 0.876 (Δ=-0.003)"
+  },
+  {
+    "iteration": 3,
+    "target": "perception",
+    "version": "v2.8",
+    "overall": 0.811969696969697,
+    "kept": false,
+    "reason": "综合分未提升: 0.878 → 0.812 (Δ=-0.066)"
+  },
+  {
+    "iteration": 4,
+    "target": "master",
+    "version": "v3.6",
+    "overall": 0.8480555555555556,
+    "kept": false,
+    "reason": "综合分未提升: 0.878 → 0.848 (Δ=-0.030)"
+  },
+  {
+    "iteration": 5,
+    "target": "master",
+    "version": "v3.7",
+    "overall": 0.8638888888888888,
+    "kept": false,
+    "reason": "综合分未提升: 0.878 → 0.864 (Δ=-0.014)"
+  }
+]

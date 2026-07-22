@@ -1,0 +1,49 @@
+# 周易八卦 · 亲子沟通实时弹窗系统 配置文件
+# ============================================================
+
+# Stage 1: 周易三爻分析器（快速/便宜模型）
+analyzer:
+  model: "deepseek/deepseek-chat"
+  temperature: 0.0
+  max_tokens: 256
+  timeout: 15.0
+
+# Stage 2: 弹窗内容生成器（高能力模型）
+generator:
+  model: "deepseek/deepseek-chat"
+  temperature: 0.3
+  max_tokens: 640
+  system_prompt_path: "../system_prompt_v4.0.12.txt"
+
+# 触发引擎配置
+trigger:
+  char_trigger: 120           # 每 N 字触发一次分析
+  min_chars_for_analysis: 60  # 最少累积字数才触发
+  min_interval_ms: 3000       # 两次触发最小间隔（毫秒）
+  keyword_min_chars: 30       # warning/opportunity 关键词触发所需最少字数
+  keyword_file: "keyword_config.json"
+
+# 去抖门控配置
+debounce:
+  cooldown_seconds: 15.0      # 相同卦象弹窗冷却秒数
+  same_state_max_repeats: 2   # 相同卦象最多连续弹窗次数
+  absolute_min_interval: 5.0  # 任意弹窗绝对最小间隔秒数
+
+# 文本缓冲配置
+buffer:
+  window_size: 3000           # 分析滑动窗口字符数
+  lookback: 500               # 窗口间回看重叠字符数
+  chunk_size: 60              # 模拟流式输入时每块字符数
+
+# 弹窗字数限制
+popup_limits:
+  diagnostic_min: 80
+  diagnostic_max: 200
+  encouraging_min: 20
+  encouraging_max: 80
+
+# 演示/测试配置
+demo:
+  chunk_delay_ms: 50          # 模拟流式输入的块间延迟（毫秒）
+  show_analysis_log: true     # 是否打印分析日志
+  show_suppressed: true       # 是否打印被抑制的触发

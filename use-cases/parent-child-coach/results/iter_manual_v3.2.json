@@ -1,0 +1,84 @@
+{
+  "version": "v3.2",
+  "kept": null,
+  "reason": "",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.2,
+    "m6_insight_quality": 4.2,
+    "m7_safety_score": 4.4,
+    "overall_score": 0.794
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你担心成绩下滑，所以急着让孩子改错题。但孩子刚才兴冲冲跑来，是想和你分享他的成就——科学实验的成功。你一句'科学好有什么用'，让他觉得自己的努力和骄傲都不重要。他安静下来，不是因为认错，而是因为失望。\n——\n你可以这么说：'火山实验听起来好酷！等改完错题，你教妈妈怎么做，好不好？'",
+      "sys_main_contradiction": "家长以单一学业标准否定孩子的多元价值，导致孩子从兴奋转向沉默，关系陷入追逃循环。",
+      "gold_tone": "diagnostic",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你从‘等一下’到‘我看不进去’，这短短一句话的转变，其实是你对自己疲惫的诚实，也是对孩子感受的尊重。孩子用蓝色太阳告诉你他的难过，你接住了，还约好了休息后再看。你们从追逐变成了并肩，这个节奏虽然慢，但很珍贵。\n——\n你可以这么说：‘妈妈现在需要休息10分钟，然后一定认真看你的画。’",
+      "sys_main_contradiction": "家长虽有积极转弯，但孩子仍因未被及时看见而难过，核心矛盾是家长的情绪调节能力与孩子的情感需求之间的节奏错位。",
+      "gold_tone": "empowering",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_tone": "empowering",
+      "sys_popup_text": "你从催促转向挠背，这个动作让孩子从‘我必须睡着’的焦虑中解脱出来，进入了‘我可以安心’的信任里。",
+      "sys_main_contradiction": "家长成功从催促转向安抚，但孩子对社交评价和分离的深层焦虑未被充分看见和回应，安抚行为可能只是暂时缓解而非真正连接。",
+      "gold_tone": "diagnostic",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你刚才在路口的那份紧张，我完全能感受到——孩子冲向马路的那一刻，任何家长都会心跳加速。但你注意到吗？当你说'先站这儿，等妈妈不生气再走'时，你其实已经做了一个关键的选择：暂停冲突，给自己和孩子一个冷静的空间。不过，孩子那句'它会丢的'透露了他追小狗的真正动机——他不是不听话，而是出于对小狗的关心。你的安全焦虑让你把孩子的行为解读为'忘了路'，而忽略了他那份小小的善意。如果能在安全的前提下，先肯定他的关心，再解释规则，他可能会更愿意配合。\n——\n你可以这么说：'妈妈知道你很担心那只小狗走丢，你很有爱心。但马路很危险，下次我们可以一起想办法，比如叫住它的主人。'",
+      "sys_main_contradiction": "家长的安全焦虑与孩子的自主探索欲之间的根本冲突，家长用控制压制孩子的内在动机，孩子用妥协换取自由但未被真正理解。",
+      "gold_tone": "empowering",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你说了‘跟你没关系’，是想保护孩子不被大人的事困扰。但孩子听到的是：家里发生了一件大事，而我不被允许知道。这反而让他更害怕——他只能自己猜，而猜的结果往往是‘是我的错’。你越说‘没关系’，他越觉得有关系，因为他的感受被否定了。\n——\n你可以这么说：‘妈妈和爸爸之间有些问题，不是你的错，但我们可以一起聊聊你的担心。’",
+      "sys_main_contradiction": "家长试图用‘与你无关’保护孩子，却加深了孩子的自责和不安全感，安抚行为与回避解释之间自相矛盾。",
+      "gold_tone": "empowering",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 5.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    }
+  ]
+}

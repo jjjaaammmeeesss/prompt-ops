@@ -1,0 +1,53 @@
+============================================================
+r5 v2 Validation: Rubric-based Expert Alignment
+============================================================
+
+Usable matches: 13
+  [1/13] GB_018.json:甲 gen... (184 chars) judge r5v2... v17... r5v2:type=1 ins=5 con=5 v17:type=1 ins=4 con=4 
+  [2/13] GB_028.json:甲 gen... (228 chars) judge r5v2... v17... r5v2:type=1 ins=3 con=3 v17:type=1 ins=3 con=4 
+  [3/13] GB_029.json:甲 gen... (210 chars) judge r5v2... v17... r5v2:type=1 ins=5 con=5 v17:type=1 ins=4 con=4 
+  [4/13] GB_030.json:甲 gen... (0 chars) judge r5v2... v17... r5v2:type=0 ins=1 con=1 v17:type=1 ins=3 con=3 
+  [5/13] GB_033.json:甲 gen... (183 chars) judge r5v2... v17... r5v2:type=0 ins=1 con=1 v17:type=0 ins=2 con=2 
+  [6/13] GB_035.json:甲 gen... (12 chars) judge r5v2... v17... r5v2:type=0 ins=1 con=2 v17:type=1 ins=2 con=3 
+  [7/13] GB_038.json:甲 gen... (109 chars) judge r5v2... v17... r5v2:type=1 ins=2 con=3 v17:type=1 ins=4 con=5 
+  [8/13] GB_039.json:甲 gen... (0 chars) judge r5v2... v17... r5v2:type=1 ins=4 con=3 v17:type=1 ins=3 con=3 
+  [9/13] GB_040.json:甲 gen... (130 chars) judge r5v2... v17... r5v2:type=1 ins=4 con=4 v17:type=1 ins=3 con=4 
+  [10/13] GB_046.json:甲 gen... (0 chars) judge r5v2... v17... r5v2:type=0 ins=2 con=1 v17:type=0 ins=1 con=2 
+  [11/13] GB_047.json:甲 gen... (95 chars) judge r5v2... v17... r5v2:type=0 ins=2 con=3 v17:type=0 ins=4 con=4 
+  [12/13] GB_052.json:甲 gen... (335 chars) judge r5v2... v17... r5v2:type=0 ins=1 con=2 v17:type=0 ins=5 con=4 
+  [13/13] GB_055.json:甲 gen... (235 chars) judge r5v2... v17... r5v2:type=1 ins=4 con=4 v17=ERROR 
+
+============================================================
+RESULTS: r5 v2 vs v1.7
+============================================================
+
+  r5 v2 (N=13):
+    类型匹配: 7/13 (54%)
+    洞察点覆盖: 2.7/5
+    主要矛盾一致: 2.8/5
+    避雷通过: 11/13
+
+  v1.7 (N=12):
+    类型匹配: 8/12 (67%)
+    洞察点覆盖: 3.2/5
+    主要矛盾一致: 3.5/5
+    避雷通过: 10/12
+
+  Case                            Tone     v1.7     r5v2   Winner
+  ------------------------- ---------- -------- -------- --------
+  GB_018.json:甲             diagnostic       10       12     r5v2
+  GB_028.json:甲             empowering       11       10     v1.7
+  GB_029.json:甲             empowering       12       14     r5v2
+  GB_030.json:甲             empowering       10        4     v1.7
+  GB_033.json:甲             diagnostic        6        4     v1.7
+  GB_035.json:甲             empowering        9        5     v1.7
+  GB_038.json:甲             diagnostic       13        9     v1.7
+  GB_039.json:甲             empowering       10       11     r5v2
+  GB_040.json:甲             empowering       11       12     r5v2
+  GB_046.json:甲             empowering        5        3     v1.7
+  GB_047.json:甲             empowering        8        7     v1.7
+  GB_052.json:甲             empowering       11        5     v1.7
+
+  H2H: r5v2=4  v1.7=8  tie=0
+
+Saved to D:\prompt-ops\use-cases\parent-child-coach\results\auto_research_judge_v2\r5v2_rubric_validation.json

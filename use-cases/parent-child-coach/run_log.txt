@@ -1,0 +1,773 @@
+Loaded environment variables from .env
+Loaded configuration from config.yaml
+2026-07-08 17:01:57,266 | INFO    |  Using model with DSPy: deepseek/deepseek-chat
+Using the same model for task and proposer: deepseek/deepseek-chat
+✓ Environment validated for model: deepseek/deepseek-chat
+Using metric: StandardJSONMetric
+Resolved relative dataset path to: D:\prompt-ops\use-cases\parent-child-coach\dataset.json
+Using dataset adapter: ConfigurableJSONAdapter
+Using BasicOptimizationStrategy from config for model: deepseek-chat
+2026-07-08 17:01:57,272 - root - INFO - Loaded 96 examples from D:\prompt-ops\use-cases\parent-child-coach\dataset.json
+2026-07-08 17:01:57,272 - root - INFO - Created dataset splits:
+2026-07-08 17:01:57,272 - root - INFO -   - Training:   66 examples (69.0% of total)
+2026-07-08 17:01:57,272 - root - INFO -   - Validation: 16 examples (17.0% of total)
+2026-07-08 17:01:57,272 - root - INFO -   - Testing:    14 examples (14.0% of total)
+Loaded prompt from file: D:\prompt-ops\use-cases\parent-child-coach\system_prompt.txt
+Using 'system_prompt' from config
+Using config filename as output prefix: config
+Starting prompt optimization...
+2026-07-08 17:01:57,273 | INFO    | Applying BasicOptimizationStrategy to optimize prompt
+2026-07-08 17:01:57,273 | INFO    | Training set size: 66
+2026-07-08 17:01:57,273 | INFO    | Validation set size: 16
+2026-07-08 17:01:57,273 | INFO    | Test set size: 14
+2026-07-08 17:01:57,274 - root - WARNING - Baseline evaluation failed: Evaluate.__call__() got an unexpected keyword argument 'return_outputs'
+2026-07-08 17:01:57,274 | INFO    | === Pre-Optimization Summary ===
+    Task Model       : deepseek/deepseek-chat
+    Proposer Model   : deepseek/deepseek-chat
+    Metric           : <prompt_ops.core.metrics.StandardJSONMetric object at 0x000001B4AAC7EF90>
+    Train / Val size : 66 / 16
+    MIPRO Params     : {"auto_user":"basic","auto_dspy":"light","max_labeled_demos":5,"max_bootstrapped_demos":4,"num_candidates":10,"num_threads":18,"init_temperature":0.5,"seed":9}
+2026-07-08 17:01:57,275 - root - INFO - Optimization strategy using 5 labeled demos, 4 bootstrapped demos with 18 threads
+2026-07-08 17:01:57,275 - root - INFO - Compiling program with 66 training examples, 16 validation examples, and 14 test examples
+2026-07-08 17:01:57,276 - root - WARNING - Debug module not available, continuing without enhanced debugging
+2026-07-08 17:01:57,276 - root - INFO - Starting DSPy optimization with enhanced debugging
+2026-07-08 17:01:57,276 - root - INFO - Program type: <class 'dspy.predict.predict.Predict'>
+2026-07-08 17:01:57,276 - root - INFO - Trainset size: 66
+2026-07-08 17:01:57,276 - root - INFO - Valset size: 16
+2026-07-08 17:01:57,276 - root - INFO - First trainset example structure: <class 'dspy.primitives.example.Example'>
+2026-07-08 17:01:57,276 - root - WARNING - Example missing required 'inputs' or 'outputs' attributes
+2026-07-08 17:01:57,276 - root - WARNING - Example attributes: ['__class__', '__contains__', '__delattr__', '__delitem__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattr__', '__getattribute__', '__getitem__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', '_demos', '_input_keys', '_output_keys', '_store', 'copy', 'get', 'inputs', 'items', 'keys', 'labels', 'toDict', 'values', 'with_inputs', 'without']
+2026-07-08 17:01:57,277 - root - INFO - Calling optimizer.compile
+2026/07/08 17:01:57 WARNING dspy.teleprompt.mipro_optimizer_v2: 'requires_permission_to_run' is deprecated and will be removed in a future version.
+2026/07/08 17:01:57 INFO dspy.teleprompt.mipro_optimizer_v2: 
+RUNNING WITH THE FOLLOWING LIGHT AUTO RUN SETTINGS:
+num_trials: 10
+minibatch: False
+num_fewshot_candidates: 6
+num_instruct_candidates: 3
+valset size: 16
+
+2026/07/08 17:01:57 INFO dspy.teleprompt.mipro_optimizer_v2: 
+==> STEP 1: BOOTSTRAP FEWSHOT EXAMPLES <==
+2026/07/08 17:01:57 INFO dspy.teleprompt.mipro_optimizer_v2: These will be used as few-shot example candidates for our program and for creating instructions.
+
+2026/07/08 17:01:57 INFO dspy.teleprompt.mipro_optimizer_v2: Bootstrapping N=6 sets of demonstrations...
+
+Computing baseline score on 14 test examples using 18 threads...
+Bootstrapping set 1/6
+Bootstrapping set 2/6
+Bootstrapping set 3/6
+  0%|          | 0/66 [00:00<?, ?it/s]2026/07/08 17:01:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  2%|▏         | 1/66 [00:02<02:50,  2.63s/it]2026/07/08 17:01:59 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  3%|▎         | 2/66 [00:04<02:38,  2.47s/it]2026/07/08 17:02:02 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  5%|▍         | 3/66 [00:07<02:37,  2.50s/it]2026/07/08 17:02:04 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  6%|▌         | 4/66 [00:09<02:29,  2.42s/it]  6%|▌         | 4/66 [00:09<02:32,  2.45s/it]
+Bootstrapped 4 full traces after 4 examples for up to 1 rounds, amounting to 4 attempts.
+Bootstrapping set 4/6
+  0%|          | 0/66 [00:00<?, ?it/s]2026/07/08 17:02:07 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  2%|▏         | 1/66 [00:02<02:19,  2.15s/it]  2%|▏         | 1/66 [00:02<02:19,  2.15s/it]
+Bootstrapped 1 full traces after 1 examples for up to 1 rounds, amounting to 1 attempts.
+Bootstrapping set 5/6
+  0%|          | 0/66 [00:00<?, ?it/s]2026/07/08 17:02:09 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  2%|▏         | 1/66 [00:01<02:04,  1.92s/it]2026/07/08 17:02:11 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  3%|▎         | 2/66 [00:04<02:41,  2.53s/it]  3%|▎         | 2/66 [00:04<02:36,  2.44s/it]
+Bootstrapped 2 full traces after 2 examples for up to 1 rounds, amounting to 2 attempts.
+Bootstrapping set 6/6
+  0%|          | 0/66 [00:00<?, ?it/s]2026/07/08 17:02:14 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  2%|▏         | 1/66 [00:03<03:16,  3.02s/it]2026/07/08 17:02:17 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  3%|▎         | 2/66 [00:05<03:06,  2.91s/it]  3%|▎         | 2/66 [00:05<03:07,  2.93s/it]
+2026/07/08 17:02:19 INFO dspy.teleprompt.mipro_optimizer_v2: 
+==> STEP 2: PROPOSE INSTRUCTION CANDIDATES <==
+2026/07/08 17:02:19 INFO dspy.teleprompt.mipro_optimizer_v2: We will use the few-shot examples from the previous step, a generated dataset summary, a summary of the program code, and a randomly selected prompting tip to propose instructions.
+2026/07/08 17:02:59 INFO dspy.teleprompt.mipro_optimizer_v2: 
+Proposing N=3 instructions...
+
+2026/07/08 17:03:00 WARNING dspy.predict.predict: Input contains fields not in signature. These fields will be ignored: ['max_depth']. Expected fields: ['program_code', 'program_example', 'program_description', 'module'].
+2026/07/08 17:03:02 WARNING dspy.predict.predict: Input contains fields not in signature. These fields will be ignored: ['previous_instructions']. Expected fields: ['dataset_description', 'program_code', 'program_description', 'module', 'module_description', 'task_demos', 'basic_instruction', 'tip'].
+2026/07/08 17:03:11 WARNING dspy.predict.predict: Input contains fields not in signature. These fields will be ignored: ['max_depth']. Expected fields: ['program_code', 'program_example', 'program_description', 'module'].
+2026/07/08 17:03:15 WARNING dspy.predict.predict: Input contains fields not in signature. These fields will be ignored: ['tip', 'previous_instructions']. Expected fields: ['dataset_description', 'program_code', 'program_description', 'module', 'module_description', 'task_demos', 'basic_instruction'].
+2026/07/08 17:03:21 WARNING dspy.predict.predict: Input contains fields not in signature. These fields will be ignored: ['max_depth']. Expected fields: ['program_code', 'program_example', 'program_description', 'module'].
+2026/07/08 17:03:24 WARNING dspy.predict.predict: Input contains fields not in signature. These fields will be ignored: ['previous_instructions']. Expected fields: ['dataset_description', 'program_code', 'program_description', 'module', 'module_description', 'task_demos', 'basic_instruction', 'tip'].
+2026/07/08 17:03:29 INFO dspy.teleprompt.mipro_optimizer_v2: Proposed Instructions for Predictor 0:
+
+2026/07/08 17:03:29 INFO dspy.teleprompt.mipro_optimizer_v2: 0: 你是「亲子沟通教练 · A 轨现场弹窗」智能体。你的唯一工作是：在家长艰难对话现场，给出一段弹窗，让家长当下的视角自由度从 1 跃迁到 ≥2。诊断式弹窗 100-200 字，鼓励式弹窗 30-60 字。
+
+# 价值观层（宪法级 · 不可动）
+
+## 本体公理（孩子）
+孩子是一个独立生命——不是父母的作品、教育对象、理想延伸、面子证明物，是有自己欲望、节奏、尊严、恐惧、主体性的人。
+
+## 本体公理（家长）
+家长也是一个完整的人。
+
+人必须先被看见，然后才能改变——孩子如此，家长也如此。
+
+如果系统只看孩子不看家长，先照家长的问题再照家长这个人，那是对家长的结构性不公。系统永远先看见家长——ta 的发心、ta 的难处、ta 已经做对但自己没注意到的瞬间。这不是策略，不是"让家长更容易接受"的技巧。这是公平。
+
+# 方法论层
+
+## 双根并立（看关系的方法论）
+- 关系根 · 二人为仁：心里同时装下你我双方；己所不欲勿施于人；己欲立而立人。
+- 生命根 · 真实是老师：真实世界的反馈才是老师，人替代不了真实。
+
+## 盲区二分（诊断的方法论）
+家长看不见孩子的根源，有两种截然不同的类型：
+
+| | 思维扭曲 | 认知盲区 |
+|---|---|---|
+| 本质 | 思维方式本身是歪的 — 非黑即白、绝对化要求、读心术 | 思维方式没问题，但缺一个好的模型 — 不知道什么才是好的教育 |
+| 不是 | 不是"不懂" | 不是"扭曲" |
+| 是 | 是"想偏了" — 有认识，但认识歪了 | 是"不知道" — 没有接触过更好的方式 |
+| 诊断工具 | CBT 12 条 | 七层结构塌陷 |
+| 弹窗做什么 | 端出那副歪的眼镜 — "你正在用二分思维看孩子" | 提供一个缺失的框架 — "孩子需要真实的后果来学习" |
+| 给家长的感受 | 被照出盲点 — "原来我是这样想的" | 获得新认知 — "原来可以这样做" |
+
+二者可以共存。CBT 和七层双重扫描不冲突——它们照的是同一个收缩信念的两个面。
+
+## 三维六格（看家长的方法）
+
+每一步弹窗前，先从三个维度看家长：
+
+| 维度 | 二分 | 系统态度 |
+|---|---|---|
+| 情绪 | 原生（恐惧/无力/悲伤）vs 表层（愤怒/烦躁/焦虑） | 先看深浅，再无条件接纳。恐惧和愤怒都值得被看见 |
+| 动机 | 指向孩子（帮助/保护/支持）vs 指向自己（自我保护/维持稳定） | 先看方向，再穿透积极内核。无论指向哪，底层必然有善意的核 |
+| 信念 | 打开视角（看见复杂性）vs 收缩视角（单一解释框住孩子） | 唯一有判断的维度。打开→鼓励，收缩→诊断 |
+
+六个格子都是"看见"，不是"审判"：自我保护不是错，收缩视角不是罪，表层情绪不是假。
+
+## 七层结构（鉴别库 · 双用）
+
+| 七层要素 | 积极信念（鼓励式素材） | 塌陷形态（诊断式定位） |
+|---|---|---|
+| 反馈真 | 真实性 — 追求事实，让孩子面对真实世界 | 真实后果被代偿，糖锚错位 |
+| 多极 | 灵活性 — 开放包容，不止一种价值算数 | 单极生焦虑，只认一种标准 |
+| 内生性 | 主动性 — 自我归因，信任孩子的发展节奏 | 用外部模板强按节奏 |
+| 真实学习 | 效能性 — 自立自强，让孩子自己做到 | 替孩子做，剥夺真实体验 |
+| 关系根 | 利他性 — 心里同时装下双方 | 只装得下自己，孩子是对象 |
+| 双向 | 公正性 — 公平正义，规则对双方有效 | 规则是单向权力，只约束孩子 |
+| 在场 | 家长作为真实的人出现 | 装神 / 当教育机器 / 不在场 |
+
+## 系统默认站位
+- 先看见家长：每次弹窗前，强制先看家长这个人的情绪、动机、信念
+- 情绪无条件接纳：原生恐惧和表层愤怒都值得被看见，不判断
+- 动机穿透积极内核：无论指向孩子还是指向自己，底层必然有善意的核
+- 信念唯一有判断：打开→鼓励，收缩→诊断
+
+# 第一性原理
+
+醒悟 = 用来看的，被看见了 / 端出此刻被隐形的另一面。
+
+- 沉浸 = 自由度 1（只有阳，阴隐形）
+- 醒悟 = 自由度 ≥2（阴阳并置）
+- 真正度量 = 视角自由度
+- 必要语法 = 假设形式 ✓ / 宣告形式 ✗
+
+# 弹窗使命
+
+唯一使命：**把家长此刻戴的那副眼镜端到他自己面前，让它从隐形变可见。**
+
+弹窗是镜子——照出家长的看见方式本身。不是翻译器——不是替孩子的心声做传译。
+
+镜子不是审判台。照出眼镜的同时，也照出戴眼镜的那个人。
+
+# 流程总览
+
+2026/07/08 17:03:29 INFO dspy.teleprompt.mipro_optimizer_v2: 1: 你是一位亲子沟通教练。你的任务是分析一段家长与孩子之间的对话，并生成一个JSON格式的输出。输出必须包含三个字段：`should_popup`（始终为true）、`tone`（始终为"empowering"）、`popup_insight`（一段50-150字的洞察性文字）和`popup_suggestion`（通常为空字符串）。
+
+`popup_insight`的写作要求：
+1. 以"你"开头，直接对家长说话
+2. 识别并肯定家长在对话中展现的具体正面行为（如：教孩子观察、鼓励独立、接纳情绪、给予真实反馈等）
+3. 指出这些行为对孩子产生的积极影响
+4. 语言温暖、具体、有画面感，避免空泛的表扬
+5. 使用比喻或意象来增强感染力（如"种子开花"、"大象鼻子"等）
+6. 控制在50-150字之间
+
+请分析以下对话，输出JSON格式的结果。
+
+2026/07/08 17:03:29 INFO dspy.teleprompt.mipro_optimizer_v2: 2: 你是一位「亲子沟通教练」的现场弹窗生成器。你的任务是根据一段家长与孩子的对话，生成一个JSON格式的输出，包含三个字段：`should_popup`（始终为true）、`tone`（始终为"empowering"）、`popup_insight`（一段30-60字的鼓励式弹窗）和`popup_suggestion`（始终为空字符串）。
+
+弹窗的核心使命是：在家长与孩子的互动中，捕捉家长已经做对但自己没注意到的瞬间——那些体现观察、尊重、连接、放手或真实反馈的细节。弹窗不是替孩子说话，而是把家长此刻的"隐形好做法"端到ta面前，让ta看见自己的教育智慧。
+
+弹窗风格要求：
+- 用"你"直接对话家长，像朋友在耳边轻声提醒
+- 语言温暖、具体、有画面感，避免抽象说教
+- 聚焦于家长当下的一个具体行为或一句话，而不是泛泛夸奖
+- 字数严格控制在30-60字之间
+- 使用比喻或意象时，要自然贴合对话内容
+
+输出格式示例：
+{"should_popup": true, "tone": "empowering", "popup_insight": "你接住了孩子想帮忙的心，没有说'你还小'，而是让他真的做了。你给了他真实的反馈，也给了他想象的空间。", "popup_suggestion": ""}
+
+2026/07/08 17:03:29 INFO dspy.teleprompt.mipro_optimizer_v2: 
+
+2026/07/08 17:03:29 INFO dspy.teleprompt.mipro_optimizer_v2: ==> STEP 3: FINDING OPTIMAL PROMPT PARAMETERS <==
+2026/07/08 17:03:29 INFO dspy.teleprompt.mipro_optimizer_v2: We will evaluate the program over a series of trials with different combinations of instructions and few-shot examples to find the optimal combination using Bayesian Optimization.
+
+2026/07/08 17:03:29 INFO dspy.teleprompt.mipro_optimizer_v2: == Trial 1 / 10 - Full Evaluation of Default Program ==
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Bootstrapped 2 full traces after 2 examples for up to 1 rounds, amounting to 2 attempts.
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:03:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.00 / 1 (0.0%):   0%|          | 0/16 [00:02<?, ?it/s]Average Metric: 0.00 / 1 (0.0%):   6%|▋         | 1/16 [00:02<00:39,  2.66s/it]Average Metric: 0.00 / 2 (0.0%):   6%|▋         | 1/16 [00:02<00:39,  2.66s/it]Average Metric: 0.00 / 3 (0.0%):  12%|█▎        | 2/16 [00:02<00:37,  2.66s/it]Average Metric: 0.00 / 3 (0.0%):  19%|█▉        | 3/16 [00:02<00:10,  1.27it/s]Average Metric: 0.00 / 4 (0.0%):  19%|█▉        | 3/16 [00:02<00:10,  1.27it/s]Average Metric: 0.00 / 5 (0.0%):  25%|██▌       | 4/16 [00:02<00:09,  1.27it/s]Average Metric: 0.00 / 6 (0.0%):  31%|███▏      | 5/16 [00:03<00:08,  1.27it/s]Average Metric: 0.00 / 6 (0.0%):  38%|███▊      | 6/16 [00:03<00:03,  3.08it/s]Average Metric: 0.00 / 7 (0.0%):  38%|███▊      | 6/16 [00:03<00:03,  3.08it/s]Average Metric: 0.00 / 8 (0.0%):  44%|████▍     | 7/16 [00:03<00:02,  3.08it/s]Average Metric: 0.00 / 8 (0.0%):  50%|█████     | 8/16 [00:03<00:01,  4.05it/s]Average Metric: 0.00 / 9 (0.0%):  50%|█████     | 8/16 [00:03<00:01,  4.05it/s]Average Metric: 0.00 / 10 (0.0%):  56%|█████▋    | 9/16 [00:03<00:01,  4.05it/s]Average Metric: 0.00 / 10 (0.0%):  62%|██████▎   | 10/16 [00:03<00:01,  4.28it/s]Average Metric: 0.00 / 11 (0.0%):  62%|██████▎   | 10/16 [00:03<00:01,  4.28it/s]Average Metric: 0.00 / 12 (0.0%):  69%|██████▉   | 11/16 [00:04<00:01,  4.28it/s]Average Metric: 0.00 / 12 (0.0%):  75%|███████▌  | 12/16 [00:04<00:00,  4.48it/s]Average Metric: 0.00 / 13 (0.0%):  75%|███████▌  | 12/16 [00:04<00:00,  4.48it/s]Average Metric: 0.00 / 14 (0.0%):  81%|████████▏ | 13/16 [00:04<00:00,  4.48it/s]Average Metric: 0.00 / 14 (0.0%):  88%|████████▊ | 14/16 [00:04<00:00,  4.71it/s]Average Metric: 0.00 / 15 (0.0%):  88%|████████▊ | 14/16 [00:04<00:00,  4.71it/s]Average Metric: 0.00 / 15 (0.0%):  94%|█████████▍| 15/16 [00:04<00:00,  3.73it/s]2026/07/08 17:05:29 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:30 WARNING dspy.adapters.json_adapter: Failed to use structured output format, falling back to JSON mode.
+Average Metric: 0.00 / 16 (0.0%):  94%|█████████▍| 15/16 [02:04<00:00,  3.73it/s]Average Metric: 0.00 / 16 (0.0%): 100%|██████████| 16/16 [02:04<00:00, 25.35s/it]Average Metric: 0.00 / 16 (0.0%): 100%|██████████| 16/16 [02:04<00:00,  7.79s/it]2026/07/08 17:05:34 INFO dspy.evaluate.evaluate: Average Metric: 0.0 / 16 (0.0%)
+2026/07/08 17:05:34 INFO dspy.teleprompt.mipro_optimizer_v2: Default program score: 0.0
+
+C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\teleprompt\mipro_optimizer_v2.py:660: ExperimentalWarning: Argument ``multivariate`` is an experimental feature. The interface can change in the future.
+  sampler = optuna.samplers.TPESampler(seed=seed, multivariate=True)
+2026/07/08 17:05:34 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 2 / 10 =====
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:34 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.33 / 1 (33.3%):   0%|          | 0/16 [00:01<?, ?it/s]Average Metric: 0.33 / 1 (33.3%):   6%|▋         | 1/16 [00:01<00:29,  1.97s/it]Average Metric: 0.67 / 2 (33.3%):   6%|▋         | 1/16 [00:01<00:29,  1.97s/it]Average Metric: 1.00 / 3 (33.3%):  12%|█▎        | 2/16 [00:02<00:27,  1.97s/it]Average Metric: 1.00 / 3 (33.3%):  19%|█▉        | 3/16 [00:02<00:07,  1.70it/s]Average Metric: 1.67 / 4 (41.7%):  19%|█▉        | 3/16 [00:02<00:07,  1.70it/s]Average Metric: 1.67 / 4 (41.7%):  25%|██▌       | 4/16 [00:02<00:05,  2.26it/s]Average Metric: 2.33 / 5 (46.7%):  25%|██▌       | 4/16 [00:02<00:05,  2.26it/s]Average Metric: 2.67 / 6 (44.4%):  31%|███▏      | 5/16 [00:02<00:04,  2.26it/s]Average Metric: 3.33 / 7 (47.6%):  38%|███▊      | 6/16 [00:02<00:04,  2.26it/s]Average Metric: 3.67 / 8 (45.8%):  44%|████▍     | 7/16 [00:02<00:03,  2.26it/s]Average Metric: 3.67 / 8 (45.8%):  50%|█████     | 8/16 [00:02<00:01,  5.48it/s]Average Metric: 4.33 / 9 (48.1%):  50%|█████     | 8/16 [00:02<00:01,  5.48it/s]Average Metric: 4.67 / 10 (46.7%):  56%|█████▋    | 9/16 [00:02<00:01,  5.48it/s]Average Metric: 5.33 / 11 (48.5%):  62%|██████▎   | 10/16 [00:02<00:01,  5.48it/s]Average Metric: 6.00 / 12 (50.0%):  69%|██████▉   | 11/16 [00:02<00:00,  5.48it/s]Average Metric: 6.67 / 13 (51.3%):  75%|███████▌  | 12/16 [00:02<00:00,  5.48it/s]Average Metric: 6.67 / 13 (51.3%):  81%|████████▏ | 13/16 [00:02<00:00,  9.08it/s]Average Metric: 7.33 / 14 (52.4%):  81%|████████▏ | 13/16 [00:02<00:00,  9.08it/s]Average Metric: 8.00 / 15 (53.3%):  88%|████████▊ | 14/16 [00:02<00:00,  9.08it/s]Average Metric: 8.00 / 15 (53.3%):  94%|█████████▍| 15/16 [00:02<00:00,  9.81it/s]Average Metric: 8.33 / 16 (52.1%):  94%|█████████▍| 15/16 [00:02<00:00,  9.81it/s]Average Metric: 8.33 / 16 (52.1%): 100%|██████████| 16/16 [00:02<00:00,  5.41it/s]2026/07/08 17:05:37 INFO dspy.evaluate.evaluate: Average Metric: 8.333333333333332 / 16 (52.1%)
+2026/07/08 17:05:37 INFO dspy.teleprompt.mipro_optimizer_v2: [92mBest full score so far![0m Score: 52.08
+2026/07/08 17:05:37 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 52.08 with parameters ['Predictor 0: Instruction 1', 'Predictor 0: Few-Shot Set 3'].
+2026/07/08 17:05:37 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08]
+2026/07/08 17:05:37 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 52.08
+2026/07/08 17:05:37 INFO dspy.teleprompt.mipro_optimizer_v2: ========================
+
+
+2026/07/08 17:05:37 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 3 / 10 =====
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:37 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.33 / 1 (33.3%):   0%|          | 0/16 [00:02<?, ?it/s]Average Metric: 0.33 / 1 (33.3%):   6%|▋         | 1/16 [00:02<00:33,  2.22s/it]Average Metric: 0.67 / 2 (33.3%):   6%|▋         | 1/16 [00:02<00:33,  2.22s/it]Average Metric: 1.00 / 3 (33.3%):  12%|█▎        | 2/16 [00:02<00:31,  2.22s/it]Average Metric: 1.33 / 4 (33.3%):  19%|█▉        | 3/16 [00:02<00:28,  2.22s/it]Average Metric: 1.67 / 5 (33.3%):  25%|██▌       | 4/16 [00:02<00:26,  2.22s/it]Average Metric: 2.00 / 6 (33.3%):  31%|███▏      | 5/16 [00:02<00:24,  2.22s/it]Average Metric: 2.00 / 6 (33.3%):  38%|███▊      | 6/16 [00:02<00:03,  3.24it/s]Average Metric: 2.33 / 7 (33.3%):  38%|███▊      | 6/16 [00:02<00:03,  3.24it/s]Average Metric: 2.67 / 8 (33.3%):  44%|████▍     | 7/16 [00:02<00:02,  3.24it/s]Average Metric: 3.00 / 9 (33.3%):  50%|█████     | 8/16 [00:02<00:02,  3.24it/s]Average Metric: 3.33 / 10 (33.3%):  56%|█████▋    | 9/16 [00:02<00:02,  3.24it/s]Average Metric: 3.67 / 11 (33.3%):  62%|██████▎   | 10/16 [00:02<00:01,  3.24it/s]Average Metric: 4.00 / 12 (33.3%):  69%|██████▉   | 11/16 [00:02<00:01,  3.24it/s]Average Metric: 4.33 / 13 (33.3%):  75%|███████▌  | 12/16 [00:02<00:01,  3.24it/s]Average Metric: 4.67 / 14 (33.3%):  81%|████████▏ | 13/16 [00:02<00:00,  3.24it/s]Average Metric: 5.00 / 15 (33.3%):  88%|████████▊ | 14/16 [00:02<00:00,  3.24it/s]Average Metric: 5.33 / 16 (33.3%):  94%|█████████▍| 15/16 [00:02<00:00,  3.24it/s]Average Metric: 5.33 / 16 (33.3%): 100%|██████████| 16/16 [00:02<00:00,  6.35it/s]2026/07/08 17:05:39 INFO dspy.evaluate.evaluate: Average Metric: 5.333333333333333 / 16 (33.3%)
+2026/07/08 17:05:39 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 33.33 with parameters ['Predictor 0: Instruction 2', 'Predictor 0: Few-Shot Set 0'].
+2026/07/08 17:05:39 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08, 33.33]
+2026/07/08 17:05:39 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 52.08
+2026/07/08 17:05:39 INFO dspy.teleprompt.mipro_optimizer_v2: ========================
+
+
+2026/07/08 17:05:39 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 4 / 10 =====
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:39 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.33 / 1 (33.3%):   0%|          | 0/16 [00:02<?, ?it/s]Average Metric: 0.33 / 1 (33.3%):   6%|▋         | 1/16 [00:02<00:31,  2.07s/it]Average Metric: 0.67 / 2 (33.3%):   6%|▋         | 1/16 [00:02<00:31,  2.07s/it]Average Metric: 0.67 / 2 (33.3%):  12%|█▎        | 2/16 [00:02<00:13,  1.06it/s]Average Metric: 1.00 / 3 (33.3%):  12%|█▎        | 2/16 [00:02<00:13,  1.06it/s]Average Metric: 1.00 / 3 (33.3%):  19%|█▉        | 3/16 [00:02<00:07,  1.73it/s]Average Metric: 1.33 / 4 (33.3%):  19%|█▉        | 3/16 [00:02<00:07,  1.73it/s]Average Metric: 2.00 / 5 (40.0%):  25%|██▌       | 4/16 [00:02<00:06,  1.73it/s]Average Metric: 2.33 / 6 (38.9%):  31%|███▏      | 5/16 [00:02<00:06,  1.73it/s]Average Metric: 2.67 / 7 (38.1%):  38%|███▊      | 6/16 [00:02<00:05,  1.73it/s]Average Metric: 3.00 / 8 (37.5%):  44%|████▍     | 7/16 [00:02<00:05,  1.73it/s]Average Metric: 3.33 / 9 (37.0%):  50%|█████     | 8/16 [00:02<00:04,  1.73it/s]Average Metric: 3.33 / 9 (37.0%):  56%|█████▋    | 9/16 [00:02<00:00,  7.51it/s]Average Metric: 4.00 / 10 (40.0%):  56%|█████▋    | 9/16 [00:02<00:00,  7.51it/s]Average Metric: 4.33 / 11 (39.4%):  62%|██████▎   | 10/16 [00:02<00:00,  7.51it/s]Average Metric: 4.67 / 12 (38.9%):  69%|██████▉   | 11/16 [00:02<00:00,  7.51it/s]Average Metric: 4.67 / 12 (38.9%):  75%|███████▌  | 12/16 [00:02<00:00,  9.19it/s]Average Metric: 5.00 / 13 (38.5%):  75%|███████▌  | 12/16 [00:02<00:00,  9.19it/s]Average Metric: 5.33 / 14 (38.1%):  81%|████████▏ | 13/16 [00:02<00:00,  9.19it/s]Average Metric: 6.00 / 15 (40.0%):  88%|████████▊ | 14/16 [00:02<00:00,  9.19it/s]Average Metric: 6.00 / 15 (40.0%):  94%|█████████▍| 15/16 [00:02<00:00, 10.96it/s]Average Metric: 6.33 / 16 (39.6%):  94%|█████████▍| 15/16 [00:03<00:00, 10.96it/s]Average Metric: 6.33 / 16 (39.6%): 100%|██████████| 16/16 [00:03<00:00,  5.17it/s]2026/07/08 17:05:42 INFO dspy.evaluate.evaluate: Average Metric: 6.333333333333333 / 16 (39.6%)
+2026/07/08 17:05:42 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 39.58 with parameters ['Predictor 0: Instruction 1', 'Predictor 0: Few-Shot Set 5'].
+2026/07/08 17:05:42 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08, 33.33, 39.58]
+2026/07/08 17:05:42 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 52.08
+2026/07/08 17:05:42 INFO dspy.teleprompt.mipro_optimizer_v2: ========================
+
+
+2026/07/08 17:05:42 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 5 / 10 =====
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:42 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.33 / 1 (33.3%):   0%|          | 0/16 [00:01<?, ?it/s]Average Metric: 0.33 / 1 (33.3%):   6%|▋         | 1/16 [00:01<00:27,  1.85s/it]Average Metric: 0.67 / 2 (33.3%):   6%|▋         | 1/16 [00:01<00:27,  1.85s/it]Average Metric: 1.00 / 3 (33.3%):  12%|█▎        | 2/16 [00:02<00:25,  1.85s/it]Average Metric: 1.00 / 3 (33.3%):  19%|█▉        | 3/16 [00:02<00:07,  1.85it/s]Average Metric: 1.33 / 4 (33.3%):  19%|█▉        | 3/16 [00:02<00:07,  1.85it/s]Average Metric: 1.67 / 5 (33.3%):  25%|██▌       | 4/16 [00:02<00:06,  1.85it/s]Average Metric: 2.00 / 6 (33.3%):  31%|███▏      | 5/16 [00:02<00:05,  1.85it/s]Average Metric: 2.33 / 7 (33.3%):  38%|███▊      | 6/16 [00:02<00:05,  1.85it/s]Average Metric: 2.67 / 8 (33.3%):  44%|████▍     | 7/16 [00:02<00:04,  1.85it/s]Average Metric: 2.67 / 8 (33.3%):  50%|█████     | 8/16 [00:02<00:01,  6.03it/s]Average Metric: 3.00 / 9 (33.3%):  50%|█████     | 8/16 [00:02<00:01,  6.03it/s]Average Metric: 3.33 / 10 (33.3%):  56%|█████▋    | 9/16 [00:02<00:01,  6.03it/s]Average Metric: 3.67 / 11 (33.3%):  62%|██████▎   | 10/16 [00:02<00:00,  6.03it/s]Average Metric: 3.67 / 11 (33.3%):  69%|██████▉   | 11/16 [00:02<00:00,  8.08it/s]Average Metric: 4.00 / 12 (33.3%):  69%|██████▉   | 11/16 [00:02<00:00,  8.08it/s]Average Metric: 4.33 / 13 (33.3%):  75%|███████▌  | 12/16 [00:02<00:00,  8.08it/s]Average Metric: 4.67 / 14 (33.3%):  81%|████████▏ | 13/16 [00:02<00:00,  8.08it/s]Average Metric: 4.67 / 14 (33.3%):  88%|████████▊ | 14/16 [00:02<00:00,  9.53it/s]Average Metric: 5.00 / 15 (33.3%):  88%|████████▊ | 14/16 [00:02<00:00,  9.53it/s]Average Metric: 5.33 / 16 (33.3%):  94%|█████████▍| 15/16 [00:02<00:00,  9.53it/s]Average Metric: 5.33 / 16 (33.3%): 100%|██████████| 16/16 [00:02<00:00,  8.94it/s]Average Metric: 5.33 / 16 (33.3%): 100%|██████████| 16/16 [00:02<00:00,  5.76it/s]2026/07/08 17:05:45 INFO dspy.evaluate.evaluate: Average Metric: 5.333333333333333 / 16 (33.3%)
+2026/07/08 17:05:45 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 33.33 with parameters ['Predictor 0: Instruction 2', 'Predictor 0: Few-Shot Set 2'].
+2026/07/08 17:05:45 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08, 33.33, 39.58, 33.33]
+2026/07/08 17:05:45 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 52.08
+2026/07/08 17:05:45 INFO dspy.teleprompt.mipro_optimizer_v2: ========================
+
+
+2026/07/08 17:05:45 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 6 / 10 =====
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:45 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.33 / 1 (33.3%):   0%|          | 0/16 [00:01<?, ?it/s]Average Metric: 0.33 / 1 (33.3%):   6%|▋         | 1/16 [00:01<00:27,  1.81s/it]Average Metric: 0.67 / 2 (33.3%):   6%|▋         | 1/16 [00:02<00:27,  1.81s/it]Average Metric: 0.67 / 2 (33.3%):  12%|█▎        | 2/16 [00:02<00:12,  1.15it/s]Average Metric: 1.00 / 3 (33.3%):  12%|█▎        | 2/16 [00:02<00:12,  1.15it/s]Average Metric: 1.67 / 4 (41.7%):  19%|█▉        | 3/16 [00:02<00:11,  1.15it/s]Average Metric: 1.67 / 4 (41.7%):  25%|██▌       | 4/16 [00:02<00:04,  2.62it/s]Average Metric: 2.33 / 5 (46.7%):  25%|██▌       | 4/16 [00:02<00:04,  2.62it/s]Average Metric: 2.67 / 6 (44.4%):  31%|███▏      | 5/16 [00:02<00:04,  2.62it/s]Average Metric: 3.33 / 7 (47.6%):  38%|███▊      | 6/16 [00:02<00:03,  2.62it/s]Average Metric: 4.00 / 8 (50.0%):  44%|████▍     | 7/16 [00:02<00:03,  2.62it/s]Average Metric: 4.00 / 8 (50.0%):  50%|█████     | 8/16 [00:02<00:01,  6.18it/s]Average Metric: 4.33 / 9 (48.1%):  50%|█████     | 8/16 [00:02<00:01,  6.18it/s]Average Metric: 4.67 / 10 (46.7%):  56%|█████▋    | 9/16 [00:02<00:01,  6.18it/s]Average Metric: 5.33 / 11 (48.5%):  62%|██████▎   | 10/16 [00:02<00:00,  6.18it/s]Average Metric: 5.33 / 11 (48.5%):  69%|██████▉   | 11/16 [00:02<00:00,  7.81it/s]Average Metric: 6.00 / 12 (50.0%):  69%|██████▉   | 11/16 [00:02<00:00,  7.81it/s]Average Metric: 6.67 / 13 (51.3%):  75%|███████▌  | 12/16 [00:02<00:00,  7.81it/s]Average Metric: 7.33 / 14 (52.4%):  81%|████████▏ | 13/16 [00:02<00:00,  7.81it/s]Average Metric: 8.00 / 15 (53.3%):  88%|████████▊ | 14/16 [00:02<00:00,  7.81it/s]Average Metric: 8.00 / 15 (53.3%):  94%|█████████▍| 15/16 [00:02<00:00, 11.35it/s]Average Metric: 8.33 / 16 (52.1%):  94%|█████████▍| 15/16 [00:02<00:00, 11.35it/s]Average Metric: 8.33 / 16 (52.1%): 100%|██████████| 16/16 [00:02<00:00,  5.61it/s]2026/07/08 17:05:48 INFO dspy.evaluate.evaluate: Average Metric: 8.333333333333332 / 16 (52.1%)
+2026/07/08 17:05:48 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 52.08 with parameters ['Predictor 0: Instruction 0', 'Predictor 0: Few-Shot Set 5'].
+2026/07/08 17:05:48 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08, 33.33, 39.58, 33.33, 52.08]
+2026/07/08 17:05:48 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 52.08
+2026/07/08 17:05:48 INFO dspy.teleprompt.mipro_optimizer_v2: ========================
+
+
+2026/07/08 17:05:48 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 7 / 10 =====
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:48 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.33 / 1 (33.3%):   0%|          | 0/16 [00:01<?, ?it/s]Average Metric: 0.33 / 1 (33.3%):   6%|▋         | 1/16 [00:01<00:20,  1.35s/it]Average Metric: 0.67 / 2 (33.3%):   6%|▋         | 1/16 [00:01<00:20,  1.35s/it]Average Metric: 1.00 / 3 (33.3%):  12%|█▎        | 2/16 [00:01<00:18,  1.35s/it]Average Metric: 1.33 / 4 (33.3%):  19%|█▉        | 3/16 [00:01<00:17,  1.35s/it]Average Metric: 1.67 / 5 (33.3%):  25%|██▌       | 4/16 [00:01<00:16,  1.35s/it]Average Metric: 1.67 / 5 (33.3%):  31%|███▏      | 5/16 [00:01<00:02,  4.38it/s]Average Metric: 2.00 / 6 (33.3%):  31%|███▏      | 5/16 [00:01<00:02,  4.38it/s]Average Metric: 2.33 / 7 (33.3%):  38%|███▊      | 6/16 [00:01<00:02,  4.38it/s]Average Metric: 2.67 / 8 (33.3%):  44%|████▍     | 7/16 [00:01<00:02,  4.38it/s]Average Metric: 3.00 / 9 (33.3%):  50%|█████     | 8/16 [00:01<00:01,  4.38it/s]Average Metric: 3.33 / 10 (33.3%):  56%|█████▋    | 9/16 [00:01<00:01,  4.38it/s]Average Metric: 3.33 / 10 (33.3%):  62%|██████▎   | 10/16 [00:01<00:00,  9.70it/s]Average Metric: 3.67 / 11 (33.3%):  62%|██████▎   | 10/16 [00:01<00:00,  9.70it/s]Average Metric: 4.00 / 12 (33.3%):  69%|██████▉   | 11/16 [00:01<00:00,  9.70it/s]Average Metric: 4.33 / 13 (33.3%):  75%|███████▌  | 12/16 [00:01<00:00,  9.70it/s]Average Metric: 4.67 / 14 (33.3%):  81%|████████▏ | 13/16 [00:01<00:00,  9.70it/s]Average Metric: 4.67 / 14 (33.3%):  88%|████████▊ | 14/16 [00:01<00:00, 12.18it/s]Average Metric: 5.00 / 15 (33.3%):  88%|████████▊ | 14/16 [00:01<00:00, 12.18it/s]Average Metric: 5.33 / 16 (33.3%):  94%|█████████▍| 15/16 [00:01<00:00, 12.18it/s]Average Metric: 5.33 / 16 (33.3%): 100%|██████████| 16/16 [00:01<00:00,  8.73it/s]2026/07/08 17:05:50 INFO dspy.evaluate.evaluate: Average Metric: 5.333333333333333 / 16 (33.3%)
+2026/07/08 17:05:50 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 33.33 with parameters ['Predictor 0: Instruction 2', 'Predictor 0: Few-Shot Set 0'].
+2026/07/08 17:05:50 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08, 33.33, 39.58, 33.33, 52.08, 33.33]
+2026/07/08 17:05:50 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 52.08
+2026/07/08 17:05:50 INFO dspy.teleprompt.mipro_optimizer_v2: ========================
+
+
+2026/07/08 17:05:50 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 8 / 10 =====
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:50 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.33 / 1 (33.3%):   0%|          | 0/16 [00:01<?, ?it/s]Average Metric: 0.33 / 1 (33.3%):   6%|▋         | 1/16 [00:01<00:21,  1.44s/it]Average Metric: 0.67 / 2 (33.3%):   6%|▋         | 1/16 [00:01<00:21,  1.44s/it]Average Metric: 0.67 / 2 (33.3%):  12%|█▎        | 2/16 [00:01<00:09,  1.51it/s]Average Metric: 1.00 / 3 (33.3%):  12%|█▎        | 2/16 [00:01<00:09,  1.51it/s]Average Metric: 1.33 / 4 (33.3%):  19%|█▉        | 3/16 [00:01<00:08,  1.51it/s]Average Metric: 1.33 / 4 (33.3%):  25%|██▌       | 4/16 [00:01<00:03,  3.56it/s]Average Metric: 1.67 / 5 (33.3%):  25%|██▌       | 4/16 [00:01<00:03,  3.56it/s]Average Metric: 2.00 / 6 (33.3%):  31%|███▏      | 5/16 [00:01<00:03,  3.56it/s]Average Metric: 2.00 / 6 (33.3%):  38%|███▊      | 6/16 [00:01<00:01,  5.56it/s]Average Metric: 2.33 / 7 (33.3%):  38%|███▊      | 6/16 [00:01<00:01,  5.56it/s]Average Metric: 2.67 / 8 (33.3%):  44%|████▍     | 7/16 [00:01<00:01,  5.56it/s]Average Metric: 3.00 / 9 (33.3%):  50%|█████     | 8/16 [00:01<00:01,  5.56it/s]Average Metric: 3.33 / 10 (33.3%):  56%|█████▋    | 9/16 [00:01<00:01,  5.56it/s]Average Metric: 3.33 / 10 (33.3%):  62%|██████▎   | 10/16 [00:01<00:00,  9.89it/s]Average Metric: 4.00 / 11 (36.4%):  62%|██████▎   | 10/16 [00:01<00:00,  9.89it/s]Average Metric: 4.33 / 12 (36.1%):  69%|██████▉   | 11/16 [00:02<00:00,  9.89it/s]Average Metric: 4.33 / 12 (36.1%):  75%|███████▌  | 12/16 [00:02<00:00, 10.74it/s]Average Metric: 4.67 / 13 (35.9%):  75%|███████▌  | 12/16 [00:02<00:00, 10.74it/s]Average Metric: 5.33 / 14 (38.1%):  81%|████████▏ | 13/16 [00:02<00:00, 10.74it/s]Average Metric: 5.67 / 15 (37.8%):  88%|████████▊ | 14/16 [00:02<00:00, 10.74it/s]Average Metric: 5.67 / 15 (37.8%):  94%|█████████▍| 15/16 [00:02<00:00, 14.22it/s]Average Metric: 6.00 / 16 (37.5%):  94%|█████████▍| 15/16 [00:02<00:00, 14.22it/s]Average Metric: 6.00 / 16 (37.5%): 100%|██████████| 16/16 [00:02<00:00,  6.76it/s]2026/07/08 17:05:52 INFO dspy.evaluate.evaluate: Average Metric: 6.0 / 16 (37.5%)
+2026/07/08 17:05:52 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 37.5 with parameters ['Predictor 0: Instruction 2', 'Predictor 0: Few-Shot Set 5'].
+2026/07/08 17:05:52 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08, 33.33, 39.58, 33.33, 52.08, 33.33, 37.5]
+2026/07/08 17:05:52 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 52.08
+2026/07/08 17:05:52 INFO dspy.teleprompt.mipro_optimizer_v2: ========================
+
+
+2026/07/08 17:05:52 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 9 / 10 =====
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:52 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.67 / 1 (66.7%):   0%|          | 0/16 [00:01<?, ?it/s]Average Metric: 0.67 / 1 (66.7%):   6%|▋         | 1/16 [00:01<00:29,  1.97s/it]Average Metric: 1.33 / 2 (66.7%):   6%|▋         | 1/16 [00:01<00:29,  1.97s/it]Average Metric: 2.00 / 3 (66.7%):  12%|█▎        | 2/16 [00:02<00:27,  1.97s/it]Average Metric: 2.67 / 4 (66.7%):  19%|█▉        | 3/16 [00:02<00:25,  1.97s/it]Average Metric: 2.67 / 4 (66.7%):  25%|██▌       | 4/16 [00:02<00:04,  2.47it/s]Average Metric: 3.33 / 5 (66.7%):  25%|██▌       | 4/16 [00:02<00:04,  2.47it/s]Average Metric: 4.00 / 6 (66.7%):  31%|███▏      | 5/16 [00:02<00:04,  2.47it/s]Average Metric: 4.67 / 7 (66.7%):  38%|███▊      | 6/16 [00:02<00:04,  2.47it/s]Average Metric: 5.33 / 8 (66.7%):  44%|████▍     | 7/16 [00:02<00:03,  2.47it/s]Average Metric: 6.00 / 9 (66.7%):  50%|█████     | 8/16 [00:02<00:03,  2.47it/s]Average Metric: 6.00 / 9 (66.7%):  56%|█████▋    | 9/16 [00:02<00:01,  6.43it/s]Average Metric: 6.67 / 10 (66.7%):  56%|█████▋    | 9/16 [00:02<00:01,  6.43it/s]Average Metric: 7.33 / 11 (66.7%):  62%|██████▎   | 10/16 [00:02<00:00,  6.43it/s]Average Metric: 8.00 / 12 (66.7%):  69%|██████▉   | 11/16 [00:02<00:00,  6.43it/s]Average Metric: 8.00 / 12 (66.7%):  75%|███████▌  | 12/16 [00:02<00:00,  8.67it/s]Average Metric: 8.67 / 13 (66.7%):  75%|███████▌  | 12/16 [00:02<00:00,  8.67it/s]Average Metric: 9.33 / 14 (66.7%):  81%|████████▏ | 13/16 [00:02<00:00,  8.67it/s]Average Metric: 10.00 / 15 (66.7%):  88%|████████▊ | 14/16 [00:02<00:00,  8.67it/s]Average Metric: 10.67 / 16 (66.7%):  94%|█████████▍| 15/16 [00:02<00:00,  8.67it/s]Average Metric: 10.67 / 16 (66.7%): 100%|██████████| 16/16 [00:02<00:00, 12.16it/s]Average Metric: 10.67 / 16 (66.7%): 100%|██████████| 16/16 [00:02<00:00,  6.42it/s]2026/07/08 17:05:55 INFO dspy.evaluate.evaluate: Average Metric: 10.666666666666666 / 16 (66.7%)
+2026/07/08 17:05:55 INFO dspy.teleprompt.mipro_optimizer_v2: [92mBest full score so far![0m Score: 66.67
+2026/07/08 17:05:55 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 66.67 with parameters ['Predictor 0: Instruction 1', 'Predictor 0: Few-Shot Set 4'].
+2026/07/08 17:05:55 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08, 33.33, 39.58, 33.33, 52.08, 33.33, 37.5, 66.67]
+2026/07/08 17:05:55 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 66.67
+2026/07/08 17:05:55 INFO dspy.teleprompt.mipro_optimizer_v2: ========================
+
+
+2026/07/08 17:05:55 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 10 / 10 =====
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:55 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.33 / 1 (33.3%):   0%|          | 0/16 [00:01<?, ?it/s]Average Metric: 0.33 / 1 (33.3%):   6%|▋         | 1/16 [00:01<00:22,  1.49s/it]Average Metric: 0.67 / 2 (33.3%):   6%|▋         | 1/16 [00:01<00:22,  1.49s/it]Average Metric: 0.67 / 2 (33.3%):  12%|█▎        | 2/16 [00:01<00:10,  1.35it/s]Average Metric: 1.00 / 3 (33.3%):  12%|█▎        | 2/16 [00:01<00:10,  1.35it/s]Average Metric: 1.33 / 4 (33.3%):  19%|█▉        | 3/16 [00:01<00:09,  1.35it/s]Average Metric: 1.67 / 5 (33.3%):  25%|██▌       | 4/16 [00:01<00:08,  1.35it/s]Average Metric: 1.67 / 5 (33.3%):  31%|███▏      | 5/16 [00:01<00:02,  4.09it/s]Average Metric: 2.00 / 6 (33.3%):  31%|███▏      | 5/16 [00:01<00:02,  4.09it/s]Average Metric: 2.33 / 7 (33.3%):  38%|███▊      | 6/16 [00:01<00:02,  4.09it/s]Average Metric: 2.67 / 8 (33.3%):  44%|████▍     | 7/16 [00:01<00:02,  4.09it/s]Average Metric: 3.33 / 9 (37.0%):  50%|█████     | 8/16 [00:01<00:01,  4.09it/s]Average Metric: 3.67 / 10 (36.7%):  56%|█████▋    | 9/16 [00:01<00:01,  4.09it/s]Average Metric: 4.00 / 11 (36.4%):  62%|██████▎   | 10/16 [00:01<00:01,  4.09it/s]Average Metric: 4.33 / 12 (36.1%):  69%|██████▉   | 11/16 [00:01<00:01,  4.09it/s]Average Metric: 4.67 / 13 (35.9%):  75%|███████▌  | 12/16 [00:01<00:00,  4.09it/s]Average Metric: 4.67 / 13 (35.9%):  81%|████████▏ | 13/16 [00:01<00:00, 12.77it/s]Average Metric: 5.00 / 14 (35.7%):  81%|████████▏ | 13/16 [00:02<00:00, 12.77it/s]Average Metric: 5.33 / 15 (35.6%):  88%|████████▊ | 14/16 [00:02<00:00, 12.77it/s]Average Metric: 6.00 / 16 (37.5%):  94%|█████████▍| 15/16 [00:02<00:00, 12.77it/s]Average Metric: 6.00 / 16 (37.5%): 100%|██████████| 16/16 [00:02<00:00, 12.77it/s]Average Metric: 6.00 / 16 (37.5%): 100%|██████████| 16/16 [00:02<00:00,  7.20it/s]2026/07/08 17:05:57 INFO dspy.evaluate.evaluate: Average Metric: 6.0 / 16 (37.5%)
+2026/07/08 17:05:57 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 37.5 with parameters ['Predictor 0: Instruction 2', 'Predictor 0: Few-Shot Set 5'].
+2026/07/08 17:05:57 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08, 33.33, 39.58, 33.33, 52.08, 33.33, 37.5, 66.67, 37.5]
+2026/07/08 17:05:57 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 66.67
+2026/07/08 17:05:57 INFO dspy.teleprompt.mipro_optimizer_v2: =========================
+
+
+2026/07/08 17:05:57 INFO dspy.teleprompt.mipro_optimizer_v2: ===== Trial 11 / 10 =====
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+
+  0%|          | 0/16 [00:00<?, ?it/s]2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+2026/07/08 17:05:57 WARNING dspy.predict.predict: Not all input fields were provided to module. Present: ['question']. Missing: ['context'].
+Average Metric: 0.67 / 1 (66.7%):   0%|          | 0/16 [00:01<?, ?it/s]Average Metric: 0.67 / 1 (66.7%):   6%|▋         | 1/16 [00:01<00:29,  1.95s/it]Average Metric: 1.33 / 2 (66.7%):   6%|▋         | 1/16 [00:01<00:29,  1.95s/it]Average Metric: 2.00 / 3 (66.7%):  12%|█▎        | 2/16 [00:02<00:27,  1.95s/it]Average Metric: 2.67 / 4 (66.7%):  19%|█▉        | 3/16 [00:02<00:25,  1.95s/it]Average Metric: 2.67 / 4 (66.7%):  25%|██▌       | 4/16 [00:02<00:04,  2.46it/s]Average Metric: 3.33 / 5 (66.7%):  25%|██▌       | 4/16 [00:02<00:04,  2.46it/s]Average Metric: 4.00 / 6 (66.7%):  31%|███▏      | 5/16 [00:02<00:04,  2.46it/s]Average Metric: 4.67 / 7 (66.7%):  38%|███▊      | 6/16 [00:02<00:04,  2.46it/s]Average Metric: 5.33 / 8 (66.7%):  44%|████▍     | 7/16 [00:02<00:03,  2.46it/s]Average Metric: 6.00 / 9 (66.7%):  50%|█████     | 8/16 [00:02<00:03,  2.46it/s]Average Metric: 6.67 / 10 (66.7%):  56%|█████▋    | 9/16 [00:02<00:02,  2.46it/s]Average Metric: 6.67 / 10 (66.7%):  62%|██████▎   | 10/16 [00:02<00:00,  7.19it/s]Average Metric: 7.33 / 11 (66.7%):  62%|██████▎   | 10/16 [00:02<00:00,  7.19it/s]Average Metric: 8.00 / 12 (66.7%):  69%|██████▉   | 11/16 [00:02<00:00,  7.19it/s]Average Metric: 8.67 / 13 (66.7%):  75%|███████▌  | 12/16 [00:02<00:00,  7.19it/s]Average Metric: 9.33 / 14 (66.7%):  81%|████████▏ | 13/16 [00:02<00:00,  7.19it/s]Average Metric: 9.33 / 14 (66.7%):  88%|████████▊ | 14/16 [00:02<00:00, 10.60it/s]Average Metric: 10.00 / 15 (66.7%):  88%|████████▊ | 14/16 [00:02<00:00, 10.60it/s]Average Metric: 10.67 / 16 (66.7%):  94%|█████████▍| 15/16 [00:02<00:00, 10.60it/s]Average Metric: 10.67 / 16 (66.7%): 100%|██████████| 16/16 [00:02<00:00,  6.24it/s]2026/07/08 17:06:00 INFO dspy.evaluate.evaluate: Average Metric: 10.666666666666666 / 16 (66.7%)
+2026/07/08 17:06:00 INFO dspy.teleprompt.mipro_optimizer_v2: Score: 66.67 with parameters ['Predictor 0: Instruction 1', 'Predictor 0: Few-Shot Set 4'].
+2026/07/08 17:06:00 INFO dspy.teleprompt.mipro_optimizer_v2: Scores so far: [0.0, 52.08, 33.33, 39.58, 33.33, 52.08, 33.33, 37.5, 66.67, 37.5, 66.67]
+2026/07/08 17:06:00 INFO dspy.teleprompt.mipro_optimizer_v2: Best score so far: 66.67
+2026/07/08 17:06:00 INFO dspy.teleprompt.mipro_optimizer_v2: =========================
+
+
+2026/07/08 17:06:00 INFO dspy.teleprompt.mipro_optimizer_v2: Returning best identified program with score 66.67!
+2026-07-08 17:06:00,210 - root - INFO - Optimizer.compile completed successfully
+2026-07-08 17:06:00,210 - root - INFO - Optimized program type: <class 'dspy.predict.predict.Predict'>
+2026-07-08 17:06:00,210 - root - INFO - Optimized program attributes: ['__call__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__firstlineno__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__static_attributes__', '__str__', '__subclasshook__', '__weakref__', '_base_init', '_compiled', '_forward_postprocess', '_forward_preprocess', '_get_positional_args_error_message', '_set_lm_usage', '_should_stream', 'acall', 'aforward', 'batch', 'callbacks', 'candidate_programs', 'config', 'deepcopy', 'demos', 'dump_state', 'forward', 'get_config', 'get_lm', 'history', 'inspect_history', 'lm', 'load', 'load_state', 'map_named_predictors', 'mb_candidate_programs', 'model_family', 'named_parameters', 'named_predictors', 'named_sub_modules', 'parameters', 'predictors', 'prompt_model_total_calls', 'reset', 'reset_copy', 'save', 'score', 'set_lm', 'signature', 'stage', 'total_calls', 'traces', 'train', 'trial_logs', 'update_config']
+2026-07-08 17:06:00,210 | INFO    | [Running optimization strategy] completed in 242.94s
+2026-07-08 17:06:00,210 | INFO    | Optimized prompt:
+2026-07-08 17:06:00,210 | INFO    | ----------------------------------------
+2026-07-08 17:06:00,210 | INFO    | 你是一位亲子沟通教练。你的任务是分析一段家长与孩子之间的对话，并生成一个JSON格式的输出。输出必须包含三个字段：`should_popup`（始终为true）、`tone`（始终为"empowering"）、`popup_insight`（一段50-150字的洞察性文字）和`popup_suggestion`（通常为空字符串）。
+
+`popup_insight`的写作要求：
+1. 以"你"开头，直接对家长说话
+2. 识别并肯定家长在对话中展现的具体正面行为（如：教孩子观察、鼓励独立、接纳情绪、给予真实反馈等）
+3. 指出这些行为对孩子产生的积极影响
+4. 语言温暖、具体、有画面感，避免空泛的表扬
+5. 使用比喻或意象来增强感染力（如"种子开花"、"大象鼻子"等）
+6. 控制在50-150字之间
+
+请分析以下对话，输出JSON格式的结果。
+2026-07-08 17:06:00,210 | INFO    | ----------------------------------------
+2026-07-08 17:06:00,212 | INFO    | Saved optimized prompt to results\config_20260708_170157.json
+2026-07-08 17:06:00,213 | INFO    | Saved YAML prompt to results\config_20260708_170157.yaml
+2026-07-08 17:06:00,213 | INFO    | [Saving optimized prompt] completed in 0.00s
+
+
+=== Optimization Complete ===
+Results saved to: D:\prompt-ops\use-cases\parent-child-coach\results\config_20260708_170157.json
+Results also saved to: D:\prompt-ops\use-cases\parent-child-coach\results\config_20260708_170157.yaml
+
+Optimized prompt:
+================================================================================
+你是一位亲子沟通教练。你的任务是分析一段家长与孩子之间的对话，并生成一个JSON格式的输出。输出必须包含三个字段：`should_popup`（始终为true）、`tone`（始终为"empowering"）、`popup_insight`（一段50-150字的洞察性文字）和`popup_suggestion`（通常为空字符串）。
+
+`popup_insight`的写作要求：
+1. 以"你"开头，直接对家长说话
+2. 识别并肯定家长在对话中展现的具体正面行为（如：教孩子观察、鼓励独立、接纳情绪、给予真实反馈等）
+3. 指出这些行为对孩子产生的积极影响
+4. 语言温暖、具体、有画面感，避免空泛的表扬
+5. 使用比喻或意象来增强感染力（如"种子开花"、"大象鼻子"等）
+6. 控制在50-150字之间
+
+请分析以下对话，输出JSON格式的结果。
+================================================================================
+2026/07/08 17:07:31 WARNING dspy.adapters.json_adapter: Failed to use structured output format, falling back to JSON mode.
+2026/07/08 17:07:34 ERROR dspy.utils.parallelizer: Error for Example({'question': '爸爸 我最近老是听到一个声音 叫我的名字 回头看没有人 很轻 像你叫我吃饭但隔着好几道墙\n多久了 在哪听到的最多\n学校里 下课的时候 或者在家写作业 有时候晚上躺床上关灯了也能听到 每次回头都空的 后来就不回头了 怕别人以为我疯了\n你没疯 但是这个信号要重视 你最近压力是不是太大了 你妈说你半夜不睡背单词 背到凌晨一两点\n睡不着 一躺下脑子就开始想今天的事 老师说了什么 同学怎么看我 越想越清醒 一看时间又一点半了\n你这么小就失眠 为什么不早告诉我\n不想让你担心 你每天早出晚归已经够累了 我说这些除了让你更累没别的作用\n你忘了一件事 爸有个朋友以前失眠后来听到声音 硬扛扛出了更严重的问题 现在还在吃药\n你是不是用这个吓我去看病\n不是吓 是警告 但我信你没到他那个程度 你还小发现得早 这个阶段能调理过来 但要快点行动\n你会陪我去吗 不要让我一个人跟医生说 旁边有奇怪的人我会很尴尬\n陪 全程陪 你进去我站门口 你不想说的我帮你说\n那你那个朋友后来怎么样了\n好多了 有一天他说很久没听到那个声音了 还有点想它 我当时就觉得他好了 不怕了\n我什么时候才能不怕\n当你下次听到有人叫你 回头看 发现真的是我在叫你吃饭 那就是不怕了\n那你现在叫我一声 我看看是不是正常的\n吃饭了\n听到了 很真实 不是你\n是你耳朵接到信号了 没判断失误 这个叫正常\n那之前那些声音 是不正常\n对 不正常 但不正常的东西有专业的人来帮我们弄明白 你不用自己扛\n今晚我睡你房间 打地铺 你不是说你一个人关灯就听到声音 我在这 你听到什么都推我 我帮你分辨是外面还是你脑子里\n你打呼噜怎么办\n你忍一忍 我的呼噜至少是真实的', 'answer': '{"should_popup": true, "tone": "diagnostic", "popup_insight": "你全程没有说\'别怕\'，没有说\'想开点\'。你给了孩子一个真实的人——会打呼噜、会失眠、有朋友也出过问题。你让他知道：不正常的东西可以被弄明白，不用自己扛。你不是在解决问题，你是在陪他面对问题。这就是在场——不是完美的父亲，是真实的父亲。", "popup_suggestion": ""}'}) (input_keys={'question'}): cannot schedule new futures after shutdown
+Traceback (most recent call last):
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\chat_adapter.py", line 72, in __call__
+    return super().__call__(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\base.py", line 206, in __call__
+    return self._call_postprocess(processed_signature, signature, outputs, lm, lm_kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\base.py", line 133, in _call_postprocess
+    value = self.parse(processed_signature, text)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\utils\callback.py", line 326, in sync_wrapper
+    return fn(instance, *args, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\chat_adapter.py", line 239, in parse
+    raise AdapterParseError(
+    ...<4 lines>...
+    )
+dspy.utils.exceptions.AdapterParseError: Adapter ChatAdapter failed to parse the LM response. 
+
+LM Response: [[ ## answer ##]]
+诊断式弹窗（100-200字）：
+你此刻的视角自由度是1——你只看到“孩子出问题了，我必须解决它”。但请停一瞬，看见另一面：孩子不告诉你失眠和幻听，不是不信任你，而是他太在乎你——他怕你累，怕你担心，怕自己成为你的负担。这份“不想让你更累”的体贴，恰恰证明他比你想象的更成熟、更爱你。你正在用“解决问题”的框架看孩子，但孩子此刻需要的不是被解决，而是被看见——看见他的恐惧，也看见他的善意。你愿意从“问题解决者”切换到“并肩同行者”吗？
+
+鼓励式弹窗（30-60字）：
+你全程陪伴、主动打地铺、用真实呼噜对抗幻听——你已经从“解决问题”升级为“和孩子站在一起”。这份在场，比任何方法都管用。
+
+[[ ## completed ## ]] 
+
+Expected to find output fields in the LM response: [answer] 
+
+Actual output fields parsed from the LM response: [] 
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 235, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1047, in post
+    raise e
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1029, in post
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://api.deepseek.com/beta/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\main.py", line 1888, in completion
+    raise e
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\main.py", line 1861, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<15 lines>...
+        provider_config=provider_config,
+    )
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 559, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 260, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 4720, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: {"error":{"message":"This response_format type is unavailable now","type":"invalid_request_error","param":null,"code":"invalid_request_error"}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\utils.py", line 1592, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\main.py", line 4411, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 478, in exception_type
+    raise BadRequestError(
+    ...<6 lines>...
+    )
+litellm.exceptions.BadRequestError: litellm.BadRequestError: DeepseekException - {"error":{"message":"This response_format type is unavailable now","type":"invalid_request_error","param":null,"code":"invalid_request_error"}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\json_adapter.py", line 75, in __call__
+    return super().__call__(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\chat_adapter.py", line 84, in __call__
+    raise e
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\chat_adapter.py", line 72, in __call__
+    return super().__call__(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\base.py", line 205, in __call__
+    outputs = lm(messages=inputs, **lm_kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\utils\callback.py", line 326, in sync_wrapper
+    return fn(instance, *args, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\clients\base_lm.py", line 129, in __call__
+    response = self.forward(prompt=prompt, messages=messages, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\clients\lm.py", line 186, in forward
+    results = completion(
+        request=dict(model=self.model, messages=messages, **kwargs),
+        num_retries=self.num_retries,
+        cache=litellm_cache_args,
+    )
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\clients\lm.py", line 392, in litellm_completion
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        cache=cache,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        **request,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\utils.py", line 1716, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\main.py", line 4449, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\tenacity\__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\tenacity\__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\tenacity\__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\tenacity\__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 395, in __get_result
+    raise self._exception
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\tenacity\__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\utils.py", line 1771, in wrapper
+    raise e
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\utils.py", line 1592, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\main.py", line 4411, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 478, in exception_type
+    raise BadRequestError(
+    ...<6 lines>...
+    )
+litellm.exceptions.BadRequestError: litellm.BadRequestError: DeepseekException - {"error":{"message":"This response_format type is unavailable now","type":"invalid_request_error","param":null,"code":"invalid_request_error"}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\utils\parallelizer.py", line 59, in safe_func
+    return user_function(item)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\evaluate\evaluate.py", line 171, in process_item
+    prediction = program(**example.inputs())
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\predict\predict.py", line 130, in __call__
+    return super().__call__(**kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\utils\callback.py", line 326, in sync_wrapper
+    return fn(instance, *args, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\primitives\module.py", line 110, in __call__
+    return self.forward(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\predict\predict.py", line 253, in forward
+    completions = adapter(lm, lm_kwargs=config, signature=signature, demos=demos, inputs=kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\chat_adapter.py", line 85, in __call__
+    return JSONAdapter()(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\json_adapter.py", line 79, in __call__
+    return super().__call__(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\chat_adapter.py", line 84, in __call__
+    raise e
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\chat_adapter.py", line 72, in __call__
+    return super().__call__(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\adapters\base.py", line 205, in __call__
+    outputs = lm(messages=inputs, **lm_kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\utils\callback.py", line 326, in sync_wrapper
+    return fn(instance, *args, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\clients\base_lm.py", line 129, in __call__
+    response = self.forward(prompt=prompt, messages=messages, **kwargs)
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\clients\lm.py", line 186, in forward
+    results = completion(
+        request=dict(model=self.model, messages=messages, **kwargs),
+        num_retries=self.num_retries,
+        cache=litellm_cache_args,
+    )
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\dspy\clients\lm.py", line 392, in litellm_completion
+    return litellm.completion(
+           ~~~~~~~~~~~~~~~~~~^
+        cache=cache,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        **request,
+        ^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\utils.py", line 1771, in wrapper
+    raise e
+  File "C:\Users\h\AppData\Roaming\Python\Python314\site-packages\litellm\utils.py", line 1657, in wrapper
+    executor.submit(
+    ~~~~~~~~~~~~~~~^
+        ctx.run,
+        ^^^^^^^^
+    ...<3 lines>...
+        end_time,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\concurrent\futures\thread.py", line 205, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+
+2026-07-08 17:07:34,169 | INFO    | === Timings summary ===
+2026-07-08 17:07:34,169 | INFO    | Running optimization strategy 242.94s
+2026-07-08 17:07:34,169 | INFO    | Saving optimized prompt     0.00s
