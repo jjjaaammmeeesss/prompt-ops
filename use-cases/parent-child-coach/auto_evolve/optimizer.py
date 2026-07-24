@@ -204,18 +204,30 @@ def _evaluate_case_once(
     case: dict,
     gold: dict,
     input_text: str,
+    max_empty_retries: int = 2,
 ) -> EvalResult:
-    """对单个案例跑一次评估，返回一个 EvalResult。失败时返回带 error 的 EvalResult。"""
-    orch.reset_family(case_id)
-    try:
-        result = orch.process_window(input_text, family=case_id)
-    except Exception as e:
-        return EvalResult(
-            case_id=case_id, window_index=win_idx or 1,
-            error=f"{type(e).__name__}: {str(e)[:200]}",
-        )
+    """对单个案例跑一次评估，返回一个 EvalResult。失败时返回带 error 的 EvalResult。
 
-    sys_popup = result.popup_text or ""
+    max_empty_retries: 当 popup_text 为空时，视为"模型未完成生成"触发重试，
+                       最多重试 max_empty_retries 次。
+    """
+    orch.reset_family(case_id)
+
+    for attempt in range(1 + max_empty_retries):
+        try:
+            result = orch.process_window(input_text, family=case_id)
+        except Exception as e:
+            return EvalResult(
+                case_id=case_id, window_index=win_idx or 1,
+                error=f"{type(e).__name__}: {str(e)[:200]}",
+            )
+
+        sys_popup = result.popup_text or ""
+
+        # 空输出视为"模型未完成生成"，触发重试
+        if not sys_popup.strip() and attempt < max_empty_retries:
+            continue  # 重新调用 API
+        break  # 有效输出或已达最大重试次数
 
     m1 = compute_m1_trigger(result.should_popup, gold["should_popup"])
     m5 = compute_m5_tone(result.tone, gold["tone"])
@@ -284,7 +296,8 @@ def _denoise_case_runs(runs: list[EvalResult]) -> EvalResult:
 
     策略:
       - tone: majority vote (基于非空 tone)
-      - should_popup: majority vote
+      - should_popup: 至少一次有效输出（有非空 popup_text 的 run）中做 majority vote；
+                      只有所有 run 都空输出才判 M1=0（避免空输出噪声拖死 M1）
       - popup_text / contradiction: 从 tone == 多数 tone 的 run 中取第一个（保证一致）
       - M1 / M5: 用降噪后的 tone / should_popup 重新计算
       - M6 / M7: 取所有非 None judge 分数的均值（连续值）
@@ -298,12 +311,20 @@ def _denoise_case_runs(runs: list[EvalResult]) -> EvalResult:
 
     valid_tones = {"diagnostic", "empowering"}
     final_tone = _majority_vote([r.sys_tone for r in ok_runs], valid_tones) or ok_runs[0].sys_tone
-    final_should = _majority_vote([r.sys_should_popup for r in ok_runs]) if any(
-        r.sys_should_popup is not None for r in ok_runs) else ok_runs[0].sys_should_popup
 
-    # 选代表 run: tone == final_tone 的第一个，否则用 ok_runs[0]
-    rep_runs = [r for r in ok_runs if r.sys_tone == final_tone]
-    rep = rep_runs[0] if rep_runs else ok_runs[0]
+    # M1 宽松策略：只在有非空 popup_text 的"有效 run"中做多数投票
+    # 空输出是模型非确定性噪声，不是"模型认为不该弹窗"
+    valid_runs = [r for r in ok_runs if (r.sys_popup_text or "").strip()]
+    if valid_runs:
+        final_should = _majority_vote([r.sys_should_popup for r in valid_runs])
+    else:
+        # 所有 run 都空输出，才判不弹窗
+        final_should = False
+
+    # 选代表 run: 优先从有效输出中选 tone 匹配的，否则选第一个有效输出，再否则用 ok_runs[0]
+    valid_runs_for_rep = valid_runs if valid_runs else ok_runs
+    rep_runs = [r for r in valid_runs_for_rep if r.sys_tone == final_tone]
+    rep = rep_runs[0] if rep_runs else valid_runs_for_rep[0]
 
     # 重算 M1/M5（用降噪后的 tone / should_popup）
     m1 = compute_m1_trigger(final_should, rep.gold_should_popup)
@@ -591,6 +612,7 @@ def run_optimization(
     print("=" * 70)
 
     history: list[IterationRecord] = []
+    origin_baseline = baseline  # 冻结原点，should_keep 始终与此比较，防止基准漂移
 
     for iteration in range(1, max_iterations + 1):
         print(f"\n{'─' * 50}")
@@ -634,7 +656,7 @@ def run_optimization(
         print(f"  ⏱ {elapsed:.1f}s | M1={candidate.aggregate_m1:.0%} M5={candidate.aggregate_m5:.0%} M6={candidate.aggregate_m6:.1f} M7={candidate.aggregate_m7:.1f} | 综合={candidate.overall_score:.3f}")
 
         # 5. Keep/Discard
-        keep, reason = should_keep(baseline, candidate)
+        keep, reason = should_keep(origin_baseline, candidate)
         record = IterationRecord(
             iteration=iteration,
             version=mutation.version_to,

@@ -32,6 +32,12 @@ _JSON_OUTPUT_INSTRUCTION = """
 {"type": "诊断式弹窗" 或 "鼓励式弹窗", "popup_text": "弹窗完整内容", "contradiction": "此场景的核心矛盾（一句话）"}
 """
 
+# v2.6+ 简化输出指令（不要求 type/contradiction，由 judge 从文本中自行判断）
+_JSON_OUTPUT_INSTRUCTION_V26 = """
+请输出严格 JSON（不要 markdown 包裹，不要额外解释）：
+{"popup_text": "弹窗完整内容"}
+"""
+
 
 def _normalize_tone(raw_tone: str) -> str:
     """将 v2.3 的中文 tone 标签标准化为英文。"""
@@ -57,11 +63,17 @@ def run_v23_once(
     dialogue: str,
     temperature: float = 0.3,
     max_tokens: int = 640,
+    json_output_instruction: str | None = None,
 ) -> dict:
     """用 v2.3 system_prompt 生成一次弹窗。
 
     发送方式与 evaluate_v23.py 的 deepseek() 一致：prompt 作为 system message，
     对话 + JSON 输出指令作为 user message。
+
+    Args:
+        json_output_instruction: 覆盖默认的 JSON 输出格式要求。
+                                 传 None 使用 v2.3 默认（type+popup_text+contradiction）。
+                                 传 _JSON_OUTPUT_INSTRUCTION_V26 用于 v2.6+。
 
     Returns:
         {
@@ -82,7 +94,8 @@ def run_v23_once(
         "error": "",
     }
 
-    user_message = dialogue + "\n" + _JSON_OUTPUT_INSTRUCTION
+    instruction = json_output_instruction if json_output_instruction is not None else _JSON_OUTPUT_INSTRUCTION
+    user_message = dialogue + "\n" + instruction
 
     try:
         resp = client.chat.completions.create(

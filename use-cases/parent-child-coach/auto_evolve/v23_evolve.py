@@ -75,7 +75,7 @@ V23_PROMPT_PATH = ROOT / "prompts_archive" / "system_prompt_v2.3.txt"
 RESULTS_DIR = ROOT / "results" / "v23_evolve"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-N_RUNS = 3          # 每案例降噪次数
+N_RUNS = 1          # 每案例降噪次数（Windows 后台不稳定，降为 1 提速）
 MAX_ROUNDS = 10     # 最大轮数
 MIN_ADVERSARIAL_PER_MODE = 3  # 每个失败模式至少生成 3 个对抗用例
 
@@ -163,7 +163,12 @@ def evaluate_case_with_prompts(
     """对单个 case 做一次评估（由 Claude judge 打分）。"""
 
     # 用千帆生成弹窗
-    result = run_v23_once(task_client, task_model, system_prompt, input_text)
+    # v2.6+ 不需要 type/contradiction 字段，自动切换 JSON 输出指令
+    from auto_evolve.v23_runner import _JSON_OUTPUT_INSTRUCTION_V26
+    is_v26 = "v2.6" in system_prompt or "# Prompt · v2.6" in system_prompt or "二选一" in system_prompt
+    json_inst = _JSON_OUTPUT_INSTRUCTION_V26 if is_v26 else None
+    result = run_v23_once(task_client, task_model, system_prompt, input_text,
+                          json_output_instruction=json_inst)
     if result["error"]:
         return EvalResult(
             case_id=case_id, window_index=win_idx or 1,
@@ -512,6 +517,102 @@ def main(max_rounds: int = MAX_ROUNDS, resume: bool = False):
     consecutive_discard = 0
     dry_adversarial_rounds = 0
 
+    # Resume shortcut: 如果上次在 EVALUATE 阶段中断，直接跳到评估
+    if last_phase == "EVALUATE":
+        round_num = start_round
+        print(f"\n{'='*70}")
+        print(f"🔄 Round {round_num}/{max_rounds} | 版本: {current_version} | "
+              f"best_overall={current_best_score:.3f}")
+        print(f"{'='*70}")
+        print(f"  📂 Resume: 跳过 Phases 2-3，直接进入 Phase 4 EVALUATE")
+
+        all_eval_cases = list(golden_eval_cases)
+        seen = set((c, w) for c, w in golden_eval_cases)
+        for adv in adversarial_pool:
+            key = (adv["case_id"], None)
+            if key not in seen:
+                all_eval_cases.append(key)
+                seen.add(key)
+        print(f"  测试池: {len(golden_eval_cases)} golden + "
+              f"{len(all_eval_cases) - len(golden_eval_cases)} adversarial = "
+              f"{len(all_eval_cases)} total")
+
+        print(f"\n📊 Phase 4: EVALUATE — 双模型评估 (n={N_RUNS})")
+        t0 = time.time()
+        try:
+            report = evaluate_full(
+                task_client, task_model, current_prompt,
+                all_eval_cases, adversarial_pool=adversarial_pool,
+                n_runs=N_RUNS, verbose=True,
+            )
+        except Exception as e:
+            print(f"  ❌ 评估异常: {e}")
+            import traceback; traceback.print_exc()
+            save_state({
+                "current_round": round_num, "current_version": current_version,
+                "current_prompt_text": current_prompt,
+                "current_best_score": current_best_score,
+                "failure_profile": failure_profile, "history": history,
+                "adversarial_pool": adversarial_pool,
+                "golden_eval_cases": golden_eval_cases,
+                "last_phase": "EVALUATE",
+            })
+            return
+
+        el = (time.time() - t0) / 60
+        print(f"  ⏱ {el:.1f}min")
+        print(f"  M1={report.aggregate_m1:.1%} M5={report.aggregate_m5:.1%} "
+              f"M6={report.aggregate_m6:.2f} M7={report.aggregate_m7:.2f} "
+              f"overall={report.overall_score:.3f}")
+
+        save_full_report(report, RESULTS_DIR / f"round_{round_num:03d}_eval.json",
+                        meta={"version": current_version, "round": round_num,
+                              "n_adversarial": len(adversarial_pool)})
+
+        # DECIDE — 始终与原 baseline 比较，防止基准漂移
+        baseline_path = RESULTS_DIR / "baseline_round_000.json"
+        if not baseline_path.exists():
+            print("  ❌ baseline_round_000.json 不存在，无法 DECIDE")
+            return
+        prev_data = json.loads(baseline_path.read_text(encoding="utf-8"))
+        prev_report = _report_from_dict(prev_data)
+        prev_score = prev_data.get("aggregate", {}).get("overall_score", current_best_score)
+        kept, reason = should_keep(prev_report, report)
+        if kept:
+            print(f"  ✅ KEEP: {reason}")
+            current_best_score = report.overall_score
+            history.append({"round": round_num, "version": current_version,
+                          "overall": report.overall_score, "kept": True, "reason": reason})
+            consecutive_discard = 0
+        else:
+            print(f"  ❌ DISCARD: {reason}")
+            current_prompt = read_v23_prompt()
+            current_version = "v2.3"
+            history.append({"round": round_num, "version": current_version,
+                          "overall": report.overall_score, "kept": False, "reason": reason})
+            consecutive_discard += 1
+
+        # CHECK
+        if report.overall_score >= CONVERGE_OVERALL and report.aggregate_m5 >= CONVERGE_M5:
+            print(f"\n🎉 达成收敛目标!")
+            save_state({"current_round": round_num + 1, "current_version": current_version,
+                       "current_prompt_text": current_prompt, "current_best_score": current_best_score,
+                       "failure_profile": failure_profile, "history": history,
+                       "adversarial_pool": adversarial_pool, "golden_eval_cases": golden_eval_cases,
+                       "last_phase": "DONE"})
+            return
+        if consecutive_discard >= MAX_CONSECUTIVE_DISCARD:
+            print(f"\n⏹ 连续 {consecutive_discard} 轮 discard，停止")
+            return
+
+        # 推进到下一轮
+        start_round = round_num + 1
+        last_phase = "GEN_ATTACK"
+        if start_round > max_rounds:
+            # 本轮未完成，退出让主循环正常结束
+            pass
+            return
+
     for round_num in range(start_round, max_rounds + 1):
         print(f"\n{'='*70}")
         print(f"🔄 Round {round_num}/{max_rounds} | 版本: {current_version} | "
@@ -636,12 +737,44 @@ def main(max_rounds: int = MAX_ROUNDS, resume: bool = False):
         eval_prompt = mutation.modified_text if mutation else current_prompt
         eval_version = new_version if mutation else current_version
 
+        # 评估前持久化 —— 防止中途崩溃
+        save_state({
+            "current_round": round_num,
+            "current_version": eval_version,
+            "current_prompt_text": eval_prompt,
+            "current_best_score": current_best_score,
+            "failure_profile": failure_profile,
+            "history": history,
+            "adversarial_pool": adversarial_pool,
+            "golden_eval_cases": golden_eval_cases,
+            "last_phase": "EVALUATE",
+        })
+
         t0 = time.time()
-        report = evaluate_full(
-            task_client, task_model, eval_prompt,
-            all_eval_cases, adversarial_pool=adversarial_pool,
-            n_runs=N_RUNS, verbose=True,
-        )
+        try:
+            report = evaluate_full(
+                task_client, task_model, eval_prompt,
+                all_eval_cases, adversarial_pool=adversarial_pool,
+                n_runs=N_RUNS, verbose=True,
+            )
+        except Exception as e:
+            print(f"  ❌ 评估阶段异常: {e}")
+            import traceback
+            traceback.print_exc()
+            # 保存当前进度然后退出，允许 resume
+            print(f"  💾 已保存状态，可用 --resume 恢复")
+            save_state({
+                "current_round": round_num,
+                "current_version": eval_version,
+                "current_prompt_text": eval_prompt,
+                "current_best_score": current_best_score,
+                "failure_profile": failure_profile,
+                "history": history,
+                "adversarial_pool": adversarial_pool,
+                "golden_eval_cases": golden_eval_cases,
+                "last_phase": "EVALUATE",
+            })
+            return
         el = (time.time() - t0) / 60
 
         print(f"  ⏱ {el:.1f}min")
@@ -658,14 +791,13 @@ def main(max_rounds: int = MAX_ROUNDS, resume: bool = False):
         if mutation and variant_path:
             print(f"\n⚖️  Phase 5: DECIDE")
 
-            # 构建 baseline 报告（用于对比）
-            prev_report_path = RESULTS_DIR / f"round_{round_num - 1:03d}_eval.json" \
-                if round_num > 1 else RESULTS_DIR / "baseline_round_000.json"
-            if prev_report_path.exists():
-                prev_data = json.loads(prev_report_path.read_text(encoding="utf-8"))
+            # 构建 baseline 报告（始终与原点比较，防止基准漂移）
+            baseline_path = RESULTS_DIR / "baseline_round_000.json"
+            if baseline_path.exists():
+                prev_data = json.loads(baseline_path.read_text(encoding="utf-8"))
                 prev_report = _report_from_dict(prev_data)
             else:
-                prev_report = report  # fallback
+                prev_report = report  # fallback（不应发生）
 
             keep, reason = should_keep(prev_report, report)
 

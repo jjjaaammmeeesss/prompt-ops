@@ -169,6 +169,7 @@ def main():
 
     # 当前最佳状态
     current_best = baseline
+    origin_baseline = baseline  # 冻结原点，should_keep 始终与此比较
     current_prompts = dict(BASELINE_PROMPTS)
     current_versions = {"master": "v3.1", "perception": "v3.1", "production": "v3.1"}
     current_texts = {
@@ -257,7 +258,7 @@ def main():
         print(f"  ⏱ {el/60:.1f}min | M1={candidate.aggregate_m1:.0%} M5={candidate.aggregate_m5:.0%} M6={candidate.aggregate_m6:.1f} M7={candidate.aggregate_m7:.1f} | 综合={candidate.overall_score:.3f}")
 
         # 5. Keep/Discard
-        keep, reason = should_keep(current_best, candidate)
+        keep, reason = should_keep(origin_baseline, candidate)
         history.append({
             "iteration": iteration,
             "target": target,
