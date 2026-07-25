@@ -1,38 +1,30 @@
 {
-  "timestamp": "2026-07-25T00:07:32.663829",
+  "timestamp": "2026-07-25T17:44:41.399348",
   "strategies": [
     {
       "strategy": "senate",
-      "overall_score": 0.27,
-      "m5_match": 0.27,
-      "m6_insight": 3.97,
-      "m7_safety": 4.71,
-      "m5_only_success_cases": [
-        "C10-003",
-        "C11-002",
-        "C11-005",
-        "C13-005",
-        "C13-009",
-        "C4-003",
-        "C5-001"
-      ],
+      "overall_score": 0.4,
+      "m5_match": 0.4,
+      "m6_insight": 3.44,
+      "m7_safety": 4.5,
+      "m5_only_success_cases": [],
       "estimated_llm_calls_per_window": 5.0
     },
     {
       "strategy": "teacher_student",
-      "overall_score": 0.0,
-      "m5_match": 0.0,
-      "m6_insight": 0.0,
-      "m7_safety": 0.0,
+      "overall_score": 0.4,
+      "m5_match": 0.4,
+      "m6_insight": 4.11,
+      "m7_safety": 4.56,
       "m5_only_success_cases": [],
       "estimated_llm_calls_per_window": 4.0
     },
     {
       "strategy": "saga",
-      "overall_score": 0.0,
-      "m5_match": 0.0,
-      "m6_insight": 0.0,
-      "m7_safety": 0.0,
+      "overall_score": 0.3,
+      "m5_match": 0.3,
+      "m6_insight": 3.78,
+      "m7_safety": 5.0,
       "m5_only_success_cases": [],
       "estimated_llm_calls_per_window": 5.0
     }
@@ -42,9 +34,9 @@
       "case_id": "C10-003",
       "gold_tone": "diagnostic",
       "senate": true,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
+      "teacher_student": true,
+      "saga": true,
+      "all_pass": true,
       "none_pass": false
     },
     {
@@ -69,16 +61,16 @@
       "case_id": "C11-002",
       "gold_tone": "empowering",
       "senate": true,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
+      "teacher_student": true,
+      "saga": true,
+      "all_pass": true,
       "none_pass": false
     },
     {
       "case_id": "C11-005",
       "gold_tone": "empowering",
       "senate": true,
-      "teacher_student": false,
+      "teacher_student": true,
       "saga": false,
       "all_pass": false,
       "none_pass": false
@@ -91,169 +83,7 @@
       "saga": false,
       "all_pass": false,
       "none_pass": true
-    },
-    {
-      "case_id": "C11-007",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C11-008",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C11-009",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C11-010",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C13-001",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C13-004",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C13-005",
-      "gold_tone": "empowering",
-      "senate": true,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": false
-    },
-    {
-      "case_id": "C13-008",
-      "gold_tone": "diagnostic",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C13-009",
-      "gold_tone": "diagnostic",
-      "senate": true,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": false
-    },
-    {
-      "case_id": "C3-001",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C3-002",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C3-003",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C4-001",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C4-003",
-      "gold_tone": "empowering",
-      "senate": true,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": false
-    },
-    {
-      "case_id": "C5-001",
-      "gold_tone": "empowering",
-      "senate": true,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": false
-    },
-    {
-      "case_id": "C5-002",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C5-003",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
-    },
-    {
-      "case_id": "C5-005",
-      "gold_tone": "empowering",
-      "senate": false,
-      "teacher_student": false,
-      "saga": false,
-      "all_pass": false,
-      "none_pass": true
     }
   ],
-  "recommendation": "推荐 **senate** 作为主策略。M5=27.0%，领先第二名 27.0%。\n\n⚠️ 17 个 case 三策略全败: C10-005, C10-008, C11-006, C11-007, C11-008, C11-009, C11-010, C13-001。这些可能是 judge/dataset/model 问题，非架构可修。"
+  "recommendation": "推荐 **senate** 作为主策略。M5=40.0%，领先第二名 10.0%。\n\n⚠️ 3 个 case 三策略全败: C10-005, C10-008, C11-006。这些可能是 judge/dataset/model 问题，非架构可修。"
 }

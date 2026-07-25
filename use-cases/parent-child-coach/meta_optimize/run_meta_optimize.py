@@ -224,6 +224,7 @@ def optimize_strategy(
     max_iterations: int = 3,
     use_heuristic: bool = True,
     eval_entries: list | None = None,
+    search_n: int = 0,
 ) -> list[StrategyIteration]:
     """对单个策略运行 L1 优化循环。
 
@@ -248,6 +249,8 @@ def optimize_strategy(
     # 加载 search set
     manifest = load_split_manifest()
     search_entries = eval_entries if eval_entries else get_eval_entries_for_split("search", manifest)
+    if search_n and search_n > 0:
+        search_entries = search_entries[:search_n]
     print(f"[{strategy}] search set: {len(search_entries)} eval entries")
 
     # 1. 基线评估
@@ -406,6 +409,7 @@ def run_all_strategies(
     use_heuristic: bool = True,
     skip_optimization: bool = False,
     eval_entries: list | None = None,
+    search_n: int = 0,
 ):
     """运行三策略全流程：优化 → 对比 → 报告。"""
     if not API_KEY:
@@ -424,6 +428,7 @@ def run_all_strategies(
                 max_iterations=max_iterations,
                 use_heuristic=use_heuristic,
                 eval_entries=eval_entries,
+                search_n=search_n,
             )
             all_histories[s] = history
 
@@ -505,6 +510,8 @@ if __name__ == "__main__":
                         help="最大迭代次数 (默认: 3)")
     parser.add_argument("--smoke", action="store_true",
                         help="烟雾测试：仅用 3 个 case 快速验证")
+    parser.add_argument("--search-n", type=int, default=0,
+                        help="限制评估 case 数（0=全部，默认 0）")
     parser.add_argument("--dry-run", action="store_true",
                         help="跳过 LLM 调用（验证循环逻辑）")
     parser.add_argument("--no-heuristic", action="store_true",
@@ -557,6 +564,7 @@ if __name__ == "__main__":
                 max_iterations=args.max_iter,
                 use_heuristic=not args.no_heuristic,
                 eval_entries=eval_entries_override,
+                search_n=args.search_n,
             )
     elif args.strategy:
         if not API_KEY:
@@ -568,6 +576,7 @@ if __name__ == "__main__":
                 max_iterations=args.max_iter,
                 use_heuristic=not args.no_heuristic,
                 eval_entries=eval_entries_override,
+                search_n=args.search_n,
             )
     else:
         parser.print_help()

@@ -11,7 +11,7 @@ from .saga import SAGAAdapter
 __all__ = ["SenateAdapter", "TeacherStudentAdapter", "SAGAAdapter"]
 
 
-def get_adapter(strategy: str, llm_client, model: str = "deepseek-chat",
+def get_adapter(strategy: str, llm_client, model: str = "deepseek-v4-pro",
                 harness_dir: str = "", prompt_base_dir: str = ""):
     """工厂函数：根据策略名返回对应的适配器实例。
 

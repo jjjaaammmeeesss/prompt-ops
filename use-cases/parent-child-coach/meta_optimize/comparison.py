@@ -79,6 +79,11 @@ def explore_traces(strategies: list[str]) -> dict[str, list[TraceEntry]]:
     all_traces: dict[str, list[TraceEntry]] = {}
     for s in strategies:
         best = get_best_candidate(s)
+        # 无候选时回退到 baseline
+        if not best:
+            baseline = CANDIDATES_DIR / s / "baseline"
+            if baseline.exists() and (baseline / "metrics.json").exists():
+                best = baseline
         if best:
             all_traces[s] = load_trace(best)
             print(f"[Explore] {s}: {len(all_traces[s])} trace entries "

@@ -1,0 +1,22 @@
+[
+  {
+    "iteration": 1,
+    "candidate_id": "candidate_001",
+    "strategy": "saga",
+    "kept": false,
+    "reason": "综合分未提升: 0.809 → 0.804 (Δ=-0.005)",
+    "timestamp": "2026-07-25T17:27:45.816822",
+    "overall_score": 0.8044,
+    "aggregate_m5": 0.4
+  },
+  {
+    "iteration": 2,
+    "candidate_id": "candidate_002",
+    "strategy": "saga",
+    "kept": false,
+    "reason": "综合分未提升: 0.809 → 0.795 (Δ=-0.014)",
+    "timestamp": "2026-07-25T17:41:57.533893",
+    "overall_score": 0.795,
+    "aggregate_m5": 0.3
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "candidate_id": "baseline",
+  "strategy": "teacher_student",
+  "overall_score": 0.7922
+}
