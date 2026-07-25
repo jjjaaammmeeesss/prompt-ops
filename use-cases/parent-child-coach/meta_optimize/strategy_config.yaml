@@ -1,0 +1,116 @@
+# 三策略配置：Senate / Teacher-Student / SAGA
+# Level 1.5 搜索控制参数 + proposer 上下文
+
+# ── 全局配置 ──────────────────────────────────────────
+global:
+  max_candidates: 8
+  max_consecutive_discards: 3
+  early_convergence_overall: 0.90
+  min_improvement_streak_stop: 0.005
+  n_runs_per_case_search: 1
+  n_runs_per_case_validation: 3
+
+# ── Senate 元老院 ─────────────────────────────────────
+senate:
+  description: "3专家并行独立审视 → Speaker综合裁决"
+  expected_m5: "75-85%"
+  latency_delta: "+1-2s"
+  complexity: "中"
+
+  mutable_surface:
+    - harness.md   # Speaker 裁决 prompt
+    - harness.py   # 专家调度 + 投票权重
+
+  proposer_context: |
+    你是 Senate 元老院策略的 harness 优化器。
+
+    当前架构：3个专家agent并行独立审视窗口原文 → Speaker综合裁决tone。
+    - 专家A（情感视角）：从情感信号判断 tone
+    - 专家B（需求视角）：从需求满足/缺失判断 tone
+    - 专家C（发展视角）：从发展心理学阶段判断 tone
+    - Speaker：不看原文，只比较三方证据+推理链，做冲突仲裁
+
+    可优化的表面：
+    1. harness.md: Speaker 的裁决 prompt。核心是"如何比较三方证据、何时 majority vote、何时 speaker override"
+    2. harness.py: 专家调度逻辑。核心是"3个专家是否并行、timeout、重试策略、投票权重分配"
+
+    常见失败模式：
+    - Speaker 过度依赖某个专家（系统 bias），忽略了另外两方的反对证据
+    - 3专家输出高度相关（同模型同 prompt → 退化为重复调用）
+    - Speaker 裁决 prompt 没有明确"分歧时的优先级规则"
+
+  notes: |
+    - 当前 MVP 使用简单多数投票（3专家+简单投票），Speaker 裁决 prompt 是核心优化目标
+    - 优化方向：增强专家视角差异度 → 提升独立信息量 → 减少假一致
+
+# ── Teacher-Student 反馈环 ────────────────────────────
+teacher_student:
+  description: "Teacher→Student→Validator 检查→重试（最多2次）"
+  expected_m5: "70-80%"
+  latency_delta: "+0.5s"
+  complexity: "低-中"
+
+  mutable_surface:
+    - harness.md   # Validator 判定 prompt
+    - harness.py   # 重试上限 + 一致性阈值
+
+  proposer_context: |
+    你是 Teacher-Student 反馈环策略的 harness 优化器。
+
+    当前架构：Teacher tone初判 → Student 生产弹窗 → Validator 独立检查一致性。
+    - Teacher：读原文，输出 tone 方向 + 推理链
+    - Student：根据 tone 方向生成弹窗草稿
+    - Validator：不看 Teacher 推理链，只判断「原文 + tone + 弹窗草稿」三元素一致性
+    - 不一致时 → Validator 反馈给 Teacher → 重试（最多2次）
+
+    利用的不对称性：评判比生成容易。
+    Validator 只看三元素一致性（不需从原文判断 tone），任务更简单、出错率更低。
+
+    可优化的表面：
+    1. harness.md: Validator 的判定 prompt。核心是"'一致'的定义标准——什么算 matched，什么算 mismatched"
+    2. harness.py: 重试上限（当前=2）、一致性阈值、振荡检测
+
+    常见失败模式：
+    - Validator 假阴性（漏过错误弹窗）——判定标准太宽松
+    - Validator 假阳性（不必要重试）——判定标准太严格
+    - 重试振荡（Teacher 在两种 tone 间反复摇摆）
+
+  notes: |
+    - 当前 MVP 使用同步 Validator（不增加额外 LLM 调用延迟的异步暂不实现）
+    - 优化方向：Validator 判定标准的精确化 → 提升召回率同时控制假阳性
+
+# ── SAGA 异步补偿 ─────────────────────────────────────
+saga:
+  description: "Fast Path 不变 + 后台 Deep Review → 后续弹窗叙事修正"
+  expected_m5: "短期 +0-5pp, 长期 +15-25pp"
+  latency_delta: "0（首弹窗）"
+  complexity: "高"
+
+  mutable_surface:
+    - harness.md   # Deep Review 深度审视 prompt
+    - harness.py   # 补偿触发条件 + 置信度阈值
+
+  proposer_context: |
+    你是 SAGA 异步补偿策略的 harness 优化器。
+
+    当前架构：Fast Path（感知+总控+生产）保持不变 → 后台 Deep Review 异步深度审视。
+    - Fast Path: 保留现状，首弹窗延迟不变
+    - Deep Review: 后台 Senate 式多视角深度审视 tone（不受 500ms 延迟限制）
+    - Compensation Engine: 如果 Deep Review 发现 tone 错误 → 修正后续弹窗叙事方向
+    - 不修改已发出的弹窗（SAGA 补偿语义：在后续窗口中"还这笔债"）
+
+    核心洞察：弹窗叙事是跨窗口连续的。一个 tone 错误不止影响当前窗口——后续窗口的叙事基线也会偏斜。
+
+    可优化的表面：
+    1. harness.md: Deep Review 的深度审视 prompt。核心是"如何利用多窗口上下文（而非仅当前 300 字）来判断 tone"
+    2. harness.py: 补偿触发条件（置信度阈值、修正规则）、story_arc_patch 的生成逻辑
+
+    常见失败模式：
+    - Deep Review 检出率高但时效差 → 下一窗口已到但修正未完成
+    - 修正过度 → 连锁修正导致一连串弹窗都在纠错
+    - Deep Review 假阳性 → 不必要的叙事修正反而引入困惑
+
+  notes: |
+    - 当前 MVP 使用**同步版**（Deep Review 在当前窗口完成后立即执行，不真做后台异步）
+    - 这便于评估 Deep Review 的准确性，后续可改异步
+    - 优化方向：Deep Review 多窗口上下文的利用效率 → 提升检出率
