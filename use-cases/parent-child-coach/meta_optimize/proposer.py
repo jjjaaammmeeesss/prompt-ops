@@ -173,55 +173,121 @@ class MutationProposal:
 # LLM Proposer
 # ═══════════════════════════════════════════════════════════════
 
-PROPOSER_SYSTEM_PROMPT = """你是亲子沟通弹窗系统的 harness 优化器。你的任务是根据评估 trace 诊断 tone 匹配失败的原因，并提出精确的 prompt/代码修改。
+PROPOSER_SYSTEM_PROMPT = """你是 prompt 优化器。根据 M5 tone 匹配失败 case 的 trace，输出一条 harness.md 修改建议。
 
-## 核心原则（Karpathy 约束）
+你必须输出以下 JSON 结构，不得更改任何 key 名称，不得使用 modifications/error_analysis/categories 等替代 key：
 
-1. **单一可变面**：每轮只改一个文件（harness.md 或 harness.py 中的一个）
-2. **证据驱动**：每条修改必须有 trace 证据引用（具体 case_id + 失败症状）
-3. **最简修改**：改最小范围，不动无关内容
-4. **M5 优先**：tone matching 是最核心的优化目标
+{"failure_analysis":{"prompt":[],"judge":[],"dataset":[],"search":[],"model":[]},"edits":[{"target_file":"harness.md","before":"原文","after":"修改后","reason":"原因","affected_cases":[]}],"rationale":"","risks":""}
 
-## 失败源五分类
-
-修改前，先判断每个 M5 失败 case 属于哪类：
-- **prompt**: prompt 措辞问题 → 可修
-- **judge**: gold label 可能有问题 → 标记，不计入优化
-- **dataset**: 窗口文本本身模糊 → 标记为 hard case，降低权重
-- **search**: 局部最优 → 换角度/大变异
-- **model**: DeepSeek 天花板 → prompt 修不了，需架构改动
-
-## 输出格式
-
-严格 JSON：
-```json
-{
-  "failure_analysis": {
-    "prompt": ["C10-002", ...],
-    "judge": [...],
-    "dataset": [...],
-    "search": [],
-    "model": ["C11-006", "C11-009"]
-  },
-  "edits": [
-    {
-      "target_file": "harness.md",
-      "before": "原始文本片段（精确匹配）",
-      "after": "修改后文本片段",
-      "reason": "修改原因，引用具体 case_id 和失败模式",
-      "affected_cases": ["C10-002"]
-    }
-  ],
-  "rationale": "整体策略思路",
-  "risks": "可能的风险"
-}
-```
-
-注意：
-- `before` 必须是 harness.md/harness.py 中的精确原文片段，方便程序做字符串替换
-- 如果某个失败源没有对应 case，使用空数组 []
-- edits 数量 1-3 条
+规则：
+- failure_analysis: 将每个失败 case_id 归入 5 类之一。prompt=可修措辞问题，judge=gold label 存疑，dataset=窗口模糊，model=DeepSeek 天花板
+- edits: 1-3 条修改。before 必须是 harness.md 中存在的原文片段（精确拷贝），after 是替换文本。target_file 固定为 "harness.md"
+- rationale: 一句话修改策略
+- risks: 风险说明
 """
+
+PROPOSER_TEXT_SYSTEM_PROMPT = (
+    "你是 prompt 优化器。根据 case 评估 trace 分析 M5 tone 匹配失败原因，提出精确修改。\n\n"
+    "输出格式（必须严格遵守，这是程序解析的依据）：\n\n"
+    "第一步：分类所有失败 case\n"
+    "PROMPT: case_id1, case_id2 （可修）\n"
+    "JUDGE: case_id3 （gold label 存疑）\n"
+    "DATASET: （窗口模糊）\n"
+    "SEARCH: （局部最优）\n"
+    "MODEL: case_id4 （DeepSeek 天花板）\n\n"
+    "第二步：提出修改\n"
+    "---EDIT---\n"
+    "BEFORE: <从 harness.md 精确复制的原文>\n"
+    "AFTER: <修改后的完整文本>\n"
+    "REASON: <为什么这样改>\n"
+    "CASES: <影响的 case_id>\n"
+    "---END---\n\n"
+    "可以有多条 EDIT。BEFORE 必须与 harness.md 逐字匹配。"
+)
+
+PROPOSER_JSON_SCHEMA = {
+    "name": "proposal",
+    "strict": True,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "failure_analysis": {
+                "type": "object",
+                "properties": {
+                    "prompt": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "可修的 prompt 措辞问题 case_id",
+                    },
+                    "judge": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "gold label 可能存疑的 case_id",
+                    },
+                    "dataset": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "窗口文本模糊的 case_id",
+                    },
+                    "search": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "搜索局部最优的 case_id",
+                    },
+                    "model": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "DeepSeek 天花板的 case_id",
+                    },
+                },
+                "required": ["prompt", "judge", "dataset", "search", "model"],
+                "additionalProperties": False,
+            },
+            "edits": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "target_file": {
+                            "type": "string",
+                            "description": "固定为 harness.md",
+                        },
+                        "before": {
+                            "type": "string",
+                            "description": "harness.md 中存在的原文片段，精确拷贝",
+                        },
+                        "after": {
+                            "type": "string",
+                            "description": "替换后的文本",
+                        },
+                        "reason": {
+                            "type": "string",
+                            "description": "修改原因",
+                        },
+                        "affected_cases": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                            "description": "受影响的 case_id 列表",
+                        },
+                    },
+                    "required": ["target_file", "before", "after", "reason", "affected_cases"],
+                    "additionalProperties": False,
+                },
+                "description": "1-3 条文本修改",
+            },
+            "rationale": {
+                "type": "string",
+                "description": "修改策略概述",
+            },
+            "risks": {
+                "type": "string",
+                "description": "可能引入的风险",
+            },
+        },
+        "required": ["failure_analysis", "edits", "rationale", "risks"],
+        "additionalProperties": False,
+    },
+}
 
 
 def build_proposer_prompt(
@@ -297,26 +363,92 @@ def build_proposer_prompt(
     return prompt
 
 
-def parse_proposer_response(raw: str) -> MutationProposal | None:
-    """解析 proposer LLM 返回的 JSON。"""
+def parse_proposer_response(raw: str, harness_md: str = "") -> MutationProposal | None:
+    """解析 proposer LLM 返回的 JSON。含 schema 纠错 fallback。"""
     try:
         # 清理可能的 markdown 包裹
         text = raw.strip()
         if text.startswith("```"):
             lines = text.splitlines()
-            text = "\n".join(lines[1:-1])
+            # 去掉 ```json 和结尾 ```
+            if lines[0].startswith("```"):
+                lines = lines[1:]
+            if lines and lines[-1].startswith("```"):
+                lines = lines[:-1]
+            text = "\n".join(lines)
         data = json.loads(text)
+
+        # ── Schema 纠错：modifications → edits ──
+        if "edits" not in data and "modifications" in data:
+            converted = []
+            for mod in data["modifications"]:
+                # 格式 1: {expert, change}
+                if "expert" in mod and "change" in mod:
+                    converted.append({
+                        "target_file": "harness.md",
+                        "before": f"## Expert {mod['expert']}",
+                        "after": f"## Expert {mod['expert']}\n\n{mod['change']}",
+                        "reason": mod.get("change", "")[:100],
+                        "affected_cases": [],
+                    })
+                # 格式 2: {field, original, revised, reason}
+                elif "field" in mod and "original" in mod and "revised" in mod:
+                    converted.append({
+                        "target_file": "harness.md",
+                        "before": mod["original"],
+                        "after": mod["revised"],
+                        "reason": mod.get("reason", ""),
+                        "affected_cases": [],
+                    })
+                # 格式 3: 通用 fallback
+                elif "before" in mod or "after" in mod:
+                    converted.append({
+                        "target_file": mod.get("target_file", "harness.md"),
+                        "before": mod.get("before", mod.get("original", "")),
+                        "after": mod.get("after", mod.get("revised", mod.get("change", ""))),
+                        "reason": mod.get("reason", ""),
+                        "affected_cases": mod.get("affected_cases", []),
+                    })
+            if converted:
+                data["edits"] = converted
+
+        # ── Schema 纠错：analysis → rationale ──
+        if "rationale" not in data and "analysis" in data:
+            data["rationale"] = data["analysis"]
+
+        if "risks" not in data:
+            data["risks"] = ""
+
+        if "failure_analysis" not in data:
+            data["failure_analysis"] = {"prompt": [], "judge": [], "dataset": [], "search": [], "model": []}
+
+        # ── 构建 MutationProposal ──
+        edit_objects = []
+        for e in data.get("edits", []):
+            # 确保必要字段存在
+            if "target_file" not in e:
+                e["target_file"] = "harness.md"
+            if "before" not in e:
+                e["before"] = ""
+            if "after" not in e:
+                e["after"] = ""
+            if "reason" not in e:
+                e["reason"] = ""
+            if "affected_cases" not in e:
+                e["affected_cases"] = []
+            edit_objects.append(EditProposal(**e))
+
         return MutationProposal(
             strategy="",
             candidate_id="",
             failure_analysis=data.get("failure_analysis", {}),
-            edits=[EditProposal(**e) for e in data.get("edits", [])],
+            edits=edit_objects,
             rationale=data.get("rationale", ""),
             risks=data.get("risks", ""),
         )
     except (json.JSONDecodeError, TypeError) as e:
         print(f"[proposer] JSON 解析失败: {e}")
-        print(f"[proposer] 原始返回:\n{raw[:500]}")
+        print(f"[proposer] 原始返回 (前 500 字):\n{raw[:500]}")
         return None
 
 
@@ -460,3 +592,98 @@ def heuristic_propose(
 
 def get_m5_failures_for_entries(entries: list[TraceEntry]) -> list[TraceEntry]:
     return [e for e in entries if e.m5_tone_match == 0.0]
+
+
+# ═══════════════════════════════════════════════════════════════
+# 文本格式 Parser（比 JSON 更健壮，适配 DeepSeek 自由输出）
+# ═══════════════════════════════════════════════════════════════
+
+def parse_proposer_text_response(raw: str) -> MutationProposal | None:
+    """解析 proposer 的结构化文本输出。
+
+    格式:
+        PROMPT: case1, case2
+        JUDGE: case3
+        DATASET:
+        SEARCH:
+        MODEL: case4
+
+        ---EDIT---
+        BEFORE: <原文>
+        AFTER: <修改后>
+        REASON: <原因>
+        CASES: case1, case2
+        ---END---
+    """
+    import re
+
+    # ── 解析分类 ──────────────────────────
+    failure_analysis: dict[str, list[str]] = {
+        "prompt": [], "judge": [], "dataset": [], "search": [], "model": [],
+    }
+    for cat in failure_analysis:
+        m = re.search(rf"{cat.upper()}\s*:\s*(.+)", raw, re.IGNORECASE)
+        if m:
+            cases = re.findall(r"C\d+-\d+", m.group(1))
+            failure_analysis[cat] = list(dict.fromkeys(cases))  # 去重保序
+
+    # ── 解析编辑 ──────────────────────────
+    edits: list[EditProposal] = []
+    edit_blocks = re.findall(r"---EDIT---(.*?)---END---", raw, re.DOTALL | re.IGNORECASE)
+
+    for block in edit_blocks:
+        before = ""
+        after = ""
+        reason = ""
+        cases: list[str] = []
+
+        m_before = re.search(r"BEFORE\s*:\s*\n?(.*?)(?=\nAFTER\s*:)", block, re.DOTALL | re.IGNORECASE)
+        m_after = re.search(r"AFTER\s*:\s*\n?(.*?)(?=\nREASON\s*:|\nCASES\s*:|---END---|$)", block, re.DOTALL | re.IGNORECASE)
+        m_reason = re.search(r"REASON\s*:\s*(.*?)(?=\nCASES\s*:|---END---|$)", block, re.DOTALL | re.IGNORECASE)
+        m_cases = re.search(r"CASES\s*:\s*(.*?)(?=---END---|$)", block, re.DOTALL | re.IGNORECASE)
+
+        if m_before:
+            before = m_before.group(1).strip()
+        if m_after:
+            after = m_after.group(1).strip()
+        if m_reason:
+            reason = m_reason.group(1).strip()
+        if m_cases:
+            cases = re.findall(r"C\d+-\d+", m_cases.group(1))
+
+        if before and after:
+            edits.append(EditProposal(
+                target_file="harness.md",
+                before=before,
+                after=after,
+                reason=reason,
+                affected_cases=cases,
+            ))
+
+    # ── 没有 EDIT block 时，尝试从 JSON 中提取 ──
+    if not edits:
+        json_proposal = parse_proposer_response(raw)
+        if json_proposal:
+            return json_proposal
+
+    if not edits:
+        print("[proposer] 未能从响应中提取任何编辑。原始输出:")
+        print(raw[:500])
+        return None
+
+    # ── 提取 rationale ─────────────────────
+    rationale = ""
+    m_rat = re.search(r"(?:RATIONALE|策略|总结)\s*:\s*(.+?)(?=\n\n|\n[A-Z]|---EDIT|$)", raw, re.DOTALL | re.IGNORECASE)
+    if m_rat:
+        rationale = m_rat.group(1).strip()[:200]
+    elif edits:
+        rationale = f"{len(edits)} 条修改: {'; '.join(e.reason[:60] for e in edits)}"
+
+    return MutationProposal(
+        strategy="",
+        candidate_id="",
+        failure_analysis=failure_analysis,
+        edits=edits,
+        rationale=rationale,
+        risks="",
+    )

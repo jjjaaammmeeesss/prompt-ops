@@ -57,6 +57,7 @@ from meta_optimize.candidate_store import (
 from meta_optimize.proposer import (
     MutationProposal, heuristic_propose,
     build_proposer_prompt, parse_proposer_response,
+    parse_proposer_text_response, PROPOSER_TEXT_SYSTEM_PROMPT,
 )
 from meta_optimize.meta_loop import (
     DEFAULT_CONFIG, StrategyIteration,
@@ -306,14 +307,16 @@ def optimize_strategy(
             resp = client.chat.completions.create(
                 model=model,
                 messages=[
-                    {"role": "system", "content": "你是 prompt 优化器。输出严格 JSON。"},
+                    {"role": "system", "content": PROPOSER_TEXT_SYSTEM_PROMPT},
                     {"role": "user", "content": prompt},
                 ],
-                response_format={"type": "json_object"},
                 temperature=0.3, timeout=120,
             )
             raw = resp.choices[0].message.content or ""
-            proposal = parse_proposer_response(raw)
+            proposal = parse_proposer_text_response(raw)
+            if proposal is None:
+                # fallback: try JSON parser
+                proposal = parse_proposer_response(raw, harness_md=current_harness_md)
             if proposal is None:
                 consecutive_discards += 1
                 if consecutive_discards >= 3:
