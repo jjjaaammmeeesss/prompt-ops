@@ -1,7 +1,7 @@
 # 握手文档 — 周易 v4.0.12 亲子沟通实时弹窗
 
-> 最后更新：2026-07-24
-> 当前分支：`feat/prompt-optimization-v1.7-extended-dataset`
+> 最后更新：2026-07-27
+> 当前分支：`main`
 
 ---
 
@@ -66,7 +66,7 @@ v4.0 迭代链：v4.0（基线）→ v4.0.1（去模板）→ v4.0.3（精准化
 ### 配置
 | 文件 | 说明 |
 |------|------|
-| `config.yaml` | 主配置（当前指向 `system_prompt.txt`，需更新到 v4.0.12） |
+| `config.yaml` | 主配置（2026-07-24 已更新，指向 `system_prompt_v4.0.12.txt`） |
 | `realtime/config.yaml` | **生产配置**，指向 `../system_prompt_v4.0.12.txt` |
 | `v4_optimization/config_v4_quick.yaml` | MIPROv2 快速验证配置 |
 | `.env` | API Keys（DEEPSEEK_API_KEY、ANTHROPIC_AUTH_TOKEN 等） |

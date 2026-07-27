@@ -1,0 +1,51 @@
+{
+  "baseline_prompt": "use-cases\\general-popup-native\\system_prompt_v1.4.txt",
+  "baseline_score": 0.9222,
+  "best_score": 0.9222,
+  "total_rounds": 2,
+  "kept_rounds": 0,
+  "strategy_effectiveness": {
+    "mipro[actionability]": {
+      "kept": 0,
+      "total": 1,
+      "total_delta": -0.013299999999999979
+    },
+    "gepa[actionability]": {
+      "kept": 0,
+      "total": 1,
+      "total_delta": 0.0
+    }
+  },
+  "history": [
+    {
+      "round": 1,
+      "strategy": "mipro",
+      "strategy_desc": "MIPROv2 only: 贝叶斯联合优化指令+few-shot, 仅措辞微调",
+      "failure_mode": "actionability",
+      "candidate_score": 0.9089,
+      "baseline_score": 0.9222,
+      "kept": false,
+      "reason": "Δ=-0.0133 未达阈值 0.02",
+      "prompt_length": 2628,
+      "hard_violations": 0,
+      "primary_elapsed_s": 0.0,
+      "mipro_elapsed_s": 127.6,
+      "total_elapsed_s": 246.8
+    },
+    {
+      "round": 2,
+      "strategy": "gepa",
+      "strategy_desc": "GEPA only: 文本反思驱动种群进化, 恢复领域约束",
+      "failure_mode": "actionability",
+      "candidate_score": 0.9222,
+      "baseline_score": 0.9222,
+      "kept": false,
+      "reason": "Δ=0.0 未达阈值 0.02",
+      "prompt_length": 2628,
+      "hard_violations": 0,
+      "primary_elapsed_s": 0.0,
+      "mipro_elapsed_s": 0.0,
+      "total_elapsed_s": 107.9
+    }
+  ]
+}

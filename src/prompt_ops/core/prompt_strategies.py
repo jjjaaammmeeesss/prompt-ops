@@ -409,6 +409,8 @@ class BasicOptimizationStrategy(BaseStrategy):
             if dspy_auto_mode is not None:
                 optimizer_kwargs["auto"] = dspy_auto_mode
             else:
+                # DSPy MIPROv2 defaults auto='light'; explicitly set None for manual mode.
+                optimizer_kwargs["auto"] = None
                 optimizer_kwargs["num_candidates"] = self.num_candidates
             optimizer = dspy.MIPROv2(**optimizer_kwargs)
 

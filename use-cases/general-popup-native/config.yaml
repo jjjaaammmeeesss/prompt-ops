@@ -1,0 +1,49 @@
+system_prompt:
+  file: "system_prompt.txt"
+  inputs: ["dialogue"]
+  outputs: ["answer"]
+
+dataset:
+  adapter_class: "prompt_ops.core.datasets.ConfigurableJSONAdapter"
+  path: "dataset.json"
+  input_field: "dialogue"
+  golden_output_field: "reference_popup"
+  train_size: 0.6
+  validation_size: 0.2
+
+model:
+  name: "deepseek/deepseek-chat"
+  task_model: "deepseek/deepseek-chat"
+  proposer_model: "deepseek/deepseek-chat"
+  adapter_type: "litellm"
+  temperature: 0.0
+  max_tokens: 4096
+
+metric:
+  class: "use-cases/general-popup-native/metric.py"
+
+optimization:
+  strategy: "pdo"
+  task_type: "open_ended"
+  use_labels: false
+
+  # formal settings
+  total_rounds: 3
+  num_duels_per_round: 3
+  num_eval_examples_per_duel: 1
+  num_initial_instructions: 6
+
+  ranking_method: "copeland"
+  max_concurrent_threads: 2
+
+  judge_requirement: |
+    You are a strict popup-quality judge. Compare popup A and popup B and decide which one is better. Evaluate on:
+    1. Accuracy: the insight fits the current dialogue; it does not misidentify the speaker or hallucinate facts.
+    2. Stance: the popup speaks only to "you" (the account holder), not to both sides at once.
+    3. Length: the whole popup is 60-180 Chinese characters; never over 200 characters.
+    4. Structure: a standalone `---` line separates insight above from exactly one concrete suggestion below.
+    5. Tone: like a friend quietly reminding, no jargon, no moral judgment, no lecturing.
+    6. Actionability: the suggestion after `---` is specific and executable, not generic.
+    7. Output format: the prompt must produce plain Chinese popup text only. It must NOT ask the model to output JSON, arrays, schemas, or any structured format.
+    8. Fidelity to the original: prefer prompts that keep the original concrete values (two people as independent beings, neutrality, three blind spots: self/other/pattern) and hard rules, rather than collapsing them into a vague generic instruction.
+    Choose A or B and give a one-sentence reason.

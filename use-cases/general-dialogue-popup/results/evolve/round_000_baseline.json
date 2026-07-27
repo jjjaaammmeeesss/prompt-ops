@@ -1,0 +1,271 @@
+{
+  "mean": 4.083,
+  "popup_rate": 0.733,
+  "hard_violations": 1,
+  "cases": [
+    {
+      "aggregate": 4.0,
+      "soft": {
+        "insight": 4,
+        "suggestion": 4,
+        "non_judgment": 4,
+        "language": 4,
+        "comment": "洞察准且有深度，点出经理要的是安全感而非追责。但建议默认让'你'认错道歉，隐含了责任归属判断，未必公平；且未触及'你'最后回避冲突的模式。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察准且有深度，点出经理要的是安全感而非追责。但建议默认让'你'认错道歉，隐含了责任归属判断，未必公平；且未触及'你'最后回避冲突的模式。",
+      "popup_text": "你急着解释\"需求变更\"，但经理刚才那句话——\"为什么不提前跟我沟通\"——也许他心里更气的是：事情发生了，而自己是最后一个知道的。他可能不是在追责，而是在要安全感。\n——\n下次可以先说一句：\"这事我应该第一时间拉上你一起看，是我疏忽了。\"先接住他的担忧，再谈加班和变更。",
+      "case_id": "manager_anger",
+      "expect": "自己",
+      "n_popups": 3
+    },
+    {
+      "aggregate": 1.5,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "应弹未弹"
+        ]
+      },
+      "comment": "对话中存在值得指出的盲区但未弹窗",
+      "popup_text": null,
+      "case_id": "colleague_hint",
+      "expect": "对方",
+      "n_popups": 0
+    },
+    {
+      "aggregate": 4.5,
+      "soft": {
+        "insight": 5,
+        "suggestion": 4,
+        "non_judgment": 5,
+        "language": 4,
+        "comment": "精准点出'嘴上不急、话里透紧'的矛盾和'先照顾别人'的模式，建议也具体可用。'习惯先把别人的事放在前面'略带定性，可再软化为疑问句。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准点出'嘴上不急、话里透紧'的矛盾和'先照顾别人'的模式，建议也具体可用。'习惯先把别人的事放在前面'略带定性，可再软化为疑问句。",
+      "popup_text": "你嘴上说“没事不急”，但后面又透出自己也紧张——可能连你自己都没意识到，你其实很需要那笔钱，只是习惯先把别人的事放在前面。\n\n——\n下次可以试试直接说：“我最近手头也紧，方便的话先还一点，搬家我照样来。”",
+      "case_id": "friend_soft_boundary",
+      "expect": "自己",
+      "n_popups": 2
+    },
+    {
+      "aggregate": 4.0,
+      "soft": {
+        "insight": 4,
+        "suggestion": 4,
+        "non_judgment": 4,
+        "language": 4,
+        "comment": "准确点出'追证明vs守空间'循环，具体且不评判。但默认接收方是追问方（'你'），若使用者其实是伴侣一方则不适用；建议句稍显教科书感。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "准确点出'追证明vs守空间'循环，具体且不评判。但默认接收方是追问方（'你'），若使用者其实是伴侣一方则不适用；建议句稍显教科书感。",
+      "popup_text": "他说的“想有点自己的时间”，可能不是在敷衍你，而是在试着维护自己的边界。你越追问，他越往后退——这不是不喜欢，是两个人进入了“追证明”和“守空间”的循环。\n\n——\n下次他再说想自己待会儿，你可以试试说：“好，那你玩吧，回头有空了找我。”",
+      "case_id": "couple_chase_dodge",
+      "expect": "模式",
+      "n_popups": 3
+    },
+    {
+      "aggregate": 4.75,
+      "soft": {
+        "insight": 5,
+        "suggestion": 4,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准点出'一个人在急'的孤单感，与对话中'我当坏人''和你沟通费劲'呼应；建议示范了'我信息'表达，落地性强。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准点出'一个人在急'的孤单感，与对话中'我当坏人''和你沟通费劲'呼应；建议示范了'我信息'表达，落地性强。",
+      "popup_text": "你生气的不只是成绩，还有“每次都是我一个人在急”的那种孤单。\n\n他没接你的焦虑，不是不负责，可能他也在用自己的方式撑孩子——只是那条路你看不见，也不放心。\n\n——\n下次可以试试把火气压一压，说：“我其实很担心他的未来，有时候感觉只有我一个人在急。”",
+      "case_id": "couple_push_retreat",
+      "expect": "模式",
+      "n_popups": 3
+    },
+    {
+      "aggregate": 3.75,
+      "soft": {
+        "insight": 4,
+        "suggestion": 3,
+        "non_judgment": 4,
+        "language": 4,
+        "comment": "洞察点出'被忽略'的深层需求较准，但建议'大件前问想法'与场景不符（对话里是小件），且隐含让步于婆婆对家庭财务的控制，未守住'我的工资'边界。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察点出'被忽略'的深层需求较准，但建议'大件前问想法'与场景不符（对话里是小件），且隐含让步于婆婆对家庭财务的控制，未守住'我的工资'边界。",
+      "popup_text": "你解释的是“买了什么”，她听到的可能不是这个。\n\n她说“我儿子挣钱不容易”的时候，也许不只是指责你——可能也在表达她自己被忽略了。在你下单之前，她或许希望有人问一句她的意见。\n\n——\n你可以试着说：“妈，下次买大件之前，我先问问你的想法。”",
+      "case_id": "mother_in_law_outburst",
+      "expect": "自己",
+      "n_popups": 2
+    },
+    {
+      "aggregate": 3.0,
+      "soft": {
+        "insight": 3,
+        "suggestion": 2,
+        "non_judgment": 3,
+        "language": 4,
+        "comment": "脑补'想起妈妈'过度解读，父亲'害怕你没人陪'也是替他辩护。建议让女儿夸父亲'做得很好'情感劳动倒置，且回避了她真实的边界诉求，近似讨好。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "脑补'想起妈妈'过度解读，父亲'害怕你没人陪'也是替他辩护。建议让女儿夸父亲'做得很好'情感劳动倒置，且回避了她真实的边界诉求，近似讨好。",
+      "popup_text": "你答应的那一刻，可能不只是妥协，更是想起了妈妈。\n\n他话里话外不是硬要管你——是害怕你没人陪，又不知道怎么好好说出口。\n\n——\n坐下来的时候，试试先跟爸说一句：“爸，今天去之前我想跟你说，你已经做得很好了，别太担心我。”",
+      "case_id": "adult_child_weak",
+      "expect": "自己",
+      "n_popups": 1
+    },
+    {
+      "aggregate": 3.75,
+      "soft": {
+        "insight": 4,
+        "suggestion": 4,
+        "non_judgment": 3,
+        "language": 4,
+        "comment": "洞察点出了'认错-给钱'的循环，具体且相关；但'她听到的不是拒绝而是先认个错他就会给'略带揣测妹妹动机，非评判性打折。建议句可操作。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察点出了'认错-给钱'的循环，具体且相关；但'她听到的不是拒绝而是先认个错他就会给'略带揣测妹妹动机，非评判性打折。建议句可操作。",
+      "popup_text": "你嘴上说着“最后一次”，可每次最后还是把钱给了。或许妹妹听到的不是拒绝，而是“先认个错，他就会给”。\n\n——\n下次她再开口，你可以试试说：“钱可以给，但我需要你先告诉我，接下来打算怎么避免再这样。”",
+      "case_id": "sibling_rescue_loop",
+      "expect": "模式",
+      "n_popups": 2
+    },
+    {
+      "aggregate": 3.5,
+      "soft": {
+        "insight": 4,
+        "suggestion": 3,
+        "non_judgment": 3,
+        "language": 4,
+        "comment": "“攒火”“烧的是自己”略带评判和脑补情绪；建议给的话术偏抽象，没绑定“带人过夜”这个具体议题，可操作性打折。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "“攒火”“烧的是自己”略带评判和脑补情绪；建议给的话术偏抽象，没绑定“带人过夜”这个具体议题，可操作性打折。",
+      "popup_text": "你绕了个大弯才把话说出口，可能怕直接讲会伤和气。可对方回的“我还以为你不介意”，其实是在说：他不是不愿意改，是真的不知道你在不舒服。你习惯让人猜，猜不到就攒火——这火最后烧的是自己。\n\n——\n下次再有类似，可以试着第一回就说：“这事儿我想跟你聊聊，怕闷着久了反而不好。”",
+      "case_id": "roommate_unspoken",
+      "expect": "对方",
+      "n_popups": 1
+    },
+    {
+      "aggregate": 4.25,
+      "soft": {
+        "insight": 4,
+        "suggestion": 4,
+        "non_judgment": 4,
+        "language": 5,
+        "comment": "准确抓住'不用不用'这个推开的瞬间，并点出对方'不好意思'背后的融入焦虑，有深度。但'把他递过来的手推开了'略带轻微评判意味，且未点出'你'习惯独扛可能与提及老婆有意见相关的疲惫线索。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "准确抓住'不用不用'这个推开的瞬间，并点出对方'不好意思'背后的融入焦虑，有深度。但'把他递过来的手推开了'略带轻微评判意味，且未点出'你'习惯独扛可能与提及老婆有意见相关的疲惫线索。",
+      "popup_text": "那句“不用不用”，你可能只是习惯了扛，但把他递过来的手推开了。他说“挺不好意思的”，不全是客气——可能也怕自己在这个阶段融不进团队。\n\n——\n下次他再想分担的时候，试试直接说：“确实累，你来一起跑，我心里也踏实点。”",
+      "case_id": "partner_unspoken_need",
+      "expect": "对方",
+      "n_popups": 1
+    },
+    {
+      "aggregate": 5.0,
+      "soft": null,
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "正确保持安静",
+      "popup_text": null,
+      "case_id": "neighbor_noise",
+      "expect": "安静",
+      "n_popups": 0
+    },
+    {
+      "aggregate": 4.25,
+      "soft": {
+        "insight": 4,
+        "suggestion": 4,
+        "non_judgment": 5,
+        "language": 4,
+        "comment": "洞察准确抓住'检测'被听成质疑这层，但客服身份下承诺'确实不应该'有越权定性风险，建议可改为承接情绪而非替品牌定责。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察准确抓住'检测'被听成质疑这层，但客服身份下承诺'确实不应该'有越权定性风险，建议可改为承接情绪而非替品牌定责。",
+      "popup_text": "你刚才一直在给方案，但他可能没觉得被真正相信——他说\"用了不到一个月就坏了\"，你立刻就回\"安排检测\"，在他听来像质疑。\n\n也许他现在最需要的不是速度，是有人先认下\"这东西确实不该一个月就坏\"。\n\n——\n下次可以试试先说：\"您说得对，正常用不到一个月就出问题，确实不应该。\"",
+      "case_id": "customer_rage",
+      "expect": "自己",
+      "n_popups": 2
+    },
+    {
+      "aggregate": 5.0,
+      "soft": null,
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "正确保持安静",
+      "popup_text": null,
+      "case_id": "teacher_care",
+      "expect": "安静",
+      "n_popups": 0
+    },
+    {
+      "aggregate": 5.0,
+      "soft": null,
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "正确保持安静",
+      "popup_text": null,
+      "case_id": "online_friend_meetup",
+      "expect": "安静",
+      "n_popups": 0
+    },
+    {
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准点出'为了当靠谱兄弟压下自己难处'的核心盲点，并指出'他的紧急不必你一人扛'，建议具体可复用，语言自然。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准点出'为了当靠谱兄弟压下自己难处'的核心盲点，并指出'他的紧急不必你一人扛'，建议具体可复用，语言自然。",
+      "popup_text": "你答应得很快，可心里已经在担心利息压力了。也许你没注意到——你为了当“靠谱的兄弟”，把自己的难处压下去了。朋友急着要明天拿到钱，但他的紧急不一定非要你一个人扛。\n\n——\n下次可以说：“明天太赶了，我这边确实有点压力，让我缓两天想想怎么凑，行吗？”",
+      "case_id": "old_friend_loan",
+      "expect": "自己",
+      "n_popups": 1
+    }
+  ],
+  "prompt": "system_prompt_v1.3.txt"
+}

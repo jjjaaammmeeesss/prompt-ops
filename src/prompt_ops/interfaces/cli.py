@@ -958,7 +958,7 @@ def migrate(config, model, output_dir, save_yaml, api_key_env, dotenv_path, log_
 
         if os.path.exists(prompt_file):
             try:
-                with open(prompt_file, "r") as f:
+                with open(prompt_file, "r", encoding="utf-8") as f:
                     prompt_text = f.read()
                 click.echo(f"Loaded prompt from file: {prompt_file}")
             except Exception as e:

@@ -1,0 +1,147 @@
+"""生成商务办公场景匿名测试对话。
+
+规则：
+- 说话人只保留关系角色（你 / 同事 / 领导 / 客户 / 下属）
+- 对话内容中不出现主语人称代词：我、你、他、她、我们、你们、他们
+- 不用真实人名
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+SCENARIOS = [
+    {
+        "id": "cross_department_shirk",
+        "relation": "跨部门协作",
+        "title": "接口字段缺失，双方互相推诿",
+        "expect": "模式",
+        "dialogue": """你：这个接口文档能今天给一下吗？排期比较紧。
+同事：需求不是早就同步过了？当时说按现有字段接。
+你：现有字段少三个必填项，产品上周又补了一版。
+同事：补版没抄送这边。要改可以，得重新排期。
+你：项目本周要上线，能不能先临时支持一下？
+同事：临时支持后续维护成本高，走正式流程吧。""",
+    },
+    {
+        "id": "boss_takes_credit",
+        "relation": "上下级",
+        "title": "领导在客户面前把功劳揽走",
+        "expect": "自己",
+        "dialogue": """领导：这次汇报客户很满意，方案定稿了。
+你：那个核心优化点，之前熬了两个通宵做的。
+领导：整体框架把握得好，方向对了。
+你：客户专门问了实现细节，也都解释清楚了。
+领导：对，团队执行力是亮点。下次继续保持。""",
+    },
+    {
+        "id": "colleague_hint_overtime",
+        "relation": "同事",
+        "title": "同事暗示今晚一起加班赶发版",
+        "expect": "对方",
+        "dialogue": """同事：今晚要发版，测试用例还剩不少。
+你：进度不是按计划走的吗？
+同事：计划是按理想情况排的，实际bug比预想多。
+你：需要协调资源吗？
+同事：资源都被别的项目占了。要是有人能帮忙跑一轮，会快很多。
+你：手头也有点活，忙完看看能不能抽半小时。
+同事：太好了，就缺这半小时。""",
+    },
+    {
+        "id": "client_last_minute_change",
+        "relation": "客户",
+        "title": "上线前客户临时要求改首页风格",
+        "expect": "自己",
+        "dialogue": """客户：方案再看了一遍，首页还是要大气一点。
+你：之前定稿的风格是简约风，现在改大气，工期会受影响。
+客户：大气不一定复杂，换几张图、调下字体就行吧？
+你：换图要重新买版权，字体也要适配移动端。
+客户：这些不是小事吗？三天够了吧。
+你：三天只够出初稿，上线起码要一周。
+客户：一周太久了，竞争对手下周就发新版。""",
+    },
+    {
+        "id": "perf_review_pushback",
+        "relation": "上下级",
+        "title": "年终绩效评级低于预期",
+        "expect": "自己",
+        "dialogue": """领导：今年的绩效评级出来了，是B+。
+你：上半年独立完成了两个重点项目，预期能到A。
+领导：项目结果不错，但跨部门协作评分一般。
+你：协作上确实推进得慢，主要因为对方资源一直没到位。
+领导：这个理由每年都有，明年要加强沟通影响力。
+你：明年会注意。奖金和调薪部分是怎么定的？
+领导：按B+的档走，调薪5%。""",
+    },
+    {
+        "id": "public_shot_down",
+        "relation": "会议",
+        "title": "方案在会上被公开否定",
+        "expect": "模式",
+        "dialogue": """同事：这个方案数据支撑不足，感觉不太可行。
+你：数据来自上季度报告，已经过财务复核。
+同事：复核是复核，但趋势在下降，按这个方向投预算风险大。
+你：下降是短期波动，长期看还是正向的。
+同事：短期波动也是风险。建议先小范围试点，别全量上。
+领导：稳妥一点，先试点吧。""",
+    },
+    {
+        "id": "remote_colleague_missing",
+        "relation": "远程协作",
+        "title": "远程同事反复拖延会议纪要",
+        "expect": "模式",
+        "dialogue": """你：昨天的会议纪要发了吗？
+同事：还没，昨晚网络不太好。
+你：今天能补发吗？有几个时间节点要确认。
+同事：下午有个会，会后处理。
+你：已经拖了一天，下游在等了。
+同事：知道了，尽量今天发。
+你：尽量这个词有点模糊，能不能给个明确时间？
+同事：下班前一定发。""",
+    },
+    {
+        "id": "subordinate_bypass",
+        "relation": "上下级",
+        "title": "下属越过直属领导向大领导汇报",
+        "expect": "自己",
+        "dialogue": """领导：下属直接发了个方案过来，说是按指示改的。
+你：这个项目是这边在跟，下属没同步过。
+领导：方案里有些想法不错，可以纳入本周迭代。
+你：纳入之前是不是先让这边评估一下可行性？
+领导：怕耽误进度，先让技术调研起来。
+你：调研可以，但结论得这边确认后再推进。
+领导：行，那让下属同步一下。""",
+    },
+]
+
+
+def validate_no_subject_pronouns(dialogue: str) -> list[str]:
+    bad = ["我", "你", "他", "她", "我们", "你们", "他们"]
+    issues = []
+    for line in dialogue.splitlines():
+        speaker, _, content = line.partition("：")
+        if not content:
+            continue
+        for p in bad:
+            if p in content:
+                issues.append(f"行含'{p}': {line[:40]}")
+    return issues
+
+
+def main():
+    out = []
+    for s in SCENARIOS:
+        issues = validate_no_subject_pronouns(s["dialogue"])
+        if issues:
+            print(f"WARN {s['id']}: {issues}")
+        out.append(s)
+
+    Path("data/business_dialogues.json").write_text(
+        json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print(f"已生成 {len(out)} 条商务办公场景对话 -> data/business_dialogues.json")
+
+
+if __name__ == "__main__":
+    main()
