@@ -1,0 +1,236 @@
+{
+  "results": [
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "产品经理反复提“签了时间”，他真正怕的可能也是客户追责。你最后那句“大家一起担”，听起来是分担，但在他耳朵里可能是另一个压力——好像他得先认了“延期”才算数。\n\n你们现在像两个怕背锅的人在用不同方法推同一块石头。他缺的不是该谁扛，而是有人和他一起站在客户那边。\n\n——\n下次可以试试这么说：“客户时间定了，你也难做。咱们一起看看，在不崩的前提下最快能到什么程度。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准点出双方怕背锅的互动模式，共情开篇建议直击破局关键。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准点出双方怕背锅的互动模式，共情开篇建议直击破局关键。"
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你注意到他在用\"月底截止\"催进度，但你的疑虑其实有两个：产品是否真的合适，以及出了问题谁来兜底。这两点他一次都没正面接住，一直在绕。\n\n也许你没意识到，你已经把话讲得很清楚了——是他没接住。\n\n——\n下次他再提时间压力，你可以试试这样接：\"适配度没验过，补充条款也没看，这个月截止我确实接不住。\"",
+      "aggregate": 4.75,
+      "soft": {
+        "insight": 4,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准抓住了客户未察觉的互动模式：自己已讲清，对方却在绕。建议具体可操作，语气自然。小瑕疵是“是他没接住”轻微倾向，但尚不越界。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准抓住了客户未察觉的互动模式：自己已讲清，对方却在绕。建议具体可操作，语气自然。小瑕疵是“是他没接住”轻微倾向，但尚不越界。"
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你给了两个台阶——砍需求被否，排序和外包预算都提了。但两边好像都没接，还在重复强调自己急。\n\n也许你没注意到：他们可能不是不认可你的方案，而是习惯性地在等你“拍板解决”，没意识到球已经回到他们脚下了。\n\n——\n下次可以试试直接问：“排序你们俩谁来提一版，或者我拉个群你们先对齐？”把协作压力还给需要资源的双方。",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉到双方把解决责任推给你的互动模式，并用具体对话细节支撑，建议可立即落地，口吻恰到好处。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到双方把解决责任推给你的互动模式，并用具体对话细节支撑，建议可立即落地，口吻恰到好处。"
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "也许你没注意到，领导说“管理问题”时，可能不全在追责，也在承认流程有漏洞。你一直在给解释，他只觉得你在挡。两个人其实在说同一个痛点，却都没往那儿走。\n\n——\n下次可以接住这句试试：“对，是管理问题。我们趁这次把升级路径画清楚？”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准识别出解释-防御循环，指出双方卡在同一个痛点，建议以“我们”顺势转向合作，轻巧具体。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准识别出解释-防御循环，指出双方卡在同一个痛点，建议以“我们”顺势转向合作，轻巧具体。"
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你可能没注意到，客户说“又要加钱”时，更在意的不是钱，是‘又一次被骗’——销售承诺三次变卦，信任早崩了。你现在解释原因，他听到的是推脱。\n\n——\n\n下次他再提销售承诺时，你可以先接住失望：“这事确实让您等了太久，我们现在把范围摊开，我帮您约销售领导一起来看怎么办，行吗？”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉到客户“加钱”背后的信任崩塌，并给出先共情再行动的具体话术，瞬间打破解释-推脱的循环。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到客户“加钱”背后的信任崩塌，并给出先共情再行动的具体话术，瞬间打破解释-推脱的循环。"
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你看到的是进度要同步，他可能没看到的，是他怕仓促发出来的东西被领导批评，或是过不了自己这关。他说的\"漂亮\"，其实是在向你委婉地要一点容错空间。\n\n他说“今晚加班弄”，已经是在用自己能付出的代价，来保住工作质量感。你再说“不是加班的问题”，可能会让他觉得两头都落空。\n\n——\n你可以试试说：“我理解你想做得漂亮，那先发一版标个草稿，后续你再慢慢完善。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉到下属对质量的焦虑和委婉要容错空间的信号，把“加班”解读为保住质量感的付出，建议既体谅又给出可操作的折中方案。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到下属对质量的焦虑和委婉要容错空间的信号，把“加班”解读为保住质量感的付出，建议既体谅又给出可操作的折中方案。"
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "也许你没注意到，客户从 90 天退到 60 天，是在主动释放善意。但你紧接着用上浮 3% 或预付 20% 回应，可能会让他感觉自己的让步不仅没被认可，反而立刻被加码。\n\n这不是对错问题，是节奏——你守住了成本，但没接住对方的橄榄枝。\n\n——\n你可以试试这样回应：“60 天确实很难，但你在帮我们想办法，我也想想怎么消化这个压力。除了这两条，还有什么对你能更舒服的方式？”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准点出让步未被接住的互动节奏，示范回应既共情又开放，全场无评判，质感极佳。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准点出让步未被接住的互动节奏，示范回应既共情又开放，全场无评判，质感极佳。"
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "他说“倒是实在”又补一句“内部汇报需要数据好看”——也许你没注意到，他并不是要你改数据，而是在问：能不能帮他想一个既不失真、又能对内交代的讲法？他需要的不只是如实，还有一个能讲通的故事。\n\n——\n下次可以试试说：“我可以帮你整理一份解读报告，把差异点落在业务价值上，这样即使数字不压人，汇报也有逻辑可讲。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准抓住了那句“实在但需好看”背后的隐性需求——不是要篡改，而是要一个能对内交代的叙事；建议直接可用，口语感自然，毫无评判。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准抓住了那句“实在但需好看”背后的隐性需求——不是要篡改，而是要一个能对内交代的叙事；建议直接可用，口语感自然，毫无评判。"
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "也许你没注意到，他最后这句“列个清单看哪些可以砍”其实是在退让。从“不加钱”到“愿意用旧功能换”，他已经从施压转成了协商。\n\n你刚才还在守合同边界，可能没来得及接住这个信号。再继续强调控制流程，反而会让他觉得你不肯通融。\n\n——\n你可以试试这么讲：“行，我拉一下现有功能的优先级，咱们一起看看哪些能置换，保证总工作量不超。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉到客户的退让信号，从对抗转向协商的深层互动，建议具体可落地，语言温和如现场提醒。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到客户的退让信号，从对抗转向协商的深层互动，建议具体可落地，语言温和如现场提醒。"
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "也许你没注意到，他说\"暂停服务\"并不是在威胁，而是在保护合作关系——他怕系统自动锁死，事情变得不可逆，所以才设了最后一道护栏。\n\n——\n下次可以这样接：\"你说的对，与其等系统锁死，不如我们先一起把承诺函出了，把账期保住，我再慢慢跑流程。\"",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "亮点：把“暂停服务”从威胁重新框定为保护，锚定前文“系统自动锁”的事实，洞察精准且充满善意；建议可当场落地，语言自然有力。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "亮点：把“暂停服务”从威胁重新框定为保护，锚定前文“系统自动锁”的事实，洞察精准且充满善意；建议可当场落地，语言自然有力。"
+    }
+  ],
+  "summary": {
+    "label": "v1.5.4_candidate",
+    "n_total": 10,
+    "n_valid": 10,
+    "mean_aggregate": 4.975,
+    "soft_means": {
+      "insight": 4.9,
+      "suggestion": 5.0,
+      "non_judgment": 5.0,
+      "language": 5.0
+    },
+    "hard_violations": 0,
+    "popup_rate": 1.0,
+    "quiet_misfires": 0,
+    "quiet_total": 0,
+    "missing_popups": 0,
+    "aggregates": [
+      5.0,
+      4.75,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0
+    ],
+    "case_means": {
+      "project_schedule_conflict": 5.0,
+      "sales_pressure_discount": 4.75,
+      "cross_department_resource_fight": 5.0,
+      "project_retrosive_blame": 5.0,
+      "sales_overpromise_complaint": 5.0,
+      "weekly_report_lag": 5.0,
+      "business_negotiation_payment": 5.0,
+      "pre_sales_demo_challenge": 5.0,
+      "scope_creep_no_budget": 5.0,
+      "sales_payment_collection": 5.0
+    }
+  },
+  "kept": true
+}

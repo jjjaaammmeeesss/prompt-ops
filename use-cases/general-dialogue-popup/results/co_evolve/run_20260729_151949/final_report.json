@@ -1,0 +1,49 @@
+{
+  "converged": false,
+  "converged_reason": "",
+  "total_rounds": 1,
+  "final_delta": 0.4500000000000002,
+  "deltas": [
+    0.25,
+    0.4500000000000002
+  ],
+  "interventions": [],
+  "tracks": {
+    "v151": {
+      "name": "v1.5.x",
+      "version": "v1.5.2",
+      "prompt_path": "D:\\prompt-ops\\use-cases\\general-dialogue-popup\\results\\co_evolve\\run_20260729_151949\\round_001\\v1.5.2_candidate.txt",
+      "baseline_aggregate": 3.825,
+      "final_aggregate": 4.55,
+      "improvement": 0.725,
+      "best_aggregate": 4.55,
+      "history_scores": [
+        3.825,
+        4.55
+      ],
+      "history_hard_violations": [
+        3,
+        1
+      ],
+      "kept_rounds": 1
+    },
+    "v30": {
+      "name": "v3.x",
+      "version": "v3.1",
+      "prompt_path": "D:\\prompt-ops\\use-cases\\general-dialogue-popup\\results\\co_evolve\\run_20260729_151949\\round_001\\v3.1_candidate.txt",
+      "baseline_aggregate": 4.075,
+      "final_aggregate": 4.1,
+      "improvement": 0.025,
+      "best_aggregate": 4.1,
+      "history_scores": [
+        4.075,
+        4.1
+      ],
+      "history_hard_violations": [
+        15,
+        6
+      ],
+      "kept_rounds": 1
+    }
+  }
+}

@@ -1,0 +1,952 @@
+{
+  "meta": {
+    "timestamp": "20260729_133628",
+    "n_cases": 10,
+    "n_runs_per_case": 3,
+    "gen_model": "deepseek/deepseek-v4-pro",
+    "judge_model": "glm-5.2",
+    "elapsed_seconds": 394.1
+  },
+  "summaries": [
+    {
+      "label": "v1.5.1",
+      "n_total": 30,
+      "n_valid": 0,
+      "mean_aggregate": 0,
+      "soft_means": {
+        "insight": 0,
+        "suggestion": 0,
+        "non_judgment": 0,
+        "language": 0
+      },
+      "hard_violations": 30,
+      "popup_rate": 0.0,
+      "quiet_misfires": 0,
+      "quiet_total": 0,
+      "missing_popups": 30,
+      "aggregates": []
+    },
+    {
+      "label": "v3.0",
+      "n_total": 30,
+      "n_valid": 0,
+      "mean_aggregate": 0,
+      "soft_means": {
+        "insight": 0,
+        "suggestion": 0,
+        "non_judgment": 0,
+        "language": 0
+      },
+      "hard_violations": 30,
+      "popup_rate": 0.0,
+      "quiet_misfires": 0,
+      "quiet_total": 0,
+      "missing_popups": 30,
+      "aggregates": []
+    }
+  ],
+  "v1.5.1": [
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 1,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 2,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 1,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 2,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 1,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 2,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 1,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 2,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    }
+  ],
+  "v3.0": [
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 1,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 2,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 1,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 2,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 1,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 2,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 1,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 2,
+      "expect": "模式",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 1,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 2,
+      "expect": "自己",
+      "popup_text": null,
+      "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
+      "aggregate": 0,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "生成异常: litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        ]
+      }
+    }
+  ]
+}

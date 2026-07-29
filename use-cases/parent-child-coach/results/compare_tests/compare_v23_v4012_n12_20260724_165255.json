@@ -1,0 +1,366 @@
+{
+  "n": 12,
+  "rounds": 3,
+  "v23_rounds": [
+    0,
+    0,
+    0
+  ],
+  "v4012_rounds": [
+    0,
+    0,
+    0
+  ],
+  "v23_avg": 0.0,
+  "v4012_avg": 0.0,
+  "v23_variance": 0,
+  "v4012_variance": 0,
+  "diff": 0.0,
+  "details": [
+    {
+      "round": 1,
+      "v23": {
+        "version": "v2.3",
+        "avg_score": 0,
+        "passed": 0,
+        "failed": 12,
+        "results": [
+          {
+            "case_id": "C10-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-006",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-008",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C3-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "DS_001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          }
+        ]
+      },
+      "v4012": {
+        "version": "v4.0.12",
+        "avg_score": 0,
+        "passed": 0,
+        "failed": 12,
+        "results": [
+          {
+            "case_id": "C10-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-006",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-008",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C3-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "DS_001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "v23": {
+        "version": "v2.3",
+        "avg_score": 0,
+        "passed": 0,
+        "failed": 12,
+        "results": [
+          {
+            "case_id": "C10-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-006",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-008",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C3-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "DS_001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          }
+        ]
+      },
+      "v4012": {
+        "version": "v4.0.12",
+        "avg_score": 0,
+        "passed": 0,
+        "failed": 12,
+        "results": [
+          {
+            "case_id": "C10-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-006",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-008",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C3-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "DS_001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          }
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "v23": {
+        "version": "v2.3",
+        "avg_score": 0,
+        "passed": 0,
+        "failed": 12,
+        "results": [
+          {
+            "case_id": "C10-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-006",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-008",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C3-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "DS_001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          }
+        ]
+      },
+      "v4012": {
+        "version": "v4.0.12",
+        "avg_score": 0,
+        "passed": 0,
+        "failed": 12,
+        "results": [
+          {
+            "case_id": "C10-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-006",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C10-008",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-003",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-004",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C5-005",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "C3-002",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          },
+          {
+            "case_id": "DS_001",
+            "error": "'LoggingManager' object has no attribute 'error'"
+          }
+        ]
+      }
+    }
+  ]
+}

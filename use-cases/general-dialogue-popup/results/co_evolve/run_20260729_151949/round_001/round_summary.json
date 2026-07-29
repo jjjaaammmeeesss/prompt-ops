@@ -1,0 +1,9 @@
+{
+  "round": 1,
+  "v151_agg": 4.55,
+  "v30_agg": 4.1,
+  "delta": 0.4500000000000002,
+  "v151_kept": true,
+  "v30_kept": true,
+  "supervisor_severity": "nominal"
+}
