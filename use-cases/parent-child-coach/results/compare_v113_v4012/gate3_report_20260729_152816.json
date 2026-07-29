@@ -1,0 +1,96 @@
+{
+  "gate": 3,
+  "passed": false,
+  "checks": {
+    "v4012": {
+      "passed": true,
+      "checks": [
+        {
+          "check": "Section 一、 存在",
+          "pass": true
+        },
+        {
+          "check": "Section 二、 存在",
+          "pass": true
+        },
+        {
+          "check": "Section 三、 存在",
+          "pass": true
+        },
+        {
+          "check": "Section 四、 存在",
+          "pass": true
+        },
+        {
+          "check": "Section 五、 存在",
+          "pass": true
+        },
+        {
+          "check": "Section 六、 存在",
+          "pass": true
+        },
+        {
+          "check": "Section 七、 存在",
+          "pass": true
+        },
+        {
+          "check": "Section 八、 存在",
+          "pass": true
+        },
+        {
+          "check": "周易卦象速查表完整",
+          "pass": true
+        },
+        {
+          "check": "tone 灵活覆盖规则（≥2 积极行为）",
+          "pass": true
+        },
+        {
+          "check": "全面禁脑补规则",
+          "pass": true
+        }
+      ]
+    },
+    "v113": {
+      "passed": false,
+      "checks": [
+        {
+          "check": "System Prompt（``` 围栏）存在",
+          "pass": true
+        },
+        {
+          "check": "User Prompt（```` 围栏）存在",
+          "pass": true
+        },
+        {
+          "check": "JSON schema 完整（should_popup / tone / popup_insight / popup_suggestion）",
+          "pass": true
+        },
+        {
+          "check": "Step 0→0.5→1→2A/2B→3 流程完整",
+          "pass": false
+        },
+        {
+          "check": "占位符 {user_input}/{profile_context}/{context_block} 存在",
+          "pass": true
+        },
+        {
+          "check": "F1 逐句原文锚定",
+          "pass": true
+        },
+        {
+          "check": "F2 反话强制响应",
+          "pass": true
+        },
+        {
+          "check": "F3 深度自检 (L1/L2/L3)",
+          "pass": true
+        },
+        {
+          "check": "F4 前置分流 (Step 0.5)",
+          "pass": true
+        }
+      ]
+    }
+  }
+}

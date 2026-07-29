@@ -1,0 +1,76 @@
+{
+  "gate": 1,
+  "n_cases": 3,
+  "rounds": 1,
+  "v113_mean": 0.0,
+  "v4012_mean": 0.3333333333333333,
+  "v113_pass_rate": 0.0,
+  "v4012_pass_rate": 0.3333333333333333,
+  "delta_mean": -0.3333333333333333,
+  "bootstrap_ci": [
+    -1.0,
+    0.0
+  ],
+  "wilcoxon_W": 0,
+  "wilcoxon_p": 0.3173105191262633,
+  "v113_skip_rate": 0.0,
+  "ci_significant": false,
+  "p_significant": false,
+  "verdict": "TIE — 差异不显著",
+  "rounds_data": [
+    {
+      "round": 1,
+      "v113": [
+        {
+          "case_id": "worksheet_10cases-晓浩已手写改完_case2_w甲",
+          "expected_tone": "诊断式",
+          "actual_tone": "empowering",
+          "should_popup": true,
+          "score": 0.0,
+          "popup": "孩子睡不着，脑子里装着竞选组长和猫想妈妈。你一件件接住了，没有说这有什么好想的。最后你给他挠背——这是在告诉他，无论多小的事，妈妈都在。"
+        },
+        {
+          "case_id": "worksheet_10cases-晓浩已手写改完_case1_w甲",
+          "expected_tone": "诊断式",
+          "actual_tone": "diagnostic",
+          "should_popup": true,
+          "score": 0.0,
+          "popup": ""
+        },
+        {
+          "case_id": "worksheet_10cases-晓浩已手写改完_case3_w甲",
+          "expected_tone": "诊断式",
+          "actual_tone": "diagnostic",
+          "should_popup": true,
+          "score": 0.0,
+          "popup": ""
+        }
+      ],
+      "v4012": [
+        {
+          "case_id": "worksheet_10cases-晓浩已手写改完_case2_w甲",
+          "expected_tone": "诊断式",
+          "score": 0.0,
+          "popup": "你是因为担心孩子睡眠不够，才急着让对话收尾。\n\n但你看——孩子说“我脑子里有好多事情”，然后把小组长的紧张、被笑的记忆、猫想妈妈这些念头一个个掏给你。你说“猫可能会想妈妈，但它现在有你了”，这句话接住了他。可紧接着你就把它关了：“先睡觉”。\n\n孩子听到的是：我的世界可以打开，但只能开到妈妈觉得“够了”为止。\n\n下次他再在睡前打开这些念头，能不能试着在“关灯”之前，先给他的世界留一句话——“还有吗？我还在听。”"
+        },
+        {
+          "case_id": "worksheet_10cases-晓浩已手写改完_case1_w甲",
+          "expected_tone": "诊断式",
+          "score": 0.0,
+          "popup": "你担心数学掉下来，这是每个妈妈都会紧张的。但孩子带着科学课的狂喜冲过来，你给了三个回应——\"嗯\"\"别哗了\"\"科学好有什么用\"——每句话都在告诉他：你的快乐不重要。他说\"老师说我的火山结构做得最好\"，这是最后一句求救。你回了一句\"错题不改\"，孩子从兴奋到安静，只用了四句话。\n\n能不能试试：下次他说\"妈妈你听我说\"，你就真的先听，不插嘴，听完说一句\"这个火山你是怎么做的\"——让他的热情被看见一次。数学可以晚三分钟再问。"
+        },
+        {
+          "case_id": "worksheet_10cases-晓浩已手写改完_case3_w甲",
+          "expected_tone": "诊断式",
+          "score": 1.0,
+          "popup": "你想让孩子把安全刻进骨子里，才反复强调“要看两边”。但你那句“你每次都知道了，下次还是不看”，把孩子这一次确实看了右边的事实完全盖过去了。他听到的不是“怎么才能更安全”，而是“解释也没用，反正你不信我”。\n\n试试下次先看见他已经做到的：“妈妈看到你看了"
+        }
+      ],
+      "deltas": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    }
+  ]
+}

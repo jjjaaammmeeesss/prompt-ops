@@ -22,11 +22,16 @@ import requests
 from prompt_ops.core.metrics import MetricBase
 
 # === Judge backend selection ===
-JUDGE_BACKEND = os.getenv("JUDGE_BACKEND", "claude")
+JUDGE_BACKEND = os.getenv("JUDGE_BACKEND", "qianfan")
+
+# === Baidu Qianfan API (OpenAI-compatible, GLM-5.2) ===
+QIANFAN_URL = "https://qianfan.baidubce.com/v2/chat/completions"
+QIANFAN_KEY = os.getenv("BAIDU_QIANFAN_KEY", "")
+QIANFAN_MODEL = "glm-5.2"
 
 # === Claude API (智创聚合 — Anthropic Messages format) ===
 CLAUDE_URL = "https://s.lconai.com/v1/messages"
-CLAUDE_KEY = "CLAUDE_API_KEY_PLACEHOLDER"
+CLAUDE_KEY = os.getenv("LCONAI_API_KEY", "CLAUDE_API_KEY_PLACEHOLDER")
 CLAUDE_MODEL = "claude-opus-4-8"
 
 # === DeepSeek API (OpenAI Chat Completions format, fallback) ===
@@ -222,6 +227,15 @@ class LLMJudgeMetric(MetricBase):
             self.judge_url = CLAUDE_URL
             self.judge_key = CLAUDE_KEY
             self.judge_model = CLAUDE_MODEL
+        elif judge_backend == "qianfan":
+            self.judge_url = QIANFAN_URL
+            self.judge_key = QIANFAN_KEY
+            self.judge_model = QIANFAN_MODEL
+            if not self.judge_key:
+                raise RuntimeError(
+                    "BAIDU_QIANFAN_KEY env var required for Qianfan judge backend. "
+                    "Set it or use JUDGE_BACKEND=claude or deepseek."
+                )
         else:
             self.judge_url = DS_URL
             self.judge_key = DS_KEY
@@ -229,7 +243,7 @@ class LLMJudgeMetric(MetricBase):
             if not self.judge_key:
                 raise RuntimeError(
                     "DEEPSEEK_API_KEY env var required for DeepSeek judge backend. "
-                    "Set it or use JUDGE_BACKEND=claude."
+                    "Set it or use JUDGE_BACKEND=qianfan or claude."
                 )
 
     def __call__(
@@ -339,6 +353,8 @@ class LLMJudgeMetric(MetricBase):
         """Call judge LLM, return parsed scores dict."""
         if self.judge_backend == "claude":
             return self._call_claude(prompt)
+        elif self.judge_backend == "qianfan":
+            return self._call_qianfan(prompt)
         else:
             return self._call_deepseek(prompt)
 
@@ -395,6 +411,43 @@ class LLMJudgeMetric(MetricBase):
                 {
                     "role": "system",
                     "content": "你是严格的亲子沟通弹窗评估专家。只输出JSON，不输出其他内容。核心任务是比较AI弹窗与专家改写弹窗——判断AI是否实现了专家的意图、策略和语气。",
+                },
+                {"role": "user", "content": prompt},
+            ],
+        }
+
+        resp = requests.post(
+            self.judge_url,
+            headers=headers,
+            json=payload,
+            timeout=self.timeout,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+
+        raw = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+
+        return self._parse_scores(raw)
+
+    def _call_qianfan(self, prompt: str) -> Dict[str, Any]:
+        """Call GLM-5.2 via Baidu Qianfan (OpenAI-compatible format).
+
+        Disables thinking/reasoning mode so output tokens go to the JSON
+        response rather than being consumed by internal reasoning.
+        """
+        headers = {
+            "Authorization": f"Bearer {self.judge_key}",
+            "Content-Type": "application/json",
+        }
+        payload = {
+            "model": self.judge_model,
+            "max_tokens": 1024,
+            "temperature": 0.1,
+            "thinking": {"type": "disabled"},
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "你是严格的亲子沟通弹窗评估专家。只输出JSON，不输出其他内容。你的核心任务是比较AI弹窗与专家改写弹窗——判断AI是否实现了专家的意图、策略和语气。好的AI弹窗是那些与专家在同一方向上努力的弹窗，即使措辞不同。",
                 },
                 {"role": "user", "content": prompt},
             ],
