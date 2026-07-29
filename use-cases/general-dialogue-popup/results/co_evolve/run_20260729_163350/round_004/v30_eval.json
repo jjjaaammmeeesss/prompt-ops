@@ -1,0 +1,247 @@
+{
+  "results": [
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你从防守走向了共建——\"移到二期\"和\"大家一起担\"这两句，把对抗变成了三个人面对同一个问题。\n下次可以试试：先问\"客户那边最晚什么时间必须上\"。\n稳的。",
+      "aggregate": 4.0,
+      "soft": {
+        "insight": 4,
+        "suggestion": 4,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "亮点是捕捉到从对抗转向共建的瞬间；但“三个人”是对对话的误读，实际只有产品和技术两方。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "`——` 未单独成行"
+        ]
+      },
+      "comment": "亮点是捕捉到从对抗转向共建的瞬间；但“三个人”是对对话的误读，实际只有产品和技术两方。"
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你被这个单子的截止压力顶住了，每一句都在告诉客户\"先锁价格，后面好说\"。但客户反复提\"适配度\"\"违约责任\"\"法务审核\"——他不是在压价，是在告诉你：我不敢签，不是钱的问题，是签了之后可能会出问题。你的每一次催促，在他听来都是\"先把合同签了，风险后面再说\"，这让他更不敢往前走了。\n\n——\n\n下次可以试试：先问\"适配度上你最担心哪一块\"\n\n呼吸一下。",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "一针见血地解译了客户信号，把催促与退缩的循环描得精准；建议极简落地，呼吸一下更是教练的点睛之笔。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "一针见血地解译了客户信号，把催促与退缩的循环描得精准；建议极简落地，呼吸一下更是教练的点睛之笔。"
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你没有站任何一边。“两边都急”承认了双方的压力，“共同向上申请”把对抗变成了携手。这种居中协调的站位，本身就是一种力量。\n\n稳的。",
+      "aggregate": 3.5,
+      "soft": {
+        "insight": 5,
+        "suggestion": 1,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "亮点是准确提炼协调动作并赋予力量感，问题是无后续可操作建议，止步于肯定。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "缺少 `——` 功能墙"
+        ]
+      },
+      "comment": "亮点是准确提炼协调动作并赋予力量感，问题是无后续可操作建议，止步于肯定。"
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你被领导追问，感到委屈——你确实写了周报，做了兜底方案。但你说“周报里写过两次，可能没被注意到”，领导听到的是“我做了，没看到是你的问题”。你一直在解释原因，却没有接过“下次我主动升级”。他说“这就是管理问题”，不是在给你定性，是在等你上前一步。\n\n——\n\n下次可以试试：说“确实是我疏忽，下次会主动升级。”\n\n呼吸一下。",
+      "aggregate": 4.5,
+      "soft": {
+        "insight": 5,
+        "suggestion": 4,
+        "non_judgment": 4,
+        "language": 5,
+        "comment": "洞察精准，尤其点出领导“这就是管理问题”是在等他上前一步。但建议让说“确实是我疏忽”略含暗示错误，与前面的非评判态度有微妙矛盾。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察精准，尤其点出领导“这就是管理问题”是在等他上前一步。但建议让说“确实是我疏忽”略含暗示错误，与前面的非评判态度有微妙矛盾。"
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你正努力用事实和合同条款稳住对话，避免情绪升级。但你说“合同中也有变更条款”时，客户听到的不是解释，而是“你们自己没看合同”。每一句公事公办的回复，都在加深“我们 vs 你们”的隔阂。他反复提“免费做”“又要加钱”，真正痛点不是那笔钱，是你们反复承诺又无法兑现。\n\n——\n\n下次可以试试：说“前期让您反复等了，我们先拆两步，第一步不涉及增费。”\n\n不急。",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准抓住了客户被反复失信后的失望情绪，把对话从条款博弈转到安抚与行动拆解，建议具体可操作。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准抓住了客户被反复失信后的失望情绪，把对话从条款博弈转到安抚与行动拆解，建议具体可操作。"
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你被“周报又没发”触发了管理焦虑，想知道团队在做什么本身没错。下属说“想汇总得漂亮一点再发”，其实在告诉你：不是拖延，是怕零散的东西交上去被看低。你说“不是加班的问题”——但他听到的可能是“你连及时同步都做不到”。从要求加速变成了对能力的隐含否定。\n\n——\n\n下次可以试试：“先发你手上在弄的，我看看卡在哪。”\n\n慢慢来。",
+      "aggregate": 4.75,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 4,
+        "comment": "精准捕捉到下属“怕被看低”的潜台词和管理者无意中的能力否定，建议温和且具体，若语言再松弛一点会更像耳边提醒。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到下属“怕被看低”的潜台词和管理者无意中的能力否定，建议温和且具体，若语言再松弛一点会更像耳边提醒。"
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你没在\"行业标准\"上纠缠，直接给了两个可选方案——既守住边界，也给了对方选择。把僵局拆成了可走的棋，这就是共建。\n\n稳的。",
+      "aggregate": 3.25,
+      "soft": {
+        "insight": 5,
+        "suggestion": 2,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "亮点是精准捕捉到‘不纠缠、给方案’的共建瞬间；但破折号后只是解读，缺少当场能用的具体行动建议。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "字数 59 低于 60",
+          "`——` 未单独成行"
+        ]
+      },
+      "comment": "亮点是精准捕捉到‘不纠缠、给方案’的共建瞬间；但破折号后只是解读，缺少当场能用的具体行动建议。"
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你被质疑了三次，每次都没有进入防御——\"安排现场测试\"\"如实呈现\"\"说明差异原因\"。客户说\"这么说倒是实在\"，已经在用\"实在\"形容你了，这比任何技术参数都管用的信任。下一次遇到类似质疑，你已经有了最对的路：先说实话，再用数据撑住它。\n\n稳的。",
+      "aggregate": 4.25,
+      "soft": {
+        "insight": 5,
+        "suggestion": 4,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准抓住了“实在”这个信任信号，点出诚实比参数更重要的深层洞察。建议若稍加具体操作会更实用。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "`——` 未单独成行"
+        ]
+      },
+      "comment": "精准抓住了“实在”这个信任信号，点出诚实比参数更重要的深层洞察。建议若稍加具体操作会更实用。"
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你被“又要加需求还不给时间不给钱”顶住了，这不是第一次，也怕开了头后面收不住。你说“合同范围里没有这一项”——保护变更纪律是对的，但客户听到的是“你在划清界限，而不是帮我解决问题”。他紧接着就转向“列个清单换”，其实已经在主动找折中。这不是刁难，是在你的墙前面自己试着绕路。\n\n——\n\n下次可以试试：说“报表能加，我们先看拿哪个需求换，一起列个列表。”\n\n呼吸一下。",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "亮点是精准抓到客户转向“列清单”已是折中，并给出直接可用的沟通示范，语气温和像在场提醒。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "亮点是精准抓到客户转向“列清单”已是折中，并给出直接可用的沟通示范，语气温和像在场提醒。"
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你给了对方一个明确边界：宽限一周 + 书面承诺，否则暂停服务。没有陪他绕流程，而是用空间换承诺——这就是L5共建。你已经把路标立好了。\n\n稳的。",
+      "aggregate": 2.25,
+      "soft": {
+        "insight": 2,
+        "suggestion": 1,
+        "non_judgment": 5,
+        "language": 3,
+        "comment": "弹窗只是在复述和夸奖，没有帮销售看见自己没察觉的东西（如强硬姿态对关系的潜在影响），也完全缺失可操作建议。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "`——` 未单独成行"
+        ]
+      },
+      "comment": "弹窗只是在复述和夸奖，没有帮销售看见自己没察觉的东西（如强硬姿态对关系的潜在影响），也完全缺失可操作建议。"
+    }
+  ],
+  "summary": {
+    "label": "v3.4_candidate",
+    "n_total": 10,
+    "n_valid": 10,
+    "mean_aggregate": 4.15,
+    "soft_means": {
+      "insight": 4.6,
+      "suggestion": 3.6,
+      "non_judgment": 4.9,
+      "language": 4.7
+    },
+    "hard_violations": 6,
+    "popup_rate": 1.0,
+    "quiet_misfires": 0,
+    "quiet_total": 0,
+    "missing_popups": 0,
+    "aggregates": [
+      4.0,
+      5.0,
+      3.5,
+      4.5,
+      5.0,
+      4.75,
+      3.25,
+      4.25,
+      5.0,
+      2.25
+    ],
+    "case_means": {
+      "project_schedule_conflict": 4.0,
+      "sales_pressure_discount": 5.0,
+      "cross_department_resource_fight": 3.5,
+      "project_retrosive_blame": 4.5,
+      "sales_overpromise_complaint": 5.0,
+      "weekly_report_lag": 4.75,
+      "business_negotiation_payment": 3.25,
+      "pre_sales_demo_challenge": 4.25,
+      "scope_creep_no_budget": 5.0,
+      "sales_payment_collection": 2.25
+    }
+  },
+  "kept": true
+}

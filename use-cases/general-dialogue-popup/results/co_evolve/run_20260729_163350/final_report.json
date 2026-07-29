@@ -1,0 +1,70 @@
+{
+  "converged": true,
+  "converged_reason": "Codex stop R5: v3.x 线因 prompt 过于臃肿(理论五层、多类弹窗、复杂规则)导致生成不稳定、硬规则违规持续上升；交叉学习时 v3.x 未能有效吸收 v1.5.x 的简洁约束，反而可能引入更多边界冲突，造成违规从 4 升至 6 且综合分持续下滑。根因是 prompt 膨胀引发的规则模糊与执行偏差。",
+  "total_rounds": 5,
+  "final_delta": 0.4499999999999993,
+  "deltas": [
+    0.25,
+    0.4500000000000002,
+    0.0,
+    0.5999999999999996,
+    0.4499999999999993
+  ],
+  "interventions": [
+    "prune_prompt"
+  ],
+  "tracks": {
+    "v151": {
+      "name": "v1.5.x",
+      "version": "v1.5.6",
+      "prompt_path": "D:\\prompt-ops\\use-cases\\general-dialogue-popup\\results\\co_evolve\\run_20260729_163350\\round_005\\v1.5.6_candidate.txt",
+      "baseline_aggregate": 3.825,
+      "final_aggregate": 4.825,
+      "improvement": 1.0,
+      "best_aggregate": 4.975,
+      "history_scores": [
+        3.825,
+        4.55,
+        4.425,
+        4.975,
+        4.6,
+        4.825
+      ],
+      "history_hard_violations": [
+        3,
+        1,
+        3,
+        0,
+        1,
+        3
+      ],
+      "kept_rounds": 3
+    },
+    "v30": {
+      "name": "v3.x",
+      "version": "v3.5",
+      "prompt_path": "D:\\prompt-ops\\use-cases\\general-dialogue-popup\\results\\co_evolve\\run_20260729_163350\\round_005\\v3.5_candidate.txt",
+      "baseline_aggregate": 4.075,
+      "final_aggregate": 4.1,
+      "improvement": 0.025,
+      "best_aggregate": 4.425,
+      "history_scores": [
+        4.075,
+        4.1,
+        4.425,
+        4.375,
+        4.15,
+        4.1
+      ],
+      "history_hard_violations": [
+        15,
+        6,
+        4,
+        5,
+        6,
+        6
+      ],
+      "kept_rounds": 2
+    }
+  }
+}
