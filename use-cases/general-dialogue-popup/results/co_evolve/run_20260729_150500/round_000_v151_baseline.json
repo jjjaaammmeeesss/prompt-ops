@@ -1,0 +1,227 @@
+{
+  "results": [
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "产品经理反复提客户签时间，可能他自己也在客户那边扛着失信的压力，这份着急不是在针对你。\n\n你现在在守技术底线，他在守客户关系，两个人都在尽责，但还没站在同一边去想：怎么一起给客户一个能交代的说法。\n\n——\n下次可以试试说：“我理解你答应客户的时间不好改，我们能不能一起跟客户沟通一下实际风险，找一个两边都能接受的时间或范围？”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "准确捕捉对立背后的共同尽责，将防御转为协作，建议具体且当场可用，语言自然无评判。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "准确捕捉对立背后的共同尽责，将防御转为协作，建议具体且当场可用，语言自然无评判。"
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "aggregate": 1.5,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "应弹未弹"
+        ]
+      },
+      "comment": "对话存在盲区但未弹窗"
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "两边都在强调“我的项目不能耽误”，你提出排序，反而像让他们自己比惨认输——这就是为什么他们同时关上了协商的门。\n\n——\n你可以试着说：“我理解两边都不能让步，我们一起来想个三个人都能接受的方案。”",
+      "aggregate": 4.5,
+      "soft": {
+        "insight": 4,
+        "suggestion": 4,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "洞察直击要害，点破排序提议引发的防御；建议话术打开了协作空间，但未解决后续资源分配难题。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察直击要害，点破排序提议引发的防御；建议话术打开了协作空间，但未解决后续资源分配难题。"
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "领导说的“管理问题”，也许不只是在归责，而是在说“我需要有人能提前把风险拎出来”——他要的是安全感，不是解释。\n\n——\n下次再遇到类似情况，可以试试说：“这次我学到的是，不确定找谁的时候，先直接找您同步风险。”",
+      "aggregate": 4.75,
+      "soft": {
+        "insight": 4,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉领导潜台词，话术建议直接可用；“安全感”一词略情感化，可更中性。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉领导潜台词，话术建议直接可用；“安全感”一词略情感化，可更中性。"
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你一直在解释合同和变更，但客户反复提销售承诺，他可能不只是在意费用，更觉得信任被辜负。你越讲逻辑，他越觉得你没当回事。\n\n——\n可以试着先认一句：“承诺没兑现，我们确实让你为难了”，然后再聊工期。",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准抓住客户未被言明的信任诉求，跳出逻辑攻防，建议既有温度又可直接使用，完全是教练级别的洞察。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准抓住客户未被言明的信任诉求，跳出逻辑攻防，建议既有温度又可直接使用，完全是教练级别的洞察。"
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "也许你最后那句“不是加班的问题”，让他觉得自己怎么回应都不对——他已经在让步了。试着先接住他的辛苦，再谈同步。\n\n——\n你可以试着说：“辛苦了，先发一版简单的就行，线上问题可以单独备注。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准抓住了“否定让步”这一关键互动模式，揭示出下属感到左右为难的隐性情绪，建议直接、温柔且立刻可用。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准抓住了“否定让步”这一关键互动模式，揭示出下属感到左右为难的隐性情绪，建议直接、温柔且立刻可用。"
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你刚才的回复，可能让他觉得退让并没有带来缓和，反而招来新的障碍。对方说“各退一步”的时候，可能不只是谈数字，也在期待一种协商的姿态。\n\n——\n你可以试着说：“60天我能内部申请试试，但需要确保回款风险可控，我们聊聊细节？”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉到对方“各退一步”背后的姿态期待，建议将对抗转为共同解决问题。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到对方“各退一步”背后的姿态期待，建议将对抗转为共同解决问题。"
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "客户最后那句“但内部汇报需要数据好看”，不是在质疑你的诚实，而是在向你求助——怎么让真实数据在他那里也能站得住。\n\n你可能只听到了“要好看”，忽略了“内部汇报”这层压力。他不是要你造假，是需要你帮他准备一套能让上面点头的说辞。\n\n——\n可以试着说：“我们可以帮你整理一份对比分析的解读口径，让真实数据在汇报时也更有说服力。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准抓住“内部汇报”压力，把“要好看”解读为求助，避开假数据陷阱，既点醒又给现成话术，友善且落地。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准抓住“内部汇报”压力，把“要好看”解读为求助，避开假数据陷阱，既点醒又给现成话术，友善且落地。"
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "aggregate": 1.5,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "应弹未弹"
+        ]
+      },
+      "comment": "对话存在盲区但未弹窗"
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你提了一个合理要求，但这句话可能让他觉得，你只在意走流程和保护自己，没在意他夹在中间为难。他反复说“没办法”“流程卡”，其实是在说：我也推动不了。\n\n——\n下次可以试着说：“那咱们能不能一起拟个简单的情况说明，你拿给老板看，至少让财务知道你在推进，也帮我们先挡一下系统锁权限？”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉到客户话语背后的无力感，没有评判销售，而是呈现对方视角；建议把对立变成并肩解决问题，具体且温和。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到客户话语背后的无力感，没有评判销售，而是呈现对方视角；建议把对立变成并肩解决问题，具体且温和。"
+    }
+  ],
+  "summary": {
+    "label": "system_prompt_v1.5.1",
+    "n_total": 10,
+    "n_valid": 8,
+    "mean_aggregate": 4.225,
+    "soft_means": {
+      "insight": 4.75,
+      "suggestion": 4.875,
+      "non_judgment": 5.0,
+      "language": 5.0
+    },
+    "hard_violations": 2,
+    "popup_rate": 0.8,
+    "quiet_misfires": 0,
+    "quiet_total": 0,
+    "missing_popups": 2,
+    "aggregates": [
+      5.0,
+      1.5,
+      4.5,
+      4.75,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      1.5,
+      5.0
+    ],
+    "case_means": {
+      "project_schedule_conflict": 5.0,
+      "sales_pressure_discount": 1.5,
+      "cross_department_resource_fight": 4.5,
+      "project_retrosive_blame": 4.75,
+      "sales_overpromise_complaint": 5.0,
+      "weekly_report_lag": 5.0,
+      "business_negotiation_payment": 5.0,
+      "pre_sales_demo_challenge": 5.0,
+      "scope_creep_no_budget": 1.5,
+      "sales_payment_collection": 5.0
+    }
+  }
+}

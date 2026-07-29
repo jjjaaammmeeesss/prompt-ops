@@ -1,0 +1,236 @@
+{
+  "results": [
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "产品经理反复把“客户签了时间”“完整版”当事实扔过来，但你没看见他也在犯怵——他可能没法跟客户说“我们漏了技术评估”。\n\n你一直在给方案，减测、移二期，他一个都没接，说明他不只是要排期，他更想要你帮他想个对上面说得过去的说法。\n\n——\n你可以试试这么讲：“我理解你承诺了客户，现在时间紧。我们看看能不能排个并行方案，把部分功能先切出来给客户演示，这样你对外也能交代。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "洞察精准，点到双方未言明的焦虑；建议提供了可操作的台阶，整体温暖有力。唯有“扔过来”略带色彩，可更中性。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察精准，点到双方未言明的焦虑；建议提供了可操作的台阶，整体温暖有力。唯有“扔过来”略带色彩，可更中性。"
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "可能是这么回事：你反复说“先过法务”，在销售耳朵里全成了“拖延”——他急着锁单，没听出你真正在担心什么。\n\n你怕的不是便宜没占到，而是签了字，后面出问题自己来扛。\n\n——\n你可以试试这么讲：“我不拖价格，但补充条款里我得知道出了问题谁来兜底，这是安全网，不是流程。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉到客户未说出的“安全网”意图，并点破双方对“过法务”的不同解读，建议的话术既破冰又保合作立场。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到客户未说出的“安全网”意图，并点破双方对“过法务”的不同解读，建议的话术既破冰又保合作立场。"
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你提了砍需求、排序、预算三个方案，都被\"砍不了\"挡回来——也许你没注意到，他们每说一次\"砍不了\"，其实是在把压力重新推回给你。协调责任不知不觉就全压在你身上了。\n\n——\n可以试试把球抛回去：\"既然都砍不了，你们俩自己碰一下，给我一个优先级排序，我按这个排。\"",
+      "aggregate": 4.75,
+      "soft": {
+        "insight": 4,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "洞察精准点出压力转移的互动模式，建议巧妙归还责任；但'三个方案都被挡回来'与对话时序略有出入，瑕不掩瑜。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察精准点出压力转移的互动模式，建议巧妙归还责任；但'三个方案都被挡回来'与对话时序略有出入，瑕不掩瑜。"
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你一直在说过程，他在说后果和感受。你试着用周报证明自己做了事，可他可能听到的是\"问题早知道了，却没拦住\"。还有一层你没看到：客户掉了，也许他也顶着压力。你可以先接住这个压力，再谈改进。\n\n——\n下次可以试试说：\"客户掉了我也着急。以后除了周报，我第一时间找您对齐升级路径。\"",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "准确抓住沟通错位，建议共情且具体可行。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "准确抓住沟通错位，建议共情且具体可行。"
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你在讲合同条款，对方在讲承诺落空——你们没在一件事上。\n\n他反复追的不是工期和费用，是那句\"三个月交付\"至今没人认账。你越解释，他越觉得你在把锅甩给合同和销售。\n\n——\n你可以试试说：\"销售承诺三个月却没做到，这事我们先认。能不能给我一点时间拉上销售，一起给你一个明确的补救方案？\"",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准点出客户未被认账的情绪需求，把隐形诉求从工期费用转向承诺落空，建议一步进入合作姿态。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准点出客户未被认账的情绪需求，把隐形诉求从工期费用转向承诺落空，建议一步进入合作姿态。"
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "他说的“想汇总得漂亮一点”，也许不只是拖延——可能是怕东西拿不出手，在你这丢分。你给的体贴是“后天补”，但他听到的是“先交差的”。日子久了，他可能会把“质量”这个词收起来，只在心里自己憋着。\n\n——\n下次可以试试问一句：“你理想的漂亮是什么标准？咱们看看今天能先交个几分的。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉到双方对“体贴”与“交差”的理解错位，把未说出口的担心点透，建议用协商标准的方式打开，既给台阶又留空间。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到双方对“体贴”与“交差”的理解错位，把未说出口的担心点透，建议用协商标准的方式打开，既给台阶又留空间。"
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": null,
+      "aggregate": 1.5,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "应弹未弹"
+        ]
+      },
+      "comment": "对话存在盲区但未弹窗"
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "客户说“实在”时是肯定你，后面半句不是在要你造假，而是在说“我需要你的帮助”。他们内部汇报有压力，想让你从专业角度，帮他们找到数据亮点的呈现方式，而不只是等一个测试结果。\n\n——\n你可以试着这样接：“明白，汇报需要有力的论据。实测之后，我们一起看看哪些指标最能突显优势，怎么合理解读结果。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉到客户“需要好看”背后的求助信号，把潜在的道德压力转换成合作机会，具体且无评判。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到客户“需要好看”背后的求助信号，把潜在的道德压力转换成合作机会，具体且无评判。"
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "他提\"列清单\"的时候，其实已经在找台阶了——不是在逼你答应，而是在问\"有没有能谈的空间\"。\n\n你可能没注意到，合同边界帮你挡住了压力，但也挡掉了一个信号：他要的不是完整报表功能，而是某种出口数据的方式。\n\n你刚才的立场没错，但可以接住这个协商的钩子，把\"守护合同\"变成\"我们可以一起看看怎么置换\"。\n\n——\n下次遇到类似追加，可以试试说：\"如果现有范围里有相对低优先级的，我们可以评估置换。您最想导出哪类数据，我们先看量。\"",
+      "aggregate": 4.5,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "准确捕捉到客户“列清单”是找台阶的协商信号，点出未表达的出口数据需求，建议具体可落地。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "字数 205 超过 200 绝对底线"
+        ]
+      },
+      "comment": "准确捕捉到客户“列清单”是找台阶的协商信号，点出未表达的出口数据需求，建议具体可落地。"
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你守住底线是对的，书面承诺和暂停服务的最后期限都写得很清楚。\n\n你可能没注意到的是，对方说\"不如等一次结清\"——这句话里面藏着他真的想付，只是流程卡住了。他不是在拒绝你，是在用这种方式说\"我会付的\"。\n\n——\n下次再碰到这种情况，你可以试试把话说成这样：\"我理解你需要等老板签字，但我们这边系统是自动锁的，你也不想服务中断对吧？给我一个书面承诺，我帮你把锁解了，咱俩都省心。\"",
+      "aggregate": 3.5,
+      "soft": {
+        "insight": 3,
+        "suggestion": 3,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "洞察善意但略脑补，“真的想付”缺乏确切依据；建议只是换了个柔和说法，未提供新策略。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "字数 183 超过 180 硬合规线"
+        ]
+      },
+      "comment": "洞察善意但略脑补，“真的想付”缺乏确切依据；建议只是换了个柔和说法，未提供新策略。"
+    }
+  ],
+  "summary": {
+    "label": "v1.5.3_candidate",
+    "n_total": 10,
+    "n_valid": 9,
+    "mean_aggregate": 4.425,
+    "soft_means": {
+      "insight": 4.667,
+      "suggestion": 4.778,
+      "non_judgment": 5.0,
+      "language": 5.0
+    },
+    "hard_violations": 3,
+    "popup_rate": 0.9,
+    "quiet_misfires": 0,
+    "quiet_total": 0,
+    "missing_popups": 1,
+    "aggregates": [
+      5.0,
+      5.0,
+      4.75,
+      5.0,
+      5.0,
+      5.0,
+      1.5,
+      5.0,
+      4.5,
+      3.5
+    ],
+    "case_means": {
+      "project_schedule_conflict": 5.0,
+      "sales_pressure_discount": 5.0,
+      "cross_department_resource_fight": 4.75,
+      "project_retrosive_blame": 5.0,
+      "sales_overpromise_complaint": 5.0,
+      "weekly_report_lag": 5.0,
+      "business_negotiation_payment": 1.5,
+      "pre_sales_demo_challenge": 5.0,
+      "scope_creep_no_budget": 4.5,
+      "sales_payment_collection": 3.5
+    }
+  },
+  "kept": true
+}

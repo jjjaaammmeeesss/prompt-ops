@@ -1,0 +1,218 @@
+{
+  "round": 2,
+  "deltas": [
+    0.25,
+    0.4500000000000002,
+    0.0
+  ],
+  "converged": false,
+  "converged_reason": "",
+  "mutation_overrides": "",
+  "tracks": {
+    "v151": {
+      "name": "v1.5.x",
+      "lineage": "v151",
+      "prompt_path": "D:\\prompt-ops\\use-cases\\general-dialogue-popup\\results\\co_evolve\\run_20260729_163350\\round_002\\v1.5.3_candidate.txt",
+      "version": [
+        1,
+        5,
+        3
+      ],
+      "frozen_baseline": {
+        "label": "system_prompt_v1.5.1",
+        "n_total": 10,
+        "n_valid": 7,
+        "mean_aggregate": 3.825,
+        "soft_means": {
+          "insight": 4.571,
+          "suggestion": 4.857,
+          "non_judgment": 5.0,
+          "language": 4.857
+        },
+        "hard_violations": 3,
+        "popup_rate": 0.7,
+        "quiet_misfires": 0,
+        "quiet_total": 0,
+        "missing_popups": 3,
+        "aggregates": [
+          4.25,
+          1.5,
+          4.75,
+          5.0,
+          5.0,
+          5.0,
+          4.75,
+          5.0,
+          1.5,
+          1.5
+        ],
+        "case_means": {
+          "project_schedule_conflict": 4.25,
+          "sales_pressure_discount": 1.5,
+          "cross_department_resource_fight": 4.75,
+          "project_retrosive_blame": 5.0,
+          "sales_overpromise_complaint": 5.0,
+          "weekly_report_lag": 5.0,
+          "business_negotiation_payment": 4.75,
+          "pre_sales_demo_challenge": 5.0,
+          "scope_creep_no_budget": 1.5,
+          "sales_payment_collection": 1.5
+        }
+      },
+      "current_best": {
+        "label": "v1.5.3_candidate",
+        "n_total": 10,
+        "n_valid": 9,
+        "mean_aggregate": 4.425,
+        "soft_means": {
+          "insight": 4.667,
+          "suggestion": 4.778,
+          "non_judgment": 5.0,
+          "language": 5.0
+        },
+        "hard_violations": 3,
+        "popup_rate": 0.9,
+        "quiet_misfires": 0,
+        "quiet_total": 0,
+        "missing_popups": 1,
+        "aggregates": [
+          5.0,
+          5.0,
+          4.75,
+          5.0,
+          5.0,
+          5.0,
+          1.5,
+          5.0,
+          4.5,
+          3.5
+        ],
+        "case_means": {
+          "project_schedule_conflict": 5.0,
+          "sales_pressure_discount": 5.0,
+          "cross_department_resource_fight": 4.75,
+          "project_retrosive_blame": 5.0,
+          "sales_overpromise_complaint": 5.0,
+          "weekly_report_lag": 5.0,
+          "business_negotiation_payment": 1.5,
+          "pre_sales_demo_challenge": 5.0,
+          "scope_creep_no_budget": 4.5,
+          "sales_payment_collection": 3.5
+        }
+      },
+      "history_scores": [
+        3.825,
+        4.55,
+        4.425
+      ],
+      "history_hard_violations": [
+        3,
+        1,
+        3
+      ],
+      "no_improve": 0
+    },
+    "v30": {
+      "name": "v3.x",
+      "lineage": "v30",
+      "prompt_path": "D:\\prompt-ops\\use-cases\\general-dialogue-popup\\results\\co_evolve\\run_20260729_163350\\round_002\\v3.2_candidate.txt",
+      "version": [
+        3,
+        2
+      ],
+      "frozen_baseline": {
+        "label": "system_prompt_v3.0",
+        "n_total": 10,
+        "n_valid": 10,
+        "mean_aggregate": 4.075,
+        "soft_means": {
+          "insight": 4.7,
+          "suggestion": 4.8,
+          "non_judgment": 5.0,
+          "language": 4.8
+        },
+        "hard_violations": 15,
+        "popup_rate": 1.0,
+        "quiet_misfires": 0,
+        "quiet_total": 0,
+        "missing_popups": 0,
+        "aggregates": [
+          4.0,
+          3.75,
+          4.5,
+          3.75,
+          4.25,
+          4.5,
+          3.5,
+          4.0,
+          4.0,
+          4.5
+        ],
+        "case_means": {
+          "project_schedule_conflict": 4.0,
+          "sales_pressure_discount": 3.75,
+          "cross_department_resource_fight": 4.5,
+          "project_retrosive_blame": 3.75,
+          "sales_overpromise_complaint": 4.25,
+          "weekly_report_lag": 4.5,
+          "business_negotiation_payment": 3.5,
+          "pre_sales_demo_challenge": 4.0,
+          "scope_creep_no_budget": 4.0,
+          "sales_payment_collection": 4.5
+        }
+      },
+      "current_best": {
+        "label": "v3.2_candidate",
+        "n_total": 10,
+        "n_valid": 10,
+        "mean_aggregate": 4.425,
+        "soft_means": {
+          "insight": 4.9,
+          "suggestion": 3.7,
+          "non_judgment": 5.0,
+          "language": 4.9
+        },
+        "hard_violations": 4,
+        "popup_rate": 1.0,
+        "quiet_misfires": 0,
+        "quiet_total": 0,
+        "missing_popups": 0,
+        "aggregates": [
+          5.0,
+          5.0,
+          3.5,
+          5.0,
+          5.0,
+          5.0,
+          4.5,
+          3.5,
+          4.5,
+          3.25
+        ],
+        "case_means": {
+          "project_schedule_conflict": 5.0,
+          "sales_pressure_discount": 5.0,
+          "cross_department_resource_fight": 3.5,
+          "project_retrosive_blame": 5.0,
+          "sales_overpromise_complaint": 5.0,
+          "weekly_report_lag": 5.0,
+          "business_negotiation_payment": 4.5,
+          "pre_sales_demo_challenge": 3.5,
+          "scope_creep_no_budget": 4.5,
+          "sales_payment_collection": 3.25
+        }
+      },
+      "history_scores": [
+        4.075,
+        4.1,
+        4.425
+      ],
+      "history_hard_violations": [
+        15,
+        6,
+        4
+      ],
+      "no_improve": 0
+    }
+  }
+}
