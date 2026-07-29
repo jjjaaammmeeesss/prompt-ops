@@ -1,0 +1,43 @@
+{
+  "round": 4,
+  "severity": "anomaly",
+  "checks": {
+    "progress": {
+      "pass": true,
+      "detail": "提升: v151, v30"
+    },
+    "mutation_health": {
+      "pass": true,
+      "detail": "变异均通过"
+    },
+    "cross_learning": {
+      "pass": true,
+      "detail": "找到 8 个有意义差异"
+    },
+    "hard_rule_trend": {
+      "pass": false,
+      "detail": "违规上升: v151: 0→1; v30: 5→6"
+    },
+    "degradation": {
+      "pass": true,
+      "detail": "均高于冻结基线"
+    },
+    "convergence_trend": {
+      "pass": false,
+      "detail": "delta 扩大 (0.000→0.600)"
+    },
+    "judge_consistency": {
+      "pass": true,
+      "detail": "评判一致性正常"
+    }
+  },
+  "anomalies": [
+    "违规上升: v151: 0→1; v30: 5→6",
+    "delta 扩大 (0.000→0.600)"
+  ],
+  "trends": {
+    "delta": "delta 扩大 (0.000→0.600)"
+  },
+  "escalation_needed": false,
+  "escalation_reason": ""
+}
