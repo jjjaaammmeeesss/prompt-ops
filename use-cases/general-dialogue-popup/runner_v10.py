@@ -27,6 +27,7 @@ import json
 import logging
 import os
 import sys
+import re
 import time
 from pathlib import Path
 from typing import Optional
@@ -262,6 +263,21 @@ class V10Runner:
                 return f"keyword:critical:{kw}"
         return None
 
+    def _match_pattern(self, text: str) -> str | None:
+        """逐类检查 warning 级正则句式；仅匹配当前句。
+
+        基于《关键对话》沉默/暴力框架，捕获结构性破坏句式：
+        stealth_but（假性认同）、masking（沉默面具）、
+        helpless_story（无助叙事）、controlling（绝对化控制）。
+        """
+        for category, patterns in self._keywords.get("patterns", {}).items():
+            if category == "_note":
+                continue
+            for pattern in patterns:
+                if pattern and re.search(pattern, text):
+                    return f"pattern:warning:{category}:{pattern}"
+        return None
+
     def _match_warning(self, text: str) -> str | None:
         """检查是否命中 warning 关键词。"""
         for kw in self._keywords["warning"]:
@@ -270,12 +286,14 @@ class V10Runner:
         return None
 
     def _chunk_windows(self, windows: list[TestWindow]) -> list[tuple[str, list[int], str]]:
-        """切窗并触发关键词提前分析。
+        """切窗并触发关键词/句式提前分析。
 
-        规则：
-          - 正常窗口：无关键词时按 ~window_size 切窗
-          - critical：命中即触发；向前取最多 300 字，最少 80 字上下文
-          - warning：命中后进入预触发；向前取 250 字，再向后等 50 字
+        规则（优先级从高到低）：
+          - critical keyword：最高优先级，沿用 critical 上下文策略（前 300 后补足 80）
+          - warning pattern：逐句 re.search 正则句式匹配；命中后跳过 warning keyword
+          - warning keyword：仅在 critical/pattern 均未命中时检查
+          - pattern 与 warning keyword 均向前取 250 字、再向后等 50 字
+          - 正常窗口：无触发时按 ~window_size 切窗
 
         Returns:
             list of (chunk_text, [window_indices], trigger)
@@ -323,7 +341,9 @@ class V10Runner:
         while i < n:
             sentence, _ = sentences[i]
             crit = self._match_critical(sentence)
-            warn = self._match_warning(sentence) if not crit else None
+            pattern = self._match_pattern(sentence) if not crit else None
+            warn = self._match_warning(sentence) if not crit and not pattern else None
+            warning_trigger = pattern or warn
 
             if crit:
                 # critical：向前最多 300，最少总上下文 80
@@ -340,18 +360,17 @@ class V10Runner:
                 i = end + 1
                 continue
 
-            if warn:
-                # warning：向前 250，向后等 50
+            if warning_trigger:
+                # pattern / warning：向前 250，向后等 50
                 start = find_start(i, self.warning_backward_chars, last_end)
                 end = i
-                # 先保证向后有 50 字
                 after = 0
                 while end + 1 < n and after < self.warning_forward_chars:
                     end += 1
                     after += lengths[end]
                 chunk_text = "\n".join(s for s, _ in sentences[start:end + 1])
                 chunk_indices = [idx for _, idx in sentences[start:end + 1]]
-                chunks.append((chunk_text, chunk_indices, warn))
+                chunks.append((chunk_text, chunk_indices, warning_trigger))
                 last_end = end
                 i = end + 1
                 continue
