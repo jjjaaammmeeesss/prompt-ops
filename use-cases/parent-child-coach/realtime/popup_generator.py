@@ -98,7 +98,9 @@ class PopupGenerator:
 
         candidates = []
         if path:
-            candidates.append(Path(path))
+            # 先尝试从 realtime/ 目录解析（config.yaml 中的相对路径以此为基础）
+            candidates.append((realtime_dir / path).resolve())
+            candidates.append(Path(path).resolve())
         candidates.extend([
             realtime_dir / ".." / "system_prompt_v4.0.txt",
             realtime_dir / ".." / "system_prompt_v2.3.txt",
