@@ -26,6 +26,7 @@ from .output_schemas import (
     ZhouYiState,
     Popup,
     TriggerEvent,
+    risk_rank,
 )
 from .zhouyi_analyzer import ZhouYiAnalyzer
 from .popup_generator import PopupGenerator
@@ -245,6 +246,9 @@ class DebounceGate:
     """防止弹窗过频。基于卦象变化、时间间隔和历史状态做决策。
 
     规则：
+    0. context-drift 放行（v4.0.14 新增，优先级最高）：
+       risk_level 较上次弹窗升高 ≥1 级，或卦象转向兑/乾/巽
+       → 强制放行并采用 diagnostic tone（修复 C-03：冲突升级被 debounce 吞掉）
     1. 卦象变化 → 弹（有新信息）
     2. 卦象不变但超过冷却时间 + 重复次数未达上限 → 弹
     3. 风险等级变为 high → 强制弹（越过冷却）
@@ -254,6 +258,9 @@ class DebounceGate:
     DEFAULT_COOLDOWN_SECONDS = 15.0
     DEFAULT_SAME_STATE_MAX_REPEATS = 2
     DEFAULT_ABSOLUTE_MIN_INTERVAL = 5.0
+
+    # context-drift 放行的目标卦象（冲突/能量升级信号）
+    DRIFT_RELEASE_TRIGRAMS = (Trigram.DUI, Trigram.QIAN, Trigram.XUN)
 
     def __init__(
         self,
@@ -282,6 +289,7 @@ class DebounceGate:
         self._last_popup_time: float = 0.0
         self._last_shown_trigram: Optional[Trigram] = None
         self._last_shown_tone: Optional[PopupTone] = None
+        self._last_shown_risk_level: Optional[str] = None
         self._trigram_repeat_count: int = 0
         self._popup_history: List[Popup] = []
 
@@ -299,6 +307,32 @@ class DebounceGate:
         if now is None:
             now = time.time()
 
+        # 规则0: context-drift 放行（v4.0.14，越过绝对最小间隔与冷却）
+        # 冲突升级信号必须弹——debounce 的本职是防重复，不是压制升级
+        if self._last_shown_trigram is not None:
+            risk_escalated = (
+                risk_rank(state.risk_level)
+                >= risk_rank(self._last_shown_risk_level or "低") + 1
+            )
+            drift_to_conflict = (
+                state.trigram in self.DRIFT_RELEASE_TRIGRAMS
+                and state.trigram != self._last_shown_trigram
+            )
+            if risk_escalated or drift_to_conflict:
+                # 升级场景强制 diagnostic tone（修复 C-03 FC_TONE_OFF）
+                old_risk = self._last_shown_risk_level
+                state.suggested_tone = PopupTone.DIAGNOSTIC
+                self._update_state(state, now)
+                if risk_escalated:
+                    return True, (
+                        f"context drift 放行: 风险升级 "
+                        f"{old_risk} → {state.risk_level}"
+                    )
+                return True, (
+                    f"context drift 放行: 卦象转向 "
+                    f"{state.trigram.chinese_name}（兑/乾/巽）"
+                )
+
         # 绝对最小间隔检查
         if self._last_popup_time > 0:
             elapsed = now - self._last_popup_time
@@ -306,7 +340,7 @@ class DebounceGate:
                 return False, f"绝对最小间隔未到 ({elapsed:.1f}s < {self.absolute_min_interval}s)"
 
         # 风险升级 → 强制弹
-        if state.risk_level == "high" and self._last_shown_trigram is not None:
+        if risk_rank(state.risk_level) >= 2 and self._last_shown_trigram is not None:
             if elapsed >= self.absolute_min_interval:
                 self._update_state(state, now)
                 return True, "高风险升级，强制弹窗"
@@ -346,6 +380,7 @@ class DebounceGate:
         self._last_popup_time = now
         self._last_shown_trigram = state.trigram
         self._last_shown_tone = state.suggested_tone
+        self._last_shown_risk_level = state.risk_level
 
     def record_popup(self, popup: Popup):
         """记录已展示的弹窗。"""
@@ -363,6 +398,7 @@ class DebounceGate:
         self._last_popup_time = 0.0
         self._last_shown_trigram = None
         self._last_shown_tone = None
+        self._last_shown_risk_level = None
         self._trigram_repeat_count = 0
         self._popup_history = []
 
@@ -405,6 +441,7 @@ class StreamOrchestrator:
         absolute_min_interval: float = 5.0,
         window_size: int = 3000,
         lookback: int = 500,
+        stable_block_enabled: bool = True,
     ):
         """初始化编排器。
 
@@ -421,6 +458,9 @@ class StreamOrchestrator:
             absolute_min_interval: 任意两个弹窗之间的绝对最小间隔
             window_size: 分析窗口大小
             lookback: 窗口回看字符数
+            stable_block_enabled: P0 硬拦截开关（v4.0.14）——
+                ZhouYi 判定 risk_level=低 + 坤卦 + container_status=不适用
+                时一律不弹窗（修复 B-01/B-02/A-01 日常/优秀对话误触发）
         """
         self.analyzer = analyzer
         self.generator = generator
@@ -439,6 +479,9 @@ class StreamOrchestrator:
             same_state_max_repeats=same_state_max_repeats,
             absolute_min_interval=absolute_min_interval,
         )
+
+        # P0 硬拦截开关（v4.0.14）
+        self.stable_block_enabled = stable_block_enabled
 
         # 运行时状态
         self._analysis_count: int = 0
@@ -493,7 +536,25 @@ class StreamOrchestrator:
             f"tone={zhouyi_state.suggested_tone.value}"
         )
 
-        # 4. 去抖检查
+        # 4. P0 硬拦截（v4.0.14）：低风险 + 坤卦（纯稳态）+ 容器不适用
+        #    = 日常/稳定承载对话，无冲突无教育契机，一律不弹窗。
+        #    依据：REN-42 裁判诊断 — B-01/B-02/A-01 的 ZhouYi 终态均为
+        #    「坤·稳定承载型·risk_level=低」，系统已正确识别无冲突，
+        #    但触发门仍放行弹窗（FC_UNSUPPORTED）。
+        if (
+            self.stable_block_enabled
+            and zhouyi_state.risk_level == "低"
+            and zhouyi_state.trigram == Trigram.KUN
+            and zhouyi_state.container_status == "不适用"
+        ):
+            self._suppressed_count += 1
+            logger.info(
+                "Popup suppressed: P0 硬拦截 "
+                "(risk=低 + 坤 + 容器不适用，稳态日常对话)"
+            )
+            return None
+
+        # 5. 去抖检查
         should_show, reason = self.debounce.should_show(zhouyi_state)
 
         if not should_show:
@@ -501,7 +562,7 @@ class StreamOrchestrator:
             logger.info(f"Popup suppressed: {reason}")
             return None
 
-        # 5. Stage 2: 生成弹窗
+        # 6. Stage 2: 生成弹窗
         self._popup_count += 1
         popup = self.generator.generate(
             dialogue_window=window,
@@ -509,7 +570,14 @@ class StreamOrchestrator:
             previous_popups=self.debounce.popup_history,
         )
 
-        # 6. 记录和输出
+        # 6b. 生成自检未通过（如 P2 鼓励式缺少 repair phrase）→ 不弹
+        if not popup.should_popup:
+            self._popup_count -= 1
+            self._suppressed_count += 1
+            logger.info("Popup suppressed: 生成自检未通过（should_popup=False）")
+            return None
+
+        # 7. 记录和输出
         self.debounce.record_popup(popup)
 
         logger.info(

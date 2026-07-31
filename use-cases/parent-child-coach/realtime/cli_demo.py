@@ -368,6 +368,9 @@ def main(
         same_state_max_repeats=debounce_cfg.get("same_state_max_repeats", 2),
         window_size=buffer_cfg.get("window_size", 3000),
         lookback=buffer_cfg.get("lookback", 500),
+        stable_block_enabled=config.get("daily_conversation_skip", {}).get(
+            "enabled", True
+        ),
     )
 
     display = DemoDisplay()

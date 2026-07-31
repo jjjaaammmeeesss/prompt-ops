@@ -5,6 +5,13 @@
 # - cooldown: 15→30s, max_repeats: 2→1 — 重复弹出修复（A2）
 # - 新增 semantic_dedup — 语义去重加强
 # - system_prompt_path → v4.0.13
+# v4.0.14 修正（2026-07-31，REN-42 残留问题）:
+# - P0: 触发门硬拦截 risk=低 + 坤 + 容器不适用（由 daily_conversation_skip.enabled 控制）
+#       — 修复 B-01/B-02/A-01 误触发（FC_UNSUPPORTED）
+# - P1: DebounceGate context-drift 放行——risk_level 升高 ≥1 级或卦象转向兑/乾/巽
+#       时强制放行并采用 diagnostic tone — 修复 C-03（FC_MISS_CTX + FC_TONE_OFF）
+# - P2: 鼓励式弹窗强制 ≥1 句 parent-quotable repair phrase（代码级校验+重试）
+# - system_prompt_path → v4.0.14
 
 # Stage 1: 周易三爻分析器（快速/便宜模型）
 analyzer:
@@ -18,7 +25,7 @@ generator:
   model: "deepseek/deepseek-chat"
   temperature: 0.3
   max_tokens: 640
-  system_prompt_path: "../system_prompt_v4.0.13.txt"
+  system_prompt_path: "../system_prompt_v4.0.14.txt"
 
 # 触发引擎配置
 trigger:

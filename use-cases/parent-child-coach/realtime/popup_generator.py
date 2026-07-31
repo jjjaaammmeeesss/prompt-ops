@@ -2,10 +2,15 @@
 
 加载现有系统提示词，融入周易八卦分析上下文，
 生成诊断式（100-200字）或鼓励式（30-60字）弹窗内容。
+
+v4.0.14 变更（P2）:
+- 鼓励式弹窗同样强制「至少 1 句 parent-quotable repair phrase」，
+  首次生成缺失时自动重试一次，仍缺失则该弹窗不通过（should_popup=False）。
 """
 
 import logging
 import os
+import re
 import time
 from pathlib import Path
 from typing import List, Optional
@@ -14,6 +19,7 @@ from .output_schemas import (
     PopupTone,
     ZhouYiState,
     Popup,
+    risk_rank,
 )
 logger = logging.getLogger("prompt_ops.realtime.popup_generator")
 
@@ -41,6 +47,23 @@ DIAGNOSTIC_MIN_CHARS = 80
 DIAGNOSTIC_MAX_CHARS = 200
 ENCOURAGING_MIN_CHARS = 20
 ENCOURAGING_MAX_CHARS = 80
+
+# === P2: parent-quotable repair phrase 检测（v4.0.14 新增） ===
+# 引号内 ≥4 字的完整话术视为"家长可直接引用的话"，
+# 兼容中文引号「」『』“”与英文引号 ""。
+_QUOTABLE_PHRASE_RE = re.compile(r'[「『“"]([^」』”"]{4,})[」』”"]')
+
+# 重试时的强化指令
+_REPAIR_PHRASE_RETRY_INSTRUCTION = (
+    "⚠️ 上一次输出不合格：缺少家长可直接引用的话术。"
+    "必须重新生成，并在弹窗末尾以「你可以这样说：\"……\"」的形式"
+    "给出至少一句家长能脱口说出的完整话术（引号内为实际措辞）。"
+)
+
+
+def has_quotable_phrase(text: str) -> bool:
+    """检测文本中是否含至少一句引号内的可直接引用话术（≥4字）。"""
+    return bool(_QUOTABLE_PHRASE_RE.search(text or ""))
 
 
 class PopupGenerator:
@@ -163,6 +186,29 @@ class PopupGenerator:
         try:
             raw_text = self._call_llm(dialogue_window, zhouyi_state, tone)
             popup = self._parse_popup_output(raw_text, tone, zhouyi_state)
+
+            # P2（v4.0.14）：鼓励式弹窗强制含 ≥1 句 parent-quotable
+            # repair phrase，缺失则重试一次，仍缺失则该弹窗不通过。
+            if (
+                popup.tone == PopupTone.ENCOURAGING
+                and not has_quotable_phrase(popup.full_text)
+            ):
+                logger.warning(
+                    "Encouraging popup missing quotable repair phrase; retrying once"
+                )
+                raw_text = self._call_llm(
+                    dialogue_window, zhouyi_state, tone,
+                    extra_instruction=_REPAIR_PHRASE_RETRY_INSTRUCTION,
+                )
+                popup = self._parse_popup_output(raw_text, tone, zhouyi_state)
+                if not has_quotable_phrase(popup.full_text):
+                    logger.warning(
+                        "Encouraging popup still missing quotable repair phrase "
+                        "after retry; rejecting popup (P2)"
+                    )
+                    popup.should_popup = False
+                    return popup
+
             logger.info(
                 f"Generated {popup.tone.value} popup ({popup.char_count} chars): "
                 f"{popup.popup_insight[:60]}..."
@@ -178,6 +224,7 @@ class PopupGenerator:
         dialogue: str,
         zhouyi_state: ZhouYiState,
         tone: PopupTone,
+        extra_instruction: str = None,
     ) -> list:
         """构建 LLM 消息列表。
 
@@ -208,12 +255,15 @@ class PopupGenerator:
             type_instruction = (
                 f"请生成**鼓励式弹窗**（{ENCOURAGING_MIN_CHARS}-{ENCOURAGING_MAX_CHARS}字）。"
                 "必须：具体点出家长刚展现的积极模式 → 简短有力。"
+                "必须包含至少一句家长可直接引用的话术"
+                "（以「你可以这样说：\"……\"」形式给出，引号内为实际措辞）。"
             )
 
         user_content = f"""当前对话：
 {dialogue}
 
 {type_instruction}
+{extra_instruction or ""}
 
 请直接输出弹窗全文（不附加解释、不输出JSON、不输出"弹窗："等前缀）："""
 
@@ -227,9 +277,12 @@ class PopupGenerator:
         dialogue: str,
         zhouyi_state: ZhouYiState,
         tone: PopupTone,
+        extra_instruction: str = None,
     ) -> str:
         """调用 LLM 生成弹窗文本。"""
-        messages = self._build_messages(dialogue, zhouyi_state, tone)
+        messages = self._build_messages(
+            dialogue, zhouyi_state, tone, extra_instruction=extra_instruction
+        )
 
         start = time.time()
 
@@ -314,7 +367,7 @@ class PopupGenerator:
         trigram_name = zhouyi_state.trigram.chinese_name
         pattern = zhouyi_state.trigram.yao_pattern
 
-        if zhouyi_state.risk_level == "high":
+        if risk_rank(zhouyi_state.risk_level) >= 2:
             insight = (
                 f"这一刻，对话的能量很高。"
                 f"你不一定做错了什么——但继续下去，可能两败俱伤。"
