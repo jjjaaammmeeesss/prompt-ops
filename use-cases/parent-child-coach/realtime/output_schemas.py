@@ -63,6 +63,23 @@ class PopupTone(str, Enum):
     ENCOURAGING = "encouraging"  # 鼓励式（30-60字）：肯定正向时刻
 
 
+# === 风险等级排序（v4.0.14 新增，供 P0 硬拦截 / P1 context-drift 放行使用） ===
+# LLM 输出为中文（低/中/高），历史代码路径可能产出英文（low/medium/high），统一兼容。
+RISK_ORDER = {
+    "低": 0, "low": 0,
+    "中": 1, "medium": 1,
+    "高": 2, "high": 2,
+}
+
+
+def risk_rank(level: str) -> int:
+    """将风险等级字符串映射为可比较的整数（低=0 / 中=1 / 高=2）。
+
+    未识别的等级保守按 0 处理。
+    """
+    return RISK_ORDER.get(str(level).strip(), 0)
+
+
 @dataclass
 class ZhouYiState:
     """Stage 1 输出：周易八卦状态分类结果。

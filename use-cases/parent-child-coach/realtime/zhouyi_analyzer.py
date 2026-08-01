@@ -275,6 +275,12 @@ class ZhouYiAnalyzer:
         # 钳制 confidence
         state.confidence = max(0.0, min(1.0, state.confidence))
 
+        # 统一风险等级为中文（v4.0.14：消除中英文混用导致的门控失效）
+        _risk_normalize = {"low": "低", "medium": "中", "high": "高"}
+        state.risk_level = _risk_normalize.get(
+            str(state.risk_level).strip().lower(), state.risk_level
+        )
+
         # 纯稳态坤卦时修正容器判定
         if state.is_stable:
             if state.container_status in ("有容器", "无容器"):
@@ -283,7 +289,7 @@ class ZhouYiAnalyzer:
         # 乾卦确保有容器判定
         if state.is_full_release and state.container_status == "不适用":
             state.container_status = "无容器"  # 默认保守判定
-            state.risk_level = "high"
+            state.risk_level = "高"
 
         return state
 

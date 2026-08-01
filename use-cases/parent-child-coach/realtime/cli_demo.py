@@ -355,6 +355,7 @@ def main(
         system_prompt_path=generator_cfg.get("system_prompt_path"),
         temperature=generator_cfg.get("temperature", 0.3),
         max_tokens=generator_cfg.get("max_tokens", 640),
+        dedup_config=config.get("dedup", {}),
     )
 
     orchestrator = StreamOrchestrator(
@@ -368,6 +369,9 @@ def main(
         same_state_max_repeats=debounce_cfg.get("same_state_max_repeats", 2),
         window_size=buffer_cfg.get("window_size", 3000),
         lookback=buffer_cfg.get("lookback", 500),
+        stable_block_enabled=config.get("daily_conversation_skip", {}).get(
+            "enabled", True
+        ),
     )
 
     display = DemoDisplay()
