@@ -355,6 +355,7 @@ def main(
         system_prompt_path=generator_cfg.get("system_prompt_path"),
         temperature=generator_cfg.get("temperature", 0.3),
         max_tokens=generator_cfg.get("max_tokens", 640),
+        dedup_config=config.get("dedup", {}),
     )
 
     orchestrator = StreamOrchestrator(

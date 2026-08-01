@@ -12,6 +12,22 @@
 #       时强制放行并采用 diagnostic tone — 修复 C-03（FC_MISS_CTX + FC_TONE_OFF）
 # - P2: 鼓励式弹窗强制 ≥1 句 parent-quotable repair phrase（代码级校验+重试）
 # - system_prompt_path → v4.0.14
+# v4.0.15 修正（2026-08-01，REN-50 三项 dominant FC 闭环）:
+# - FC_MISS_CTX: daily_conversation_skip 增加 child_distress_exemption — 孩子困扰信号命中时不豁免
+#   （Stage 1 同步修正：风险提至中、不输出"不弹窗"）
+# - FC_TONE_OFF: 提示词层新增「家长行为 tone override」（催促/打断/贴标签/命令/轻度贬低→强制诊断式，
+#   冻结 tone 灵活覆盖），优先级低于安全路由、高于卦象 tone
+# - FC_STALE: dedup.semantic_similarity_threshold 0.85→0.70 — 原 0.85 漏过 0.79–0.84 的语义雷同弹窗
+# - system_prompt_path → v4.0.15
+# v4.0.16 修正（2026-08-01，REN-50 两项接线失效修复）:
+# - FC_TONE_OFF 代码层闭环: popup_generator.generate() 调 LLM 前扫描 dialogue_window，
+#   命中家长行为 override 关键词时强制 tone=DIAGNOSTIC（v4.0.15 仅 prompt 层规则，
+#   但 tone 在 _build_messages 中已固化，LLM 无权改 tone → 规则从未执行）
+# - FC_STALE 代码层闭环: popup_generator.generate() 返回前与 previous_popups 做语义相似度
+#   比对（difflib SequenceMatcher），超过阈值则拒绝弹窗（v4.0.15 config 有 dedup 段但
+#   无代码读取，previous_popups 参数收了但没用）
+# - dedup 配置通过 cli_demo.py 传入 PopupGenerator（dedup_config 参数）
+# - system_prompt_path → v4.0.16
 
 # Stage 1: 周易三爻分析器（快速/便宜模型）
 analyzer:
@@ -25,7 +41,7 @@ generator:
   model: "deepseek/deepseek-chat"
   temperature: 0.3
   max_tokens: 640
-  system_prompt_path: "../system_prompt_v4.0.14.txt"
+  system_prompt_path: "../system_prompt_v4.0.16.txt"
 
 # 触发引擎配置
 trigger:
@@ -41,18 +57,26 @@ debounce:
   same_state_max_repeats: 1   # 相同卦象最多连续弹窗次数（v4.0.13: 2→1）
   absolute_min_interval: 10.0 # 任意弹窗绝对最小间隔秒数（v4.0.13: 5→10s）
 
-# 语义去重配置（v4.0.13 新增）
+# 语义去重配置（v4.0.13 新增，v4.0.15 调阈值 FC_STALE 闭环）
 dedup:
-  semantic_similarity_threshold: 0.85  # 语义相似度阈值（>此值视为重复，不弹窗）
+  semantic_similarity_threshold: 0.70  # v4.0.15: 0.85→0.70（原值漏过 0.79–0.84 的语义雷同弹窗，FC_STALE）
   history_window: 5                    # 保留最近 N 次弹窗内容做语义去重
   enabled: true                        # 是否启用语义去重
 
-# 日常对话豁免配置（v4.0.13 新增）
+# 日常对话豁免配置（v4.0.13 新增，v4.0.15 增加 child_distress_exemption FC_MISS_CTX 闭环）
 daily_conversation_skip:
   enabled: true                        # 是否启用日常对话豁免
   max_risk_level: "低"                 # 风险≤此级别且无明显冲突信号时跳过
   skip_keywords: ["几点", "到了", "吃", "睡", "作业", "电视", "手机没电", "钥匙", "等"]  # 日常中性关键词
   force_check_required: true           # 触发前必须检查是否应豁免
+  # v4.0.15 新增：孩子困扰信号豁免例外（命中则不豁免，风险提至中）
+  child_distress_exemption:
+    enabled: true
+    distress_signals: ["他们笑我", "没人跟我玩", "我不敢去", "疼", "肚子不舒服", "我睡不着",
+                        "我笨", "学不会", "做不好", "说我傻",
+                        "没什么", "算了不说了", "我不敢告诉你",
+                        "怎么办", "会不会不要我", "还会爱我吗"]
+    on_match: "skip_exemption"         # 命中时取消豁免，强制进入弹窗流程
 
 # 文本缓冲配置
 buffer:

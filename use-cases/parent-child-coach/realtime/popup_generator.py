@@ -6,8 +6,18 @@
 v4.0.14 变更（P2）:
 - 鼓励式弹窗同样强制「至少 1 句 parent-quotable repair phrase」，
   首次生成缺失时自动重试一次，仍缺失则该弹窗不通过（should_popup=False）。
+
+v4.0.16 变更（FC_TONE_OFF + FC_STALE 代码层闭环）:
+- FC_TONE_OFF: generate() 调 LLM 前扫描 dialogue_window，若命中家长行为
+  override 关键词（催促/打断、评判贴标签、命令单向权力、轻度贬低），
+  强制 tone=DIAGNOSTIC，冻结 tone 灵活覆盖。
+- FC_STALE: generate() 返回前与 previous_popups 做语义相似度比对，
+  超过阈值（默认 0.70）则拒绝弹窗（should_popup=False），避免跨窗口复读。
+- PopupGenerator.__init__ 新增 dedup_config 参数，由 cli_demo 从
+  config.yaml 的 dedup 段读入。
 """
 
+import difflib
 import logging
 import os
 import re
@@ -66,6 +76,64 @@ def has_quotable_phrase(text: str) -> bool:
     return bool(_QUOTABLE_PHRASE_RE.search(text or ""))
 
 
+# === v4.0.16: 家长行为 tone override（FC_TONE_OFF 代码层闭环） ===
+# 与 system_prompt_v4.0.16+ §「家长行为 tone override」对齐。
+# 命中任一类别即强制 DIAGNOSTIC，冻结 tone 灵活覆盖。
+# 优先级：安全路由（DebounceGate context-drift）> 本规则 > 卦象 tone > tone 灵活覆盖。
+PARENT_OVERRIDE_KEYWORDS = {
+    "催促/打断": [
+        "快点", "快一点", "别说了", "行了行了", "行了我知道",
+        "别废话", "闭嘴", "你能不能快点", "动作快", "抓紧时间",
+        "你快点", "少啰嗦", "有完没完",
+    ],
+    "评判贴标签": [
+        "你就是磨蹭", "你太敏感", "你这个人就是", "你就是个",
+        "你太矫情", "你就是太", "矫情", "你就是故意", "你总是",
+        "你每次都", "你就是不上心",
+    ],
+    "命令单向权力": [
+        "我让你做你就做", "少废话", "按我说的", "我让你",
+        "没有为什么", "我说了算", "听我的", "不许顶嘴",
+        "你少跟我", "我是你妈", "我是你爸", "照我说的做",
+    ],
+    "轻度贬低/否定情绪": [
+        "这有什么好哭", "至于吗", "想太多", "无理取闹",
+        "小题大做", "娇气", "这有什么", "有什么好哭",
+        "别那么娇", "你至于", "哭什么哭", "有什么好闹",
+    ],
+}
+
+
+def detect_parent_override(dialogue: str) -> Optional[str]:
+    """扫描对话文本，若命中家长行为 tone override 关键词，返回命中的类别名。
+
+    与 prompt 层「家长行为 tone override」规则对齐——代码层作为硬约束兜底，
+    防止 LLM 在 tone 灵活覆盖判定中误将含单向权力行为的对话切为鼓励式。
+
+    Returns:
+        命中的类别名（如 "催促/打断"），或 None。
+    """
+    if not dialogue:
+        return None
+    for category, keywords in PARENT_OVERRIDE_KEYWORDS.items():
+        for kw in keywords:
+            if kw in dialogue:
+                return category
+    return None
+
+
+# === v4.0.16: 跨窗口语义去重（FC_STALE 代码层闭环） ===
+def semantic_similarity(a: str, b: str) -> float:
+    """计算两段文本的相似度（difflib SequenceMatcher ratio）。
+
+    与 prompt 层「跨窗口语义去重自检」对齐——代码层作为硬约束兜底，
+    在 LLM 仍输出高相似度弹窗时拒绝展示。
+    """
+    if not a or not b:
+        return 0.0
+    return difflib.SequenceMatcher(None, a, b).ratio()
+
+
 class PopupGenerator:
     """Stage 2：弹窗内容生成器。
 
@@ -88,6 +156,7 @@ class PopupGenerator:
         system_prompt_path: str = None,
         temperature: float = None,
         max_tokens: int = None,
+        dedup_config: dict = None,
     ):
         """初始化弹窗生成器。
 
@@ -96,10 +165,18 @@ class PopupGenerator:
             system_prompt_path: 现有系统提示词文件路径
             temperature: LLM 温度
             max_tokens: 最大输出 token
+            dedup_config: 跨窗口语义去重配置（v4.0.16），含
+                enabled / semantic_similarity_threshold / history_window
         """
         self.model = model_adapter
         self.temperature = temperature or self.DEFAULT_TEMPERATURE
         self.max_tokens = max_tokens or self.DEFAULT_MAX_TOKENS
+
+        # v4.0.16: 跨窗口语义去重配置（FC_STALE 代码层闭环）
+        _dedup = dedup_config or {}
+        self.dedup_enabled = _dedup.get("enabled", True)
+        self.dedup_threshold = _dedup.get("semantic_similarity_threshold", 0.70)
+        self.dedup_history_window = _dedup.get("history_window", 5)
 
         # 加载系统提示词
         self.system_prompt = self._load_system_prompt(system_prompt_path)
@@ -183,6 +260,18 @@ class PopupGenerator:
         """
         tone = zhouyi_state.suggested_tone
 
+        # v4.0.16: 家长行为 tone override（FC_TONE_OFF 代码层闭环）
+        # 在调 LLM 前固定 tone——prompt 层的 override 规则因 tone 已在
+        # _build_messages 中固化进 type_instruction，LLM 无权改 tone，
+        # 故必须在代码层先做覆盖。
+        override_reason = detect_parent_override(dialogue_window)
+        if override_reason and tone == PopupTone.ENCOURAGING:
+            logger.info(
+                f"FC_TONE_OFF override: 命中「{override_reason}」，"
+                f"强制 diagnostic（原 suggested_tone=encouraging）"
+            )
+            tone = PopupTone.DIAGNOSTIC
+
         try:
             raw_text = self._call_llm(dialogue_window, zhouyi_state, tone)
             popup = self._parse_popup_output(raw_text, tone, zhouyi_state)
@@ -208,6 +297,25 @@ class PopupGenerator:
                     )
                     popup.should_popup = False
                     return popup
+
+            # v4.0.16: 跨窗口语义去重（FC_STALE 代码层闭环）
+            # 与本次会话最近 N 条弹窗比对相似度，超过阈值则拒绝展示。
+            if (
+                self.dedup_enabled
+                and previous_popups
+                and popup.should_popup
+            ):
+                recent = previous_popups[-self.dedup_history_window:]
+                for idx, prev in enumerate(recent):
+                    sim = semantic_similarity(popup.full_text, prev.full_text)
+                    if sim >= self.dedup_threshold:
+                        logger.warning(
+                            f"FC_STALE dedup: 与最近第 {len(recent) - idx} 条弹窗"
+                            f"相似度 {sim:.2f} ≥ {self.dedup_threshold}，"
+                            f"拒绝弹窗（避免复读）"
+                        )
+                        popup.should_popup = False
+                        return popup
 
             logger.info(
                 f"Generated {popup.tone.value} popup ({popup.char_count} chars): "
