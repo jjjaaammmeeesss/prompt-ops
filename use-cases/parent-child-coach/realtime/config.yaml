@@ -28,6 +28,11 @@
 #   无代码读取，previous_popups 参数收了但没用）
 # - dedup 配置通过 cli_demo.py 传入 PopupGenerator（dedup_config 参数）
 # - system_prompt_path → v4.0.16
+# v4.0.17 修正（2026-08-02，内部术语外溢修复）:
+# - 鼓励式弹窗模式揭示从"选七层术语命名"改为"用日常语言描述，不贴标签"
+# - 正向示例"多极的时刻"改为"你放下了'只有一种对'的标准"
+# - 七层塌陷形态标注"仅用于内部定位，不得出现在弹窗正文中"
+# - system_prompt_path → v4.0.17
 
 # Stage 1: 周易三爻分析器（快速/便宜模型）
 analyzer:
@@ -41,7 +46,7 @@ generator:
   model: "deepseek/deepseek-chat"
   temperature: 0.3
   max_tokens: 640
-  system_prompt_path: "../system_prompt_v4.0.16.txt"
+  system_prompt_path: "../system_prompt_v4.0.17.txt"
 
 # 触发引擎配置
 trigger:
