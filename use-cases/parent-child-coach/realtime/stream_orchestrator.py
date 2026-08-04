@@ -47,12 +47,12 @@ class TextBuffer:
     - 窗口之间有 lookback 重叠，保证上下文连续性
     """
 
-    def __init__(self, window_size: int = 3000, lookback: int = 500):
+    def __init__(self, window_size: int = 300, lookback: int = 50):
         """初始化文本缓冲。
 
         Args:
-            window_size: 分析窗口最大字符数
-            lookback: 与上一窗口的重叠字符数
+            window_size: 分析窗口最大字符数（统一规格：慢通道 300 字）
+            lookback: 与上一窗口的重叠字符数（携带前文，不冷启动）
         """
         self.full_text: str = ""
         self.window_size = window_size
@@ -101,19 +101,27 @@ class TextBuffer:
 # ============================================================
 
 class TriggerEngine:
-    """判断是否触发分析。支持字数触发和关键词触发。
+    """判断是否触发分析。支持关键词触发（快通道）和字数触发（慢通道）。
 
-    触发规则（优先级从高到低）：
-    1. critical 关键词 → 立即触发
-    2. 累积字数 ≥ char_trigger → 触发
-    3. warning/opportunity 关键词 + 累积 ≥ 30 字 → 触发
+    统一规格（channel_spec）：
+    1. 快通道 critical（severity≥4 / critical 组）：命中当下就弹，
+       向前取最多 300 字，最少 80 字，<80 取消
+    2. 快通道一般严重（warning / opportunity 组同逻辑）：向前取 250 字，
+       命中后等缓冲再进 50 字再试图分析，总字数 <80 取消
+    3. 慢通道：缓冲凑满 300 字才分析
     """
 
-    # 默认配置
-    DEFAULT_CHAR_TRIGGER = 120
-    DEFAULT_MIN_CHARS = 60
+    # 默认配置（统一规格）
+    DEFAULT_CHAR_TRIGGER = 300          # 慢通道：凑满 300 字才分析
+    DEFAULT_MIN_CHARS = 80              # 快通道：<80 字取消
     DEFAULT_MIN_INTERVAL_MS = 3000
-    DEFAULT_KEYWORD_MIN_CHARS = 30
+    DEFAULT_CRITICAL_FORWARD = 300      # critical 向前取 300
+    DEFAULT_GENERAL_FORWARD = 250       # 一般严重向前取 250
+    DEFAULT_GENERAL_WAIT = 50           # 一般严重向后等 50 字
+
+    # 组 → severity 映射（对齐 critical≥4 / 一般严重<4 的两档规格）
+    GROUP_SEVERITY = {"critical": 5, "warning": 3, "opportunity": 3}
+    CRITICAL_SEVERITY_MIN = 4
 
     def __init__(
         self,
@@ -121,35 +129,50 @@ class TriggerEngine:
         min_chars_for_analysis: int = None,
         min_interval_ms: int = None,
         keyword_file: str = None,
-        keyword_min_chars: int = None,
+        critical_forward: int = None,
+        general_forward: int = None,
+        general_wait: int = None,
     ):
         """初始化触发引擎。
 
         Args:
-            char_trigger: 字数触发阈值
-            min_chars_for_analysis: 最少需要累积多少字才触发分析
+            char_trigger: 慢通道字数触发阈值（默认 300）
+            min_chars_for_analysis: 快通道最少字数（默认 80）
             min_interval_ms: 两次触发之间的最小间隔（毫秒）
             keyword_file: 关键词配置文件路径（JSON）
-            keyword_min_chars: 关键词触发所需的最少累积字数
+            critical_forward: critical 向前取窗字数（默认 300）
+            general_forward: 一般严重向前取窗字数（默认 250）
+            general_wait: 一般严重向后等字数（默认 50）
         """
         self.char_trigger = char_trigger or self.DEFAULT_CHAR_TRIGGER
         self.min_chars_for_analysis = (
             min_chars_for_analysis or self.DEFAULT_MIN_CHARS
         )
         self.min_interval_ms = min_interval_ms or self.DEFAULT_MIN_INTERVAL_MS
-        self.keyword_min_chars = (
-            keyword_min_chars or self.DEFAULT_KEYWORD_MIN_CHARS
+        self.critical_forward = (
+            critical_forward or self.DEFAULT_CRITICAL_FORWARD
         )
+        self.general_forward = general_forward or self.DEFAULT_GENERAL_FORWARD
+        self.general_wait = general_wait or self.DEFAULT_GENERAL_WAIT
 
         # 累积计数
         self._chars_since_last_trigger: int = 0
         self._last_trigger_time: float = 0.0
 
-        # 加载关键词
+        # 一般严重「等 50 字」挂起状态（流式：命中后等缓冲再进 50 字）
+        self._pending_general: Optional[dict] = None
+        # 已上报位置（防跨块重复触发）
+        self._reported_until: int = 0
+
+        # 加载关键词（组 → [关键词列表]，运行时映射为 severity）
         self.keywords: Dict[str, list] = {"critical": [], "warning": [],
                                            "opportunity": []}
         if keyword_file:
             self._load_keywords(keyword_file)
+
+        self._max_kw_len = max(
+            (len(k) for grp in self.keywords.values() for k in grp), default=0
+        )
 
     def _load_keywords(self, path: str):
         """从 JSON 文件加载关键词配置。"""
@@ -170,17 +193,49 @@ class TriggerEngine:
         else:
             logger.warning(f"Keyword file not found: {path}")
 
-    def feed(self, new_chars: int, text: str) -> Optional[TriggerEvent]:
-        """送入新字符，检查是否触发。
+    def _match_new_keyword(self, text: str):
+        """在文本中找第一个命中关键词（长词优先），返回 (kw, idx, sev)。"""
+        # 组内按关键词长度降序，跨组再比较——取整体最长命中的关键词
+        best = None
+        for group, sev in self.GROUP_SEVERITY.items():
+            for kw in sorted(self.keywords.get(group, []),
+                             key=len, reverse=True):
+                idx = text.find(kw)
+                if idx >= 0 and (best is None or len(kw) > len(best[0])):
+                    best = (kw, idx, sev)
+        return best
+
+    def _snap_start(self, full_text: str, start: int, limit: int) -> int:
+        """窗口起点向后对齐到最近句子边界，避免从句子中间截断。"""
+        for i in range(start, min(start + 30, limit)):
+            if i < len(full_text) and full_text[i] in {"。", "！", "？", "\n", "，"}:
+                return i + 1
+        return start
+
+    def _critical_window(self, full_text: str, pos: int) -> str:
+        """critical：从触发点向前取最多 critical_forward 字。"""
+        start = max(0, pos - self.critical_forward)
+        start = self._snap_start(full_text, start, pos)
+        return full_text[start:pos]
+
+    def _general_window(self, full_text: str, pos: int) -> str:
+        """一般严重：向前取 general_forward + 向后等 general_wait 字。"""
+        start = max(0, pos - self.general_forward)
+        start = self._snap_start(full_text, start, pos)
+        end = min(len(full_text), pos + self.general_wait)
+        return full_text[start:end]
+
+    def feed(self, new_text: str, full_text: str) -> Optional[TriggerEvent]:
+        """送入新到达的文本块，检查是否触发。
 
         Args:
-            new_chars: 自上次调用以来新增的字符数
-            text: 当前完整对话文本
+            new_text: 本块新增的文本片段（流式）
+            full_text: 当前完整对话文本
 
         Returns:
             TriggerEvent 如果触发，否则 None
         """
-        self._chars_since_last_trigger += new_chars
+        self._chars_since_last_trigger += len(new_text)
 
         # 检查最小间隔
         now = time.time()
@@ -189,33 +244,47 @@ class TriggerEngine:
             if elapsed_ms < self.min_interval_ms:
                 return None  # 间隔太短，不触发
 
-        # 优先级1: critical 关键词（不管字数，立即触发）
-        keyword = self._match_keywords(text, "critical")
-        if keyword:
-            return self._fire("keyword", text, keyword)
+        # ── 快通道：在「新文本 + 上一段尾部重叠」中匹配（捕捉跨块关键词） ──
+        scan_base = max(0, self._reported_until - (self._max_kw_len - 1))
+        found = self._match_new_keyword(full_text[scan_base:])
+        if found:
+            kw, idx_in, sev = found
+            pos = scan_base + idx_in
+            # 已上报过的同一关键词 → 不重复触发，但仍继续检查挂起
+            if pos + len(kw) > self._reported_until:
+                self._reported_until = pos + len(kw)
+                if sev >= self.CRITICAL_SEVERITY_MIN:
+                    # critical：当下就弹，仅向前取窗
+                    self._pending_general = None
+                    ctx = self._critical_window(full_text, pos)
+                    if len(ctx) < self.min_chars_for_analysis:
+                        return None
+                    return self._fire("keyword", ctx, kw)
+                # 一般严重：等缓冲再进 50 字再试图分析
+                if len(full_text) < pos + self.general_wait:
+                    self._pending_general = {"pos": pos, "kw": kw, "sev": sev}
+                else:
+                    ctx = self._general_window(full_text, pos)
+                    if len(ctx) < self.min_chars_for_analysis:
+                        self._pending_general = None
+                        return None
+                    return self._fire("keyword", ctx, kw)
 
-        # 最少字数检查（非 critical 关键词需要）
-        if self._chars_since_last_trigger < self.min_chars_for_analysis:
-            return None
+        # 解析挂起的一般严重（等够 50 字后弹）——与新命中是否重复无关
+        if self._pending_general is not None:
+            p = self._pending_general
+            if len(full_text) >= p["pos"] + self.general_wait:
+                self._pending_general = None
+                ctx = self._general_window(full_text, p["pos"])
+                if len(ctx) < self.min_chars_for_analysis:
+                    return None
+                return self._fire("keyword", ctx, p["kw"])
 
-        # 优先级2: warning/opportunity 关键词 + 字数门控
-        if self._chars_since_last_trigger >= self.keyword_min_chars:
-            for group in ("warning", "opportunity"):
-                keyword = self._match_keywords(text, group)
-                if keyword:
-                    return self._fire("keyword", text, keyword)
-
-        # 优先级3: 字数触发
+        # ── 慢通道：缓冲凑满 char_trigger（300）字才分析 ──
         if self._chars_since_last_trigger >= self.char_trigger:
-            return self._fire("char_count", text)
+            window = full_text[-self.char_trigger:]
+            return self._fire("char_count", window)
 
-        return None
-
-    def _match_keywords(self, text: str, group: str) -> Optional[str]:
-        """在文本中查找指定组的关键词。"""
-        for kw in self.keywords.get(group, []):
-            if kw in text:
-                return kw
         return None
 
     def _fire(self, source: str, text: str,
@@ -236,6 +305,8 @@ class TriggerEngine:
         """重置触发引擎状态。"""
         self._chars_since_last_trigger = 0
         self._last_trigger_time = 0.0
+        self._pending_general = None
+        self._reported_until = 0
 
 
 # ============================================================
@@ -432,15 +503,15 @@ class StreamOrchestrator:
         analyzer: ZhouYiAnalyzer,
         generator: PopupGenerator,
         output_callback: Callable[[Popup], Any] = None,
-        char_trigger: int = 120,
-        min_chars_for_analysis: int = 60,
+        char_trigger: int = 300,
+        min_chars_for_analysis: int = 80,
         min_interval_ms: int = 3000,
         keyword_file: str = None,
         cooldown_seconds: float = 15.0,
         same_state_max_repeats: int = 2,
         absolute_min_interval: float = 5.0,
-        window_size: int = 3000,
-        lookback: int = 500,
+        window_size: int = 300,
+        lookback: int = 50,
         stable_block_enabled: bool = True,
     ):
         """初始化编排器。
@@ -449,15 +520,15 @@ class StreamOrchestrator:
             analyzer: Stage 1 周易分析器
             generator: Stage 2 弹窗生成器
             output_callback: 弹窗输出回调函数
-            char_trigger: 字数触发阈值
-            min_chars_for_analysis: 最少分析字符数
+            char_trigger: 慢通道字数触发阈值（统一规格：300）
+            min_chars_for_analysis: 快通道最少字数（统一规格：80）
             min_interval_ms: 最小触发间隔（毫秒）
             keyword_file: 关键词配置文件路径
             cooldown_seconds: 弹窗冷却秒数
             same_state_max_repeats: 同卦象最多连续弹窗数
             absolute_min_interval: 任意两个弹窗之间的绝对最小间隔
-            window_size: 分析窗口大小
-            lookback: 窗口回看字符数
+            window_size: 分析窗口大小（慢通道 300 字）
+            lookback: 窗口回看字符数（携带前文）
             stable_block_enabled: P0 硬拦截开关（v4.0.14）——
                 ZhouYi 判定 risk_level=低 + 坤卦 + container_status=不适用
                 时一律不弹窗（修复 B-01/B-02/A-01 日常/优秀对话误触发）
@@ -504,27 +575,29 @@ class StreamOrchestrator:
         if not chunk:
             return None
 
-        # 1. 追加到缓冲
-        chars_before = self.buffer.total_chars
-        window = self.buffer.append(chunk)
-        new_chars = self.buffer.total_chars - chars_before
+        # 1. 追加到缓冲（慢通道窗口）
+        self.buffer.append(chunk)
 
-        # 2. 检查触发
-        trigger_event = self.trigger.feed(new_chars, self.buffer.full_text)
+        # 2. 检查触发（快通道 critical/general + 慢通道 300 字）
+        trigger_event = self.trigger.feed(chunk, self.buffer.full_text)
         if trigger_event is None:
             return None
+
+        # 3. 分析窗口：快通道用「从触发点向前截取」的窗口，
+        #    慢通道用「最近 300 字」滑动窗口（均由 TriggerEngine 给出）
+        analysis_window = trigger_event.window_text
 
         logger.info(
             f"Triggered by {trigger_event.source}"
             + (f" ({trigger_event.keyword_matched})"
                if trigger_event.keyword_matched else "")
-            + f" | {new_chars} new chars | "
+            + f" | {len(chunk)} new chars | "
             f"total {self.buffer.total_chars} chars"
         )
 
-        # 3. Stage 1: 周易分析
+        # 4. Stage 1: 周易分析
         self._analysis_count += 1
-        zhouyi_state = self.analyzer.analyze(window)
+        zhouyi_state = self.analyzer.analyze(analysis_window)
         self._zhouyi_states.append(zhouyi_state)
         self.buffer.mark_window_analyzed()
 
@@ -565,7 +638,7 @@ class StreamOrchestrator:
         # 6. Stage 2: 生成弹窗
         self._popup_count += 1
         popup = self.generator.generate(
-            dialogue_window=window,
+            dialogue_window=analysis_window,
             zhouyi_state=zhouyi_state,
             previous_popups=self.debounce.popup_history,
         )

@@ -360,14 +360,14 @@ def main(
     orchestrator = StreamOrchestrator(
         analyzer=analyzer,
         generator=generator,
-        char_trigger=trigger_cfg.get("char_trigger", 120),
-        min_chars_for_analysis=trigger_cfg.get("min_chars_for_analysis", 60),
+        char_trigger=trigger_cfg.get("char_trigger", 300),
+        min_chars_for_analysis=trigger_cfg.get("min_chars_for_analysis", 80),
         min_interval_ms=trigger_cfg.get("min_interval_ms", 3000),
         keyword_file=trigger_cfg.get("keyword_file", "keyword_config.json"),
         cooldown_seconds=debounce_cfg.get("cooldown_seconds", 15.0),
         same_state_max_repeats=debounce_cfg.get("same_state_max_repeats", 2),
-        window_size=buffer_cfg.get("window_size", 3000),
-        lookback=buffer_cfg.get("lookback", 500),
+        window_size=buffer_cfg.get("window_size", 300),
+        lookback=buffer_cfg.get("lookback", 50),
         stable_block_enabled=config.get("daily_conversation_skip", {}).get(
             "enabled", True
         ),
@@ -463,7 +463,8 @@ def quick_test():
         analyzer=analyzer,
         generator=generator,
         output_callback=None,  # 由 DemoDisplay 统一处理输出
-        char_trigger=120,
+        char_trigger=300,
+        min_chars_for_analysis=80,
         keyword_file="keyword_config.json",
         cooldown_seconds=15.0,
     )
