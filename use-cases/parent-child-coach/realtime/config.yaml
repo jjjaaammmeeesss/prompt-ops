@@ -12,6 +12,11 @@
 #       时强制放行并采用 diagnostic tone — 修复 C-03（FC_MISS_CTX + FC_TONE_OFF）
 # - P2: 鼓励式弹窗强制 ≥1 句 parent-quotable repair phrase（代码级校验+重试）
 # - system_prompt_path → v4.0.14
+# v4.0.18 修正（2026-08-04，300字慢速通道窗口适配）:
+# - 切除 prompt 中所有"窗口意识"元指令——模型只看到 300 字对话，不再被告知
+#   "你只看到片段"，避免诱导它脑补缺失上下文
+# - 保留：========== 分隔符（100%生效，零预分析泄漏）+ <80 字不弹窗最小片段规则
+# - system_prompt_path → v4.0.18
 
 # Stage 1: 周易三爻分析器（快速/便宜模型）
 analyzer:
@@ -25,7 +30,7 @@ generator:
   model: "deepseek/deepseek-chat"
   temperature: 0.3
   max_tokens: 640
-  system_prompt_path: "../system_prompt_v4.0.14.txt"
+  system_prompt_path: "../system_prompt_v4.0.18.txt"
 
 # 触发引擎配置（统一规格 v4.0.18）
 # 规格原文：慢通道凑满 300 字才分析；快通道 critical(≥4) 命中当下弹、
