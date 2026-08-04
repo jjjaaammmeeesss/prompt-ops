@@ -46,7 +46,7 @@ generator:
   model: "deepseek/deepseek-chat"
   temperature: 0.3
   max_tokens: 640
-  system_prompt_path: "../system_prompt_v4.0.17.txt"
+  system_prompt_path: "../system_prompt_v4.0.18.txt"
 
 # 触发引擎配置
 trigger:
