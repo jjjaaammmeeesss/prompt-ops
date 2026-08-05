@@ -45,6 +45,7 @@ class WindowResult:
     channel: str = ""              # "critical" | "general" | "slow"
     context_window: str = ""
     char_count: int = 0
+    window_start: int = 0          # 窗口在对话缓冲中的起始位置
     reason: str = ""
 
 
@@ -85,7 +86,8 @@ def extract_window(
             return WindowResult(triggered=False, channel="critical",
                                 reason=f"critical <{FAST_MIN_CHARS}字取消")
         return WindowResult(triggered=True, channel="critical",
-                            context_window=ctx, char_count=len(ctx))
+                            context_window=ctx, char_count=len(ctx),
+                            window_start=start)
 
     # 一般严重：向前 FAST_GENERAL_FORWARD + 向后等 FAST_GENERAL_WAIT
     start = max(0, trigger_pos - FAST_GENERAL_FORWARD)
@@ -96,7 +98,8 @@ def extract_window(
         return WindowResult(triggered=False, channel="general",
                             reason=f"general <{FAST_MIN_CHARS}字取消")
     return WindowResult(triggered=True, channel="general",
-                        context_window=ctx, char_count=len(ctx))
+                        context_window=ctx, char_count=len(ctx),
+                        window_start=start)
 
 
 @dataclass
@@ -128,6 +131,7 @@ class Popup:
     tone: str
     context_window: str
     char_count: int
+    window_start: int = 0  # 窗口在对话缓冲中的起始位置
 
 
 def simulate_pipeline(
@@ -172,7 +176,8 @@ def simulate_pipeline(
                 r = extract_window(buffer, pos, sev)
                 if r.triggered:
                     popups.append(Popup("fast", "关键词触发", "提醒型",
-                                        r.context_window, r.char_count))
+                                        r.context_window, r.char_count,
+                                        window_start=r.window_start))
                     fast_fired = True
                 pending_general = None
             else:
@@ -183,7 +188,8 @@ def simulate_pipeline(
                     r = extract_window(buffer, pos, sev)
                     if r.triggered:
                         popups.append(Popup("fast", "关键词触发", "提醒型",
-                                            r.context_window, r.char_count))
+                                            r.context_window, r.char_count,
+                                            window_start=r.window_start))
                         fast_fired = True
                     pending_general = None
 
@@ -195,7 +201,8 @@ def simulate_pipeline(
                 pending_general = None
                 if r.triggered:
                     popups.append(Popup("fast", "关键词触发", "提醒型",
-                                        r.context_window, r.char_count))
+                                        r.context_window, r.char_count,
+                                        window_start=r.window_start))
                     fast_fired = True
 
         # 快慢互斥：快通道触发后慢通道重新计数
@@ -213,7 +220,8 @@ def simulate_pipeline(
                         slow_accum.append(SlowWindow(len(slow_accum), seg,
                                                      len(seg)))
                         popups.append(Popup("slow", "字数触发", "洞察型",
-                                            seg, len(seg)))
+                                            seg, len(seg),
+                                            window_start=slow_cursor + k * slow_threshold))
                 slow_cursor += n * slow_threshold
 
         # 本段已扫描，推进扫描起点
@@ -223,7 +231,8 @@ def simulate_pipeline(
     # 这是慢通道的自然尾部处理，不是兜底——300 字窗口的余数部分本身就应该分析
     remaining = buffer[slow_cursor:]
     if len(remaining) >= FAST_MIN_CHARS:
-        popups.append(Popup("slow", "字数触发", "洞察型", remaining, len(remaining)))
+        popups.append(Popup("slow", "字数触发", "洞察型", remaining, len(remaining),
+                            window_start=slow_cursor))
 
     return popups
 
