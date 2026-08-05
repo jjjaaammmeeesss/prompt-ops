@@ -100,3 +100,12 @@
 | 9 | FIXED | popup_order 排序取时间线最后非空弹窗 |
 
 **最终结论**: 9/9 已修复或标注为有意简化。核心修复（默认 tone=encouraging）解开了 FC_TONE_OFF + P2 的阻塞链。
+
+## 8. P2 话术检查修正 (2026-08-05)
+
+Codex 审计后用户指出 v4.0.14 以来的设计错误：P2 话术检查挂在鼓励式上，但诊断式才需要教家长怎么说话。
+
+- **修改**：`popup_generator.py` + `run_v418_pipeline.py`，共 6 处
+- **执行器版本**：`__version__ = "1.2"`
+- **验证**：C5-003 含 parent override→diagnostic→P2 生效；encouraging→P2 跳过
+- **commit**：`a81f182`

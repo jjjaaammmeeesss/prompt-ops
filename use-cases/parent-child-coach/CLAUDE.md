@@ -50,9 +50,15 @@ python scripts/compare_four_versions.py --n 12 --rounds 3
 - **已停用（保留文件不删）**：v1.7、v1.12、v2.3（均确认劣于 v4.0.12）
 - **残留硬骨头**：C10-004、C5-001（四版全败，系统性难题）
 - **快速通道**：KeywordTrigger 是基础设施层，所有版本共享
+- **管线测试器**：`scripts/run_v418_pipeline.py` v1.2（匹配 prompt v4.0.18）
+  - 9 缺口已修复：生产级 Stage 2 等价调用（ZhouYi/debounce/FC_TONE_OFF/FC_STALE/P2）
+  - P2 话术检查已修正为诊断式（v1.2）
+  - 12 题 Codex 裁判 avg=5.875，multica REN-76
+- **v4.0.18 已知问题**：P2 话术检查生产代码同样需要修正（`realtime/popup_generator.py`）
 
 ## 下一步
 
+- v4.0.18 生产代码 P2 修正验收
 - 观察 v4.0.12 生产数据，确认是否需要 v4.0.13
 - meta_optimize 三策略自进化（Senate/SAGA/TS）持续迭代
 - v1.13 的「写后逐句锚定」方法论可考虑融入 v4.0.x 路线
