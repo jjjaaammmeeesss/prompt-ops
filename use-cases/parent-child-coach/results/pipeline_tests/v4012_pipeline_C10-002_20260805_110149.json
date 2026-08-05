@@ -1,0 +1,59 @@
+{
+  "config": {
+    "prompt": "system_prompt_v4.0.12.txt",
+    "prompt_chars": 23320,
+    "gen_model": "deepseek/deepseek-chat",
+    "window_size": 300,
+    "judge": "none",
+    "timestamp": "20260805_110149"
+  },
+  "summary": {
+    "total_cases": 1,
+    "cases_with_popup": 0,
+    "avg_codex_score": null
+  },
+  "results": [
+    {
+      "case_id": "C10-002",
+      "dialogue_chars": 413,
+      "fast_triggers": 1,
+      "slow_windows": 1,
+      "total_windows": 2,
+      "suppressed": 0,
+      "fast_popups": [
+        {
+          "channel": "fast",
+          "trigger_type": "关键词触发",
+          "window_chars": 300,
+          "popup_order": 0,
+          "tone": "diagnostic",
+          "tone_override": "评判贴标签",
+          "raw": "",
+          "popup": "",
+          "has_pre_analysis": false,
+          "separator_missing": true,
+          "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Authentication Fails, Your api key: ****xPAi is invalid\",\"type\":\"authentication_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        }
+      ],
+      "slow_popups": [
+        {
+          "channel": "slow",
+          "trigger_type": "字数触发",
+          "window_chars": 93,
+          "popup_order": 1,
+          "tone": "auto",
+          "tone_override": null,
+          "raw": "",
+          "popup": "",
+          "has_pre_analysis": false,
+          "separator_missing": true,
+          "error": "litellm.BadRequestError: DeepseekException - {\"error\":{\"message\":\"Authentication Fails, Your api key: ****xPAi is invalid\",\"type\":\"authentication_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+        }
+      ],
+      "primary_popup": "",
+      "total_popups": 0,
+      "_zhouyi_source": "test-default",
+      "_dialogue": "1.都九点半了 你还在翻来翻去\n2.我睡不着\n3.你已经翻了一个小时了\n4.我脑子里有好多事情\n5.什么事情\n6.我一直在想今天老师说的那句话\n7.老师说什么了\n8.老师说下周要选小组长\n9.你想当小组长吗\n10.我想 但是我不敢举手\n11.为什么不敢\n12.我怕我说错了 同学会笑我\n13.他们以前笑过你吗\n14.有一次我回答问题说错了 小明笑了\n15.你因为这件事睡不着\n16.不只是这个 还有别的事情\n17.还有什么\n18.我在想我们家的猫会不会想它妈妈\n19.你都在想些什么\n20.猫是怎么来的 你知道吗\n21.是别人送的\n22.那它离开妈妈的时候会不会难过\n23.你先睡觉 明天我们再聊猫的妈妈\n24.可是我现在就想知道\n25.明天早上我告诉你 现在闭眼睛\n26.你每次都说明天\n27.那我现在告诉你 猫可能会想妈妈 但它现在有你了\n28.它把我当妈妈了吗\n29.可能是 它每天跟着你 睡你床上\n30.那我要对它好一点\n31.你现在可以对它好 也可以对自己好 先睡觉\n32.可是我还是睡不着\n33.那我给你挠挠背 像小时候那样\n34.好 挠背就能睡着\n35.闭上眼睛\n36.挠背的时候不要停\n37.不停 等你睡着了我再停"
+    }
+  ]
+}

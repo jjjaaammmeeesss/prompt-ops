@@ -134,12 +134,21 @@ def simulate_pipeline(
     text: str,
     keywords: List[Keyword],
     chunk_size: int = 40,
+    slow_threshold: int = None,
 ) -> List[Popup]:
     """按统一规格模拟流式触发管线，输出弹窗序列。
 
     - 快通道：critical 当下弹；一般严重命中后挂起，等缓冲再进 50 字后解析
-    - 慢通道：缓冲凑满 300 字，按 300 字窗口切分分析（累积前文，不冷启动）
+    - 慢通道：缓冲凑满 slow_threshold 字，按 slow_threshold 字窗口切分分析
+
+    Args:
+        text: 完整对话文本
+        keywords: 关键词列表
+        chunk_size: 流式喂入的 chunk 大小
+        slow_threshold: 慢通道触发字数（默认取 channel_spec.slow_threshold）
     """
+    if slow_threshold is None:
+        slow_threshold = SLOW_THRESHOLD_CHARS
     popups: List[Popup] = []
     buffer = ""
     slow_accum: List[SlowWindow] = []
@@ -195,17 +204,17 @@ def simulate_pipeline(
         else:
             # 慢通道：从未处理位置开始，凑满 300 字才分析
             unprocessed = buffer[slow_cursor:]
-            if len(unprocessed) >= SLOW_THRESHOLD_CHARS:
-                n = len(unprocessed) // SLOW_THRESHOLD_CHARS
+            if len(unprocessed) >= slow_threshold:
+                n = len(unprocessed) // slow_threshold
                 for k in range(n):
-                    seg = unprocessed[k * SLOW_THRESHOLD_CHARS:
-                                     (k + 1) * SLOW_THRESHOLD_CHARS]
+                    seg = unprocessed[k * slow_threshold:
+                                     (k + 1) * slow_threshold]
                     if seg.strip():
                         slow_accum.append(SlowWindow(len(slow_accum), seg,
                                                      len(seg)))
                         popups.append(Popup("slow", "字数触发", "洞察型",
                                             seg, len(seg)))
-                slow_cursor += n * SLOW_THRESHOLD_CHARS
+                slow_cursor += n * slow_threshold
 
         # 本段已扫描，推进扫描起点
         offset += len(chunk)
