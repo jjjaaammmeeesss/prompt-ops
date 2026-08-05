@@ -174,13 +174,15 @@ def generate_popup(
     tone: str = "auto",
     zhouyi_context: str = "",
     extra_instruction: str = "",
+    prior_context: str = "",
     retries: int = 3,
 ) -> dict:
     """调用 DeepSeek 生成弹窗（单窗口、含重试、生产级消息格式）。
 
     与生产 popup_generator.py 对齐：
     - system message = zhouyi_context + system_prompt
-    - user message = 当前对话 + type_instruction + 输出格式要求
+    - user message = [前文背景] + 当前对话 + type_instruction + 输出格式要求
+    - prior_context: 前 900 字对话原文（仅供上下文参考），非空时以分隔标记注入
     """
     # ── 构建消息（与 popup_generator._build_messages 对齐）──
     system_content = zhouyi_context + "\n" + system_prompt
@@ -190,16 +192,32 @@ def generate_popup(
         type_instruction = (
             "请生成**鼓励式弹窗**（20-80字）。"
             "必须：具体点出家长刚展现的积极模式 → 简短有力。"
-            "必须包含至少一句家长可直接引用的话术"
-            "（以「你可以这样说：\"……\"」形式给出，引号内为实际措辞）。"
         )
     else:
         type_instruction = (
             "请生成**诊断式弹窗**（80-200字）。"
             "必须：先承认发心 → 揭示具体模式 → 给出一个微小可做的尝试。"
+            "必须包含至少一句家长可直接引用的话术"
+            "（以「你可以这样说：\"……\"」形式给出，引号内为实际措辞）。"
         )
 
-    user_msg = f"""当前对话：
+    # 前文上下文植入：帮助 LLM 理解对话走向，但不要求分析前文
+    if prior_context:
+        user_msg = f"""## 前文背景（仅供上下文参考，了解对话来龙去脉。请重点分析下方的【当前段落】）
+
+{prior_context}
+
+---
+## 当前段落（请分析此段并生成弹窗）
+
+{window_text}
+
+{type_instruction}
+{extra_instruction}
+
+请直接输出弹窗全文（不附加解释、不输出JSON、不输出"弹窗："等前缀）："""
+    else:
+        user_msg = f"""当前对话：
 {window_text}
 
 {type_instruction}
@@ -299,18 +317,24 @@ def run_case(
             last_trigger = {"key": trigger_key, "count": 1}
 
         # ── FC_TONE_OFF: 扫描窗口文本，命中则强制 diagnostic ──
-        # 默认 encouraging：无 Stage 1 时仍能覆盖 P2 话术检查 + FC_TONE_OFF 真实切换
+        # 默认 encouraging：正常窗口不触发 P2。命中 override → diagnostic → P2 话术检查生效
         tone = "encouraging"
         override_reason = detect_parent_override(p.context_window)
         if override_reason:
             tone = "diagnostic"
 
+        # ── 滑动上下文：前 900 字对话原文作为背景，帮助 LLM 理解来龙去脉 ──
+        prior_context = ""
+        if p.window_start > 0:
+            prior_context = dialogue[max(0, p.window_start - 900):p.window_start]
+
         # ── 调 LLM 生成弹窗 ──
         gen = generate_popup(system_prompt, p.context_window, tone=tone,
-                             zhouyi_context=zhouyi_context)
+                             zhouyi_context=zhouyi_context,
+                             prior_context=prior_context)
 
-        # ── P2: 鼓励式话术检查 ──
-        if tone == "encouraging" and gen["popup"] and not gen["error"]:
+        # ── P2: 诊断式话术检查 ──
+        if tone == "diagnostic" and gen["popup"] and not gen["error"]:
             if not has_quotable_phrase(gen["popup"]):
                 # 重试一次
                 retry = generate_popup(
@@ -321,6 +345,7 @@ def run_case(
                         "必须重新生成，并在弹窗末尾以「你可以这样说：\"……\"」的形式"
                         "给出至少一句家长能脱口说出的完整话术（引号内为实际措辞）。"
                     ),
+                    prior_context=prior_context,
                 )
                 if retry["popup"] and not retry["error"]:
                     if has_quotable_phrase(retry["popup"]):
@@ -352,6 +377,8 @@ def run_case(
             "channel": p.channel,
             "trigger_type": p.trigger_type,
             "window_chars": p.char_count,
+            "window_start": p.window_start,
+            "prior_chars": len(prior_context),
             "popup_order": p_idx,  # 保留原始时间顺序
             "tone": tone,
             "tone_override": override_reason,
