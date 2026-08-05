@@ -4,8 +4,9 @@
 生成诊断式（100-200字）或鼓励式（30-60字）弹窗内容。
 
 v4.0.14 变更（P2）:
-- 鼓励式弹窗同样强制「至少 1 句 parent-quotable repair phrase」，
+- 诊断式弹窗强制「至少 1 句 parent-quotable repair phrase」，
   首次生成缺失时自动重试一次，仍缺失则该弹窗不通过（should_popup=False）。
+  v4.0.18 修正：P2 原误配为鼓励式，现修正为诊断式——诊断式指出问题后需教家长怎么说话。
 
 v4.0.16 变更（FC_TONE_OFF + FC_STALE 代码层闭环）:
 - FC_TONE_OFF: generate() 调 LLM 前扫描 dialogue_window，若命中家长行为
@@ -276,14 +277,14 @@ class PopupGenerator:
             raw_text = self._call_llm(dialogue_window, zhouyi_state, tone)
             popup = self._parse_popup_output(raw_text, tone, zhouyi_state)
 
-            # P2（v4.0.14）：鼓励式弹窗强制含 ≥1 句 parent-quotable
+            # P2（v4.0.14）：诊断式弹窗强制含 ≥1 句 parent-quotable
             # repair phrase，缺失则重试一次，仍缺失则该弹窗不通过。
             if (
-                popup.tone == PopupTone.ENCOURAGING
+                popup.tone == PopupTone.DIAGNOSTIC
                 and not has_quotable_phrase(popup.full_text)
             ):
                 logger.warning(
-                    "Encouraging popup missing quotable repair phrase; retrying once"
+                    "Diagnostic popup missing quotable repair phrase; retrying once"
                 )
                 raw_text = self._call_llm(
                     dialogue_window, zhouyi_state, tone,
@@ -292,7 +293,7 @@ class PopupGenerator:
                 popup = self._parse_popup_output(raw_text, tone, zhouyi_state)
                 if not has_quotable_phrase(popup.full_text):
                     logger.warning(
-                        "Encouraging popup still missing quotable repair phrase "
+                        "Diagnostic popup still missing quotable repair phrase "
                         "after retry; rejecting popup (P2)"
                     )
                     popup.should_popup = False
@@ -358,13 +359,13 @@ class PopupGenerator:
             type_instruction = (
                 f"请生成**诊断式弹窗**（{DIAGNOSTIC_MIN_CHARS}-{DIAGNOSTIC_MAX_CHARS}字）。"
                 "必须：先承认发心 → 揭示具体模式 → 给出一个微小可做的尝试。"
+                "必须包含至少一句家长可直接引用的话术"
+                "（以「你可以这样说：\"……\"」形式给出，引号内为实际措辞）。"
             )
         else:
             type_instruction = (
                 f"请生成**鼓励式弹窗**（{ENCOURAGING_MIN_CHARS}-{ENCOURAGING_MAX_CHARS}字）。"
                 "必须：具体点出家长刚展现的积极模式 → 简短有力。"
-                "必须包含至少一句家长可直接引用的话术"
-                "（以「你可以这样说：\"……\"」形式给出，引号内为实际措辞）。"
             )
 
         user_content = f"""当前对话：
