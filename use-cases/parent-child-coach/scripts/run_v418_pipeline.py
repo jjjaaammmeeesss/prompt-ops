@@ -11,6 +11,11 @@
   python scripts/run_v418_pipeline.py --no-judge                # 只生成，不裁判
 """
 
+__version__ = "1.2"
+# 1.0 — 初始版：快慢窗口模拟 + 裸调 Stage 2
+# 1.1 — 9 缺口修复：生产级 Stage 2（zhouyi/debounce/FC_TONE_OFF/FC_STALE/P2/window_size）
+# 1.2 — P2 修正：话术检查从鼓励式搬到诊断式
+
 import argparse
 import difflib
 import json
