@@ -12,6 +12,7 @@
 """
 
 import argparse
+import difflib
 import json
 import os
 import re
@@ -19,13 +20,16 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 import litellm
+from dotenv import load_dotenv
 
 litellm.suppress_debug_info = True
 
 HERE = Path(__file__).resolve().parent
 PROJECT = HERE.parent
+load_dotenv(PROJECT / ".env")
 
 # 把 demos/ 加入 sys.path 以便导入管线函数
 sys.path.insert(0, str(PROJECT / "demos"))
@@ -33,6 +37,84 @@ from run_demo import simulate_pipeline, Keyword, Popup
 
 # severity 映射：critical→5, warning→3, opportunity→2
 SEVERITY_MAP = {"critical": 5, "warning": 3, "opportunity": 2}
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 生产等价函数 — 从 realtime/popup_generator.py 移植，确保测试=生产行为
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# === 默认周易上下文（测试管线不跑真正的 Stage 1 LLM，使用中性默认值）===
+
+def _build_default_zhouyi_context() -> str:
+    """构建默认/中性周易卦象上下文。测试管线不跑真正的 ZhouYiAnalyzer，
+    用坤卦（全掌控/稳态）作为最中性的默认值，不误导弹窗方向。"""
+    return """
+## 周易卦象上下文（测试默认值 — 非真实 Stage 1 分析）
+
+当前沟通状态属于 **☷ 坤（控控控）**——稳定承载型。
+
+容器状态：不适用
+风险等级：低
+分析洞察：测试管线默认值，未执行真正的 ZhouYiAnalyzer 分析。
+
+请参考系统提示词第八节「八卦弹窗策略速查」中对应卦象的指导来生成弹窗。
+
+---
+"""
+
+# === FC_TONE_OFF: 家长行为 tone override（与 popup_generator.py 完全一致）===
+
+PARENT_OVERRIDE_KEYWORDS = {
+    "催促/打断": [
+        "快点", "快一点", "别说了", "行了行了", "行了我知道",
+        "别废话", "闭嘴", "你能不能快点", "动作快", "抓紧时间",
+        "你快点", "少啰嗦", "有完没完",
+    ],
+    "评判贴标签": [
+        "你就是磨蹭", "你太敏感", "你这个人就是", "你就是个",
+        "你太矫情", "你就是太", "矫情", "你就是故意", "你总是",
+        "你每次都", "你就是不上心",
+    ],
+    "命令单向权力": [
+        "我让你做你就做", "少废话", "按我说的", "我让你",
+        "没有为什么", "我说了算", "听我的", "不许顶嘴",
+        "你少跟我", "我是你妈", "我是你爸", "照我说的做",
+    ],
+    "轻度贬低/否定情绪": [
+        "这有什么好哭", "至于吗", "想太多", "无理取闹",
+        "小题大做", "娇气", "这有什么", "有什么好哭",
+        "别那么娇", "你至于", "哭什么哭", "有什么好闹",
+    ],
+}
+
+
+def detect_parent_override(dialogue: str) -> Optional[str]:
+    """扫描对话文本，命中家长行为 tone override 关键词时返回命中的类别名。"""
+    if not dialogue:
+        return None
+    for category, keywords in PARENT_OVERRIDE_KEYWORDS.items():
+        for kw in keywords:
+            if kw in dialogue:
+                return category
+    return None
+
+
+# === P2: parent-quotable repair phrase 检测 ===
+
+_QUOTABLE_PHRASE_RE = re.compile(r'[「『“"]([^」』”"]{4,})[」』”"]')
+
+
+def has_quotable_phrase(text: str) -> bool:
+    """检测文本中是否含至少一句引号内的可直接引用话术（≥4字）。"""
+    return bool(_QUOTABLE_PHRASE_RE.search(text or ""))
+
+
+# === FC_STALE: 跨窗口语义去重 ===
+
+def semantic_similarity(a: str, b: str) -> float:
+    """计算两段文本的相似度（difflib SequenceMatcher ratio）。"""
+    if not a or not b:
+        return 0.0
+    return difflib.SequenceMatcher(None, a, b).ratio()
 
 def load_keywords() -> list:
     """从 keyword_config.json 加载关键词，返回 List[Keyword]。"""
@@ -46,15 +128,19 @@ def load_keywords() -> list:
     return keywords
 
 # ── 路径 ──
-V418_PROMPT_PATH = PROJECT / "system_prompt_v4.0.18.txt"
+PROMPT_MAP = {
+    "v4.0.12": PROJECT / "system_prompt_v4.0.12.txt",
+    "v4.0.18": PROJECT / "system_prompt_v4.0.18.txt",
+}
 DATASET_PATH = PROJECT / "data" / "new_12_independent.json"
 RESULTS_DIR = PROJECT / "results" / "pipeline_tests"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-# ── 生成模型：DeepSeek V4 ──
-GEN_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
-GEN_API_BASE = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
-GEN_MODEL = os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
+# ── 生成模型 ──
+GEN_API_KEY = os.getenv("GEN_API_KEY", os.getenv("DEEPSEEK_API_KEY", os.getenv("ZHIPUAI_API_KEY", "")))
+GEN_API_BASE = os.getenv("GEN_API_BASE", os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com"))
+_raw_model = os.getenv("GEN_MODEL", os.getenv("DEEPSEEK_MODEL", "deepseek-chat"))
+GEN_MODEL = _raw_model if "/" in _raw_model else f"deepseek/{_raw_model}"
 
 
 def strip_pre_analysis(text: str) -> str:
@@ -82,15 +168,51 @@ def strip_pre_analysis(text: str) -> str:
     return text.strip()
 
 
-def generate_popup(system_prompt: str, window_text: str, retries: int = 3) -> dict:
-    """调用 DeepSeek 生成弹窗（单窗口、含重试）。"""
-    user_msg = f"当前对话：\n{window_text}"
+def generate_popup(
+    system_prompt: str,
+    window_text: str,
+    tone: str = "auto",
+    zhouyi_context: str = "",
+    extra_instruction: str = "",
+    retries: int = 3,
+) -> dict:
+    """调用 DeepSeek 生成弹窗（单窗口、含重试、生产级消息格式）。
+
+    与生产 popup_generator.py 对齐：
+    - system message = zhouyi_context + system_prompt
+    - user message = 当前对话 + type_instruction + 输出格式要求
+    """
+    # ── 构建消息（与 popup_generator._build_messages 对齐）──
+    system_content = zhouyi_context + "\n" + system_prompt
+
+    # type_instruction
+    if tone == "encouraging":
+        type_instruction = (
+            "请生成**鼓励式弹窗**（20-80字）。"
+            "必须：具体点出家长刚展现的积极模式 → 简短有力。"
+            "必须包含至少一句家长可直接引用的话术"
+            "（以「你可以这样说：\"……\"」形式给出，引号内为实际措辞）。"
+        )
+    else:
+        type_instruction = (
+            "请生成**诊断式弹窗**（80-200字）。"
+            "必须：先承认发心 → 揭示具体模式 → 给出一个微小可做的尝试。"
+        )
+
+    user_msg = f"""当前对话：
+{window_text}
+
+{type_instruction}
+{extra_instruction}
+
+请直接输出弹窗全文（不附加解释、不输出JSON、不输出"弹窗："等前缀）："""
+
     for attempt in range(retries):
         try:
             resp = litellm.completion(
-                model=f"deepseek/{GEN_MODEL}",
+                model=GEN_MODEL,
                 messages=[
-                    {"role": "system", "content": system_prompt},
+                    {"role": "system", "content": system_content},
                     {"role": "user", "content": user_msg},
                 ],
                 temperature=0.3,
@@ -101,10 +223,17 @@ def generate_popup(system_prompt: str, window_text: str, retries: int = 3) -> di
             )
             raw = (resp.choices[0].message.content or "").strip()
             popup_text = strip_pre_analysis(raw)
+
+            # 缺分隔符时保留全文但标记 warning
+            has_sep = "==========" in raw or (
+                "---" in raw and len(popup_text) < len(raw) * 0.8
+            )
+
             return {
                 "raw": raw,
                 "popup": popup_text,
-                "has_pre_analysis": ("==========" in raw or "---" in raw) and popup_text != raw,
+                "has_pre_analysis": has_sep and popup_text != raw,
+                "separator_missing": not has_sep,
                 "error": None,
             }
         except Exception as e:
@@ -113,12 +242,31 @@ def generate_popup(system_prompt: str, window_text: str, retries: int = 3) -> di
                 print(f"      ⚠️ 重试 {attempt + 1}/{retries}（{wait}s 后）: {e}")
                 time.sleep(wait)
             else:
-                return {"raw": "", "popup": "", "has_pre_analysis": False, "error": str(e)}
-    return {"raw": "", "popup": "", "has_pre_analysis": False, "error": "unknown"}
+                return {
+                    "raw": "", "popup": "", "has_pre_analysis": False,
+                    "separator_missing": True, "error": str(e),
+                }
+    return {"raw": "", "popup": "", "has_pre_analysis": False,
+            "separator_missing": True, "error": "unknown"}
 
 
-def run_case(case: dict, system_prompt: str, keywords: list, window_size: int = 300) -> dict:
-    """对单个 case 跑完整管线（快通道 + 慢通道），返回所有窗口的弹窗。"""
+def run_case(
+    case: dict,
+    system_prompt: str,
+    keywords: list,
+    window_size: int = 300,
+    dedup_threshold: float = 0.70,
+    debounce_enabled: bool = True,
+) -> dict:
+    """对单个 case 跑完整管线（快通道 + 慢通道 + 生产级 Stage 2）。
+
+    与生产 stream_orchestrator.process_chunk 对齐的关键行为：
+    - FC_TONE_OFF: 调 LLM 前扫描关键词，命中则强制 diagnostic
+    - FC_STALE: 调 LLM 后用 difflib 与历史弹窗比对去重
+    - P2: 鼓励式弹窗检查 quotable phrase，缺失则重试一次
+    - 去抖: 同通道同 trigger 连续出现时跳过后续
+    - 窗口参数传递: window_size 传入 simulate_pipeline
+    """
     case_id = case.get("case_id", "unknown")
     dialogue = case.get("question", "")
 
@@ -127,43 +275,117 @@ def run_case(case: dict, system_prompt: str, keywords: list, window_size: int = 
 
     dlen = len(dialogue)
 
-    # ── 管线模拟：流式快慢通道互斥 ──
-    popups: list = simulate_pipeline(dialogue, keywords)
+    # ── 管线模拟：流式快慢通道互斥（传入 window_size）──
+    popups: list = simulate_pipeline(dialogue, keywords, slow_threshold=window_size)
+
+    # ── 默认周易上下文（测试管线不跑真正的 Stage 1）──
+    zhouyi_context = _build_default_zhouyi_context()
+
+    # ── 去抖 + 逐窗 LLM 调用 ──
+    previous_popups: list[str] = []  # 历史弹窗文本（用于语义去重）
+    last_trigger: dict = {}           # {channel, trigger_type} 用于去抖
+    fast_popups: list[dict] = []
+    slow_popups: list[dict] = []
+    suppressed_count = 0
+
+    for p_idx, p in enumerate(popups):
+        # ── 去抖: 同通道同 trigger 连续出现时跳过 ──
+        if debounce_enabled:
+            trigger_key = (p.channel, p.trigger_type)
+            if trigger_key == last_trigger.get("key"):
+                suppressed_count += 1
+                last_trigger["count"] = last_trigger.get("count", 0) + 1
+                continue
+            last_trigger = {"key": trigger_key, "count": 1}
+
+        # ── FC_TONE_OFF: 扫描窗口文本，命中则强制 diagnostic ──
+        # 默认 encouraging：无 Stage 1 时仍能覆盖 P2 话术检查 + FC_TONE_OFF 真实切换
+        tone = "encouraging"
+        override_reason = detect_parent_override(p.context_window)
+        if override_reason:
+            tone = "diagnostic"
+
+        # ── 调 LLM 生成弹窗 ──
+        gen = generate_popup(system_prompt, p.context_window, tone=tone,
+                             zhouyi_context=zhouyi_context)
+
+        # ── P2: 鼓励式话术检查 ──
+        if tone == "encouraging" and gen["popup"] and not gen["error"]:
+            if not has_quotable_phrase(gen["popup"]):
+                # 重试一次
+                retry = generate_popup(
+                    system_prompt, p.context_window, tone=tone,
+                    zhouyi_context=zhouyi_context,
+                    extra_instruction=(
+                        "⚠️ 上一次输出不合格：缺少家长可直接引用的话术。"
+                        "必须重新生成，并在弹窗末尾以「你可以这样说：\"……\"」的形式"
+                        "给出至少一句家长能脱口说出的完整话术（引号内为实际措辞）。"
+                    ),
+                )
+                if retry["popup"] and not retry["error"]:
+                    if has_quotable_phrase(retry["popup"]):
+                        gen = retry
+                        gen["p2_retry"] = True
+                    else:
+                        gen["popup"] = ""  # 两次都不合格，拒绝弹窗
+                        gen["p2_rejected"] = True
+                else:
+                    # 重试本身失败（API error 等），保留原文但标记 p2 不合格
+                    gen["p2_retry_failed"] = True
+
+        # ── FC_STALE: 语义去重 ──
+        if gen["popup"] and previous_popups:
+            for prev_text in previous_popups[-5:]:  # 最近5条
+                sim = semantic_similarity(gen["popup"], prev_text)
+                if sim >= dedup_threshold:
+                    gen["dedup_suppressed"] = True
+                    gen["dedup_similarity"] = round(sim, 2)
+                    gen["popup"] = ""  # 拒绝展示
+                    suppressed_count += 1
+                    break
+
+        # ── 记录历史（用于后续去重）──
+        if gen["popup"]:
+            previous_popups.append(gen["popup"])
+
+        entry = {
+            "channel": p.channel,
+            "trigger_type": p.trigger_type,
+            "window_chars": p.char_count,
+            "popup_order": p_idx,  # 保留原始时间顺序
+            "tone": tone,
+            "tone_override": override_reason,
+            **gen,
+        }
+        if p.channel == "fast":
+            fast_popups.append(entry)
+        else:
+            slow_popups.append(entry)
+
+    # ── primary_popup: 按时间线取最后一个非空弹窗 ──
+    all_ordered = sorted(
+        fast_popups + slow_popups,
+        key=lambda x: x.get("popup_order", 0),
+    )
+    primary_popup = ""
+    for p in reversed(all_ordered):
+        if p.get("popup"):
+            primary_popup = p["popup"]
+            break
 
     result = {
         "case_id": case_id,
         "dialogue_chars": dlen,
         "fast_triggers": sum(1 for p in popups if p.channel == "fast"),
         "slow_windows": sum(1 for p in popups if p.channel == "slow"),
-        "fast_popups": [],
-        "slow_popups": [],
+        "total_windows": len(popups),
+        "suppressed": suppressed_count,
+        "fast_popups": fast_popups,
+        "slow_popups": slow_popups,
+        "primary_popup": primary_popup,
+        "total_popups": sum(1 for e in fast_popups + slow_popups if e.get("popup")),
+        "_zhouyi_source": "test-default",
     }
-
-    # ── 按弹窗顺序逐一调 LLM 生成 ──
-    for p in popups:
-        gen = generate_popup(system_prompt, p.context_window)
-        entry = {
-            "channel": p.channel,
-            "trigger_type": p.trigger_type,
-            "window_chars": p.char_count,
-            **gen,
-        }
-        if p.channel == "fast":
-            result["fast_popups"].append(entry)
-        else:
-            result["slow_popups"].append(entry)
-
-    # ── 汇总：取最后一个非空弹窗作为主弹窗 ──
-    all_popups = []
-    for p in result["fast_popups"]:
-        if p["popup"]:
-            all_popups.append(p["popup"])
-    for p in result["slow_popups"]:
-        if p["popup"]:
-            all_popups.append(p["popup"])
-
-    result["primary_popup"] = all_popups[-1] if all_popups else ""
-    result["total_popups"] = len(all_popups)
 
     return result
 
@@ -178,14 +400,14 @@ def run_codex_batch_judge(results: list, output_file: str) -> list:
     # 构建批量裁判 prompt
     cases_text = ""
     for i, r in enumerate(results):
-        dialogue = r.get("_dialogue", "")[:600]
+        dialogue = r.get("_dialogue", "")
         popup = r.get("primary_popup", "")
         if not popup:
             continue
         cases_text += f"""
 ---
-## Case {i + 1}: {r['case_id']}
-对话: {dialogue}{'…' if len(r.get('_dialogue', '')) > 600 else ''}
+## Case {i + 1}: {r['case_id']}（对话{len(dialogue)}字）
+对话: {dialogue}
 弹窗: {popup}
 ---"""
 
@@ -215,7 +437,7 @@ def run_codex_batch_judge(results: list, output_file: str) -> list:
 
     try:
         result = subprocess.run(
-            ["codex", "exec", "--ephemeral", "--json",
+            ["D:/root/.npm-global/codex.cmd", "exec", "--ephemeral", "--json",
              "-o", str(out_file)],
             input=judge_prompt,
             capture_output=True, text=True, timeout=300,
@@ -266,7 +488,9 @@ def run_codex_batch_judge(results: list, output_file: str) -> list:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="v4.0.18 真实管线批量测试")
+    parser = argparse.ArgumentParser(description="真实管线批量测试（支持多版本 prompt）")
+    parser.add_argument("--prompt", type=str, default="v4.0.18",
+                        help="提示词版本: v4.0.12 或 v4.0.18（默认 v4.0.18）")
     parser.add_argument("--cases", type=str, default="",
                         help="逗号分隔的 case_id 列表（默认：全部）")
     parser.add_argument("--dataset", type=str, default=str(DATASET_PATH),
@@ -277,13 +501,21 @@ def main():
                         help="慢通道窗口大小（默认 300）")
     args = parser.parse_args()
 
+    # ── 版本解析 ──
+    prompt_version = args.prompt
+    prompt_path = PROMPT_MAP.get(prompt_version)
+    if not prompt_path:
+        print(f"❌ 未知版本: {prompt_version}，可用: {list(PROMPT_MAP.keys())}")
+        sys.exit(1)
+    prompt_label = prompt_version.replace(".", "").replace("v", "v")  # "v4.0.18" → "v4018"
+
     # ── 加载 ──
     print("=" * 70)
-    print("v4.0.18 真实管线批量测试（快通道 + 300字窗口慢通道）")
+    print(f"{prompt_version} 真实管线批量测试（快通道 + 300字窗口慢通道）")
     print("=" * 70)
 
-    v418_prompt = V418_PROMPT_PATH.read_text(encoding="utf-8")
-    print(f"Prompt: {len(v418_prompt)} 字, {v418_prompt.count(chr(10))} 行")
+    system_prompt = prompt_path.read_text(encoding="utf-8")
+    print(f"Prompt: {len(system_prompt)} 字, {system_prompt.count(chr(10))} 行")
 
     dataset = json.loads(Path(args.dataset).read_text(encoding="utf-8"))
     keywords = load_keywords()
@@ -296,7 +528,7 @@ def main():
     else:
         print(f"数据集: {len(dataset)} 题")
 
-    print(f"生成模型: DeepSeek {GEN_MODEL}")
+    print(f"生成模型: {GEN_MODEL}")
     print(f"窗口大小: {args.window_size} 字")
     print(f"快速通道关键词: {len(keywords)} 个")
     print(f"Codex 裁判: {'❌ 跳过' if args.no_judge else '✅ 启用'}")
@@ -309,7 +541,7 @@ def main():
         d_short = case.get("question", "")[:60].replace("\n", " ")
         print(f"[{idx + 1}/{len(dataset)}] {case_id}: {d_short}...")
 
-        result = run_case(case, v418_prompt, keywords, args.window_size)
+        result = run_case(case, system_prompt, keywords, args.window_size)
         result["_dialogue"] = case.get("question", "")  # 保留原对话供裁判使用
 
         print(f"  快通道: {result['fast_triggers']} 触发, "
@@ -367,13 +599,13 @@ def main():
     # ── 保存 ──
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     cases_tag = f"_{args.cases.replace(',', '_')}" if args.cases else "_all12"
-    out_path = RESULTS_DIR / f"v418_pipeline{cases_tag}_{timestamp}.json"
+    out_path = RESULTS_DIR / f"{prompt_label}_pipeline{cases_tag}_{timestamp}.json"
 
     output = {
         "config": {
-            "prompt": "system_prompt_v4.0.18.txt",
-            "prompt_chars": len(v418_prompt),
-            "gen_model": f"deepseek/{GEN_MODEL}",
+            "prompt": f"system_prompt_{prompt_version}.txt",
+            "prompt_chars": len(system_prompt),
+            "gen_model": GEN_MODEL,
             "window_size": args.window_size,
             "judge": "codex" if not args.no_judge else "none",
             "timestamp": timestamp,
