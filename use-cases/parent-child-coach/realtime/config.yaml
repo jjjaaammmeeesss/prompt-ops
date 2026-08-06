@@ -10,7 +10,7 @@
 #       — 修复 B-01/B-02/A-01 误触发（FC_UNSUPPORTED）
 # - P1: DebounceGate context-drift 放行——risk_level 升高 ≥1 级或卦象转向兑/乾/巽
 #       时强制放行并采用 diagnostic tone — 修复 C-03（FC_MISS_CTX + FC_TONE_OFF）
-# - P2: 鼓励式弹窗强制 ≥1 句 parent-quotable repair phrase（代码级校验+重试）
+# - P2: 仅诊断式弹窗强制 ≥1 句 parent-quotable repair phrase（代码级校验+重试）
 # - system_prompt_path → v4.0.14
 # v4.0.15 修正（2026-08-01，REN-50 三项 dominant FC 闭环）:
 # - FC_MISS_CTX: daily_conversation_skip 增加 child_distress_exemption — 孩子困扰信号命中时不豁免
@@ -46,7 +46,7 @@ generator:
   model: "deepseek/deepseek-chat"
   temperature: 0.3
   max_tokens: 640
-  system_prompt_path: "../system_prompt_v4.0.18.txt"
+  system_prompt_path: "../system_prompt_v4.0.19.txt"
 
 # 触发引擎配置
 trigger:
@@ -93,8 +93,10 @@ buffer:
 popup_limits:
   diagnostic_min: 80
   diagnostic_max: 200
-  encouraging_min: 20
-  encouraging_max: 80
+  encouraging_min: 60
+  encouraging_max: 100
+  child_insight_min: 60
+  child_insight_max: 100
 
 # 演示/测试配置
 demo:
