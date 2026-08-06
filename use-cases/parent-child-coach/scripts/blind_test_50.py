@@ -458,9 +458,9 @@ def run_blind_test(prompt_path: str, dataset_path: str, output_dir: str, tone_mo
 
 
 def main():
-    parser = argparse.ArgumentParser(description="v4.0.12 50 题盲测泛化评估（支持递增 N 题）")
-    parser.add_argument("--prompt", default="system_prompt_v4.0.12.txt",
-                        help="prompt 文件名 (默认 system_prompt_v4.0.12.txt)")
+    parser = argparse.ArgumentParser(description="v4.0.19 50 题盲测泛化评估（支持递增 N 题）")
+    parser.add_argument("--prompt", default="system_prompt_v4.0.19.txt",
+                        help="prompt 文件名 (默认 system_prompt_v4.0.19.txt)")
     parser.add_argument("--dataset", default="dataset_50_questions.json",
                         help="数据集文件名 (默认 dataset_50_questions.json)")
     parser.add_argument("--output-dir", default=OUT_DIR,

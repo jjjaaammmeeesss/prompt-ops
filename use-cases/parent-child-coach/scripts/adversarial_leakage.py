@@ -425,7 +425,7 @@ def run_v4016(case: dict) -> dict:
         }
 
     # Stage 2
-    prompt_path = os.path.join(PROMPT_OPS_DIR, "system_prompt_v4.0.17.txt")
+    prompt_path = os.path.join(PROMPT_OPS_DIR, "system_prompt_v4.0.19.txt")
     with open(prompt_path, "r", encoding="utf-8") as f:
         system_prompt = f.read()
 
@@ -505,7 +505,7 @@ def main():
     case_filter = sys.argv[2] if len(sys.argv) > 2 else None
 
     # 加载 prompt（只用于报告）
-    prompt_path = os.path.join(PROMPT_OPS_DIR, "system_prompt_v4.0.17.txt")
+    prompt_path = os.path.join(PROMPT_OPS_DIR, "system_prompt_v4.0.19.txt")
 
     print("=" * 72)
     print("  v4.0.16 内部词汇外溢 · 定向对抗测试")
