@@ -16,6 +16,7 @@ __version__ = "1.2"
 # 1.1 — 9 缺口修复：生产级 Stage 2（zhouyi/debounce/FC_TONE_OFF/FC_STALE/P2/window_size）
 # 1.2 — P2 修正：话术检查从鼓励式搬到诊断式
 # 1.3 — P2 收窄为仅诊断式；鼓励式/看见孩子统一 60-100 字，鼓励式纯肯定段落（不含话术）
+PROMPT_VERSION = "v4.0.19"   # 适配的 prompt 版本（默认；可 --prompt 切换，见 PROMPT_MAP）
 
 import argparse
 import difflib
