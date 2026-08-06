@@ -1,5 +1,5 @@
-# @transient — 保留到 v4.0.18 验收通过后删除（预计 2026-08-10）
-"""v4.0.18 真实管线批量测试器 —— 300字窗口 + 快速通道 + Codex 裁判。
+# @transient — 保留到 v4.0.19 验收通过后删除（预计 2026-08-10）
+"""v4.0.19 真实管线批量测试器 —— 300字窗口 + 快速通道 + Codex 裁判 + child_insight。
 
 与之前所有测试脚本的关键区别：
 - 之前：整段对话一次塞给 DeepSeek（假测试）
@@ -15,6 +15,7 @@ __version__ = "1.2"
 # 1.0 — 初始版：快慢窗口模拟 + 裸调 Stage 2
 # 1.1 — 9 缺口修复：生产级 Stage 2（zhouyi/debounce/FC_TONE_OFF/FC_STALE/P2/window_size）
 # 1.2 — P2 修正：话术检查从鼓励式搬到诊断式
+# 1.3 — P2 收窄为仅诊断式；鼓励式/看见孩子统一 60-100 字，鼓励式纯肯定段落（不含话术）
 
 import argparse
 import difflib
@@ -103,6 +104,45 @@ def detect_parent_override(dialogue: str) -> Optional[str]:
     return None
 
 
+# === v4.0.19: child_insight 检测（与 popup_generator.py 一致）===
+
+CHILD_INSIGHT_MIN_CHARS = 60
+CHILD_INSIGHT_MAX_CHARS = 100
+
+# 各类型字数上限（与 popup_generator.py 一致，用于字数门重试）
+DIAGNOSTIC_MAX_CHARS = 200
+ENCOURAGING_MAX_CHARS = 100
+
+CHILD_EXPRESSION_SIGNALS = [
+    "我觉得", "我想", "我喜欢", "我不喜欢", "我怕", "我担心",
+    "我发现了", "我知道了", "我自己", "我来", "我能", "我会",
+    "因为", "所以", "但是我不", "可是我",
+]
+
+
+def detect_child_insight_opportunity(dialogue: str) -> bool:
+    """检测对话窗口是否适合使用 child_insight 弹窗（与 popup_generator 一致）。"""
+    if not dialogue:
+        return False
+    lines = [l.strip() for l in dialogue.split("\n") if l.strip()]
+    if len(lines) < 3:
+        return False
+    child_lines = 0
+    parent_lines = 0
+    for line in lines:
+        if line[0].isdigit():
+            if any(sig in line for sig in CHILD_EXPRESSION_SIGNALS):
+                child_lines += 1
+            elif any(kw in line for kw in ["快点", "不许", "必须", "给我", "你应该", "你怎麼", "你怎么"]):
+                parent_lines += 1
+            else:
+                child_lines += 1
+    total = child_lines + parent_lines
+    if total == 0:
+        return False
+    return child_lines / total >= 0.30
+
+
 # === P2: parent-quotable repair phrase 检测 ===
 
 _QUOTABLE_PHRASE_RE = re.compile(r'[「『“"]([^」』”"]{4,})[」』”"]')
@@ -136,6 +176,7 @@ def load_keywords() -> list:
 PROMPT_MAP = {
     "v4.0.12": PROJECT / "system_prompt_v4.0.12.txt",
     "v4.0.18": PROJECT / "system_prompt_v4.0.18.txt",
+    "v4.0.19": PROJECT / "system_prompt_v4.0.19.txt",
 }
 DATASET_PATH = PROJECT / "data" / "new_12_independent.json"
 RESULTS_DIR = PROJECT / "results" / "pipeline_tests"
@@ -148,8 +189,52 @@ _raw_model = os.getenv("GEN_MODEL", os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
 GEN_MODEL = _raw_model if "/" in _raw_model else f"deepseek/{_raw_model}"
 
 
+# 预分析元信息行（0.类型/1.元信息/2.关键句归属/3.错别字）兜底剥离，与
+# popup_generator._strip_meta_lines 对齐，保证「测试 = 生产」。
+_PRE_ANALYSIS_LINE_RE = re.compile(
+    r"^\s*\d\.\s*(类型|元信息|关键句归属|错别字)\s*[:：]"
+)
+_META_SEPARATOR_LINES = {"==========", "---", "--"}
+
+
+def _strip_meta_lines_local(text: str) -> str:
+    """按行删除预分析元信息行与分隔符行，返回纯弹窗正文（兜底用）。"""
+    if not text:
+        return ""
+    kept = []
+    for line in text.splitlines():
+        if _PRE_ANALYSIS_LINE_RE.match(line):
+            continue
+        if line.strip() in _META_SEPARATOR_LINES:
+            continue
+        kept.append(line)
+    return "\n".join(kept).strip()
+
+
+_DECLARED_TYPE_MAP = {"诊断式": "diagnostic", "鼓励式": "encouraging", "看见孩子": "child_insight"}
+
+
+def _resolve_declared_type(raw: str) -> str:
+    """从 LLM raw 输出的预分析块中解析 0.类型 声明，返回类型字符串或空串。
+
+    与生产 popup_generator._parse_popup_output 对齐（测试 = 生产）：tone 参数在
+    生成时多为 "auto" 未解析，真实类型以 LLM 在 0.类型 中声明的为准。
+    """
+    if not raw or "==========" not in raw:
+        return ""
+    preambule = raw.partition("==========")[0]
+    for label, type_key in _DECLARED_TYPE_MAP.items():
+        if re.search(rf"0\.\s*类型\s*[:：]\s*{label}", preambule):
+            return type_key
+    return ""
+
+
 def strip_pre_analysis(text: str) -> str:
-    """切除预分析部分（`==========` 或 `---` 之前的所有内容），只保留弹窗正文。"""
+    """切除预分析部分（`==========` 或 `---` 之前的所有内容），只保留弹窗正文。
+
+    兜底：即使 LLM 漏掉分隔符，也按行剥离 0.类型/1.元信息/2.关键句归属/3.错别字
+    及分隔符行，防止元信息泄露进弹窗正文。
+    """
     if not text:
         return ""
     # 先尝试 v4.0.19 的 ========== 分隔符
@@ -170,7 +255,111 @@ def strip_pre_analysis(text: str) -> str:
         after = parts[1].strip() if len(parts) > 1 else text.strip()
         if after and len(after) < len(text) * 0.8:
             return after
-    return text.strip()
+    # 兜底：无分隔符时按行剥离元信息行，防止泄漏进弹窗正文
+    return _strip_meta_lines_local(text.strip())
+
+
+def attribute_speakers(dialogue_window: str, retries: int = 2) -> dict:
+    """Phase 1: 文本修整 + 角色归属 —— 修正 ASR 错误并标注说话人。
+
+    身份锚定法：先确定"谁是过错方/受害方"，再据此标注每句话。
+    过错方说的话只能是认错/辩解/问怎么改，受害方说的话只能是追责/要求道歉。
+
+    返回 {"cleaned_dialogue": str, "attribution": str}，失败返回空 dict。
+    """
+    if not dialogue_window.strip():
+        return {}
+
+    sys_msg = (
+        "你是亲子对话分析助手，处理语音转文字的亲子对话。"
+        "核心任务：修正 ASR 转写错误，使对话文本通顺可读。"
+        "次要任务：标注每句话的说话人（尽力而为，不保证100%准确）。"
+    )
+    user_msg = f"""处理这段语音转文字的亲子对话，完成两件事：修正 ASR 错误 + 标注说话人。
+
+【原始文本】
+{dialogue_window}
+
+---
+
+**第一步：身份锚定（必做，写在输出开头）**
+
+回答（各一句话）：
+- 过错方是谁？（谁做了让对方受伤/生气的事？具体做了什么？）
+- 受害方是谁？
+
+**身份判定线索（按优先级，必须逐条核对）：**
+1. 谁说"我怕你早恋/学坏/…" → **家长**（只有家长会担心孩子早恋）
+2. 谁说"我没有早恋/学坏/…" → **孩子**（孩子在否认家长的指控）
+3. 谁说"你在乎我的方式让我喘不过气" → **孩子**（孩子抱怨被过度控制）
+4. 谁说"我多想/我这么做是因为我在乎你" → **家长**（家长用"在乎"合理化控制）
+5. 谁说"你翻我东西/你看我…/你知道那是我的隐私" → **受害方**（被侵犯隐私的一方）
+6. 谁说"我控制不住/我知道但…/我改" → **过错方**（承认自己有问题的一方）
+7. 如果线索1-6指向的结果与你最初的判断矛盾 → **以线索为准**，修正身份锚定
+
+**第二步：文本修正**
+
+扫描原文，修正语音转文字错误：
+- 同音错字（在/再、的/得/地、是/事、那/哪、向/像、到/倒…）
+- 上下文明显不通顺的词汇
+- 禁止过度修整——口语重复/改口保留原样
+
+输出格式：原文 → 修正（原因）。无需修正写"无"。
+
+**第三步：标注说话人（基于身份锚定）**
+
+根据第一步的身份锚定，标注每句话是谁说的。核心约束：
+- 如果某句话是"承认错误/道歉/问怎么改"→ 只能是**过错方**说的
+- 如果某句话是"追责/质问/要求道歉/指出对方错误"→ 只能是**受害方**说的
+- 如果标注结果出现"受害方在认错"或"过错方在追责"的逻辑矛盾 → 标注反了，交换
+
+直接输出修正后的对话（每行格式："妈妈：xxx" 或 "孩子：xxx"，按对话顺序），之后附说话人归属摘要。
+
+**⚠️ 自检**：输出前通读一遍——过错方是否在认错/辩解/问怎么改？受害方是否在追责/质问？如果反了，交换全部标注。"""
+
+    for attempt in range(retries):
+        try:
+            resp = litellm.completion(
+                model=GEN_MODEL,
+                messages=[
+                    {"role": "system", "content": sys_msg},
+                    {"role": "user", "content": user_msg},
+                ],
+                temperature=0.0,
+                max_tokens=1024,
+                api_key=GEN_API_KEY,
+                api_base=GEN_API_BASE,
+                timeout=90,
+            )
+            raw = (resp.choices[0].message.content or "").strip()
+            if not raw:
+                continue
+
+            result = {"attribution": raw}
+
+            # 提取 "妈妈：xxx" / "孩子：xxx" 格式的行 → 构建修正后对话
+            # 兼容粗体格式: "**妈妈：** xxx" 或 "妈妈：xxx"
+            cleaned_lines = []
+            for line in raw.split("\n"):
+                line = line.strip()
+                # 去掉 markdown 粗体标记
+                clean_line = line.replace("**", "")
+                if clean_line.startswith("妈妈：") or clean_line.startswith("孩子："):
+                    content = clean_line.split("：", 1)[1].strip() if "：" in clean_line else ""
+                    if content:
+                        cleaned_lines.append(content)
+
+            if cleaned_lines:
+                result["cleaned_dialogue"] = "\n".join(cleaned_lines)
+
+            if result.get("cleaned_dialogue") or result.get("attribution"):
+                return result
+
+        except Exception:
+            if attempt < retries - 1:
+                time.sleep(1.0)
+
+    return {}
 
 
 def generate_popup(
@@ -180,6 +369,7 @@ def generate_popup(
     zhouyi_context: str = "",
     extra_instruction: str = "",
     prior_context: str = "",
+    speaker_attribution: str = "",
     retries: int = 3,
 ) -> dict:
     """调用 DeepSeek 生成弹窗（单窗口、含重试、生产级消息格式）。
@@ -195,8 +385,21 @@ def generate_popup(
     # type_instruction
     if tone == "encouraging":
         type_instruction = (
-            "请生成**鼓励式弹窗**（20-80字）。"
-            "必须：具体点出家长刚展现的积极模式 → 简短有力。"
+            "请生成**鼓励式弹窗**（60-100字）。"
+            "必须：一段完整纯肯定，具体点出家长刚展现的积极模式"
+            "（摘实际言行+好影响），覆盖完整弧线，不含话术/建议。"
+        )
+    elif tone == "child_insight":
+        type_instruction = (
+            f"请生成**看见孩子弹窗**（{CHILD_INSIGHT_MIN_CHARS}-{CHILD_INSIGHT_MAX_CHARS}字）。"
+            "结构：「你的孩子可能是[具体特征描述]」+「ta可能更适合用[教育方式]来引导」。"
+            "必须：特征从对话中孩子的实际言行提炼 → 禁止空洞形容词 → 给出匹配孩子特征的教育方式。"
+        )
+    elif tone == "auto":
+        type_instruction = (
+            "请根据系统提示中的规则，先判断此段对话适合哪种弹窗类型"
+            "（诊断式 80-200字 / 鼓励式 60-100字 / 看见孩子 60-100字），"
+            "再按对应规则生成弹窗。"
         )
     else:
         type_instruction = (
@@ -206,7 +409,15 @@ def generate_popup(
             "（以「你可以这样说：\"……\"」形式给出，引号内为实际措辞）。"
         )
 
-    # 前文上下文植入：帮助 LLM 理解对话走向，但不要求分析前文
+    # ── 前文上下文植入：帮助 LLM 理解对话走向，但不要求分析前文 ──
+    # ── 角色归属注入：Phase 1 结果（如有），帮助 LLM 正确归属每句话的说话人 ──
+    attribution_block = ""
+    if speaker_attribution:
+        attribution_block = f"""## 说话人归属（Phase 1 推断，供参考，可以质疑和修正）
+{speaker_attribution}
+
+"""
+
     if prior_context:
         user_msg = f"""## 前文背景（仅供上下文参考，了解对话来龙去脉。请重点分析下方的【当前段落】）
 
@@ -217,7 +428,7 @@ def generate_popup(
 
 {window_text}
 
-{type_instruction}
+{attribution_block}{type_instruction}
 {extra_instruction}
 
 请直接输出弹窗全文（不附加解释、不输出JSON、不输出"弹窗："等前缀）："""
@@ -225,7 +436,7 @@ def generate_popup(
         user_msg = f"""当前对话：
 {window_text}
 
-{type_instruction}
+{attribution_block}{type_instruction}
 {extra_instruction}
 
 请直接输出弹窗全文（不附加解释、不输出JSON、不输出"弹窗："等前缀）："""
@@ -280,15 +491,18 @@ def run_case(
     window_size: int = 300,
     dedup_threshold: float = 0.70,
     debounce_enabled: bool = True,
+    enable_child_insight: bool = True,
 ) -> dict:
     """对单个 case 跑完整管线（快通道 + 慢通道 + 生产级 Stage 2）。
 
     与生产 stream_orchestrator.process_chunk 对齐的关键行为：
     - FC_TONE_OFF: 调 LLM 前扫描关键词，命中则强制 diagnostic
     - FC_STALE: 调 LLM 后用 difflib 与历史弹窗比对去重
-    - P2: 鼓励式弹窗检查 quotable phrase，缺失则重试一次
+    - FC_CHILD_INSIGHT: 检测孩子特征表达信号，命中则切换为 child_insight
+    - P2: 仅诊断式弹窗检查 quotable phrase，缺失则重试一次
     - 去抖: 同通道同 trigger 连续出现时跳过后续
     - 窗口参数传递: window_size 传入 simulate_pipeline
+    - enable_child_insight: False 时跳过 child_insight 检测（用于 v4.0.12 两类型对比）
     """
     case_id = case.get("case_id", "unknown")
     dialogue = case.get("question", "")
@@ -321,9 +535,11 @@ def run_case(
                 continue
             last_trigger = {"key": trigger_key, "count": 1}
 
-        # ── FC_TONE_OFF: 扫描窗口文本，命中则强制 diagnostic ──
-        # 默认 encouraging：正常窗口不触发 P2。命中 override → diagnostic → P2 话术检查生效
-        tone = "encouraging"
+        # ── tone 判定：默认 auto，由 prompt 规则中立判定弹窗类型 ──
+        # 诊断式 / 看见孩子 / 鼓励式三者平级，均由 prompt 规则据对话内容判定，
+        # 代码不预设优先级。仅 FC_TONE_OFF 作为安全硬闸：命中时覆盖为
+        # diagnostic（防亲职化/惩罚被美化），这是安全护栏而非 tone 优先级。
+        tone = "auto"
         override_reason = detect_parent_override(p.context_window)
         if override_reason:
             tone = "diagnostic"
@@ -333,17 +549,26 @@ def run_case(
         if p.window_start > 0:
             prior_context = dialogue[max(0, p.window_start - 900):p.window_start]
 
-        # ── 调 LLM 生成弹窗 ──
-        gen = generate_popup(system_prompt, p.context_window, tone=tone,
-                             zhouyi_context=zhouyi_context,
-                             prior_context=prior_context)
+        # ── Phase 1: 文本修整 + 角色归属（代码强制，先于弹窗生成）──
+        phase1 = attribute_speakers(p.context_window)
+        cleaned_text = phase1.get("cleaned_dialogue", "") if phase1 else ""
+        speaker_map = phase1.get("attribution", "") if phase1 else ""
 
-        # ── P2: 诊断式话术检查 ──
+        # Phase 1 成功 → 用修正后文本替换原始 ASR 窗口；失败 → 降级用原始文本
+        window_text = cleaned_text if cleaned_text else p.context_window
+
+        # ── Phase 2: 调 LLM 生成弹窗（注入归属结果 + 修正后文本）──
+        gen = generate_popup(system_prompt, window_text, tone=tone,
+                             zhouyi_context=zhouyi_context,
+                             prior_context=prior_context,
+                             speaker_attribution=speaker_map)
+
+        # ── P2: 仅诊断式话术检查（鼓励式/看见孩子不强制话术）──
         if tone == "diagnostic" and gen["popup"] and not gen["error"]:
             if not has_quotable_phrase(gen["popup"]):
-                # 重试一次
+                # 重试一次（复用 Phase 1 修正文本 + 归属结果）
                 retry = generate_popup(
-                    system_prompt, p.context_window, tone=tone,
+                    system_prompt, window_text, tone=tone,
                     zhouyi_context=zhouyi_context,
                     extra_instruction=(
                         "⚠️ 上一次输出不合格：缺少家长可直接引用的话术。"
@@ -351,6 +576,7 @@ def run_case(
                         "给出至少一句家长能脱口说出的完整话术（引号内为实际措辞）。"
                     ),
                     prior_context=prior_context,
+                    speaker_attribution=speaker_map,
                 )
                 if retry["popup"] and not retry["error"]:
                     if has_quotable_phrase(retry["popup"]):
@@ -362,6 +588,35 @@ def run_case(
                 else:
                     # 重试本身失败（API error 等），保留原文但标记 p2 不合格
                     gen["p2_retry_failed"] = True
+
+        # ── 字数门重试（v4.0.19，与 popup_generator.py 同步）：超上限则压缩重试一次，仍超则保留 ──
+        # 与生产一致：真实类型取 LLM 在 raw 中声明的 0.类型（tone 此刻多为 "auto" 未解析）
+        _declared = _resolve_declared_type(gen.get("raw", "")) or tone
+        _max_chars = {
+            "diagnostic": DIAGNOSTIC_MAX_CHARS,
+            "encouraging": ENCOURAGING_MAX_CHARS,
+            "child_insight": CHILD_INSIGHT_MAX_CHARS,
+        }.get(_declared)
+        if _max_chars and gen["popup"] and not gen["error"] and len(gen["popup"]) > _max_chars:
+            retry = generate_popup(
+                system_prompt, window_text, tone=tone,
+                zhouyi_context=zhouyi_context,
+                extra_instruction=(
+                    f"⚠️ 上一次输出过长：当前 {len(gen['popup'])} 字，超过上限 {_max_chars} 字。"
+                    f"必须压缩到 {_max_chars} 字以内，超 {_max_chars + 10} 字即为失败："
+                    "只保留核心内容"
+                    "（诊断式=洞察核心+建议句；鼓励式/看见孩子=具体肯定+对孩子的好影响+完整弧线），"
+                    "删除泛化展开、重复铺垫、套话短句。不得新增对话中不存在的内容，"
+                    "只输出弹窗正文。"
+                ),
+                prior_context=prior_context,
+                speaker_attribution=speaker_map,
+            )
+            if retry["popup"] and not retry["error"]:
+                gen = retry
+                gen["len_retry"] = True
+            else:
+                gen["len_retry_failed"] = True
 
         # ── FC_STALE: 语义去重 ──
         if gen["popup"] and previous_popups:
@@ -521,8 +776,8 @@ def run_codex_batch_judge(results: list, output_file: str) -> list:
 
 def main():
     parser = argparse.ArgumentParser(description="真实管线批量测试（支持多版本 prompt）")
-    parser.add_argument("--prompt", type=str, default="v4.0.18",
-                        help="提示词版本: v4.0.12 或 v4.0.18（默认 v4.0.18）")
+    parser.add_argument("--prompt", type=str, default="v4.0.19",
+                        help="提示词版本: v4.0.12 / v4.0.18 / v4.0.19（默认 v4.0.19）")
     parser.add_argument("--cases", type=str, default="",
                         help="逗号分隔的 case_id 列表（默认：全部）")
     parser.add_argument("--dataset", type=str, default=str(DATASET_PATH),
