@@ -24,10 +24,8 @@ from channel_spec import (
     CRITICAL_SEVERITY_MIN,
     SLOW_THRESHOLD_CHARS,
     FAST_CRITICAL_FORWARD,
-    FAST_GENERAL_FORWARD,
-    FAST_GENERAL_WAIT,
+    FAST_BACKGROUND,
     FAST_MIN_CHARS,
-    is_critical,
 )
 
 
@@ -42,8 +40,9 @@ class Keyword:
 class WindowResult:
     """一次快通道窗口截取的决策结果。"""
     triggered: bool = False
-    channel: str = ""              # "critical" | "general" | "slow"
+    channel: str = ""              # "fast" | "slow"
     context_window: str = ""
+    background: str = ""           # 触发点前 FAST_BACKGROUND 字背景（含分析窗口），仅作理解
     char_count: int = 0
     window_start: int = 0          # 窗口在对话缓冲中的起始位置
     reason: str = ""
@@ -60,46 +59,32 @@ def _snap_start_to_boundary(buffer: str, start: int, limit: int = None) -> int:
 def extract_window(
     buffer: str,
     trigger_pos: int,
-    severity: int,
-    pending: bool = False,
 ) -> WindowResult:
-    """按统一规格做快通道窗口截取。
+    """按统一规格做快通道窗口截取（三类词：严重/警告/机会 统一）。
 
-    触发点（trigger_pos）为命中关键词在 buffer 中的绝对位置。
-    需要「等 50 字」而未凑够时，由调用方（simulate_pipeline）负责挂起。
+    触发点（trigger_pos）为命中关键词在 buffer 中的绝对位置，命中当下即刻分析。
+    分析窗口 = 触发点前 FAST_CRITICAL_FORWARD(150) 字（对齐句子边界）；
+    背景 = 触发点前 FAST_BACKGROUND(900) 字（含分析窗口，仅作理解）。
+    窗口有效内容 < FAST_MIN_CHARS(80) 取消。
 
     Args:
         buffer: 当前完整缓冲
         trigger_pos: 关键词命中位置（绝对索引）
-        severity: 命中关键词的严重度（1-5）
-        pending: 是否为挂起解析（一般严重已等够 50 字）
 
     Returns:
         WindowResult
     """
-    if is_critical(severity):
-        # critical：当下就弹，仅向前取窗
-        start = max(0, trigger_pos - FAST_CRITICAL_FORWARD)
-        start = _snap_start_to_boundary(buffer, start, trigger_pos)
-        ctx = buffer[start:trigger_pos]
-        if len(ctx) < FAST_MIN_CHARS:
-            return WindowResult(triggered=False, channel="critical",
-                                reason=f"critical <{FAST_MIN_CHARS}字取消")
-        return WindowResult(triggered=True, channel="critical",
-                            context_window=ctx, char_count=len(ctx),
-                            window_start=start)
-
-    # 一般严重：向前 FAST_GENERAL_FORWARD + 向后等 FAST_GENERAL_WAIT
-    start = max(0, trigger_pos - FAST_GENERAL_FORWARD)
+    start = max(0, trigger_pos - FAST_CRITICAL_FORWARD)
     start = _snap_start_to_boundary(buffer, start, trigger_pos)
-    end = min(len(buffer), trigger_pos + FAST_GENERAL_WAIT)
-    ctx = buffer[start:end]
+    ctx = buffer[start:trigger_pos]
     if len(ctx) < FAST_MIN_CHARS:
-        return WindowResult(triggered=False, channel="general",
-                            reason=f"general <{FAST_MIN_CHARS}字取消")
-    return WindowResult(triggered=True, channel="general",
+        return WindowResult(triggered=False, channel="fast",
+                            reason=f"fast <{FAST_MIN_CHARS}字取消")
+    bg_start = max(0, trigger_pos - FAST_BACKGROUND)
+    return WindowResult(triggered=True, channel="fast",
                         context_window=ctx, char_count=len(ctx),
-                        window_start=start)
+                        window_start=start,
+                        background=buffer[bg_start:start])
 
 
 @dataclass
@@ -110,16 +95,37 @@ class SlowWindow:
     char_count: int
 
 
-def _first_keyword(text: str, keywords: List[Keyword]) -> Optional[tuple]:
-    """在新到达文本中找第一个命中关键词，返回 (keyword, idx, severity)。
+def _first_keyword(
+    text: str,
+    keywords: List[Keyword],
+    min_abs_pos: int = 0,
+    base_pos: int = 0,
+) -> Optional[tuple]:
+    """在新到达文本中找第一个（绝对位置 ≥ min_abs_pos 的）命中关键词。
 
-    只匹配新文本（不做全量重扫），与生产 SUT 的逐 feed 去重语义一致，
-    避免同一关键词在后续 chunk 重复触发。
+    只匹配新文本（不做全量重扫），与生产 SUT 的逐 feed 去重语义一致。
+    min_abs_pos 用于 80 字保护窗口：命中后其后的关键词被过滤，防同一段重复触发。
+
+    Args:
+        text: 当前 chunk 文本
+        keywords: 关键词列表
+        min_abs_pos: 绝对位置扫描下限（保护窗口过滤）
+        base_pos: chunk 起始绝对位置（text[0] 在完整 buffer 中的索引）
+
+    Returns:
+        (keyword_text, idx_in_chunk, severity) 或 None
     """
+    best = None  # (kw, abs_pos)
     for kw in sorted(keywords, key=lambda k: len(k.text), reverse=True):
         idx = text.find(kw.text)
         if idx >= 0:
-            return (kw.text, idx, kw.severity)
+            pos = base_pos + idx
+            if pos >= min_abs_pos:
+                if best is None or pos < best[1]:
+                    best = (kw, pos)
+    if best:
+        kw, pos = best
+        return (kw.text, pos - base_pos, kw.severity)
     return None
 
 
@@ -132,6 +138,7 @@ class Popup:
     context_window: str
     char_count: int
     window_start: int = 0  # 窗口在对话缓冲中的起始位置
+    background: str = ""   # 触发点前 FAST_BACKGROUND 字背景（仅作理解，非生成依据）
 
 
 def simulate_pipeline(
@@ -157,7 +164,7 @@ def simulate_pipeline(
     buffer = ""
     slow_accum: List[SlowWindow] = []
     slow_cursor = 0  # 慢通道已处理到的位置，快通道触发后重置
-    pending_general: Optional[dict] = None  # {"pos":..,"kw":..,"sev":..}
+    guard_until = 0  # 80 字保护窗口：命中后该绝对位置内的新关键词不再触发
     offset = 0  # 缓冲中「已扫描过」的位置——只匹配新文本
 
     # 流式喂入
@@ -167,43 +174,21 @@ def simulate_pipeline(
 
         fast_fired = False  # 本轮是否有快通道触发
 
-        # 快通道：只在本段新文本中找关键词，绝对位置 = 扫描起点 + 段内索引
-        found = _first_keyword(chunk, keywords)
+        # 快通道（三类词统一）：只在本段新文本中找关键词，绝对位置 = 扫描起点 + 段内索引。
+        # 命中后设置保护窗口 guard_until = pos + FAST_MIN_CHARS，其内新关键词被过滤。
+        found = _first_keyword(chunk, keywords,
+                               min_abs_pos=guard_until, base_pos=offset)
         if found:
-            kw, idx_in_chunk, sev = found
+            kw, idx_in_chunk, _ = found
             pos = offset + idx_in_chunk
-            if is_critical(sev):
-                r = extract_window(buffer, pos, sev)
-                if r.triggered:
-                    popups.append(Popup("fast", "关键词触发", "提醒型",
-                                        r.context_window, r.char_count,
-                                        window_start=r.window_start))
-                    fast_fired = True
-                pending_general = None
-            else:
-                # 一般严重：等缓冲够 trigger_pos + 50
-                if len(buffer) < pos + FAST_GENERAL_WAIT:
-                    pending_general = {"pos": pos, "kw": kw, "sev": sev}
-                else:
-                    r = extract_window(buffer, pos, sev)
-                    if r.triggered:
-                        popups.append(Popup("fast", "关键词触发", "提醒型",
-                                            r.context_window, r.char_count,
-                                            window_start=r.window_start))
-                        fast_fired = True
-                    pending_general = None
-
-        # 无新命中：解析挂起的一般严重（等够 50 字）
-        elif pending_general is not None:
-            if len(buffer) >= pending_general["pos"] + FAST_GENERAL_WAIT:
-                r = extract_window(buffer, pending_general["pos"],
-                                   pending_general["sev"])
-                pending_general = None
-                if r.triggered:
-                    popups.append(Popup("fast", "关键词触发", "提醒型",
-                                        r.context_window, r.char_count,
-                                        window_start=r.window_start))
-                    fast_fired = True
+            r = extract_window(buffer, pos)
+            if r.triggered:
+                popups.append(Popup("fast", "关键词触发", "提醒型",
+                                    r.context_window, r.char_count,
+                                    window_start=r.window_start,
+                                    background=r.background))
+                fast_fired = True
+                guard_until = pos + FAST_MIN_CHARS  # 保护窗口：该位置内不再扫描
 
         # 快慢互斥：快通道触发后慢通道重新计数
         if fast_fired:
@@ -250,8 +235,8 @@ def main():
     print("=" * 60)
     print("快慢通道窗口演示（统一规格）")
     print(f"  critical≥{CRITICAL_SEVERITY_MIN} · 慢通道{SLOW_THRESHOLD_CHARS}字"
-          f" · 快critical向前{FAST_CRITICAL_FORWARD} · 一般向前{FAST_GENERAL_FORWARD}"
-          f" +等{FAST_GENERAL_WAIT} · <{FAST_MIN_CHARS}取消")
+          f" · 快统一向前{FAST_CRITICAL_FORWARD} · 背景{FAST_BACKGROUND}"
+          f" · <{FAST_MIN_CHARS}取消")
     print("=" * 60)
 
     cases = {

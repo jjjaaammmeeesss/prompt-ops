@@ -15,6 +15,14 @@
   python scripts/check_prompt_executor_sync.py            # 报告 + 有 FAIL 时 exit 1
   python scripts/check_prompt_executor_sync.py --strict   # 任一 WARN 也 exit 1
 
+配套闸门（每次跑完执行器后必跑，互补）:
+  # 输入构造奇偶 + 版本三方对齐（执行器 __version__ / PROMPT_VERSION / config.yaml）
+  python scripts/check_executor_input_parity.py --json <pipeline_output.json>
+
+  # 本脚本查"prompt↔执行器版本号同步"；parity 脚本查"执行器喂给生产的输入是否
+  # 与生产 TextBuffer 相对滑动奇偶一致"（防绝对前900从0累积导致的输入趋同）。
+  # 两者独立、互补，回归应同时跑。
+
 对比脚本（compare_v4012_v4019.py 等）设计上就引用多个历史版本做对比，
 不属于生产链，不在本检查范围内。
 """
@@ -29,6 +37,9 @@ PROJECT = HERE.parent
 PROMPT_VERSION_RE = __import__("re").compile(r"system_prompt_v([\d.]+)\.txt")
 EXECUTOR_VERSION_RE = __import__("re").compile(r'__version__\s*=\s*["\']([^"\']+)["\']')
 PROMPT_VER_CONST_RE = __import__("re").compile(r'PROMPT_VERSION\s*=\s*["\']([^"\']+)["\']')
+_MAIN_DEFAULT_PROMPT_RE = __import__("re").compile(
+    r'parser\.add_argument\("--prompt".*?default="(v[\d.]+)"',
+    __import__("re").DOTALL)
 
 
 def _versions(text: str) -> list[str]:
@@ -82,7 +93,7 @@ def main() -> int:
 
     # B) 执行器版本号声明
     for rel, label in (("realtime/popup_generator.py", "生产执行器 popup_generator"),
-                       ("scripts/run_v418_pipeline.py", "测试执行器 run_v418")):
+                       ("scripts/run_v4019_pipeline.py", "测试执行器 run_v4019")):
         p = PROJECT / rel
         if not p.exists():
             fails.append(f"执行器缺失: {rel}")
@@ -102,6 +113,17 @@ def main() -> int:
             )
         else:
             fails.append(f"{label}: 缺 PROMPT_VERSION 声明（{rel}）")
+        # 测试执行器 main() 的 --prompt 默认值也必须 == 生产版本（防不带参运行加载旧版）
+        if "run_v4019" in rel:
+            m = _MAIN_DEFAULT_PROMPT_RE.search(text)
+            if m:
+                ok = m.group(1).lstrip("v") == prod
+                (passes if ok else fails).append(
+                    f"{label}: main --prompt 默认值 = {m.group(1)}"
+                    + ("" if ok else f" ≠ 生产 v{prod}（不带参运行会加载旧版 prompt）")
+                )
+            else:
+                fails.append(f"{label}: 未找到 main() 的 --prompt 默认值（无法校验）")
 
     # C) 生产链单一引用：必须仅指向生产版本
     single_refs = [
@@ -124,7 +146,7 @@ def main() -> int:
 
     # D) 多版本能力：必须含生产版本（允许列历史版做回退/对比）
     multi_refs = [
-        ("scripts/run_v418_pipeline.py", "测试执行器 PROMPT_MAP"),
+        ("scripts/run_v4019_pipeline.py", "测试执行器 PROMPT_MAP"),
         ("realtime/popup_generator.py", "生产执行器回退链"),
     ]
     for rel, label in multi_refs:

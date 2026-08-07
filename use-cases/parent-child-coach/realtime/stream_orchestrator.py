@@ -536,8 +536,12 @@ class StreamOrchestrator:
             f"tone={zhouyi_state.suggested_tone.value}"
         )
 
-        # 4. P0 硬拦截（v4.0.14）：低风险 + 坤卦（纯稳态）+ 容器不适用
-        #    = 日常/稳定承载对话，无冲突无教育契机，一律不弹窗。
+        # 4. P0 硬拦截（v4.0.14，v4.0.20 收紧）：低风险 + 坤卦（纯稳态）+ 容器不适用
+        #    **且 Stage1 建议类型也为「不弹窗」** 才拦截。
+        #    v4.0.20 修复（缺陷B · P0 过度保守）：原 P0 只看三要素，把"和谐但有教育契机"
+        #    （Stage1 判建议类型=诊断式/鼓励式）也误当纯日常拦了。现在 P0 与 Stage1
+        #    「建议类型」联动——仅当 Stage1 也判「不弹窗」（真·纯日常无契机）才拦；
+        #    Stage1 判了诊断式/鼓励式/看见孩子（识别到情绪信号/教育契机）则放行进 Stage2。
         #    依据：REN-42 裁判诊断 — B-01/B-02/A-01 的 ZhouYi 终态均为
         #    「坤·稳定承载型·risk_level=低」，系统已正确识别无冲突，
         #    但触发门仍放行弹窗（FC_UNSUPPORTED）。
@@ -546,11 +550,12 @@ class StreamOrchestrator:
             and zhouyi_state.risk_level == "低"
             and zhouyi_state.trigram == Trigram.KUN
             and zhouyi_state.container_status == "不适用"
+            and "不弹窗" in (zhouyi_state.suggestion or "")
         ):
             self._suppressed_count += 1
             logger.info(
                 "Popup suppressed: P0 硬拦截 "
-                "(risk=低 + 坤 + 容器不适用，稳态日常对话)"
+                "(risk=低 + 坤 + 容器不适用 + Stage1建议类型=不弹窗，稳态日常对话)"
             )
             return None
 

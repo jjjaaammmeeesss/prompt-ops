@@ -57,10 +57,11 @@ class Trigram(Enum):
 
 
 class PopupTone(str, Enum):
-    """弹窗类型：诊断式 或 鼓励式。"""
+    """弹窗类型：诊断式 / 鼓励式 / 看见孩子。"""
 
     DIAGNOSTIC = "diagnostic"  # 诊断式（100-200字）：照见盲区
     ENCOURAGING = "encouraging"  # 鼓励式（30-60字）：肯定正向时刻
+    CHILD_INSIGHT = "child_insight"  # 看见孩子（50-100字）：洞察孩子的性格特征
 
 
 # === 风险等级排序（v4.0.14 新增，供 P0 硬拦截 / P1 context-drift 放行使用） ===
@@ -103,6 +104,7 @@ class ZhouYiState:
     container_status: str = "不适用"
     risk_level: str = "low"
     suggested_tone: PopupTone = PopupTone.DIAGNOSTIC
+    suggestion: str = "诊断式"  # Stage1 原始「建议类型」（诊断式/鼓励式/看见孩子/不弹窗），供 P0 联动
     confidence: float = 1.0
     brief_reason: str = ""
 

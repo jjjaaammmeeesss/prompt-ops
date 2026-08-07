@@ -39,7 +39,7 @@ logger = logging.getLogger("prompt_ops.realtime.popup_generator")
 # __version__ 自增记录本执行器迭代；PROMPT_VERSION 声明它适配的 prompt 版本，
 # 两者必须与生产 realtime/config.yaml 一致（由 scripts/check_prompt_executor_sync.py 校验）。
 __version__ = "1.0"           # 生产执行器版本号
-PROMPT_VERSION = "v4.0.19"    # 适配的 prompt 版本（= system_prompt_v4.0.19.txt）
+PROMPT_VERSION = "v4.0.23"    # 适配的 prompt 版本（= system_prompt_v4.0.23.txt）
 
 # === 弹窗生成的系统提示词增强 ===
 # v4.0+: 静态卦象策略已移入 system_prompt_v4.0.19.txt 第八节。

@@ -1,6 +1,6 @@
 # Parent-Child Communication Coach - Prompt Optimization Config
-# System Prompt: v4.0.19（当前生产版，三弹窗类型）
-#   生产配置另见 realtime/config.yaml（同样指向 v4.0.19）
+# System Prompt: v4.0.23（当前生产版，背景物理隔离 + 三弹窗类型；v4.0.22 保留为对照锚点）
+#   生产配置另见 realtime/config.yaml（同样指向 v4.0.23）
 # Dataset: 78 merged examples (50 old + 28 expert train, no golden answers needed)
 #   - 50 original: 43 auto-generated (categories A-E) + 7 hand-labeled
 #   - 28 expert: parsed from 52 expert-annotated cases (80% train split)
@@ -10,7 +10,7 @@
 #   Judge provides relative ranking signal for optimization; Phase E uses expert scores for validation
 
 system_prompt:
-  file: "system_prompt_v4.0.19.txt"
+  file: "system_prompt_v4.0.23.txt"
 
 # Dataset configuration — merged 78-example training set
 dataset:
