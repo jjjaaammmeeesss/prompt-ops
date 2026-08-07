@@ -1,0 +1,22 @@
+[
+  {
+    "iteration": 1,
+    "candidate_id": "candidate_001",
+    "strategy": "teacher_student",
+    "kept": true,
+    "reason": "综合分提升: 0.746 → 0.769 (Δ=+0.023)",
+    "timestamp": "2026-07-25T18:35:06.962268",
+    "overall_score": 0.7694,
+    "aggregate_m5": 0.3
+  },
+  {
+    "iteration": 2,
+    "candidate_id": "candidate_002",
+    "strategy": "teacher_student",
+    "kept": true,
+    "reason": "综合分提升: 0.746 → 0.769 (Δ=+0.023)",
+    "timestamp": "2026-07-25T18:46:41.890712",
+    "overall_score": 0.7693,
+    "aggregate_m5": 0.2222
+  }
+]

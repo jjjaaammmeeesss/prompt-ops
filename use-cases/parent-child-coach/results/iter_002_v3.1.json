@@ -1,0 +1,85 @@
+{
+  "iteration": 2,
+  "version": "v3.1",
+  "kept": false,
+  "reason": "综合分未提升: 0.766 → 0.740 (Δ=-0.026)",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.4,
+    "m6_insight_quality": 4.0,
+    "m7_safety_score": 3.0,
+    "overall_score": 0.74
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你刚才打断孩子的科学实验分享，是因为你只看到数学分数下降，觉得其他都是浪费时间。但孩子那一刻最需要的不是被纠正，而是被看见——他渴望你肯定他的兴奋和成就感。当你把注意力全放在分数上，孩子会觉得自己只有考高分才值得被爱，这会让他慢慢不敢再跟你分享快乐。\n——\n你可以这么说：'哇，火山喷得最高？那一定很酷！来，先跟妈妈讲讲实验怎么做的，然后我们再看数学卷子。'",
+      "sys_main_contradiction": "孩子渴望被看见和肯定的积极体验，与家长只关注分数下降的收缩信念之间的冲突。",
+      "gold_tone": "diagnostic",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 1.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_tone": "empowering",
+      "sys_popup_text": "你在疲惫中停下来了。你没有推开孩子，而是允许自己说累，也允许孩子表达失望。这种停顿，让孩子有机会说出“太阳是蓝色的”，也让你们从对抗走向了合作。",
+      "sys_main_contradiction": "家长在疲惫与回应孩子需求之间的平衡，以及孩子对情感连接的渴望与家长暂时无法满足之间的张力。",
+      "gold_tone": "empowering",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你从催促到挠背，这个转弯很珍贵。孩子说怕被嘲笑、担心猫想妈妈——你接住了他的情绪，但还没帮他命名这些焦虑。他需要的不只是安抚，而是你帮他把'脑子里好多事情'拆开：怕同学笑是一种，想猫妈妈是另一种。你说'猫可能会想妈妈'时，他立刻问'它把我当妈妈了吗'——他在确认自己的安全感。\n——\n你可以这么说：'你怕同学笑，也怕猫难过，这两种担心不一样，但都可以跟妈妈说说。'",
+      "sys_main_contradiction": "家长用身体安抚（挠背）回应了孩子的依恋需求，但孩子的社交焦虑（怕被嘲笑）和分离焦虑（猫想妈妈）仍未被真正看见和讨论。",
+      "gold_tone": "diagnostic",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你其实已经做得很好了——在最生气的时候，你选择了停下来，给自己和孩子一点空间。但我也看到，你心里有个声音在说：'他每次都这样，不盯紧不行。'这个声音让你忍不住去控制，哪怕知道孩子会反抗。其实，孩子刚才说'我不会了'的时候，他是真的想做到，只是他还没学会怎么控制自己。你的暂停已经给了他一个信号：妈妈在努力。下一步，可以试着把'你总是'换成'这次'，把信任一点点还给他。\n——\n你可以这么说：'妈妈刚才很担心，现在我们冷静了，一起想想下次怎么过马路更安全？'",
+      "sys_main_contradiction": "家长因恐惧而过度控制，不信任孩子能自我管理，但家长有暂停冷静的积极时刻，矛盾在于控制与修复并存。",
+      "gold_tone": "empowering",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "当孩子问‘他不要我了吗’，你立刻说‘不是’，但后面那句‘大人的事跟你没关系’却悄悄推开了他。孩子听到的是：你的感受不重要，你不该问。他于是转向自我归因——‘是不是我昨天不听话’。你本想保护他，却让他更害怕被抛弃。\n——\n你可以这么说：‘爸爸和妈妈之间有些问题需要解决，不是你的错，我们都很爱你。’",
+      "sys_main_contradiction": "孩子对父亲突然离开的恐惧与自我归因，与家长用‘大人的事’封闭解释、回避情感联结之间的矛盾。",
+      "gold_tone": "empowering",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    }
+  ]
+}

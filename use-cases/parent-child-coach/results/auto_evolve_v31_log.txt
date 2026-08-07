@@ -1,0 +1,198 @@
+鍔犺浇宸叉湁鍩虹嚎: auto_baseline_v25_full.json
+
+馃殌 鑷姩杩唬鍚姩
+   鍩虹嚎缁煎悎鍒? 0.797
+   M1=83.9% M5=61.0% M6=3.66 M7=4.78
+   鏈€澶ц凯浠? 3
+   闄嶅櫔: n_runs=3
+======================================================================
+
+鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+馃攧 杩唬 1/3 | 鐩爣: perception (v2.5 鈫?v2.6)
+鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+  澶辫触妗堜緥: 36
+  馃搵 绯荤粺鍊惧悜杈撳嚭 diagnostic/mixed锛屼絾 18/26 涓渚嬩笓瀹舵湡鏈?empowering銆傛牴鍥狅細鎬绘帶鎶?鍙戠幇闂'褰撴垚榛樿鏂瑰悜锛岄仐婕忎簡瀹堕暱鐨勭Н鏋佹椂鍒汇€?
+  馃搵 C10-002: expected diagnostic, got empowering. Contradiction: 瀹堕暱宸蹭粠鍛戒护杞悜鍏辨儏锛屼絾瀛╁瓙瀵光€樻槑澶╁啀璇粹€欑殑鎯€ф劅鍒板け鏈涳紝娣卞眰鐒﹁檻锛堢ぞ浜よ瘎浠枫€佸疇鐗╂儏鎰燂級鏈瀹屽叏鎵挎帴銆?
+  馃搵 C10-003: expected diagnostic, got empowering. Contradiction: 瀹堕暱鐨勫畨鍏ㄧ劍铏戜笌瀛╁瓙鐨勮嚜涓婚渶姹傚啿绐侊紝瀵艰嚧杩介€冨惊鐜紝缂轰箯淇′换鍜屾湁鏁堟矡閫氥€?
+
+  馃К 鍙樺紓涓?.. (based on v2.5)
+  搴旂敤 3/3 鏉′慨鏀?鈫?v2.6
+  馃摑 鐗堟湰: v2.5 鈫?v2.6
+     - 鏂板 parent_shift_type 瀛楁锛屽己鍒舵劅鐭ュ櫒璇嗗埆瀹堕暱鏄惁浠庢帶鍒?鎭愭儳/璐ｅ杞悜淇′换/濂藉/鍏辨儏锛屼负瑙勫垯灞傛彁渚涙洿缁嗙矑搴︾殑绉瀬杞彉淇″彿锛岄伩鍏嶅皢琛ㄩ潰濡ュ崗璇垽涓?empowering銆?
+     - 鏄庣‘瑕佹眰鎰熺煡鍣ㄦ崟鎹変俊蹇佃浆鍙橈紝閬垮厤蹇界暐瀹堕暱鐨勭Н鏋佸彉鍖栵紝浠庤€屽噺灏戝皢 empowering 璇垽涓?diagnostic 鐨勬儏鍐点€?
+     - 闃叉鎰熺煡鍣ㄥ拷鐣ュ闀垮悗缁殑绉瀬鍥炲簲锛岄伩鍏嶅皢宸茶В鍐崇殑璇夋眰鏍囪涓?unmet锛屼粠鑰屽噺灏戣鍒ゃ€?
+
+  馃弮 璺戣瘎浼? prompt_鎰熺煡灞俖v2.6.md (n=3)
+  C10-001    tone=diagnostic  (gold=diagnostic ) M1=1 M5=1 M6=4.0 M7=3.7 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C10-002    tone=empowering  (gold=diagnostic ) M1=1 M5=0 M6=3.7 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C10-003    tone=diagnostic  (gold=diagnostic ) M1=1 M5=1 M6=4.7 M7=5.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C10-005    tone=empowering  (gold=diagnostic ) M1=1 M5=0 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C10-006    tone=diagnostic  (gold=diagnostic ) M1=1 M5=1 M6=3.7 M7=4.7 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C10-008    tone=empowering  (gold=diagnostic ) M1=1 M5=0 M6=2.7 M7=5.0 | tone_runs=['empowering', 'empowering', '?']
+  C10-004    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.3 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-001    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-004    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-006    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-009    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-010    tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=4.0 M7=3.7 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C10-009    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=- M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C10-010    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'mixed', 'empowering']
+  C11-001    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=- M7=5.0 | tone_runs=['empowering', '?', 'empowering']
+  C11-002    tone=-           (gold=empowering ) M1=0 M5=- M6=1.0 M7=5.0 | tone_runs=['?', '?', '?']
+  C11-005    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=3.7 M7=5.0 | tone_runs=['mixed', 'empowering', 'empowering']
+  C11-005    tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=- M7=2.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C11-005    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=- M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-005    tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=- M7=4.7 | tone_runs=['diagnostic', 'empowering', 'mixed']
+  C11-005    tone=empowering  (gold=empowering ) M1=0 M5=1 M6=1.7 M7=5.0 | tone_runs=['empowering', '?', '?']
+  C11-007    tone=empowering  (gold=empowering ) M1=0 M5=1 M6=- M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-008    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=3.7 M7=4.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-009    tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=4.0 M7=3.3 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C11-010    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=- M7=5.0 | tone_runs=['empowering', 'diagnostic', 'empowering']
+  C13-001    tone=-           (gold=empowering ) M1=0 M5=- M6=1.0 M7=5.0 | tone_runs=['?', '?', '?']
+  C13-002    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=2.3 M7=5.0 | tone_runs=['?', '?', 'empowering']
+  C13-004    tone=-           (gold=empowering ) M1=0 M5=- M6=1.0 M7=5.0 | tone_runs=['?', '?', '?']
+  C13-005    tone=empowering  (gold=empowering ) M1=0 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C13-006    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C13-007    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C13-007    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.3 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C13-007    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C13-008    tone=empowering  (gold=diagnostic ) M1=1 M5=0 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C13-009    tone=empowering  (gold=diagnostic ) M1=1 M5=0 M6=4.0 M7=4.0 | tone_runs=['empowering', 'diagnostic', 'empowering']
+  C13-010    tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=4.0 M7=5.0 | tone_runs=['diagnostic', 'empowering', 'diagnostic']
+  C13-010    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.7 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C13-012    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C13-012    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C3-001     tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=4.3 M7=5.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C3-002     tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C3-003     tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=4.0 M7=5.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C4-001     tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=4.0 M7=4.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C4-002     tone=empowering  (gold=empowering ) M1=1 M5=1 M6=3.3 M7=5.0 | tone_runs=['empowering', '?', 'empowering']
+  C4-002     tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.7 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C4-002     tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.7 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C4-002     tone=empowering  (gold=empowering ) M1=0 M5=1 M6=2.0 M7=5.0 | tone_runs=['?', 'empowering', '?']
+  C4-003     tone=empowering  (gold=empowering ) M1=0 M5=1 M6=4.3 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C4-004     tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=3.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C5-001     tone=empowering  (gold=empowering ) M1=1 M5=1 M6=3.7 M7=5.0 | tone_runs=['empowering', 'empowering', '?']
+  C5-001     tone=empowering  (gold=empowering ) M1=0 M5=1 M6=3.3 M7=5.0 | tone_runs=['empowering', 'empowering', '?']
+  C5-002     tone=empowering  (gold=empowering ) M1=0 M5=1 M6=4.7 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C5-002     tone=-           (gold=empowering ) M1=1 M5=- M6=1.0 M7=5.0 | tone_runs=['?', '?', '?']
+  C5-003     tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=4.0 M7=4.7 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C5-003     tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=3.7 M7=5.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C5-003     tone=diagnostic  (gold=empowering ) M1=0 M5=0 M6=4.0 M7=5.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C5-003     tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=4.7 | tone_runs=['empowering', 'empowering', 'empowering']
+  C5-004     tone=diagnostic  (gold=diagnostic ) M1=1 M5=1 M6=4.0 M7=2.7 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C5-004     tone=diagnostic  (gold=diagnostic ) M1=1 M5=1 M6=4.0 M7=4.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C5-005     tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C5-005     tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=4.0 M7=5.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C5-005     tone=empowering  (gold=empowering ) M1=1 M5=1 M6=3.7 M7=5.0 | tone_runs=['empowering', 'diagnostic', 'empowering']
+  鈴?35.0min | M1=82% M5=71% M6=3.7 M7=4.7 | 缁煎悎=0.805
+
+  鉂?DISCARD 鈥?C10-001: M7 瀹夊叏閫€鍖?5.0 鈫?3.6666666666666665
+
+鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+馃攧 杩唬 2/3 | 鐩爣: perception (v2.5 鈫?v2.7)
+鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+  澶辫触妗堜緥: 36
+  馃搵 绯荤粺鍊惧悜杈撳嚭 diagnostic/mixed锛屼絾 18/26 涓渚嬩笓瀹舵湡鏈?empowering銆傛牴鍥狅細鎬绘帶鎶?鍙戠幇闂'褰撴垚榛樿鏂瑰悜锛岄仐婕忎簡瀹堕暱鐨勭Н鏋佹椂鍒汇€?
+  馃搵 C10-002: expected diagnostic, got empowering. Contradiction: 瀹堕暱宸蹭粠鍛戒护杞悜鍏辨儏锛屼絾瀛╁瓙瀵光€樻槑澶╁啀璇粹€欑殑鎯€ф劅鍒板け鏈涳紝娣卞眰鐒﹁檻锛堢ぞ浜よ瘎浠枫€佸疇鐗╂儏鎰燂級鏈瀹屽叏鎵挎帴銆?
+  馃搵 C10-003: expected diagnostic, got empowering. Contradiction: 瀹堕暱鐨勫畨鍏ㄧ劍铏戜笌瀛╁瓙鐨勮嚜涓婚渶姹傚啿绐侊紝瀵艰嚧杩介€冨惊鐜紝缂轰箯淇′换鍜屾湁鏁堟矡閫氥€?
+  馃摎 宸叉湁 1 鏉″け璐ュ皾璇曡蹇?
+
+  馃К 鍙樺紓涓?.. (based on v2.5)
+  搴旂敤 2/2 鏉′慨鏀?鈫?v2.7
+  馃摑 鐗堟湰: v2.5 鈫?v2.7
+     - 鏂板 parent_shift_type 瀛楁锛屽己鍒舵劅鐭ュ櫒璇嗗埆瀹堕暱鏄惁浠庢帶鍒?鎭愭儳/璐ｅ杞悜淇′换/濂藉/鍏辨儏锛屼负瑙勫垯灞傛彁渚涙洿缁嗙矑搴︾殑绉瀬杞彉淇″彿锛岄伩鍏嶅皢琛ㄩ潰濡ュ崗璇垽涓?empowering銆?
+     - 鏄庣‘瑕佹眰鎰熺煡鍣ㄦ崟鎹夊闀跨殑鍚庣画鍥炲簲锛岄伩鍏嶅皢宸茶В鍐崇殑璇夋眰鏍囪涓?unmet锛屼粠鑰屽噺灏戣鍒欏眰鍥?unmet 淇″彿鑰岄敊璇€夋嫨 diagnostic銆?
+
+  馃弮 璺戣瘎浼? prompt_鎰熺煡灞俖v2.7.md (n=3)
+  C10-001    tone=diagnostic  (gold=diagnostic ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C10-002    tone=empowering  (gold=diagnostic ) M1=1 M5=0 M6=3.7 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C10-003    tone=diagnostic  (gold=diagnostic ) M1=1 M5=1 M6=4.3 M7=5.0 | tone_runs=['diagnostic', 'empowering', 'diagnostic']
+  C10-005    tone=empowering  (gold=diagnostic ) M1=1 M5=0 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C10-006    tone=diagnostic  (gold=diagnostic ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C10-008    tone=empowering  (gold=diagnostic ) M1=0 M5=0 M6=2.0 M7=5.0 | tone_runs=['empowering', '?', '?']
+  C10-004    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-001    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=3.7 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-004    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=4.0 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-006    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=3.7 M7=4.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-009    tone=empowering  (gold=empowering ) M1=1 M5=1 M6=3.7 M7=5.0 | tone_runs=['empowering', 'empowering', 'empowering']
+  C11-010    tone=diagnostic  (gold=empowering ) M1=1 M5=0 M6=4.0 M7=4.3 | tone_runs=['diagnostic', 'diagnostic', 'diagnostic']
+  C10-009    tone=empowering  (gold=empowering ) M1=0 M5=1 M6=- M7=- | tone_runs=['empowering', '?', '?']
+  C10-010    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-001    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-002    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-005    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-005    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-005    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-005    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-005    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-007    tone=-           (gold=empowering ) M1=1 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-008    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-009    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C11-010    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-001    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-002    tone=-           (gold=empowering ) M1=1 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-004    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-005    tone=-           (gold=empowering ) M1=1 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-006    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-007    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-007    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-007    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-008    tone=-           (gold=diagnostic ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-009    tone=-           (gold=diagnostic ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-010    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-010    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-012    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C13-012    tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C3-001     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C3-002     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C3-003     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C4-001     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C4-002     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C4-002     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C4-002     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C4-002     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C4-003     tone=-           (gold=empowering ) M1=1 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C4-004     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-001     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-001     tone=-           (gold=empowering ) M1=1 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-002     tone=-           (gold=empowering ) M1=1 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-002     tone=-           (gold=empowering ) M1=1 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-003     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-003     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-003     tone=-           (gold=empowering ) M1=1 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-003     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-004     tone=-           (gold=diagnostic ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-004     tone=-           (gold=diagnostic ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-005     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-005     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  C5-005     tone=-           (gold=empowering ) M1=0 M5=- M6=- M7=- | tone_runs=['?', '?', '?']
+  鈴?18.0min | M1=31% M5=69% M6=3.8 M7=4.9 | 缁煎悎=0.686
+
+  鉂?DISCARD 鈥?缁煎悎鍒嗘湭鎻愬崌: 0.797 鈫?0.686 (螖=-0.111)
+
+鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+馃攧 杩唬 3/3 | 鐩爣: perception (v2.5 鈫?v2.8)
+鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+  澶辫触妗堜緥: 36
+  馃搵 绯荤粺鍊惧悜杈撳嚭 diagnostic/mixed锛屼絾 18/26 涓渚嬩笓瀹舵湡鏈?empowering銆傛牴鍥狅細鎬绘帶鎶?鍙戠幇闂'褰撴垚榛樿鏂瑰悜锛岄仐婕忎簡瀹堕暱鐨勭Н鏋佹椂鍒汇€?
+  馃搵 C10-002: expected diagnostic, got empowering. Contradiction: 瀹堕暱宸蹭粠鍛戒护杞悜鍏辨儏锛屼絾瀛╁瓙瀵光€樻槑澶╁啀璇粹€欑殑鎯€ф劅鍒板け鏈涳紝娣卞眰鐒﹁檻锛堢ぞ浜よ瘎浠枫€佸疇鐗╂儏鎰燂級鏈瀹屽叏鎵挎帴銆?
+  馃搵 C10-003: expected diagnostic, got empowering. Contradiction: 瀹堕暱鐨勫畨鍏ㄧ劍铏戜笌瀛╁瓙鐨勮嚜涓婚渶姹傚啿绐侊紝瀵艰嚧杩介€冨惊鐜紝缂轰箯淇′换鍜屾湁鏁堟矡閫氥€?
+  馃摎 宸叉湁 2 鏉″け璐ュ皾璇曡蹇?
+
+  馃К 鍙樺紓涓?.. (based on v2.5)
+  鈿狅笍 鍙樺紓灏濊瘯 1 澶辫触: LLM call failed: Error code: 402 - {'error': {'message': 'Insufficient Balance',
+  鈿狅笍 鍙樺紓灏濊瘯 2 澶辫触: LLM call failed: Error code: 402 - {'error': {'message': 'Insufficient Balance',
+  鈿狅笍 鍙樺紓灏濊瘯 3 澶辫触: LLM call failed: Error code: 402 - {'error': {'message': 'Insufficient Balance',
+  鉂?鍙樺紓杩炵画 3 娆″け璐ワ紝璺宠繃鏈疆
+
+======================================================================
+馃搳 鑷姩杩唬缁撴灉
+======================================================================
+  杩唬: 2 | 閲囩撼: 0 | 涓㈠純: 2
+  鍩虹嚎缁煎悎鍒? 0.797 鈫?鏈€缁? 0.797 (螖=+0.000)
+  #1 perception v2.6 鉂?| 缁煎悎=0.805 | C10-001: M7 瀹夊叏閫€鍖?5.0 鈫?3.6666666666666665
+  #2 perception v2.7 鉂?| 缁煎悎=0.686 | 缁煎悎鍒嗘湭鎻愬崌: 0.797 鈫?0.686 (螖=-0.111)
+
+  鏈€缁?prompt 鐗堟湰: {'master': 'v3.5', 'perception': 'v2.5', 'production': 'v3.2'}
+  鍘嗗彶淇濆瓨: results/auto_evolve_history.json

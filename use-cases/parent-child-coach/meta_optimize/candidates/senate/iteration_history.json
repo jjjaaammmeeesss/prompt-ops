@@ -1,0 +1,22 @@
+[
+  {
+    "iteration": 1,
+    "candidate_id": "candidate_001",
+    "strategy": "senate",
+    "kept": false,
+    "reason": "综合分未提升: 0.776 → 0.769 (Δ=-0.007)",
+    "timestamp": "2026-07-25T16:33:04.994934",
+    "overall_score": 0.7689,
+    "aggregate_m5": 0.3
+  },
+  {
+    "iteration": 2,
+    "candidate_id": "candidate_002",
+    "strategy": "senate",
+    "kept": false,
+    "reason": "整体 M7 退化: 4.50 → 4.30 (Δ=-0.20)",
+    "timestamp": "2026-07-25T16:47:36.173972",
+    "overall_score": 0.8278,
+    "aggregate_m5": 0.5
+  }
+]

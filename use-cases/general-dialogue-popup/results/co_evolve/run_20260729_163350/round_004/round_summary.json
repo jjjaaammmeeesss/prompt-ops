@@ -1,0 +1,9 @@
+{
+  "round": 4,
+  "v151_agg": 4.6,
+  "v30_agg": 4.15,
+  "delta": 0.4499999999999993,
+  "v151_kept": true,
+  "v30_kept": true,
+  "supervisor_severity": "anomaly"
+}

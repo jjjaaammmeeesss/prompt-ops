@@ -1,0 +1,23 @@
+{
+  "best_prompt": "system_prompt_v1.4.txt",
+  "best_mean": 4.15,
+  "rounds_run": 1,
+  "history": [
+    {
+      "file": "round_000_baseline.json",
+      "mean": 4.083
+    },
+    {
+      "file": "round_001.json",
+      "mean": 3.533
+    },
+    {
+      "file": "round_002.json",
+      "mean": 4.15
+    },
+    {
+      "file": "round_003.json",
+      "mean": 4.167
+    }
+  ]
+}

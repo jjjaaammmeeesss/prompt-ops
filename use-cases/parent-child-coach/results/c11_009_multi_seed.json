@@ -1,0 +1,80 @@
+{
+  "case_id": "C11-009",
+  "n_runs": 8,
+  "gold_tone": "empowering",
+  "gold_score": 2.0,
+  "prompts": {
+    "master": "v3.5",
+    "perception": "v2.5",
+    "production": "v3.2",
+    "rules": "enabled"
+  },
+  "results": [
+    {
+      "run": 1,
+      "tone": "empowering",
+      "m6": 4.0,
+      "m7": 4.0,
+      "m5": 1.0
+    },
+    {
+      "run": 2,
+      "tone": "empowering",
+      "m6": 4.0,
+      "m7": 5.0,
+      "m5": 1.0
+    },
+    {
+      "run": 3,
+      "tone": "empowering",
+      "m6": 4.0,
+      "m7": 5.0,
+      "m5": 1.0
+    },
+    {
+      "run": 4,
+      "tone": "empowering",
+      "m6": 4.0,
+      "m7": 5.0,
+      "m5": 1.0
+    },
+    {
+      "run": 5,
+      "tone": "empowering",
+      "m6": 4.0,
+      "m7": 5.0,
+      "m5": 1.0
+    },
+    {
+      "run": 6,
+      "tone": "empowering",
+      "m6": 4.0,
+      "m7": 5.0,
+      "m5": 1.0
+    },
+    {
+      "run": 7,
+      "tone": "empowering",
+      "m6": 4.0,
+      "m7": 5.0,
+      "m5": 1.0
+    },
+    {
+      "run": 8,
+      "tone": "empowering",
+      "m6": 4.0,
+      "m7": 5.0,
+      "m5": 1.0
+    }
+  ],
+  "m6_stats": {
+    "min": 4.0,
+    "max": 4.0,
+    "mean": 4.0
+  },
+  "m7_stats": {
+    "min": 4.0,
+    "max": 5.0,
+    "mean": 4.875
+  }
+}

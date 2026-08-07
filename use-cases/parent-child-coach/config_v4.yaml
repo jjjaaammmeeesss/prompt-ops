@@ -1,0 +1,36 @@
+# v4.0 — 基于71条专家打标数据的系统提示词优化
+# 使用 DSPy MIPROv2 自动迭代 system_prompt，以专家手写改写为 golden answer
+# v4.0 优化完成后，优化后的 prompt 将自动流入实时弹窗系统 Stage 2
+system_prompt:
+  file: "system_prompt_v2.3.txt"
+
+# 专家标注训练集（71条 → 56 train + 14 test + 备用 1 validation）
+dataset:
+  path: "data/expert_train_v4.json"
+  input_field: "question"
+  golden_output_field: "answer"
+  adapter_class: "standard_json"
+  train_size: 0.80
+  validation_size: 0.20
+
+# Stage 2 弹窗生成模型
+model:
+  name: "deepseek/deepseek-chat"
+  task_model: "deepseek/deepseek-chat"
+  proposer_model: "deepseek/deepseek-chat"
+
+# LLM-as-Judge 5维度评分（Claude Opus）
+metric:
+  class: "scripts/llm_judge_metric.py"
+
+# MIPROv2 优化配置
+optimization:
+  strategy: "basic"
+  auto: "intermediate"
+  num_candidates: 10
+  max_bootstrapped_demos: 4
+  max_labeled_demos: 5
+  seed: 42
+  init_temperature: 0.5
+  compute_baseline: true
+  metric_threshold: 7.0

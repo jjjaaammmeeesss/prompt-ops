@@ -1,0 +1,33 @@
+system_prompt:
+  file: "system_prompt.txt"
+  inputs: ["dialogue"]
+  outputs: ["answer"]
+
+dataset:
+  adapter_class: "prompt_ops.core.datasets.ConfigurableJSONAdapter"
+  path: "dataset.json"
+  input_field: "dialogue"
+  golden_output_field: "reference_popup"
+  train_size: 0.6
+  validation_size: 0.2
+
+model:
+  name: "deepseek/deepseek-chat"
+  task_model: "deepseek/deepseek-chat"
+  proposer_model: "deepseek/deepseek-chat"
+  adapter_type: "dspy"
+  temperature: 0.0
+  max_tokens: 4096
+
+metric:
+  class: "use-cases/general-popup-native/metric_judge.py"
+
+optimization:
+  strategy: "basic"
+  auto: null
+  num_trials: 10
+  num_candidates: 6
+  max_bootstrapped_demos: 2
+  max_labeled_demos: 2
+  num_threads: 2
+  minibatch: false

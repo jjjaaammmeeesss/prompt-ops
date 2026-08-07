@@ -1,0 +1,74 @@
+============================================================
+Phase 2 v2: Rubric-based Expert Alignment
+============================================================
+
+Usable matches (with golden_popup or hit_list): 15
+  [1/15] GB_018.json:甲 r5... type=1 insight=4 conflict=4 forbid=1 | composite=1.033
+  [1/15] GB_018.json:甲 v17... type=1 insight=4 conflict=4 forbid=0 | composite=0.867
+  [2/15] GB_028.json:甲 r5... type=1 insight=2 conflict=3 forbid=1 | composite=0.833
+  [2/15] GB_028.json:甲 v17... type=1 insight=2 conflict=2 forbid=1 | composite=0.767
+  [3/15] GB_029.json:甲 r5... type=0 insight=2 conflict=2 forbid=1 | composite=0.433
+  [3/15] GB_029.json:甲 v17... type=1 insight=4 conflict=4 forbid=1 | composite=1.033
+  [4/15] GB_030.json:甲 r5... type=1 insight=4 conflict=4 forbid=1 | composite=1.033
+  [4/15] GB_030.json:甲 v17... type=1 insight=2 conflict=2 forbid=1 | composite=0.767
+  [5/15] GB_033.json:甲 r5... type=0 insight=1 conflict=2 forbid=1 | composite=0.367
+  [5/15] GB_033.json:甲 v17... type=0 insight=1 conflict=2 forbid=1 | composite=0.367
+  [6/15] GB_035.json:甲 r5... type=1 insight=3 conflict=3 forbid=1 | composite=0.900
+  [6/15] GB_035.json:甲 v17... type=1 insight=3 conflict=3 forbid=1 | composite=0.900
+  [7/15] GB_038.json:甲 r5... type=0 insight=1 conflict=1 forbid=1 | composite=0.300
+  [7/15] GB_038.json:甲 v17... type=1 insight=4 conflict=4 forbid=1 | composite=1.033
+  [8/15] GB_039.json:甲 r5... ERROR: no_text_block
+  [8/15] GB_039.json:甲 v17... type=1 insight=3 conflict=3 forbid=1 | composite=0.900
+  [9/15] GB_040.json:甲 r5... type=1 insight=3 conflict=4 forbid=1 | composite=0.967
+  [9/15] GB_040.json:甲 v17... type=1 insight=4 conflict=4 forbid=1 | composite=1.033
+  [10/15] GB_046.json:甲 r5... type=0 insight=1 conflict=2 forbid=1 | composite=0.367
+  [10/15] GB_046.json:甲 v17... type=0 insight=1 conflict=2 forbid=1 | composite=0.367
+  [11/15] GB_046.json:甲 r5... type=0 insight=3 conflict=2 forbid=1 | composite=0.500
+  [11/15] GB_046.json:甲 v17... type=0 insight=4 conflict=4 forbid=1 | composite=0.700
+  [12/15] GB_046.json:甲 r5... type=0 insight=2 conflict=2 forbid=1 | composite=0.433
+  [12/15] GB_046.json:甲 v17... type=0 insight=1 conflict=2 forbid=1 | composite=0.367
+  [13/15] GB_047.json:甲 r5... type=0 insight=3 conflict=3 forbid=1 | composite=0.567
+  [13/15] GB_047.json:甲 v17... type=0 insight=4 conflict=4 forbid=1 | composite=0.700
+  [14/15] GB_052.json:甲 r5... type=1 insight=3 conflict=3 forbid=1 | composite=0.900
+  [14/15] GB_052.json:甲 v17... type=0 insight=3 conflict=3 forbid=1 | composite=0.567
+  [15/15] GB_055.json:甲 r5... type=1 insight=4 conflict=4 forbid=1 | composite=1.033
+  [15/15] GB_055.json:甲 v17... type=1 insight=2 conflict=2 forbid=1 | composite=0.767
+
+============================================================
+RUBRIC ALIGNMENT RESULTS
+============================================================
+
+  r5 (N=14):
+    Composite score:     0.690
+    Type match rate:     7/14 (50%)
+    Avg insight cover:   2.6/5
+    Avg conflict align:  2.8/5
+    Forbidden clear:     14/14 (100%)
+
+  v1.7 (N=15):
+    Composite score:     0.742
+    Type match rate:     9/15 (60%)
+    Avg insight cover:   2.8/5
+    Avg conflict align:  3.0/5
+    Forbidden clear:     14/15 (93%)
+
+  Per-case:
+  Case                         Tone v:type  v:ins  v:con  v:for r:type  r:ins  r:con  r:for
+  ------------------------ -------- ------ ------ ------ ------ ------ ------ ------ ------
+  GB_018.json:甲            diagnostic      1      4      4      0      1      4      4      1
+  GB_028.json:甲            empowering      1      2      2      1      1      2      3      1
+  GB_029.json:甲            empowering      1      4      4      1      0      2      2      1
+  GB_030.json:甲            empowering      1      2      2      1      1      4      4      1
+  GB_033.json:甲            diagnostic      0      1      2      1      0      1      2      1
+  GB_035.json:甲            empowering      1      3      3      1      1      3      3      1
+  GB_038.json:甲            diagnostic      1      4      4      1      0      1      1      1
+  GB_039.json:甲            empowering      1      3      3      1      ?      ?      ?      ?
+  GB_040.json:甲            empowering      1      4      4      1      1      3      4      1
+  GB_046.json:甲            empowering      0      1      2      1      0      1      2      1
+  GB_046.json:甲            empowering      0      1      2      1      0      1      2      1
+  GB_046.json:甲            empowering      0      1      2      1      0      1      2      1
+  GB_047.json:甲            empowering      0      4      4      1      0      3      3      1
+  GB_052.json:甲            empowering      0      3      3      1      1      3      3      1
+  GB_055.json:甲            diagnostic      1      2      2      1      1      4      4      1
+
+Saved to D:\prompt-ops\use-cases\parent-child-coach\results\auto_research_judge_v2\h2h_r5_v17_rubric_alignment.json

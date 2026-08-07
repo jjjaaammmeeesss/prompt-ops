@@ -1,0 +1,236 @@
+{
+  "baseline_prompt": "use-cases\\general-popup-native\\system_prompt_v1.4.txt",
+  "baseline_score": 0.7067,
+  "best_score": 0.7956,
+  "total_rounds": 12,
+  "kept_rounds": 5,
+  "strategy_effectiveness": {
+    "gepa[accuracy]": {
+      "kept": 2,
+      "total": 3,
+      "total_delta": 0.07330000000000014
+    },
+    "gepa_mipro[length]": {
+      "kept": 1,
+      "total": 1,
+      "total_delta": 0.057699999999999974
+    },
+    "gepa[structure]": {
+      "kept": 1,
+      "total": 1,
+      "total_delta": 0.09109999999999996
+    },
+    "mipro[actionability]": {
+      "kept": 0,
+      "total": 1,
+      "total_delta": 0.2177
+    },
+    "gepa_mipro[actionability]": {
+      "kept": 0,
+      "total": 1,
+      "total_delta": 0.14659999999999995
+    },
+    "gepa_mipro[accuracy]": {
+      "kept": 1,
+      "total": 2,
+      "total_delta": 0.26
+    },
+    "gepa[actionability]": {
+      "kept": 0,
+      "total": 1,
+      "total_delta": -0.022199999999999998
+    },
+    "mipro[accuracy]": {
+      "kept": 0,
+      "total": 1,
+      "total_delta": 0.17779999999999996
+    },
+    "gepa_alt[accuracy]": {
+      "kept": 0,
+      "total": 1,
+      "total_delta": 0.01770000000000005
+    }
+  },
+  "history": [
+    {
+      "round": 1,
+      "strategy": "gepa",
+      "strategy_desc": "GEPA only: 文本反思驱动种群进化, 恢复领域约束",
+      "failure_mode": "accuracy",
+      "candidate_score": 0.7667,
+      "baseline_score": 0.7067,
+      "kept": true,
+      "reason": "Δ=0.06, violations OK, length=134%",
+      "prompt_length": 3524,
+      "hard_violations": 8,
+      "primary_elapsed_s": 3214.7,
+      "secondary_elapsed_s": 0.0,
+      "total_elapsed_s": 3636.2
+    },
+    {
+      "round": 2,
+      "strategy": "gepa_mipro",
+      "strategy_desc": "GEPA→MIPROv2: 遗传进化改骨架 + 贝叶斯精调措辞",
+      "failure_mode": "length",
+      "candidate_score": 0.7644,
+      "baseline_score": 0.7067,
+      "kept": true,
+      "reason": "Δ=0.0577, violations OK, length=157%",
+      "prompt_length": 4119,
+      "hard_violations": 8,
+      "primary_elapsed_s": 2467.6,
+      "secondary_elapsed_s": 950.6,
+      "total_elapsed_s": 3805.5
+    },
+    {
+      "round": 3,
+      "strategy": "gepa",
+      "strategy_desc": "GEPA only: 文本反思驱动种群进化, 恢复领域约束",
+      "failure_mode": "accuracy",
+      "candidate_score": 0.7467,
+      "baseline_score": 0.7067,
+      "kept": true,
+      "reason": "Δ=0.04, violations OK, length=173%",
+      "prompt_length": 4541,
+      "hard_violations": 9,
+      "primary_elapsed_s": 4434.9,
+      "secondary_elapsed_s": 0.0,
+      "total_elapsed_s": 4960.7
+    },
+    {
+      "round": 4,
+      "strategy": "gepa",
+      "strategy_desc": "GEPA only: 文本反思驱动种群进化, 恢复领域约束",
+      "failure_mode": "structure",
+      "candidate_score": 0.7978,
+      "baseline_score": 0.7067,
+      "kept": true,
+      "reason": "Δ=0.0911, violations OK, length=173%",
+      "prompt_length": 4541,
+      "hard_violations": 6,
+      "primary_elapsed_s": 3985.4,
+      "secondary_elapsed_s": 0.0,
+      "total_elapsed_s": 4426.4
+    },
+    {
+      "round": 5,
+      "strategy": "gepa",
+      "strategy_desc": "GEPA only: 文本反思驱动种群进化, 恢复领域约束",
+      "failure_mode": "accuracy",
+      "candidate_score": 0.68,
+      "baseline_score": 0.7067,
+      "kept": false,
+      "reason": "Δ=-0.0267 未达阈值 0.02",
+      "prompt_length": 4541,
+      "hard_violations": 12,
+      "primary_elapsed_s": 3792.6,
+      "secondary_elapsed_s": 0.0,
+      "total_elapsed_s": 4210.4
+    },
+    {
+      "round": 6,
+      "strategy": "mipro",
+      "strategy_desc": "MIPROv2 only: 贝叶斯联合优化指令+few-shot, 仅措辞微调",
+      "failure_mode": "actionability",
+      "candidate_score": 0.9244,
+      "baseline_score": 0.7067,
+      "kept": false,
+      "reason": "长度崩溃 (保留率 6%)",
+      "prompt_length": 149,
+      "hard_violations": 0,
+      "primary_elapsed_s": 0.0,
+      "secondary_elapsed_s": 1192.5,
+      "total_elapsed_s": 1585.0
+    },
+    {
+      "round": 7,
+      "strategy": "gepa_mipro",
+      "strategy_desc": "GEPA→MIPROv2: 遗传进化改骨架 + 贝叶斯精调措辞",
+      "failure_mode": "actionability",
+      "candidate_score": 0.8533,
+      "baseline_score": 0.7067,
+      "kept": false,
+      "reason": "长度崩溃 (保留率 8%)",
+      "prompt_length": 202,
+      "hard_violations": 4,
+      "primary_elapsed_s": 2897.1,
+      "secondary_elapsed_s": 1071.8,
+      "total_elapsed_s": 4434.9
+    },
+    {
+      "round": 8,
+      "strategy": "gepa_mipro",
+      "strategy_desc": "GEPA→MIPROv2: 遗传进化改骨架 + 贝叶斯精调措辞",
+      "failure_mode": "accuracy",
+      "candidate_score": 0.7956,
+      "baseline_score": 0.7067,
+      "kept": true,
+      "reason": "Δ=0.0889, violations OK, length=173%",
+      "prompt_length": 4541,
+      "hard_violations": 6,
+      "primary_elapsed_s": 2755.6,
+      "secondary_elapsed_s": 1256.6,
+      "total_elapsed_s": 4515.1
+    },
+    {
+      "round": 9,
+      "strategy": "gepa",
+      "strategy_desc": "GEPA only: 文本反思驱动种群进化, 恢复领域约束",
+      "failure_mode": "actionability",
+      "candidate_score": 0.6845,
+      "baseline_score": 0.7067,
+      "kept": false,
+      "reason": "Δ=-0.0222 未达阈值 0.02",
+      "prompt_length": 5105,
+      "hard_violations": 14,
+      "primary_elapsed_s": 3542.7,
+      "secondary_elapsed_s": 0.0,
+      "total_elapsed_s": 4097.4
+    },
+    {
+      "round": 10,
+      "strategy": "gepa_mipro",
+      "strategy_desc": "GEPA→MIPROv2: 遗传进化改骨架 + 贝叶斯精调措辞",
+      "failure_mode": "accuracy",
+      "candidate_score": 0.8778,
+      "baseline_score": 0.7067,
+      "kept": false,
+      "reason": "长度崩溃 (保留率 22%)",
+      "prompt_length": 566,
+      "hard_violations": 1,
+      "primary_elapsed_s": 3063.7,
+      "secondary_elapsed_s": 1314.8,
+      "total_elapsed_s": 4827.8
+    },
+    {
+      "round": 11,
+      "strategy": "mipro",
+      "strategy_desc": "MIPROv2 only: 贝叶斯联合优化指令+few-shot, 仅措辞微调",
+      "failure_mode": "accuracy",
+      "candidate_score": 0.8845,
+      "baseline_score": 0.7067,
+      "kept": false,
+      "reason": "长度崩溃 (保留率 9%)",
+      "prompt_length": 233,
+      "hard_violations": 2,
+      "primary_elapsed_s": 0.0,
+      "secondary_elapsed_s": 1067.2,
+      "total_elapsed_s": 1488.6
+    },
+    {
+      "round": 12,
+      "strategy": "gepa_alt",
+      "strategy_desc": "GEPA (替代原 PDO): 文本反思驱动进化, max_full_evals=5",
+      "failure_mode": "accuracy",
+      "candidate_score": 0.7244,
+      "baseline_score": 0.7067,
+      "kept": false,
+      "reason": "Δ=0.0177 未达阈值 0.02",
+      "prompt_length": 6004,
+      "hard_violations": 9,
+      "primary_elapsed_s": 2912.4,
+      "secondary_elapsed_s": 0.0,
+      "total_elapsed_s": 3324.3
+    }
+  ]
+}

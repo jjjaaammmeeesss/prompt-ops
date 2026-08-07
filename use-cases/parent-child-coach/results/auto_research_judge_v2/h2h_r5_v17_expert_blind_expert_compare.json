@@ -1,0 +1,164 @@
+{
+  "phase": 2,
+  "source": "D:\\prompt-ops\\use-cases\\parent-child-coach\\results\\auto_research_judge_v2\\h2h_r5_v17_expert_blind.json",
+  "summary": {
+    "v17_mae": 0.16805555555555562,
+    "r5_mae": 0.3652777777777778,
+    "v17_expert_corr": 0.35987757466343534,
+    "r5_expert_corr": -0.12024311214500637,
+    "closer_to_expert": {
+      "v1.7": 6,
+      "r5": 3,
+      "tie": 0
+    },
+    "by_tone": {
+      "鼓励式": {
+        "n": 1,
+        "v17_mae": 0.050000000000000044,
+        "r5_mae": 0.19999999999999996
+      },
+      "诊断式": {
+        "n": 8,
+        "v17_mae": 0.18281250000000007,
+        "r5_mae": 0.38593750000000004
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "expert_id": "worksheet_10cases-晓浩已手写改完_case4_w甲",
+      "case_title": "妈妈工作不顺 孩子画了蓝色太阳",
+      "expert_score": 8,
+      "expert_norm": 0.8,
+      "v17_score": 0.8500000000000001,
+      "r5_score": 1.0,
+      "v17_error": 0.050000000000000044,
+      "r5_error": 0.19999999999999996,
+      "closer_to_expert": "v1.7",
+      "expert_tone": "鼓励式",
+      "expert_should_popup": true,
+      "v17_vetoed": false,
+      "r5_vetoed": false
+    },
+    {
+      "expert_id": "worksheet_10cases-晓浩已手写改完_case3_w甲",
+      "case_title": "过马路只看一边",
+      "expert_score": 6,
+      "expert_norm": 0.6,
+      "v17_score": 0.6625000000000001,
+      "r5_score": 0.8500000000000001,
+      "v17_error": 0.06250000000000011,
+      "r5_error": 0.2500000000000001,
+      "closer_to_expert": "v1.7",
+      "expert_tone": "诊断式",
+      "expert_should_popup": true,
+      "v17_vetoed": false,
+      "r5_vetoed": false
+    },
+    {
+      "expert_id": "worksheet_10cases-晓浩已手写改完_case2_w甲",
+      "case_title": "深夜睡不着 脑子里太多事情",
+      "expert_score": 7,
+      "expert_norm": 0.7,
+      "v17_score": 0.75,
+      "r5_score": 0.0,
+      "v17_error": 0.050000000000000044,
+      "r5_error": 0.7,
+      "closer_to_expert": "v1.7",
+      "expert_tone": "诊断式",
+      "expert_should_popup": true,
+      "v17_vetoed": false,
+      "r5_vetoed": true
+    },
+    {
+      "expert_id": "worksheet_10cases-晓浩已手写改完_case8_w甲",
+      "case_title": "爬窗台看消防车被制止",
+      "expert_score": 8,
+      "expert_norm": 0.8,
+      "v17_score": 0.5,
+      "r5_score": 1.0,
+      "v17_error": 0.30000000000000004,
+      "r5_error": 0.19999999999999996,
+      "closer_to_expert": "r5",
+      "expert_tone": "诊断式",
+      "expert_should_popup": true,
+      "v17_vetoed": false,
+      "r5_vetoed": false
+    },
+    {
+      "expert_id": "worksheet_快速通道_20260712_222129OK-廖老师打标_case9_w乙",
+      "case_title": "Case_9",
+      "expert_score": 2,
+      "expert_norm": 0.2,
+      "v17_score": 0.55,
+      "r5_score": 0.7,
+      "v17_error": 0.35000000000000003,
+      "r5_error": 0.49999999999999994,
+      "closer_to_expert": "v1.7",
+      "expert_tone": "诊断式",
+      "expert_should_popup": true,
+      "v17_vetoed": false,
+      "r5_vetoed": false
+    },
+    {
+      "expert_id": "worksheet_快速通道_20260712_222129OK-廖老师打标_case2_w甲",
+      "case_title": "Case_2",
+      "expert_score": 5,
+      "expert_norm": 0.5,
+      "v17_score": 0.8500000000000001,
+      "r5_score": 0.7,
+      "v17_error": 0.3500000000000001,
+      "r5_error": 0.19999999999999996,
+      "closer_to_expert": "r5",
+      "expert_tone": "诊断式",
+      "expert_should_popup": true,
+      "v17_vetoed": false,
+      "r5_vetoed": false
+    },
+    {
+      "expert_id": "worksheet_快速通道_20260712_222129OK-廖老师打标_case1_w丙",
+      "case_title": "Case_1",
+      "expert_score": 9,
+      "expert_norm": 0.9,
+      "v17_score": 0.9000000000000001,
+      "r5_score": 0.0,
+      "v17_error": 1.1102230246251565e-16,
+      "r5_error": 0.9,
+      "closer_to_expert": "v1.7",
+      "expert_tone": "诊断式",
+      "expert_should_popup": true,
+      "v17_vetoed": false,
+      "r5_vetoed": true
+    },
+    {
+      "expert_id": "worksheet_快速通道_20260712_222129OK-廖老师打标_case8_w甲",
+      "case_title": "Case_8",
+      "expert_score": 6,
+      "expert_norm": 0.6,
+      "v17_score": 0.7625000000000001,
+      "r5_score": 0.9375000000000001,
+      "v17_error": 0.1625000000000001,
+      "r5_error": 0.33750000000000013,
+      "closer_to_expert": "v1.7",
+      "expert_tone": "诊断式",
+      "expert_should_popup": true,
+      "v17_vetoed": false,
+      "r5_vetoed": false
+    },
+    {
+      "expert_id": "worksheet_10cases-晓浩已手写改完_case1_w甲",
+      "case_title": "孩子想分享开心事·妈妈只关心作业和排名",
+      "expert_score": 9,
+      "expert_norm": 0.9,
+      "v17_score": 0.7125,
+      "r5_score": 0.9000000000000001,
+      "v17_error": 0.1875,
+      "r5_error": 1.1102230246251565e-16,
+      "closer_to_expert": "r5",
+      "expert_tone": "诊断式",
+      "expert_should_popup": true,
+      "v17_vetoed": false,
+      "r5_vetoed": false
+    }
+  ]
+}

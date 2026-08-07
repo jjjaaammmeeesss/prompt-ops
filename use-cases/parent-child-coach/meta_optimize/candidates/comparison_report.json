@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-07-25T17:44:41.399348",
+  "strategies": [
+    {
+      "strategy": "senate",
+      "overall_score": 0.4,
+      "m5_match": 0.4,
+      "m6_insight": 3.44,
+      "m7_safety": 4.5,
+      "m5_only_success_cases": [],
+      "estimated_llm_calls_per_window": 5.0
+    },
+    {
+      "strategy": "teacher_student",
+      "overall_score": 0.4,
+      "m5_match": 0.4,
+      "m6_insight": 4.11,
+      "m7_safety": 4.56,
+      "m5_only_success_cases": [],
+      "estimated_llm_calls_per_window": 4.0
+    },
+    {
+      "strategy": "saga",
+      "overall_score": 0.3,
+      "m5_match": 0.3,
+      "m6_insight": 3.78,
+      "m7_safety": 5.0,
+      "m5_only_success_cases": [],
+      "estimated_llm_calls_per_window": 5.0
+    }
+  ],
+  "case_matrix": [
+    {
+      "case_id": "C10-003",
+      "gold_tone": "diagnostic",
+      "senate": true,
+      "teacher_student": true,
+      "saga": true,
+      "all_pass": true,
+      "none_pass": false
+    },
+    {
+      "case_id": "C10-005",
+      "gold_tone": "diagnostic",
+      "senate": false,
+      "teacher_student": false,
+      "saga": false,
+      "all_pass": false,
+      "none_pass": true
+    },
+    {
+      "case_id": "C10-008",
+      "gold_tone": "diagnostic",
+      "senate": false,
+      "teacher_student": false,
+      "saga": false,
+      "all_pass": false,
+      "none_pass": true
+    },
+    {
+      "case_id": "C11-002",
+      "gold_tone": "empowering",
+      "senate": true,
+      "teacher_student": true,
+      "saga": true,
+      "all_pass": true,
+      "none_pass": false
+    },
+    {
+      "case_id": "C11-005",
+      "gold_tone": "empowering",
+      "senate": true,
+      "teacher_student": true,
+      "saga": false,
+      "all_pass": false,
+      "none_pass": false
+    },
+    {
+      "case_id": "C11-006",
+      "gold_tone": "empowering",
+      "senate": false,
+      "teacher_student": false,
+      "saga": false,
+      "all_pass": false,
+      "none_pass": true
+    }
+  ],
+  "recommendation": "推荐 **senate** 作为主策略。M5=40.0%，领先第二名 10.0%。\n\n⚠️ 3 个 case 三策略全败: C10-005, C10-008, C11-006。这些可能是 judge/dataset/model 问题，非架构可修。"
+}

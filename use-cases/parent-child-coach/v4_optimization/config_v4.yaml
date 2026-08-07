@@ -1,0 +1,56 @@
+# v4.0 — 基于56条专家打标数据的系统提示词优化
+# 运行方式: cd use-cases/parent-child-coach && prompt-ops migrate --config v4_optimization/config_v4.yaml
+# 结果输出: v4_optimization/results/
+# DSPy 版本: ~=3.2.0 (固化基线 3.2.1)
+
+system_prompt:
+  file: "../system_prompt_v4.0.txt"
+  inputs: ["question"]
+  outputs: ["answer"]
+
+dataset:
+  path: "data/expert_train_v4_clean.json"
+  input_field: "question"
+  golden_output_field: "answer"
+  adapter_class: "standard_json"
+  train_size: 0.80
+  validation_size: 0.20
+
+model:
+  name: "deepseek/deepseek-chat"
+  task_model: "deepseek/deepseek-chat"
+  proposer_model: "deepseek/deepseek-chat"
+
+metric:
+  class: "scripts/llm_judge_metric.py"
+
+optimization:
+  strategy: "basic"
+  auto: "basic"
+  num_candidates: 5
+  max_bootstrapped_demos: 4
+  max_labeled_demos: 5
+  seed: 42
+  init_temperature: 0.5
+  compute_baseline: true
+  metric_threshold: 0.70  # 修复: 原7.0与metric [0,1]量纲不匹配, 导致bootstrapped traces全灭
+
+# v4.0 特有配置
+v4:
+  description: >
+    基于子阳、晓浩、廖老师三位专家手工标注的56条用例，
+    使用DSPy MIPROv2优化系统提示词，使其输出的弹窗
+    更接近专家手写改写的质量标准。
+  baseline_version: "v4.0"
+  target_version: "v4.0+"
+  baseline_size: "44.8KB (完整生产版 + 八卦策略表)"
+  expert_count: 56
+  note: >
+    v4.0 已将 41KB 生产版 system_prompt.txt 与 TRIGRAM_POPUP_GUIDANCE 合并。
+    提示词体积从 v2.3 的 ~4KB 增长到 ~45KB。MIPROv2 在此体量上的优化
+    策略需重新评估——直接搜索指令变体可能破坏精心设计的规则和示例。
+    建议: 先跑多场景人工评测确认 v4.0 基线质量，再决定是否需要优化。
+  optimization_target: "system_prompt"  # 优化 system_prompt_v4.0.txt
+  downstream_impact: >
+    v4.0 prompt 已部署到实时弹窗系统 Stage 2
+    (PopupGenerator 优先加载 system_prompt_v4.0.txt)

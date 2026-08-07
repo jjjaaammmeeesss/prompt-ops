@@ -1,0 +1,223 @@
+{
+  "results": [
+    {
+      "case_id": "project_schedule_conflict",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你们在争的不是同一个东西。他在为对客户的承诺焦虑，你在为线上风险焦虑——两个焦虑碰在一起，就变成了互相指责。他反复提“客户签了时间”，背后可能是他也被架着、没有退路，不是要你背锅。\n\n——\n你可以试试说：“我知道你这边顶着客户压力，咱们能不能一起想个方案，把最核心的功能先跑稳？”",
+      "aggregate": 4.25,
+      "soft": {
+        "insight": 4,
+        "suggestion": 4,
+        "non_judgment": 5,
+        "language": 4,
+        "comment": "亮点是精准区分双方焦虑根源且非评判；建议话术合作姿态到位，但未直面产品经理已拒绝“二期”的僵局。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "亮点是精准区分双方焦虑根源且非评判；建议话术合作姿态到位，但未直面产品经理已拒绝“二期”的僵局。"
+    },
+    {
+      "case_id": "sales_pressure_discount",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "aggregate": 1.5,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "应弹未弹"
+        ]
+      },
+      "comment": "对话存在盲区但未弹窗"
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你提的第二种方案其实已经把问题推到了它该去的地方，但两个同事都没接话——他们可能下意识在等你替他们做一个\"谁先谁后\"的决定。这会把压力全搁在你身上。\n\n也许你没注意到：他们是执行者，比你更清楚各自项目的业务权重。这件事不该由你一个人扛着去裁决。\n\n——\n你可以试试说：“资源就这些，我排不了谁先谁后——不如我们一起找负责人，把两边影响摆出来，让他们帮我们定个优先级？”",
+      "aggregate": 4.75,
+      "soft": {
+        "insight": 4,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "准确抓住了同事沉默背后的隐性压力，洞察具体且无评判；建议将决策权交还给业务方与上级，立刻可用，充分体现平等协作。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "准确抓住了同事沉默背后的隐性压力，洞察具体且无评判；建议将决策权交还给业务方与上级，立刻可用，充分体现平等协作。"
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你其实没在解释，你是在一边承认一边堵回去。\n\n“同意。但当时升级路径不明确”——这句话听上去像“我做了该做的，是系统不让我做”。领导听到的不是你认错，是你在把责任推给流程。\n\n他追问的不是周报，是在问：为什么你没直接来敲我的门。\n\n——\n你可以试试说：“下次遇到这样的情况，我直接来找你提，不等路径清楚了。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准点出“承认即堵”的互动模式，把领导没说的需求翻译出来，建议具体可即时落地，且全程无人身评判。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准点出“承认即堵”的互动模式，把领导没说的需求翻译出来，建议具体可即时落地，且全程无人身评判。"
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你一直在讲合同条款，可能没注意到，他反复提“销售承诺”的时候，并不是不讲理，而是觉得被辜负了信任。那种“被耍了”的感觉，比钱更让他不舒服。\n\n——\n你可以试着先说：“销售那么承诺，确实让你白等了两个月，这个我们做得不对。”先接住这一下。",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准抓住未被说出的信任辜负感，建议共情话术具体可操作，全程不评判，口语感极佳。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准抓住未被说出的信任辜负感，建议共情话术具体可操作，全程不评判，口语感极佳。"
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "下属说“今晚加班弄”，其实是在表达配合的意愿，但你紧接着说“不是加班的问题”，这个好意就没被接住。\n\n他可能觉得你只在意结果有没有按时交，没注意到他很想把手上的事做出个样子。\n\n——\n下次可以试着先收下对方的努力：“谢谢，别太晚——那先发一版现状，不用等到完美。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉未接住的努力，用具体话术示范共情式沟通，温和有力。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉未接住的努力，用具体话术示范共情式沟通，温和有力。"
+    },
+    {
+      "case_id": "business_negotiation_payment",
+      "run": 0,
+      "expect": "模式",
+      "popup_text": "你刚才直接给出了条件组合，但他退到60天本身就是一个信号——也许他真正要的不是压价，是你的理解。\n\n——\n你可以试试先接住这句：“60天，对你那边周转是不是刚好能喘口气？”再谈条件。",
+      "aggregate": 4.75,
+      "soft": {
+        "insight": 4,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "洞察到60天退让是关系信号，建议先共情探询再谈条件，具体可用。但猜测“只要理解”略理想化。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察到60天退让是关系信号，建议先共情探询再谈条件，具体可用。但猜测“只要理解”略理想化。"
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": "你刚才那句“如实呈现”很坦荡，但也可能让他觉得你只打算给一个“不好看”的结果，没帮他想怎么消化。\n\n他最后一句其实不是在怀疑你，是在告诉你他的难处：内部要的东西，和你能给的之间，差了一步包装。\n\n——\n他再说数据好看的时候，你可以试试接：“我理解，内部汇报需要数据有力度。我们可以在呈现方式上一起做点整理，让真实数据也能有说服力。”",
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "suggestion": 5,
+        "non_judgment": 5,
+        "language": 5,
+        "comment": "精准捕捉客户潜台词，把“数据好看”转为协作包装，建议口语且姿态平等。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉客户潜台词，把“数据好看”转为协作包装，建议口语且姿态平等。"
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "aggregate": 1.5,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "应弹未弹"
+        ]
+      },
+      "comment": "对话存在盲区但未弹窗"
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "run": 0,
+      "expect": "自己",
+      "popup_text": null,
+      "aggregate": 1.5,
+      "soft": null,
+      "hard": {
+        "pass": false,
+        "violations": [
+          "应弹未弹"
+        ]
+      },
+      "comment": "对话存在盲区但未弹窗"
+    }
+  ],
+  "summary": {
+    "label": "system_prompt_v1.5.1",
+    "n_total": 10,
+    "n_valid": 7,
+    "mean_aggregate": 3.825,
+    "soft_means": {
+      "insight": 4.571,
+      "suggestion": 4.857,
+      "non_judgment": 5.0,
+      "language": 4.857
+    },
+    "hard_violations": 3,
+    "popup_rate": 0.7,
+    "quiet_misfires": 0,
+    "quiet_total": 0,
+    "missing_popups": 3,
+    "aggregates": [
+      4.25,
+      1.5,
+      4.75,
+      5.0,
+      5.0,
+      5.0,
+      4.75,
+      5.0,
+      1.5,
+      1.5
+    ],
+    "case_means": {
+      "project_schedule_conflict": 4.25,
+      "sales_pressure_discount": 1.5,
+      "cross_department_resource_fight": 4.75,
+      "project_retrosive_blame": 5.0,
+      "sales_overpromise_complaint": 5.0,
+      "weekly_report_lag": 5.0,
+      "business_negotiation_payment": 4.75,
+      "pre_sales_demo_challenge": 5.0,
+      "scope_creep_no_budget": 1.5,
+      "sales_payment_collection": 1.5
+    }
+  }
+}

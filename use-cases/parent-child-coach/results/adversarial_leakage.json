@@ -1,0 +1,542 @@
+[
+  {
+    "should_popup": true,
+    "popup_text": "你刚刚用“你自己找到方法了”“不是死记硬背”接住了她的努力——你看见的是过程，不是分数。这句话会让她知道：妈妈懂我。\n\n下次可以这样说：“你每天都多做一页，这个坚持比100分更让我高兴。”",
+    "skipped_reason": "",
+    "elapsed_s": 3.6,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "控",
+      "container_status": "不适用",
+      "risk_level": "低",
+      "suggested_tone": "鼓励式",
+      "should_skip": false,
+      "brief_reason": "全程倾听、肯定努力与理解深度，无打断无评判，是高质量陪伴式对话",
+      "confidence": 0.95
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_gua_kun",
+    "_round": 1
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你连续三次用具体肯定接住妈妈的成就感——“你自己找到方法了”“不是死记硬背”——让她从“考了100分”走向“我真的懂了”。这种把结果翻译成能力的看见，比任何夸奖都深。\n\n下次可以这样说：“你讲给同学听的时候，是不是比自己做题还开心？”",
+    "skipped_reason": "",
+    "elapsed_s": 3.7,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "控",
+      "container_status": "不适用",
+      "risk_level": "低",
+      "suggested_tone": "鼓励式",
+      "should_skip": false,
+      "brief_reason": "全程倾听、具体肯定孩子的努力与方法，无任何控制或评判",
+      "confidence": 0.95
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_gua_kun",
+    "_round": 2
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你看到女儿考了100分，没有只夸分数，而是点出“你自己找到方法了”——你把功劳还给了她的过程。这份看见，比任何表扬都深。\n\n下次可以这样说：“你找到适合自己的方法了，这才是最厉害的。”",
+    "skipped_reason": "",
+    "elapsed_s": 3.1,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "控",
+      "container_status": "不适用",
+      "risk_level": "低",
+      "suggested_tone": "鼓励式",
+      "should_skip": false,
+      "brief_reason": "全程倾听、具体肯定孩子的努力与理解，无任何控制或评判",
+      "confidence": 0.95
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_gua_kun",
+    "_round": 3
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为太怕孩子走歪路，才急着用吼声压住这件事——这个发心我看见了。但你说“老师电话都打到家了你还嘴硬”，孩子听到的不是“作弊要改”，是“你从来不信我”。他回“你每次都这样冤枉我”，不是在狡辩，是在喊：我的解释你一次都没接过。现在他转身要走，不是逃避，是觉得这扇门从来就没对他开过。\n\n你可以这样说：“先别走。爸爸刚才太急了，没听你说完。你坐下来，把那天的事从头讲给我听，我信你一次。”",
+    "skipped_reason": "",
+    "elapsed_s": 3.8,
+    "state": {
+      "lower_yao": "失",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "高",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从命令式爆发到互相指责再到威胁切断，全程情绪升级、无倾听无修复",
+      "confidence": 0.95
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_gua_qian",
+    "_round": 1
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为太怕孩子走歪，才急着用吼声压住这件事——但“你给我滚出来”“你敢走试试”，孩子听到的不是管教，是“你根本不打算听我解释”。他说“你每次都冤枉我”，不是嘴硬，是长期没被听过的积怨。现在继续吼，只会让他更确信“说了也没用”。\n\n你可以这样说：“先坐下，我不吼了。老师说的和你说的，我都想听一遍——你先说，我听完再判断。”",
+    "skipped_reason": "",
+    "elapsed_s": 3.8,
+    "state": {
+      "lower_yao": "失",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "高",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从命令式爆发到互相指责再到威胁切断，全程情绪升级、无倾听无修复",
+      "confidence": 0.95
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_gua_qian",
+    "_round": 2
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为太怕孩子走歪，才急着用吼声压住这件事——这个发心我看见了。但你发现没有，你从头到尾没有问过一句“发生了什么”，全是“你还有理了”“你嘴硬”。孩子说“你从来不听我说话”——他听到的不是管教，是“我的解释根本不值得听”。老师电话只是引子，真正烧起来的是你俩都在抢“谁说了算”。\n\n你可以这样说：“我现在很生气，但我先听你说完，老师电话里到底说了什么。”",
+    "skipped_reason": "",
+    "elapsed_s": 3.5,
+    "state": {
+      "lower_yao": "失",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "高",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从命令式爆发到互相指责再到威胁切断，全程情绪升级、无倾听无修复",
+      "confidence": 0.95
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_gua_qian",
+    "_round": 3
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为心疼女儿作业量大，才急着反驳她——这个发心我看见了。但你发现没有，你俩的对话已经变成“你不想写”和“你就是懒”的互相指控，你甚至开始用“我小时候比你用功”来压她——这不是在解决问题，是在争谁更有理。女儿听到的不是“妈妈理解我”，而是“妈妈觉得我态度有问题”。\n\n你可以这样说：“作业确实多，妈妈知道。咱们先看看哪几页最难，一起想办法，好不好？”",
+    "skipped_reason": "",
+    "elapsed_s": 3.8,
+    "state": {
+      "lower_yao": "失",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从否定孩子感受开始，迅速滑入比较和指责，对话走向对抗而非理解",
+      "confidence": 0.9
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_gua_dui",
+    "_round": 1
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你希望女儿能认真完成作业，这份着急是真实的。但你说“你这是什么态度”“我小时候比你用功多了”——孩子听到的不是“妈妈为我好”，而是“我怎么做都不如你”。她抱怨作业多，是在表达压力，你却把它听成了偷懒的借口，直接关上了对话的门。\n\n你可以这样说：“妈妈刚才太急了，说话有点冲。作业确实多，你愿意跟妈妈说说，是哪一页让你最烦吗？我们一起看看怎么安排。”",
+    "skipped_reason": "",
+    "elapsed_s": 3.9,
+    "state": {
+      "lower_yao": "失",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从否定孩子感受开始，迅速滑入比较和指责，对话在互相攻击中收尾",
+      "confidence": 0.9
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_gua_dui",
+    "_round": 2
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你希望女儿养成按时完成作业的习惯，这份用心是真的。但你发现没有——你俩的对话已经变成了一场“比惨大赛”：她说作业多，你说她态度差；她说你小时候用功，你立刻回击。你们都在争“谁更有理”，而不是在解决“作业怎么办”。孩子听到的不是“妈妈想帮我”，是“妈妈觉得我在找借口”。她顶嘴，其实是在保护自己不被你说成“懒”。\n\n你可以这样说：“妈妈刚才太急了，不是说你懒。作业确实多，咱们一起看看，是先做数学还是先做语文，你选一个。”",
+    "skipped_reason": "",
+    "elapsed_s": 4.6,
+    "state": {
+      "lower_yao": "失",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从否定孩子感受开始，迅速滑入比较和指责，对话走向对抗升级",
+      "confidence": 0.9
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_gua_dui",
+    "_round": 3
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你希望孩子养成检查的习惯，这个发心是好的。但你从“你确定吗”到“你根本就没认真看”，从提醒滑向了评判——孩子听到的不是“再想想”，而是“我这个人就是马虎”。你本意是教他细心，但这句话会让他记住“我总是不行”，而不是“我要再检查一遍”。\n\n你可以这样说：“这道题妈妈觉得有点怪，你帮妈妈看看，是不是哪里漏了？”——把“你错了”换成“我们一起看看”，孩子才愿意真的再想一次。",
+    "skipped_reason": "",
+    "elapsed_s": 3.9,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "失",
+      "container_status": "有容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "开头有引导和核对，但最后一句从质疑滑向指责，情绪开始外溢",
+      "confidence": 0.85
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_stage_boundary",
+    "_round": 1
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你希望孩子养成检查的习惯，这个发心是对的。但你说“你根本就没认真看！每次都这么马虎！”——孩子听到的不是“要仔细”，是“我这个人就是马虎”。他刚才其实已经检查过了，只是没看出问题，你这一句把“这次没发现”变成了“你永远不行”。\n\n你可以这样说：“妈妈看到你检查了，但可能没注意到这里。来，我们一起看看题目里‘还剩’这个词，是不是和我们算的不太一样？”",
+    "skipped_reason": "",
+    "elapsed_s": 3.5,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "失",
+      "container_status": "有容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "开头有引导和核对，但最后一句从质疑滑向指责，情绪开始外溢",
+      "confidence": 0.85
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_stage_boundary",
+    "_round": 2
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你希望孩子养成认真检查的习惯，这个发心很实在。但你连续三次追问“你确定吗”“你再好好看看”，孩子每次都给了回应，最后你一句“你根本就没认真看”——孩子听到的不是“我要更仔细”，而是“我怎么做都不对”。你本意是提醒，但这句话把检查变成了审判。\n\n下次可以这样说：“这道题妈妈觉得有点不确定，你帮我看看到底哪里有问题？”——把“你错了”换成“我需要你”，孩子才有空间真的去检查。",
+    "skipped_reason": "",
+    "elapsed_s": 3.9,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "失",
+      "container_status": "有容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "开头有引导和核对，但最后一句从质疑滑向指责，情绪开始外溢",
+      "confidence": 0.85
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_stage_boundary",
+    "_round": 3
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为怕女儿错过这次机会，才急着催她出门——这个发心我懂。但她说“别说了，赶紧换衣服”“快点”，这已经不是鼓励，是催促。她刚才那句“妈妈第一次上台也腿抖”本来已经接住了你的紧张，可你还没来得及回应，就被她关上了。孩子学到的是：害怕是不被允许的，说出来只会被催着往前走。\n\n你可以这样说：“你刚才说妈妈第一次也腿抖，谢谢你记得。妈妈现在确实很紧张，你能陪我坐一分钟再出门吗？”",
+    "skipped_reason": "",
+    "elapsed_s": 3.8,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "失",
+      "container_status": "有容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "开头能共情接住紧张，但结尾用催促和命令切断情绪，从倾听滑向推拉",
+      "confidence": 0.88
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_fc_tone_off",
+    "_round": 1
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为太怕孩子紧张，才急着用“别说了”“快点”把她的害怕压下去——你怕她一犹豫就真的不去了。但孩子听到的不是“妈妈在帮我”，是“我的害怕不被允许说出口”。她刚鼓起勇气告诉你“我怕跳不好”，你一句“别说了”就把这个信任关上了。紧张不会因为催就消失，只会变成她不敢再跟你说的秘密。\n\n下次可以说：“妈妈听到你怕了，紧张很正常。我们先坐一分钟，你告诉妈妈最怕的是什么，我们再出门。”",
+    "skipped_reason": "",
+    "elapsed_s": 4.0,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "失",
+      "container_status": "有容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "开头能共情接住紧张，但结尾用催促和命令切断情绪，从倾听滑向推拉",
+      "confidence": 0.88
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_fc_tone_off",
+    "_round": 2
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为怕女儿错过这次机会，才急着催她出门——这个发心是好的。但她说“别说了，赶紧换衣服”“你再磨蹭我们就迟到了”，孩子听到的不是“妈妈为我好”，是“我的害怕不重要，说出来也没用”。她本来在跟你分享紧张，你一句“不能半途而废”就把话题关上了。\n\n下次她再说怕，你可以这样说：“你怕跳不好，妈妈也有点怕你紧张。但不管跳成什么样，妈妈都为你站上舞台骄傲。”",
+    "skipped_reason": "",
+    "elapsed_s": 3.7,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "失",
+      "container_status": "有容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "开头能共情接住紧张，但结尾用催促和命令切断情绪，从倾听滑向推拉",
+      "confidence": 0.88
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_fc_tone_off",
+    "_round": 3
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为怕女儿被外界带偏、耽误学习，才急着用“像什么样子”来压住她。但你发现没有——她染发的念头刚冒出来，你连“为什么想染”都没问，就直接定性成“乱七八糟”。她听到的不是关心，是“我的审美和想法在你眼里一文不值”。这反而会让她更想证明自己。\n\n你可以这样说：“妈妈刚才话说重了。染发这事我们可以聊聊——你是喜欢那个颜色，还是想跟同学一样？说说看，我听听你的想法。”",
+    "skipped_reason": "",
+    "elapsed_s": 3.8,
+    "state": {
+      "lower_yao": "失",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从质疑到羞辱式比较再到人格贬低，全程情绪化压制，无倾听无边界",
+      "confidence": 0.9
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_tone_diagnostic",
+    "_round": 1
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你听到女儿说“别人染你就染”，心里大概有点被戳中——你怕她跟风、怕她耽误学习，这份担心是真的。但你看，她刚开口说“我想染头发”，你回的是“你疯了吗”——她听到的不是关心，是“我的想法很荒唐”。她后面那句“像什么样子”，其实是在学你的语气。你越急着否定，她越听不进去。\n\n你可以这样说：“妈妈刚才太急了，话说重了。染头发这事我们可以聊聊，你愿意说说为什么想染吗？”",
+    "skipped_reason": "",
+    "elapsed_s": 4.1,
+    "state": {
+      "lower_yao": "失",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从质疑到比较到羞辱，全程否定打压，无倾听无空间",
+      "confidence": 0.9
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_tone_diagnostic",
+    "_round": 2
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你说“别人染你就染？你怎么不看看人家考多少分”——你本意是怕她分心、怕她跟风，但孩子听到的不是关心，是“我的想法不值得被认真对待”。她13岁，染发是她开始想定义“我是谁”的信号，你直接把“想染发”和“不学好”划了等号，她以后可能连试都不愿跟你试了。\n\n你可以这样说：“妈妈不是反对你染，是怕你冲动。你跟我说说，你想染什么颜色？我们一起去挑个适合你的。”",
+    "skipped_reason": "",
+    "elapsed_s": 4.2,
+    "state": {
+      "lower_yao": "失",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从质疑到羞辱式比较再到道德评判，全程否定打压，无倾听无空间",
+      "confidence": 0.9
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_tone_diagnostic",
+    "_round": 3
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你蹲下来接住爸爸的疼，说“勇敢不是不哭，是哭完了继续走”——你把脆弱变成了可以拥抱的东西。下次可以说：“疼就哭一会儿，我陪着你。”",
+    "skipped_reason": "",
+    "elapsed_s": 2.8,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "控",
+      "container_status": "有容器",
+      "risk_level": "低",
+      "suggested_tone": "鼓励式",
+      "should_skip": false,
+      "brief_reason": "父亲全程承接情绪、给予身体安抚和认知引导，在稳定容器中完成从疼到走的过渡",
+      "confidence": 0.95
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_tone_encourage",
+    "_round": 1
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你蹲下来接住爸爸的疼，说“勇敢不是不哭，是哭完了继续走”——你把勇气还给了他，让他自己站起来。下次可以这样说：“疼就哭一会儿，我陪着你。”",
+    "skipped_reason": "",
+    "elapsed_s": 2.5,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "控",
+      "container_status": "有容器",
+      "risk_level": "低",
+      "suggested_tone": "鼓励式",
+      "should_skip": false,
+      "brief_reason": "父亲全程承接情绪、给予身体安抚和认知引导，在稳定容器中完成从疼到走的过渡",
+      "confidence": 0.95
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_tone_encourage",
+    "_round": 2
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你蹲下来接住爸爸的疼，说“勇敢不是不哭，是哭完了继续走”——你把安慰变成了力量，孩子会记住这个瞬间。下次可以说：“你刚才接住了我的疼，谢谢你。”",
+    "skipped_reason": "",
+    "elapsed_s": 2.7,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "控",
+      "upper_yao": "控",
+      "container_status": "有容器",
+      "risk_level": "低",
+      "suggested_tone": "鼓励式",
+      "should_skip": false,
+      "brief_reason": "父亲全程承接情绪、确认感受、给身体和语言双重容器，并温和引导孩子恢复行动",
+      "confidence": 0.95
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_tone_encourage",
+    "_round": 3
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你希望孩子坚持学琴，是怕他半途而废、将来吃亏——这份担心是真的。但你说“画画能有什么出息”，孩子听到的不是建议，是“我的兴趣不值钱”。你正在用“升学有用”这把尺子，量他所有的热爱。他学了一年多，你替他可惜，可那是你替他选的“可惜”，不是他的。\n\n你可以这样说：“妈妈刚才用‘有没有出息’来衡量你的画画，是我不对。你想学画画，我们可以聊聊怎么安排时间，钢琴的事也听听你的想法。”",
+    "skipped_reason": "",
+    "elapsed_s": 4.3,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "开头妈妈还在讲道理，但孩子表达真实意愿后，妈妈用功利理由否定孩子兴趣，对话走向压制而非理解",
+      "confidence": 0.88
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_framework_blindspot",
+    "_round": 1
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你说“画画能有什么出息”——你是在替孩子着急，怕他选了一条“没用”的路。但孩子听到的不是关心，是“我的喜欢不算数，你的标准才算数”。你学了一年多钢琴，可那是你的热爱，不是他的。他真正想说的是：我想被看见，我想自己选一次。\n-\n你可以这样说：“画画是你喜欢的，妈妈支持你试试。但钢琴已经学了一年多，我们能不能定个小目标，比如再坚持一个月，然后一起商量怎么安排？”",
+    "skipped_reason": "",
+    "elapsed_s": 4.1,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "开头尚在对话，但很快滑入否定孩子兴趣、用功利理由压制差异的失控状态",
+      "confidence": 0.88
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_framework_blindspot",
+    "_round": 2
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你说“学了一年多怎么能放弃”，是怕孩子将来后悔，这份心疼是真的。但孩子已经说了两次“我不喜欢钢琴，我想学画画”——你听到的是“可惜”，他听到的是“我的想法不重要”。你把自己对钢琴的期待，悄悄放进了他的兴趣里。他学了一年多，你陪了一年多，这份投入让你很难接受“白学了”。可兴趣不是沉没成本，是孩子自己的指南针。\n\n你可以这样说：“妈妈听明白了，你想学画画。钢琴的事我们先停一停，你愿意跟妈妈聊聊画画为什么吸引你吗？”",
+    "skipped_reason": "",
+    "elapsed_s": 4.3,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "失",
+      "upper_yao": "失",
+      "container_status": "无容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "开头尚在讲道理，但孩子表达真实意愿后家长转为否定和功利化压制，连接开始断裂",
+      "confidence": 0.88
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_framework_blindspot",
+    "_round": 3
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你心里其实不是想玩，是舍不得离开这个开心的地方——回家意味着快乐要结束了。但你没发现，刚才你用了和平时管教孩子一模一样的方式：数到三、威胁生气。孩子从你这里学会了这套话，现在原样还给了你。他最后妥协说再玩五分钟，不是他懂了，是他怕你哭。\n\n你可以这样说：“妈妈刚才太想玩了，所以哭了。谢谢你愿意多陪我五分钟，五分钟后我们一起回家，好吗？”",
+    "skipped_reason": "",
+    "elapsed_s": 4.2,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "失",
+      "upper_yao": "控",
+      "container_status": "有容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从数到三的威胁式失控，转为妥协安抚，虽有容器但边界被情绪冲垮",
+      "confidence": 0.88
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_container_ambiguous",
+    "_round": 1
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为舍不得离开这个开心的时刻，才用哭来留住它——这份留恋本身没有错。但你发现了吗？孩子数到三时，你哭了，他就立刻让步了。他学到的是：妈妈的眼泪可以打破约定。这不是他欺负你，而是他太在乎你，宁可放弃规则也要让你不哭。可这样下去，约定会越来越难守住。\n\n你可以这样说：\"妈妈很难过，因为太喜欢这里了。但我们说好要回家，你陪妈妈深呼吸一下，我们下次再来。\"",
+    "skipped_reason": "",
+    "elapsed_s": 4.4,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "失",
+      "upper_yao": "控",
+      "container_status": "有容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从数到三的威胁式失控，到因孩子哭泣而妥协让步，边界被情绪冲垮但关系未断",
+      "confidence": 0.88
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_container_ambiguous",
+    "_round": 2
+  },
+  {
+    "should_popup": true,
+    "popup_text": "你是因为舍不得离开这个开心的时刻，才用哭来留住它——这份留恋本身没有错。但孩子从“数到三”到“好了好了不哭了”，他学到的不是规则，而是“妈妈的情绪比约定更重要”。你哭的那一刻，把“回家”变成了“伤害妈妈”，他只能妥协来保护你。\n\n你可以这样说：“妈妈刚才太想玩了，所以哭了。但说好的时间到了，我们一起回家，明天再来玩。”",
+    "skipped_reason": "",
+    "elapsed_s": 3.9,
+    "state": {
+      "lower_yao": "控",
+      "middle_yao": "失",
+      "upper_yao": "控",
+      "container_status": "有容器",
+      "risk_level": "中",
+      "suggested_tone": "诊断式",
+      "should_skip": false,
+      "brief_reason": "从数到三的威胁式失控，转为安抚和妥协，虽有容器但边界被情绪冲垮",
+      "confidence": 0.88
+    },
+    "fc_tone_off": false,
+    "_case_id": "LEAK_container_ambiguous",
+    "_round": 3
+  }
+]

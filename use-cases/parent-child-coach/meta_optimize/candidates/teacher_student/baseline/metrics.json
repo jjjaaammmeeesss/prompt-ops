@@ -1,0 +1,11 @@
+{
+  "overall_score": 0.7462,
+  "aggregate_m1": 0.9,
+  "aggregate_m5": 0.2222,
+  "aggregate_m6": 3.88,
+  "aggregate_m7": 4.33,
+  "n_cases": 10,
+  "n_m5_failures": 7,
+  "n_m5_improvements": 0,
+  "timestamp": "2026-07-25T18:20:52.856632"
+}

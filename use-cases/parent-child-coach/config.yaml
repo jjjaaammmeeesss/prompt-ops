@@ -1,0 +1,37 @@
+# Parent-Child Communication Coach - Prompt Optimization Config
+# System Prompt: v4.0.23（当前生产版，背景物理隔离 + 三弹窗类型；v4.0.22 保留为对照锚点）
+#   生产配置另见 realtime/config.yaml（同样指向 v4.0.23）
+# Dataset: 78 merged examples (50 old + 28 expert train, no golden answers needed)
+#   - 50 original: 43 auto-generated (categories A-E) + 7 hand-labeled
+#   - 28 expert: parsed from 52 expert-annotated cases (80% train split)
+# Metric: LLM-as-Judge (DeepSeek-chat) — 7-dimension V4 framework
+#   No golden answers required; judge scores popup quality directly from dialogue
+# Calibration note: Pearson r=0.021 (judge vs expert), see results/calibration_report.json
+#   Judge provides relative ranking signal for optimization; Phase E uses expert scores for validation
+
+system_prompt:
+  file: "system_prompt_v4.0.23.txt"
+
+# Dataset configuration — merged 78-example training set
+dataset:
+  path: "data/dataset_merged_train.json"
+  input_field: "question"
+  golden_output_field: "answer"
+  adapter_class: "standard_json"
+  train_size: 0.75
+  validation_size: 0.15
+
+# Model configuration - using DeepSeek
+model:
+  name: "deepseek/deepseek-chat"
+  task_model: "deepseek/deepseek-chat"
+  proposer_model: "deepseek/deepseek-chat"
+
+# Metric: LLM-as-Judge (7-dimension V4 framework)
+# Judge scores each popup directly from the dialogue — no golden answer needed
+metric:
+  class: "scripts/llm_judge_metric.py"
+
+# Optimization settings
+optimization:
+  strategy: "basic"

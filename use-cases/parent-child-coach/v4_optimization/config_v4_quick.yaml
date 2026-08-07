@@ -1,0 +1,40 @@
+# v4.0 最小快速验证 — 确认 MIPROv2 管道在 44.8KB prompt 上能正常工作
+# 运行方式: cd use-cases/parent-child-coach && prompt-ops migrate --config v4_optimization/config_v4_quick.yaml
+# 完整优化用 config_v4.yaml
+
+system_prompt:
+  file: "../system_prompt_v4.0.txt"
+  inputs: ["question"]
+  outputs: ["answer"]
+
+dataset:
+  path: "data/expert_train_v4_clean.json"
+  input_field: "question"
+  golden_output_field: "answer"
+  adapter_class: "standard_json"
+  train_size: 0.35          # ~11 训练样本（完整版是 0.80 → 24）
+  validation_size: 0.20     # ~6 验证
+
+model:
+  name: "deepseek/deepseek-chat"
+  task_model: "deepseek/deepseek-chat"
+  proposer_model: "deepseek/deepseek-chat"
+
+metric:
+  class: "scripts/llm_judge_metric.py"
+
+optimization:
+  strategy: "basic"
+  auto: "light"              # light = 5 trials, 更少的 candidate
+  num_candidates: 2          # 只生成 2 个候选指令（完整版 5）
+  max_bootstrapped_demos: 1  # 每轮只 bootstrapping 1 次（完整版 4）
+  max_labeled_demos: 2       # 最多 2 个标注样本（完整版 5）
+  seed: 42
+  init_temperature: 0.5
+  compute_baseline: true
+  metric_threshold: 0.70
+
+v4:
+  description: "v4.0 最小快速验证 — 确认管道能跑通，再跑完整优化"
+  baseline_version: "v4.0"
+  note: "train_size 从 0.80 降到 0.35，预计耗时 ~15-20 分钟（完整版 ~1.5 小时）"

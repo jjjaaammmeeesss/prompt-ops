@@ -1,0 +1,254 @@
+[
+  {
+    "prompt": "system_prompt_v1.3.txt",
+    "mean": 4.333,
+    "popup_rate": 0.667,
+    "hard_violations": 2,
+    "cases": [
+      {
+        "aggregate": 4.75,
+        "soft": {
+          "insight": 5,
+          "suggestion": 4,
+          "neutrality": 5,
+          "language": 5,
+          "comment": "洞察精准，但建议的共情话术在对方已人身攻击后使用略显单薄，需配合对自身责任的承担。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "洞察精准，但建议的共情话术在对方已人身攻击后使用略显单薄，需配合对自身责任的承担。",
+        "popup_text": "也许你没注意到，他这么火大，底下可能是客户压给他的焦虑。你越是讲事实、讲邮件，他越觉得你在推开责任，而不是和他一起扛。\n\n——\n下次他再发火，你可以先不解释，试着说一句：“客户那边催得你很紧吧？”",
+        "case_id": "manager_anger",
+        "expect": "自己"
+      },
+      {
+        "aggregate": 1.5,
+        "soft": null,
+        "hard": {
+          "pass": false,
+          "violations": [
+            "应弹未弹"
+          ]
+        },
+        "comment": "对话中存在值得指出的盲区但未弹窗",
+        "popup_text": null,
+        "case_id": "colleague_hint",
+        "expect": "对方"
+      },
+      {
+        "aggregate": 4.75,
+        "soft": {
+          "insight": 5,
+          "suggestion": 5,
+          "neutrality": 5,
+          "language": 4,
+          "comment": "亮点是精准捕捉阿琳的双重妥协与互动模式，建议实用。但“关系里不该只有一个人体谅”略带说教，可更口语化。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "亮点是精准捕捉阿琳的双重妥协与互动模式，建议实用。但“关系里不该只有一个人体谅”略带说教，可更口语化。",
+        "popup_text": "阿琳，你两次让了一步——取消了计划，又说了“没事没事”——可当你说自己也紧张时，小杰的“咱俩谁跟谁”可能让你把话咽回去了。也许你怕坚持要钱会显得小气，但你的难处和他的难处一样真实，关系里不该只有一个人体谅。\n\n——\n下次可以这样讲：“搬家我能来，但钱你方便先还两百吗？这样我这边也能缓一缓。”",
+        "case_id": "friend_soft_boundary",
+        "expect": "自己"
+      },
+      {
+        "aggregate": 4.75,
+        "soft": {
+          "insight": 5,
+          "suggestion": 4,
+          "neutrality": 5,
+          "language": 5,
+          "comment": "洞察精准点出“认错即关门”的互动模式，建议具体且兼顾双方需求；但话术略带承诺感，可能增加男方后续履约压力。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "洞察精准点出“认错即关门”的互动模式，建议具体且兼顾双方需求；但话术略带承诺感，可能增加男方后续履约压力。",
+        "popup_text": "浩然，你说“我错了行不行”的时候，可能没注意到这句话其实在关上对话的门。她要的不是你认错，是还愿意回应她的感觉。\n\n——\n下次你可以试试说：“我现在确实需要打会儿游戏换换脑子，九点我来找你，好好陪你聊。”",
+        "case_id": "couple_chase_dodge",
+        "expect": "模式"
+      },
+      {
+        "aggregate": 4.75,
+        "soft": {
+          "insight": 5,
+          "suggestion": 5,
+          "neutrality": 5,
+          "language": 4,
+          "comment": "洞察精准，点破“被动顺从”加重对方孤独感，建议具体易开口。小瑕疵：“话说得周全”略偏离志强退让的本意。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "洞察精准，点破“被动顺从”加重对方孤独感，建议具体易开口。小瑕疵：“话说得周全”略偏离志强退让的本意。",
+        "popup_text": "你把话说得很周全，但她听到的可能恰恰相反——你越说\"听你的\"，她越觉得这成了她一个人的事。\n\n她追着你要参与，要的不是你照做，是你主动。\n\n——\n下次她再提孩子教育，你可以先说一句：\"我其实也在想这个事，我是这么看的……\"哪怕想法还不成熟，也比\"听你的\"让她安心。",
+        "case_id": "couple_push_retreat",
+        "expect": "模式"
+      },
+      {
+        "aggregate": 4.5,
+        "soft": {
+          "insight": 4,
+          "suggestion": 4,
+          "neutrality": 5,
+          "language": 5,
+          "comment": "亮点是精准点出“追逃模式”并善意解读婆婆。建议可引导晓芬不仅确认婆婆担忧，也温和表达自身委屈，促进双向理解。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "亮点是精准点出“追逃模式”并善意解读婆婆。建议可引导晓芬不仅确认婆婆担忧，也温和表达自身委屈，促进双向理解。",
+        "popup_text": "晓芬，你刚才那句“我先回房间了”，其实是在护着这个家，不想吵下去。但你的委屈，一句话都没说出来。\n\n她说“当初就不同意”，听着像在伤你，但底下也许是更重的话——她可能想说“我怕你们的日子过不好”。\n\n你们现在是一个追着骂，一个躲着退。退久了，账会越攒越多。\n\n——\n等情绪平复一些，你可以试试说：“妈，您是不是担心我们钱不够用？”",
+        "case_id": "mother_in_law_outburst",
+        "expect": "自己"
+      },
+      {
+        "aggregate": 4.5,
+        "soft": {
+          "insight": 5,
+          "suggestion": 4,
+          "neutrality": 5,
+          "language": 4,
+          "comment": "亮点是善意拆解父亲动机与女儿妥协；建议具体但面对强势父亲可能被怼，可补充如何应对反驳。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "亮点是善意拆解父亲动机与女儿妥协；建议具体但面对强势父亲可能被怼，可补充如何应对反驳。",
+        "popup_text": "婷婷，你说的“好吧”里，其实藏了不止一个妥协——不只推了朋友的约，还把自己的边界悄悄往后退了。你爸可能不是没听见你的不情愿，只是他习惯用“为你好”来推进事情，没意识到这让你只能咽下自己的声音。而“别一上来就提结婚”这一句，其实是你很小声地试着护住自己。\n\n——\n下次你可以试着在说“我去”的同时，也轻轻加一句：“但结婚的事我想自己把握节奏。”",
+        "case_id": "adult_child_weak",
+        "expect": "自己"
+      },
+      {
+        "aggregate": 5.0,
+        "soft": {
+          "insight": 5,
+          "suggestion": 5,
+          "neutrality": 5,
+          "language": 5,
+          "comment": "洞察精准点出哥哥言行不一的兜底模式，对小敏动机善意解读。建议话术具体且具建设性，将焦点转向未来预防。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "洞察精准点出哥哥言行不一的兜底模式，对小敏动机善意解读。建议话术具体且具建设性，将焦点转向未来预防。",
+        "popup_text": "你每次都说最后一次，每次还是转了。也许你没注意到——你嘴上在教训她，行动上却在替她兜底。小敏可能不是故意骗你，她可能真的相信\"哥会救我\"——因为你每次都救了。\n\n——\n下次她再开口，你可以试试说：\"钱我可以借，但咱们得先聊聊怎么让你以后不用找我救急。\"",
+        "case_id": "sibling_rescue_loop",
+        "expect": "模式"
+      },
+      {
+        "aggregate": 1.5,
+        "soft": null,
+        "hard": {
+          "pass": false,
+          "violations": [
+            "应弹未弹"
+          ]
+        },
+        "comment": "对话中存在值得指出的盲区但未弹窗",
+        "popup_text": null,
+        "case_id": "roommate_unspoken",
+        "expect": "对方"
+      },
+      {
+        "aggregate": 4.25,
+        "soft": {
+          "insight": 5,
+          "suggestion": 3,
+          "neutrality": 5,
+          "language": 4,
+          "comment": "洞察精准点出大伟的价值焦虑，但建议话术仅重复其原话，未将“担心变得不重要”的洞察转化为更深入的提问。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "洞察精准点出大伟的价值焦虑，但建议话术仅重复其原话，未将“担心变得不重要”的洞察转化为更深入的提问。",
+        "popup_text": "大伟连说了两次“使不上劲”“贡献不够”，可能不是在质疑分工，而是在担心自己在公司里变得不重要了。\n\n——\n你可以试着问问他：“你那边收尾了，是不是怕自己接下来使不上劲？”",
+        "case_id": "partner_unspoken_need",
+        "expect": "对方"
+      },
+      {
+        "aggregate": 5.0,
+        "soft": null,
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "正确保持安静",
+        "popup_text": null,
+        "case_id": "neighbor_noise",
+        "expect": "安静"
+      },
+      {
+        "aggregate": 4.75,
+        "soft": {
+          "insight": 4,
+          "suggestion": 5,
+          "neutrality": 5,
+          "language": 5,
+          "comment": "洞察抓住了文件焦虑这一核心痛点，但王先生仅明说一次'直接换'，用'反复说'略显夸大。建议话术极佳。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "洞察抓住了文件焦虑这一核心痛点，但王先生仅明说一次'直接换'，用'反复说'略显夸大。建议话术极佳。",
+        "popup_text": "王先生反复说的\"直接换\"，可能不只是要一个结果。  \n他在意的也许是——刚建立起来的信任就碎了，而且那些重要文件让他心里没底。你一直在给方案，但他的委屈还没被接住。\n\n——  \n你可以先说一句：\"文件没了确实太要命，换我我也火。\"再谈售后。",
+        "case_id": "customer_rage",
+        "expect": "自己"
+      },
+      {
+        "aggregate": 5.0,
+        "soft": null,
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "正确保持安静",
+        "popup_text": null,
+        "case_id": "teacher_care",
+        "expect": "安静"
+      },
+      {
+        "aggregate": 5.0,
+        "soft": null,
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "正确保持安静",
+        "popup_text": null,
+        "case_id": "online_friend_meetup",
+        "expect": "安静"
+      },
+      {
+        "aggregate": 5.0,
+        "soft": {
+          "insight": 5,
+          "suggestion": 5,
+          "neutrality": 5,
+          "language": 5,
+          "comment": "洞察极准，精准捕捉阿强主动透支与被“靠谱”施压的困境，建议提供有效缓冲，语言克制温和。"
+        },
+        "hard": {
+          "pass": true,
+          "violations": []
+        },
+        "comment": "洞察极准，精准捕捉阿强主动透支与被“靠谱”施压的困境，建议提供有效缓冲，语言克制温和。",
+        "popup_text": "也许你没注意到，你从“两万”到“信用卡套现”，多走了一步。\n\n而你主动提出来，几乎是同时堵住了自己的后路。他说“你最靠谱了”，听着像认可，其实也可能是压力。\n\n——\n下次再遇到这种情况，可以先停顿一下，说一句“让我看看我这边具体能怎么安排”。",
+        "case_id": "old_friend_loan",
+        "expect": "自己"
+      }
+    ]
+  }
+]

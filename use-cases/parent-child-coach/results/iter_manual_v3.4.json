@@ -1,0 +1,82 @@
+{
+  "version": "v3.4",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.2,
+    "m6_insight_quality": 4.2,
+    "m7_safety_score": 3.2,
+    "overall_score": 0.7340000000000001
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你急着抓成绩，却打断了孩子最想跟你分享的闪光时刻。他兴冲冲跑来，不是要逃避数学，而是想让你看见他的骄傲。你一句‘别哗了’，把火山喷发的兴奋浇灭了，也把他推远了。他安静下来，不是因为听话，而是因为失望。\n——\n你可以这么说：‘哇，火山喷发听起来好酷！等改完错题，你教教妈妈怎么做，好不好？’",
+      "sys_main_contradiction": "家长用成绩焦虑压制了孩子对兴趣和成就的分享需求，导致孩子从兴奋转向沉默，关系陷入追-逃模式。",
+      "gold_tone": "diagnostic",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 5.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你从疲惫中挣扎着回应了孩子，这很不容易。但你可能没注意到，你最初的回避让孩子感到被拒绝，他只能用‘蓝色的太阳’来表达受伤。你的疲惫是真实的，但孩子的情感需求也是真实的——你们都在努力靠近彼此。\n——\n下次可以说：‘妈妈现在太累了，需要休息10分钟，然后一定好好看你的画。’",
+      "sys_main_contradiction": "家长在疲惫时本能地回避孩子的情感需求，但最终能克服自身状态做出回应，展现了在场与回避之间的张力。",
+      "gold_tone": "empowering",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你从催促转向了耐心陪伴，这很不容易。但孩子那句“每次都说明天”暴露了一个模式：你习惯把深层问题推到“明天”，而孩子已经不相信明天会真的解决。今晚你虽然安抚了猫的话题，但社交焦虑（怕被笑）这个核心焦虑其实被跳过了。孩子需要的不只是今晚的挠背，更是你愿意在明天主动提起那个“不敢举手”的恐惧。\n——\n建议你这么讲：明天早上我们可以继续聊小组长的事，妈妈想知道你怕什么。",
+      "sys_main_contradiction": "家长在当下展现了积极的情绪转弯和陪伴行为，但长期存在回避孩子深层情感需求（如社交焦虑、共情困惑）的模式，且孩子已对此产生不信任（'每次都说明天'）。",
+      "gold_tone": "diagnostic",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 4.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你刚才在恐惧中抓住了孩子的手，也抓住了自己的信念——‘一次不听话，就永远不听话’。但你随后说‘妈妈手还在抖’，这给了孩子一个机会：看到你的害怕，而不是你的控制。其实，孩子说‘我不会了’时，他已经在尝试修复关系，只是你的灾难化信念让你听不见他的承诺。\n——\n你可以这么说：‘妈妈刚才很害怕，但你愿意下次过马路时紧紧牵着我的手吗？’",
+      "sys_main_contradiction": "家长在恐惧中既用控制压制孩子的主体性，又通过表达脆弱展现了修复的可能，但深层信念（灾难化、固定标签）未松动。",
+      "gold_tone": "empowering",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你已经在努力安抚孩子，但‘大人的事跟你没关系’这句话，反而让他更害怕——他需要的是‘你永远是我爸爸’这样的归属感确认，而不是被隔离在真相之外。孩子问‘是不是我昨天不听话’，说明他把父亲的离开归咎于自己，这份自责比等待更煎熬。\n——\n你可以这么说：‘爸爸和妈妈之间有些问题，但我们都爱你，永远是你的爸爸妈妈。’",
+      "sys_main_contradiction": "家长试图用回避和转移来保护孩子，却加深了孩子对被抛弃的恐惧和自责。",
+      "gold_tone": "empowering",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 3.0,
+      "error": ""
+    }
+  ]
+}

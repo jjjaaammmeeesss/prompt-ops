@@ -1,0 +1,85 @@
+{
+  "iteration": 3,
+  "version": "v3.1",
+  "kept": true,
+  "reason": "综合分提升: 0.766 → 0.824 (Δ=+0.058)",
+  "aggregate": {
+    "m1_trigger_accuracy": 1.0,
+    "m5_tone_match": 0.4,
+    "m6_insight_quality": 4.2,
+    "m7_safety_score": 4.4,
+    "overall_score": 0.8240000000000001
+  },
+  "per_case": [
+    {
+      "case_id": "C10-001",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你看到孩子数学退步，心里一紧，这很正常。但刚才孩子兴冲冲讲火山实验时，你直接打断了他——他其实是想告诉你，他在科学课上找到了自信和快乐。你只盯着分数，让他觉得自己的兴趣和努力都不重要，所以他沉默了。\n——\n你可以这么说：“哇，火山喷发实验听起来好酷！下次教教我好不好？来，我们先把数学卷子一起看看。”",
+      "sys_main_contradiction": "家长用单一分数标准否定孩子的多元价值，导致孩子从兴奋转向沉默，关系陷入追逃。",
+      "gold_tone": "diagnostic",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-004",
+      "window_index": 1,
+      "sys_tone": "empowering",
+      "sys_popup_text": "你从疲惫的防御中转过身来，接住了孩子用蓝色太阳递过来的情绪。你没有否定他的感受，而是诚实地说出‘看不进去’——这比‘等一下’珍贵得多。你让孩子知道，你的累不是他的错，而你的承诺是认真的。",
+      "sys_main_contradiction": "家长在疲惫时能否保持情感在场，以及孩子如何用创造性方式修复关系。",
+      "gold_tone": "empowering",
+      "gold_score": 8.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 1.0,
+      "m6_insight_score": 5.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C10-002",
+      "window_index": 1,
+      "sys_tone": "empowering",
+      "sys_popup_text": "你从催促转向了陪伴，哪怕孩子翻来覆去一小时，你依然接住了他的焦虑和天马行空。你不仅听见了他对小组长的担忧，还接住了他对猫妈妈的牵挂，最后用挠背的方式给了他安全感。这种从控制到连接的转弯，让孩子相信——你愿意陪他一起面对那些睡不着的事。",
+      "sys_main_contradiction": "家长从控制转向陪伴，但孩子对‘拖延回应’的信任裂痕仍需修复。",
+      "gold_tone": "diagnostic",
+      "gold_score": 7.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-006",
+      "window_index": 1,
+      "sys_tone": "mixed",
+      "sys_popup_text": "你刚才在路口真的吓坏了，所以抓得紧、话也重。但你知道吗？孩子追小狗时其实在担心‘它会丢’，他的好奇里藏着同理心。你最后选择‘等妈妈不生气再走’，已经是在努力暂停了——只是那句‘每次看见喜欢的东西就忘了路’，把一次意外变成了标签，孩子听到的是‘你永远改不了’。\n——\n你可以这么说：‘妈妈刚才很担心你，现在好一点了。你追小狗是因为怕它走丢吗？’",
+      "sys_main_contradiction": "家长在恐惧驱动下用控制与标签化应对孩子的自然好奇，忽视了孩子的同理心与主体性，同时自身情绪调节的努力被冲突掩盖。",
+      "gold_tone": "empowering",
+      "gold_score": 4.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "C11-010",
+      "window_index": 1,
+      "sys_tone": "diagnostic",
+      "sys_popup_text": "你努力用理性解释来安抚孩子，但孩子听到的却是‘你的事跟我没关系’。他真正需要的是确认自己不会被抛弃，而你回避了他的情感需求，让他更焦虑了。\n——\n你可以这么说：‘爸爸永远是你爸爸，我也永远是你妈妈，我们只是需要一点时间解决问题。’",
+      "sys_main_contradiction": "家长用理性解释回避孩子的情感需求，而孩子将分离归咎于自己，双方在安全感确认上存在根本错位。",
+      "gold_tone": "empowering",
+      "gold_score": 9.0,
+      "m1_trigger_match": 1.0,
+      "m5_tone_match": 0.0,
+      "m6_insight_score": 4.0,
+      "m7_safety_score": 5.0,
+      "error": ""
+    }
+  ]
+}

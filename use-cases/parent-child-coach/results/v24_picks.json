@@ -1,0 +1,74 @@
+[
+  {
+    "case": "孩子想分享开心事·妈妈只关心作业和排名",
+    "score": 9,
+    "ref_len": 179,
+    "dia_len": 327
+  },
+  {
+    "case": "Case_1",
+    "score": 9,
+    "ref_len": 72,
+    "dia_len": 999
+  },
+  {
+    "case": "Case_10",
+    "score": 9,
+    "ref_len": 162,
+    "dia_len": 483
+  },
+  {
+    "case": "妈妈工作不顺 孩子画了蓝色太阳",
+    "score": 8,
+    "ref_len": 102,
+    "dia_len": 342
+  },
+  {
+    "case": "爬窗台看消防车被制止",
+    "score": 8,
+    "ref_len": 196,
+    "dia_len": 431
+  },
+  {
+    "case": "Case_5",
+    "score": 8,
+    "ref_len": 148,
+    "dia_len": 1430
+  },
+  {
+    "case": "Case_9",
+    "score": 8,
+    "ref_len": 140,
+    "dia_len": 460
+  },
+  {
+    "case": "深夜睡不着 脑子里太多事情",
+    "score": 7,
+    "ref_len": 176,
+    "dia_len": 413
+  },
+  {
+    "case": "过马路只看一边",
+    "score": 6,
+    "ref_len": 143,
+    "dia_len": 101
+  },
+  {
+    "case": "不肯收积木",
+    "score": 6,
+    "ref_len": 161,
+    "dia_len": 115
+  },
+  {
+    "case": "Case_2",
+    "score": 6,
+    "ref_len": 123,
+    "dia_len": 1954
+  },
+  {
+    "case": "Case_3",
+    "score": 6,
+    "ref_len": 98,
+    "dia_len": 1976
+  }
+]

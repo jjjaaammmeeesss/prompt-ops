@@ -1,0 +1,9 @@
+{
+  "diagnosis": "v3.x 线因 prompt 过于臃肿(理论五层、多类弹窗、复杂规则)导致生成不稳定、硬规则违规持续上升；交叉学习时 v3.x 未能有效吸收 v1.5.x 的简洁约束，反而可能引入更多边界冲突，造成违规从 4 升至 6 且综合分持续下滑。根因是 prompt 膨胀引发的规则模糊与执行偏差。",
+  "root_cause_category": "prompt_bloat",
+  "severity": "serious",
+  "recommendation": "暂停 v3.x 进化，对其执行强力剪枝：保留‘信任vs控制’核心视角及职场场景适配，删除完整五层理论展开、鼓励式弹窗的复杂分支、安静信号等冗余；将字数与格式硬规则统一为 v1.5.x 的 180 字死线及单墙规则；每轮加入自动化冲突检测；然后在 v1.5.x 上融合剪枝后的洞察，重新启动双轨交叉学习，并人工抽查违规样本。",
+  "intervention_type": "prune_prompt",
+  "continue_evolution": false,
+  "confidence": 0.88
+}

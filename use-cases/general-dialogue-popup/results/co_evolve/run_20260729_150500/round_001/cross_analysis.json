@@ -1,0 +1,70 @@
+{
+  "a_strengths": [
+    {
+      "case_id": "business_negotiation_payment",
+      "delta": 0.75,
+      "a_score": 5.0,
+      "b_score": 4.25
+    },
+    {
+      "case_id": "cross_department_resource_fight",
+      "delta": 0.25,
+      "a_score": 4.5,
+      "b_score": 4.25
+    },
+    {
+      "case_id": "pre_sales_demo_challenge",
+      "delta": 1.25,
+      "a_score": 5.0,
+      "b_score": 3.75
+    },
+    {
+      "case_id": "project_retrosive_blame",
+      "delta": 0.75,
+      "a_score": 4.75,
+      "b_score": 4.0
+    },
+    {
+      "case_id": "project_schedule_conflict",
+      "delta": 0.5,
+      "a_score": 5.0,
+      "b_score": 4.5
+    },
+    {
+      "case_id": "sales_overpromise_complaint",
+      "delta": 0.5,
+      "a_score": 5.0,
+      "b_score": 4.5
+    },
+    {
+      "case_id": "sales_payment_collection",
+      "delta": 0.5,
+      "a_score": 5.0,
+      "b_score": 4.5
+    },
+    {
+      "case_id": "weekly_report_lag",
+      "delta": 0.5,
+      "a_score": 5.0,
+      "b_score": 4.5
+    }
+  ],
+  "b_strengths": [
+    {
+      "case_id": "sales_pressure_discount",
+      "delta": 3.0,
+      "a_score": 1.5,
+      "b_score": 4.5
+    },
+    {
+      "case_id": "scope_creep_no_budget",
+      "delta": 2.25,
+      "a_score": 1.5,
+      "b_score": 3.75
+    }
+  ],
+  "both_weak": [],
+  "a_from_b": "以下是 **v3** 明显优于 **v1.5** 的案例（delta > 0.2）：\n共 2 个案例。请分析 v3 在这些案例上的做法，思考 v1.5 的 prompt 应该如何调整以吸收这些优势。\n\n- Case sales_pressure_discount: v3=4.5 vs v1.5=1.5 (Δ=3.0)\n- Case scope_creep_no_budget: v3=3.75 vs v1.5=1.5 (Δ=2.25)",
+  "b_from_a": "以下是 **v1.5** 明显优于 **v3** 的案例（delta > 0.2）：\n共 8 个案例。请分析 v1.5 在这些案例上的做法，思考 v3 的 prompt 应该如何调整以吸收这些优势。\n\n- Case business_negotiation_payment: v1.5=5.0 vs v3=4.25 (Δ=0.75)\n- Case cross_department_resource_fight: v1.5=4.5 vs v3=4.25 (Δ=0.25)\n- Case pre_sales_demo_challenge: v1.5=5.0 vs v3=3.75 (Δ=1.25)\n- Case project_retrosive_blame: v1.5=4.75 vs v3=4.0 (Δ=0.75)\n- Case project_schedule_conflict: v1.5=5.0 vs v3=4.5 (Δ=0.5)\n- Case sales_overpromise_complaint: v1.5=5.0 vs v3=4.5 (Δ=0.5)\n- Case sales_payment_collection: v1.5=5.0 vs v3=4.5 (Δ=0.5)\n- Case weekly_report_lag: v1.5=5.0 vs v3=4.5 (Δ=0.5)",
+  "meaningful_diffs": 10
+}
