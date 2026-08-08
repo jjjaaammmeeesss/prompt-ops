@@ -20,4 +20,5 @@ Instructions for AI agents working in this repository.
 - Python >= 3.10
 - TypeScript 5.5.3 for frontend
 - Prompt files carry version numbers in filename and internal title that must match
+- **Executors are version-linked to the prompt they run** (hard rule): the executor filename must carry the prompt's version it adapts (e.g. `system_prompt_v3.1.txt` → `popup_generator_v31.py`; a generic name like `popup_generator.py` is only allowed for one pinned prompt version). Each executor must have its own `__version__` (its own iteration counter, independent of the prompt version), plus a `PROMPT_VERSION` field that equals the adapted prompt version and stays two-way aligned with the prompt file's internal title. Changing the prompt version requires creating/renaming the matching executor or updating its `PROMPT_VERSION` in the same commit.
 - `config.yaml` in each use-case wires system prompt, dataset, model, and metric
