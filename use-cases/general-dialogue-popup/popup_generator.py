@@ -11,7 +11,13 @@
 核心接口：
     parse_popup_output(text) -> str | None    # 剥离预分析，返回纯正文（安静返回 None）
     generate_popup(system_prompt, dialogue)   # 调 LLM 生成 → 解析 → 返回纯正文（安静返回 None）
+
+__version__ 自增记录本执行器迭代；PROMPT_VERSION 声明它适配的 prompt 版本，
+与 use-cases/general-dialogue-popup/system_prompt_v2.0.txt 保持双向对齐。
 """
+
+__version__ = "1.0"           # 生产执行器版本号
+PROMPT_VERSION = "v2.0"       # 适配的 prompt 版本（= system_prompt_v2.0.txt）
 
 from __future__ import annotations
 
