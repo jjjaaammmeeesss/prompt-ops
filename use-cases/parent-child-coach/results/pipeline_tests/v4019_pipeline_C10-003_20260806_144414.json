@@ -1,0 +1,49 @@
+{
+  "config": {
+    "prompt": "system_prompt_v4.0.19.txt",
+    "prompt_chars": 37511,
+    "gen_model": "deepseek/deepseek-chat",
+    "window_size": 300,
+    "judge": "none",
+    "timestamp": "20260806_144414"
+  },
+  "summary": {
+    "total_cases": 1,
+    "cases_with_popup": 1,
+    "avg_codex_score": null
+  },
+  "results": [
+    {
+      "case_id": "C10-003",
+      "dialogue_chars": 101,
+      "fast_triggers": 0,
+      "slow_windows": 1,
+      "total_windows": 1,
+      "suppressed": 0,
+      "fast_popups": [],
+      "slow_popups": [
+        {
+          "channel": "slow",
+          "trigger_type": "textbuffer_window",
+          "window_chars": 101,
+          "window_start": 0,
+          "prior_chars": 500,
+          "popup_order": 0,
+          "tone": "diagnostic",
+          "tone_override": "",
+          "source": "production_popup_generator_v4.0.19",
+          "popup": "你担心孩子过马路的安全，这份紧张是真的。但你说\"你每次都知道了，下次还是不看\"——孩子这次确实看了，只是没看全。ta听到的不是\"要看两边\"，是\"我怎么做都不对\"。ta说\"我真的会看\"，是在争取你的信任，不是敷衍。\n——\n你可以这样说：\"妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？\"",
+          "raw": "",
+          "has_pre_analysis": false,
+          "separator_missing": false,
+          "error": null,
+          "prod_tone": "diagnostic"
+        }
+      ],
+      "primary_popup": "你担心孩子过马路的安全，这份紧张是真的。但你说\"你每次都知道了，下次还是不看\"——孩子这次确实看了，只是没看全。ta听到的不是\"要看两边\"，是\"我怎么做都不对\"。ta说\"我真的会看\"，是在争取你的信任，不是敷衍。\n——\n你可以这样说：\"妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？\"",
+      "total_popups": 1,
+      "_zhouyi_source": "test-default",
+      "_dialogue": "1.你刚才过马路为什么不看车\n2.我看了\n3.你看的哪边\n4.我看的右边\n5.要看两边 左边也看看\n6.左边没有车\n7.那也要看 万一有呢\n8.知道了\n9.你每次都知道了 下次还是不看\n10.我真的会看\n11.你记住 过马路不看的后果很严重\n12.我知道的"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+```json
+{
+  "issue_1": {
+    "verdict": "VERIFIED",
+    "evidence": "测试侧仅导入 simulate_pipeline，并把原始 system_prompt 与纯对话直接交给 DeepSeek；没有 ZhouYiAnalyzer、zhouyi_state 或动态周易上下文。生产侧先调用 analyzer.analyze()，再把卦象、风险、容器状态及分析洞察拼入 system message。第八节也明确假设上方存在该上下文。因此测试的 Stage 2 输入与生产不等价。",
+    "file_lines": [
+      "scripts/run_v418_pipeline.py:14-32",
+      "scripts/run_v418_pipeline.py:85-95",
+      "realtime/stream_orchestrator.py:525-529",
+      "realtime/popup_generator.py:41-53",
+      "realtime/popup_generator.py:343-354",
+      "system_prompt_v4.0.18.txt:1402-1404",
+      "system_prompt_v4.0.18.txt:1420-1425"
+    ]
+  },
+  "issue_2": {
+    "verdict": "VERIFIED",
+    "evidence": "测试 user message 只有“当前对话”与窗口文本。生产 _build_messages() 根据确定后的 tone 注入诊断式或鼓励式指令、字数范围、鼓励式可引用话术要求、可选修复指令及输出格式限制。两者构造明显不同。",
+    "file_lines": [
+      "scripts/run_v418_pipeline.py:85-95",
+      "realtime/popup_generator.py:357-380"
+    ]
+  },
+  "issue_3": {
+    "verdict": "VERIFIED",
+    "evidence": "run_case() 对 simulate_pipeline 返回的每个窗口直接调用 generate_popup()；测试两文件均不存在 DebounceGate、should_show、stable_block 或等价状态门控。生产则先做 P0 稳态硬拦截，再执行 DebounceGate。需校正题面术语：P0 是编排器中的独立前置门，不属于 DebounceGate 类内部，但测试确实同时缺失二者。",
+    "file_lines": [
+      "scripts/run_v418_pipeline.py:120-165",
+      "demos/run_demo.py:133-219",
+      "realtime/stream_orchestrator.py:245-371",
+      "realtime/stream_orchestrator.py:539-563"
+    ]
+  },
+  "issue_4": {
+    "verdict": "VERIFIED",
+    "evidence": "生产 generate() 先扫描 dialogue_window；若命中家长行为关键词且原 tone 为 ENCOURAGING，就固定为 DIAGNOSTIC 后再调用模型。测试侧没有 detect_parent_override、关键词表或任何等价 tone 覆盖，而且没有传入生产 tone 指令。",
+    "file_lines": [
+      "realtime/popup_generator.py:79-122",
+      "realtime/popup_generator.py:261-276",
+      "scripts/run_v418_pipeline.py:85-117",
+      "demos/run_demo.py:123-137"
+    ]
+  },
+  "issue_5": {
+    "verdict": "VERIFIED",
+    "evidence": "生产默认开启去重，并由编排器传入历史弹窗；生成后用 SequenceMatcher 与最近 N 条历史比较，达到阈值即置 should_popup=False。测试按窗口独立调用，没有历史参数、相似度计算或拒绝逻辑。题面中的“>0.70”应校正为代码实际的“>= self.dedup_threshold”，默认阈值为 0.70。",
+    "file_lines": [
+      "realtime/popup_generator.py:20",
+      "realtime/popup_generator.py:125-134",
+      "realtime/popup_generator.py:153-179",
+      "realtime/popup_generator.py:301-318",
+      "realtime/stream_orchestrator.py:565-581",
+      "scripts/run_v418_pipeline.py:120-168"
+    ]
+  },
+  "issue_6": {
+    "verdict": "VERIFIED",
+    "evidence": "生产以正则检查引号内至少 4 字的话术；鼓励式首次缺失时携带强化指令重试一次，仍缺失则拒绝。测试 generate_popup() 只做 API 重试和预分析切除，不检查 tone、引号话术或 should_popup。",
+    "file_lines": [
+      "realtime/popup_generator.py:61-76",
+      "realtime/popup_generator.py:279-299",
+      "scripts/run_v418_pipeline.py:85-117"
+    ]
+  },
+  "issue_7": {
+    "verdict": "VERIFIED",
+    "evidence": "当前实现确有三组行为差异：生产 TextBuffer 最大分析窗口默认 3000，测试慢通道固定按 300 字切段；生产 TriggerEngine 每次在完整 full_text 中匹配关键词，测试只搜索当前 40 字 chunk；生产默认按累计 120 字触发，测试慢通道按 300 字触发。严格说 3000 的“最大分析上下文”与 300 的“慢通道分段”不是同名配置，而是两套架构，但其实际输入行为确实不等价。此外 run_v418_pipeline 的 --window-size 参数只被打印和写入结果，run_case 调用 simulate_pipeline 时没有传入，属于未接线参数。",
+    "file_lines": [
+      "realtime/stream_orchestrator.py:41-96",
+      "realtime/stream_orchestrator.py:103-116",
+      "realtime/stream_orchestrator.py:173-210",
+      "realtime/stream_orchestrator.py:430-480",
+      "realtime/stream_orchestrator.py:507-513",
+      "channel_spec.py:18-34",
+      "demos/run_demo.py:110-119",
+      "demos/run_demo.py:133-158",
+      "demos/run_demo.py:192-219",
+      "scripts/run_v418_pipeline.py:120-131",
+      "scripts/run_v418_pipeline.py:276-300",
+      "scripts/run_v418_pipeline.py:305-312"
+    ]
+  },
+  "issue_8": {
+    "verdict": "PARTIAL",
+    "evidence": "两个 user message 都没有重申预分析格式，这部分属实；但“LLM 不知道该格式”不属实，因为 v4.0.18 system prompt 明确给出格式示例并强制要求独立的 ========== 行。strip_pre_analysis 在模型遵守格式时有效，并非形同虚设。真实缺陷是：模型漏分隔符时测试代码直接返回整段 raw 文本，而不是像 prompt 声称的那样丢弃输出；同时生产 user message 的“直接输出弹窗全文、不附加解释”与 system prompt 的预分析要求存在潜在指令张力。",
+    "file_lines": [
+      "scripts/run_v418_pipeline.py:60-82",
+      "scripts/run_v418_pipeline.py:85-107",
+      "realtime/popup_generator.py:370-380",
+      "system_prompt_v4.0.18.txt:101-122"
+    ]
+  },
+  "issue_9": {
+    "verdict": "PARTIAL",
+    "evidence": "取最后一个非空输出作为 primary_popup 的逻辑属实，而且没有质量、风险或代表性选择依据；Codex 裁判只评价该 primary_popup。更严重的是，代码先追加全部 fast_popups，再追加全部 slow_popups，因此取到的甚至不一定是时间顺序上的最后一个窗口。但“12 条数据全部是短对话、单窗口”不属实：按当前数据和 simulate_pipeline 只读实跑，窗口数依次为 [2,1,1,2,1,2,3,10,6,6,2,3]，即仅 3/12 单窗口、9/12 多窗口，最多 10 个窗口。",
+    "file_lines": [
+      "scripts/run_v418_pipeline.py:156-166",
+      "scripts/run_v418_pipeline.py:171-190",
+      "demos/run_demo.py:133-219",
+      "data/new_12_independent.json:3-105"
+    ]
+  }
+}
+```
+
+总结：
+
+- `VERIFIED`：#1–#7，均属于测试结果不能代表生产管线的真实缺口，需要修复。
+- `PARTIAL`：#8、#9。
+  - #8 应改写为“格式只由 system prompt 约束，缺分隔符时测试未执行丢弃策略”，不能说 LLM 不知道格式。
+  - #9 应删除“12 条全为单窗口”的表述；实际多数是多窗口，且当前分组后取末项会破坏时间顺序。
+- `NOT_REPRODUCED`：无整条缺陷可完全排除。但可排除四个局部表述：P0 属于 DebounceGate 内部、去重条件是 `>0.70`、LLM 不知道预分析格式、12 条数据全部单窗口。
+
+总体结论：该脚本是“快慢窗口模拟 + 直接 Stage 2 调用”的测试器，不是其文件头所声称的“= 生产行为”。在 #1–#7 修复前，其结果不能作为 v4.0.18 生产管线验收证据。本次审计未修改任何文件。
+

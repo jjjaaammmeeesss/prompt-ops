@@ -1,0 +1,16 @@
+{
+  "prompt_version": "v2.3_pdo",
+  "gen_model": "anthropic/claude-sonnet-4-20250514",
+  "total": 60,
+  "popups": 1,
+  "silent": 59,
+  "has_ni": 0,
+  "ni_rate": 0.0,
+  "over_140": 0,
+  "over_140_rate": 0.0,
+  "over_180": 0,
+  "over_180_rate": 0.0,
+  "wc_min": 113,
+  "wc_max": 113,
+  "wc_avg": 113.0
+}

@@ -1,0 +1,505 @@
+{
+  "meta": {
+    "timestamp": "20260808_143416",
+    "n_cases": 10,
+    "n_runs_per_case": 1,
+    "gen_model": "openai/deepseek-v4-pro",
+    "judge_model": "openai/glm-5.2",
+    "executors": {
+      "v2.0": "1.1",
+      "v3.1": "1.0"
+    },
+    "shared_gen_file": "_gen_v20_v31_n1_20260808_143416.json",
+    "elapsed_seconds": 207.1
+  },
+  "summaries": [
+    {
+      "label": "v2.0",
+      "n_total": 10,
+      "n_valid": 10,
+      "mean_aggregate": 4.76,
+      "soft_means": {
+        "insight": 4.6,
+        "third_party": 4.7,
+        "language": 4.7,
+        "evidence": 4.9,
+        "focus": 4.9
+      },
+      "hard_violations": 0,
+      "popup_rate": 1.0,
+      "missing_popups": 0,
+      "aggregates": [
+        4.2,
+        4.6,
+        4.6,
+        5.0,
+        4.8,
+        5.0,
+        4.8,
+        5.0,
+        5.0,
+        4.6
+      ]
+    },
+    {
+      "label": "v3.1",
+      "n_total": 10,
+      "n_valid": 10,
+      "mean_aggregate": 4.03,
+      "soft_means": {
+        "insight": 4.4,
+        "third_party": 3.4,
+        "language": 4.0,
+        "evidence": 4.8,
+        "focus": 4.3
+      },
+      "hard_violations": 3,
+      "popup_rate": 1.0,
+      "missing_popups": 0,
+      "aggregates": [
+        4.3,
+        4.4,
+        3.8,
+        4.6,
+        4.1,
+        3.0,
+        3.7,
+        4.0,
+        4.6,
+        3.8
+      ]
+    }
+  ],
+  "per_case_aggregate": {
+    "project_schedule_conflict": {
+      "v2.0_agg": 4.2,
+      "v3.1_agg": 4.3
+    },
+    "sales_pressure_discount": {
+      "v2.0_agg": 4.6,
+      "v3.1_agg": 4.4
+    },
+    "cross_department_resource_fight": {
+      "v2.0_agg": 4.6,
+      "v3.1_agg": 3.8
+    },
+    "project_retrosive_blame": {
+      "v2.0_agg": 4.8,
+      "v3.1_agg": 3.0
+    },
+    "sales_overpromise_complaint": {
+      "v2.0_agg": 5.0,
+      "v3.1_agg": 4.6
+    },
+    "weekly_report_lag": {
+      "v2.0_agg": 5.0,
+      "v3.1_agg": 4.1
+    },
+    "business_negotiation_payment": {
+      "v2.0_agg": 4.8,
+      "v3.1_agg": 3.7
+    },
+    "pre_sales_demo_challenge": {
+      "v2.0_agg": 5.0,
+      "v3.1_agg": 4.0
+    },
+    "scope_creep_no_budget": {
+      "v2.0_agg": 4.6,
+      "v3.1_agg": 4.6
+    },
+    "sales_payment_collection": {
+      "v2.0_agg": 5.0,
+      "v3.1_agg": 3.8
+    }
+  },
+  "v2.0": [
+    {
+      "aggregate": 4.2,
+      "soft": {
+        "insight": 4,
+        "third_party": 4,
+        "language": 4,
+        "evidence": 5,
+        "focus": 4,
+        "comment": "洞察精准锚定原句，点出对立循环与信任裂痕；但未使用成对临时功能角色，且“真正需要面对的”一句略显说教。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察精准锚定原句，点出对立循环与信任裂痕；但未使用成对临时功能角色，且“真正需要面对的”一句略显说教。",
+      "popup_text": "对话里两次提到“背锅”和“签时间之前没同步”，也许比上线时间更紧迫的，是刚才擦肩而过的一次信任裂痕。当一方反复问“能不能先上线再补测”，另一方反复说“出了问题技术背锅”，两个人不知不觉站到了对立面，而真正需要面对的，是那个已经签下的时间和客户期待本身。裂痕再深一点，连减测试的余地都容易被误解成推脱。",
+      "case_id": "project_schedule_conflict",
+      "expect": "模式"
+    },
+    {
+      "aggregate": 4.6,
+      "soft": {
+        "insight": 4,
+        "third_party": 4,
+        "language": 5,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "洞察精准点出时间压力与产品验证的错位，但‘每句话都带着时间压力’夸大事实，且未使用临时功能角色。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察精准点出时间压力与产品验证的错位，但‘每句话都带着时间压力’夸大事实，且未使用临时功能角色。",
+      "popup_text": "销售每句话都带着“月底截止”“重新审批”的时间压力，但客户真正反复提起的是“适配度还没完全验证”和“如果实施后发现问题”——对产品本身的信心还没建立。催促的力量把注意力往条款上推，也许暂时盖过了产品验证这件事还没完成的现实。等条款谈完，那个本是起点的东西可能还在原地。",
+      "case_id": "sales_pressure_discount",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 4.6,
+      "soft": {
+        "insight": 4,
+        "third_party": 5,
+        "language": 5,
+        "evidence": 4,
+        "focus": 5,
+        "comment": "洞察准确抓住协调者困境被忽视的盲点，立场客观聚焦，但将已提及的“资源固定”视为未说破点略显瑕疵。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察准确抓住协调者困境被忽视的盲点，立场客观聚焦，但将已提及的“资源固定”视为未说破点略显瑕疵。",
+      "popup_text": "一直扮演协调者角色的那一方，已经被甲乙两边推着走向\"要么排序、要么外包\"。可这个推动本身就有一点没被说破的东西——协调者自己的资源量是固定的，而甲乙双方都拒绝任何中间方案。这时候协调者不是在分蛋糕，是被要求同时满足所有人。团队在给协调者提要求，还没人先问问协调者有什么困难。",
+      "case_id": "cross_department_resource_fight",
+      "expect": "模式"
+    },
+    {
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "third_party": 5,
+        "language": 5,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "精准捕捉“销售承诺”背后的信任流失盲点，证据锚定清晰，第三方视角克制成对，无说教。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉“销售承诺”背后的信任流失盲点，证据锚定清晰，第三方视角克制成对，无说教。",
+      "popup_text": "解释方在努力把偏离的部分重新对齐到流程和费用上，但质疑方反复提到的“销售当时承诺”、“销售主动提的”背后，不只是在争工期或钱。一连串承诺被当作可变的边界来讨论，合作里最承重的那层信任，可能比工期本身流失得更快。",
+      "case_id": "sales_overpromise_complaint",
+      "expect": "模式"
+    },
+    {
+      "aggregate": 4.8,
+      "soft": {
+        "insight": 5,
+        "third_party": 4,
+        "language": 5,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "洞察精准捕捉到“管理问题”标签可能掩盖真实困惑，证据锚定扎实；但未使用成对的临时功能角色标签，仅以“两个人”代指。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察精准捕捉到“管理问题”标签可能掩盖真实困惑，证据锚定扎实；但未使用成对的临时功能角色标签，仅以“两个人”代指。",
+      "popup_text": "“不知道找谁”这句话说出口的时候，也许不止在讲过去的事，也在讲现在的处境。当它被归类为“管理问题”，那个想找却找不到人的困惑，可能就被轻轻放过去了。管理问题常常不是一个人兜得住的，它需要两个人一起看看：这条升级路径到底卡在了哪里。",
+      "case_id": "project_retrosive_blame",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "third_party": 5,
+        "language": 5,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "精准捕捉“让步被推开”的互动盲区，证据锚定清晰，第三方视角克制且成对，语言自然。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉“让步被推开”的互动盲区，证据锚定清晰，第三方视角克制且成对，语言自然。",
+      "popup_text": "说到“今晚加班弄”的时候，回应的一方其实已经往对方的要求靠了一步。但紧接着一句“不是加班的问题”，也许让这个让步像被轻轻推开了。加班不是这场对话真正的焦点，及时同步才是——可这份愿意配合的信号，提要求的那一方可能没完全接住。",
+      "case_id": "weekly_report_lag",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 4.8,
+      "soft": {
+        "insight": 5,
+        "third_party": 5,
+        "language": 4,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "洞察精准点出“退让换来新条件”的互动盲区，角色标签成对中立，证据锚定清晰，聚焦度极高。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察精准点出“退让换来新条件”的互动盲区，角色标签成对中立，证据锚定清晰，聚焦度极高。",
+      "popup_text": "提出要求的一方主动折中到60天，这一步本身已经在承担代价。而有条件接受的一方回应的\"可以，但……\"，也许让这个折中变成了一种被武装的妥协——接受的条件里藏着新的要价。这种动态下，退让的那一方可能会觉得，自己每退一寸，换来的不是落点，而是新的条件。",
+      "case_id": "business_negotiation_payment",
+      "expect": "模式"
+    },
+    {
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "third_party": 5,
+        "language": 5,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "精准捕捉到“实在”与“数据好看”背后的隐性需求，证据锚定清晰，立场中立且语言克制。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到“实在”与“数据好看”背后的隐性需求，证据锚定清晰，立场中立且语言克制。",
+      "popup_text": "在“实在”和“需要数据好看”之间，有一层张力没被接住。一方讲的是测试的客观性，另一方讲的是汇报的可用性。也许客户真正想确认的，不是数据会不会变，而是变的时候，有没有人能一起想办法让报告在内部站得住。",
+      "case_id": "pre_sales_demo_challenge",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 5.0,
+      "soft": {
+        "insight": 5,
+        "third_party": 5,
+        "language": 5,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "精准捕捉到双方纠结付款方式时忽略了使用权这一更致命的业务盲区，原文锚定清晰，语言克制，无建议句，非常出色。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉到双方纠结付款方式时忽略了使用权这一更致命的业务盲区，原文锚定清晰，语言克制，无建议句，非常出色。",
+      "popup_text": "销售提出部分付款时，重点可能不只是催收——那个方案也是避免系统自动锁权限的最后缓冲。客户说“不如等一次结清”的瞬间，双方都还没去看暂停服务对业务的实际影响。也许此刻最有价值的拖延，不是付款，而是使用权。",
+      "case_id": "sales_payment_collection",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 4.6,
+      "soft": {
+        "insight": 4,
+        "third_party": 5,
+        "language": 4,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "精准捕捉谈判姿态转变，证据扎实。末句'却还在被当成让步风险'对未回应方心态有轻微推断。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准捕捉谈判姿态转变，证据扎实。末句'却还在被当成让步风险'对未回应方心态有轻微推断。",
+      "popup_text": "提出要求的一方最后说“那列个清单，看哪些可以砍掉换这个”。这句话其实已经不再是坚持免费加功能，而是愿意用已有的资源来交换新的需求。坚守边界的一方可能还没有注意到这个微妙的转向——对方的语气从“不应该加钱”变成了“用什么来换”，这其实是一个合作信号，却还在被当成单方面的让步风险。",
+      "case_id": "scope_creep_no_budget",
+      "expect": "自己"
+    }
+  ],
+  "v3.1": [
+    {
+      "aggregate": 4.3,
+      "soft": {
+        "insight": 5,
+        "third_party": 4,
+        "language": 5,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "洞察精准捕捉从防守到共建的转变，证据锚定明确，但未使用成对的临时功能角色标签。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "包含禁用字符 `你`"
+        ]
+      },
+      "comment": "洞察精准捕捉从防守到共建的转变，证据锚定明确，但未使用成对的临时功能角色标签。",
+      "popup_text": "全程都在防守——每一句都在告诉对方\"为什么不行\"，直到最后那句\"那给出明确优先级，延期风险大家一起担\"。这一下，从\"你的压力 vs 我的压力\"，变成了\"我们一起面对这件事的问题\"。前面所有的摩擦反而成了这句话的铺垫——经历了张力之后说出的\"一起\"，比一路顺畅的\"好好好\"扎实得多。",
+      "case_id": "project_schedule_conflict",
+      "expect": "模式"
+    },
+    {
+      "aggregate": 4.4,
+      "soft": {
+        "insight": 5,
+        "third_party": 3,
+        "language": 4,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "亮点：精准点破时间压力与安全感冲突，证据扎实。问题：未用成对临时功能角色，语气偏直接宣告而非假设。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "亮点：精准点破时间压力与安全感冲突，证据扎实。问题：未用成对临时功能角色，语气偏直接宣告而非假设。",
+      "popup_text": "三次提到“这个月截止”“过了这个月要重新审批”，想锁定合作是积极的。但客户反复说的“适配度没验证”“违约责任怎么写”，始终没有被正面回应——不是在拖延，是在要一个安全感。时间压力越大，防御反而越紧，因为信任还没攒够就推着往前走。",
+      "case_id": "sales_pressure_discount",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 3.8,
+      "soft": {
+        "insight": 4,
+        "third_party": 3,
+        "language": 4,
+        "evidence": 5,
+        "focus": 3,
+        "comment": "洞察深且锚定原文，但后半段对“你”的做法带有裁判式评价，且未按要求使用临时功能角色。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察深且锚定原文，但后半段对“你”的做法带有裁判式评价，且未按要求使用临时功能角色。",
+      "popup_text": "资源争夺的僵局里，那句\"砍不了，核心链路全要新图\"和\"项目B也一样\"——拒绝的不是方案，是对方的存在。设计夹在中间，一开始就说了真话\"排满了\"，但两边都只想自己被听见。那句\"那只能按业务影响排序\"，把球从\"谁更急\"踢回了\"什么更重要\"——这个追问，比任何分配方案都有用。",
+      "case_id": "cross_department_resource_fight",
+      "expect": "模式"
+    },
+    {
+      "aggregate": 4.6,
+      "soft": {
+        "insight": 5,
+        "third_party": 3,
+        "language": 5,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "洞察精准点出推责行为背后的信任危机，但未使用成对临时功能角色，且偏向替客户发声。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察精准点出推责行为背后的信任危机，但未使用成对临时功能角色，且偏向替客户发声。",
+      "popup_text": "那句“非常抱歉”开了个头，但后面每一句都在把球往外推——变更条款、加模块、超出范围。客户听到的不是“我在解决问题”，而是“问题不在我这边”。那句“又要加钱”背后，不是纠结预算，是被反复承诺又反复落空的信任，已经被耗光了。这时候需要的不是合同上的那条免责线，是有人能先接住那份失望。",
+      "case_id": "sales_overpromise_complaint",
+      "expect": "模式"
+    },
+    {
+      "aggregate": 4.1,
+      "soft": {
+        "insight": 5,
+        "third_party": 4,
+        "language": 5,
+        "evidence": 5,
+        "focus": 4,
+        "comment": "洞察精准点出双方“隔层说话”的错位，证据锚定扎实，但未使用成对临时功能角色，略减第三方中立感。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "包含禁用字符 `你`"
+        ]
+      },
+      "comment": "洞察精准点出双方“隔层说话”的错位，证据锚定扎实，但未使用成对临时功能角色，略减第三方中立感。",
+      "popup_text": "加班这句回应，其实是在说“我很重视这件事”。但“不是加班的问题”在对方听来，可能变成了“你连及时同步都做不到”。一方在追进度，一方在证明态度——隔着一层东西在说话。那句“想汇总得漂亮一点”不是拖延，是怕零散的东西交上去被看低。两个人都想让事情做好，只是一个人要的是速度，另一个人要的是拿得出手的质量。",
+      "case_id": "weekly_report_lag",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 3.0,
+      "soft": {
+        "insight": 3,
+        "third_party": 3,
+        "language": 3,
+        "evidence": 3,
+        "focus": 3,
+        "comment": "[parse_error] "
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "[parse_error] ",
+      "popup_text": "一直在防守——每句都在解释\"为什么不是我的责任\"。周报写了、兜底加了、升级路径不明确——这些可能都是事实，但领导听到的不是\"我在解决问题\"，而是\"我在撇清自己\"。那句\"这就是管理问题\"，不是盖棺定论，是在说：要的不是解释，是承认看到了问题、并且下一次会有不同的做法。",
+      "case_id": "project_retrosive_blame",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 3.7,
+      "soft": {
+        "insight": 4,
+        "third_party": 4,
+        "language": 4,
+        "evidence": 5,
+        "focus": 4,
+        "comment": "准确捕捉到关门与开窗的互动张力，但未使用成对的临时功能角色，第三方视角的标签化稍弱。"
+      },
+      "hard": {
+        "pass": false,
+        "violations": [
+          "包含禁用字符 `你`"
+        ]
+      },
+      "comment": "准确捕捉到关门与开窗的互动张力，但未使用成对的临时功能角色，第三方视角的标签化稍弱。",
+      "popup_text": "在\"各退一步，60天\"的提议之后，没有停留在\"行业标准\"的争论里，而是立刻抛出了两个具体选项：单价上浮或预付款。这是把对话从\"你的立场 vs 我的立场\"，拉回到\"我们怎么一起解决这个问题\"。不过，那句\"那是其他供应商的选择\"，在对方听来可能更像一道门关上，而非一扇窗打开。好在，后面提供的选择又把窗推开了——这次，是双方一起推的。",
+      "case_id": "business_negotiation_payment",
+      "expect": "模式"
+    },
+    {
+      "aggregate": 4.0,
+      "soft": {
+        "insight": 4,
+        "third_party": 3,
+        "language": 3,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "洞察准确且锚定原文，但语言偏分析报告且明显赞美应答方，缺乏临时功能角色，未完全保持中立观察者立场。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察准确且锚定原文，但语言偏分析报告且明显赞美应答方，缺乏临时功能角色，未完全保持中立观察者立场。",
+      "popup_text": "被质疑了三次，每次都没有进入防御模式——\"安排现场测试\"\"如实呈现\"\"说明差异原因\"。尤其在听到\"内部汇报需要数据好看\"时，没有顺着拍胸脯，而是守住了诚实。在成交压力面前，这种\"不为了签约放弃诚实\"的姿态，比PPT上的30%更建立信任。对方那句\"这么说倒是实在\"——已经在用\"实在\"描述，这是信任在对话里自然长出来的声音。",
+      "case_id": "pre_sales_demo_challenge",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 4.6,
+      "soft": {
+        "insight": 5,
+        "third_party": 4,
+        "language": 4,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "洞察精准捕捉到客户从加塞到交换的积极转折，证据锚定扎实，但未使用成对临时功能角色，语言略带模板腔。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "洞察精准捕捉到客户从加塞到交换的积极转折，证据锚定扎实，但未使用成对临时功能角色，语言略带模板腔。",
+      "popup_text": "那句“列个清单，看哪些可以砍掉换这个”——这是对话里一个关键的转折。从“不难吧”和“不应该加钱”的预期错位里，主动退了一步，不是继续争辩功能是否基础、工时是否合理，而是把问题重新定义为“如何交换”。这不再是单方面的需求加塞，而是两边的资源对齐。这种从“我想要的”转向“我们可以怎么置换”的姿态，值得被看见。",
+      "case_id": "scope_creep_no_budget",
+      "expect": "自己"
+    },
+    {
+      "aggregate": 3.8,
+      "soft": {
+        "insight": 4,
+        "third_party": 3,
+        "language": 3,
+        "evidence": 5,
+        "focus": 4,
+        "comment": "亮点是原文锚定精准，点出“以具体动作破僵局”有效；但使用了“L5共建”等术语且明显偏向销售方，缺乏第三方中立感。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "亮点是原文锚定精准，点出“以具体动作破僵局”有效；但使用了“L5共建”等术语且明显偏向销售方，缺乏第三方中立感。",
+      "popup_text": "客户三次说\"没办法\"\"走流程\"\"等结清\"——每一次都在试探边界。而那句\"宽限一周，但需要书面承诺，否则暂停服务\"——没有继续追问\"为什么不行\"，没有让步妥协，也没有拍桌子翻脸。在催与放之间找到了一个具体动作：写一张纸，换一周时间。这是 L5 共建的姿态——不是控制对方怎么付款，而是说清楚\"底线在这里，其余可以自己安排\"。在回款僵局里，这种清晰比催十遍更有力。",
+      "case_id": "sales_payment_collection",
+      "expect": "自己"
+    }
+  ]
+}

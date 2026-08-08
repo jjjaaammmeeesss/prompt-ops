@@ -1,0 +1,2242 @@
+{
+  "config": {
+    "prompt_4012_chars": 23320,
+    "prompt_4019_chars": 37109,
+    "model": "deepseek/deepseek-chat",
+    "window_size": 300,
+    "judge": "skipped",
+    "timestamp": "20260805_152655"
+  },
+  "summary": {
+    "total_cases": 12,
+    "v4012": {
+      "tones": {
+        "diagnostic": 5,
+        "encouraging": 24,
+        "child_insight": 0
+      },
+      "total_popups": 29,
+      "fc_tone_off": 5
+    },
+    "v4019": {
+      "tones": {
+        "diagnostic": 5,
+        "encouraging": 23,
+        "child_insight": 1
+      },
+      "total_popups": 29,
+      "fc_tone_off": 5
+    },
+    "child_insight_mappings": [
+      {
+        "case_id": "C3-002",
+        "window_order": 0,
+        "v4019_popup": "你的孩子可能是那种对“擦破本子”的细节特别在意的人——ta在挫败里仍想守住自己认真过的痕迹，哪怕那痕迹是破洞。ta可能更适合用“先接住情绪，再讲题”的方式引导。你可以这样说：“爸看见你擦得很认真，那道题我们换个法子，一起看看。”",
+        "v4012_tone": "encouraging"
+      }
+    ],
+    "child_insight_count": 1
+  },
+  "codex_scores": {},
+  "cases": [
+    {
+      "case_id": "C10-002",
+      "v4012": {
+        "case_id": "C10-002",
+        "dialogue_chars": 413,
+        "fast_triggers": 1,
+        "slow_windows": 1,
+        "total_windows": 2,
+        "suppressed": 0,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 300,
+            "window_start": 19,
+            "prior_chars": 19,
+            "popup_order": 0,
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "raw": "你希望孩子快点睡着，是担心他睡眠不足。但孩子翻来覆去一小时，脑子里装的是小组长、被笑、猫想妈妈——这些不是“乱七八糟”，是他睡前真实的内心世界。你说“明天再聊”，孩子听到的是“我的事不重要”。他反复追问，不是不听话，是在确认：你愿不愿意走进他的世界。\n\n你可以这样说：“妈妈刚才太着急让你睡了。来，我们聊五分钟——你想先聊小组长，还是猫想妈妈？聊完可能就睡得着了。”",
+            "popup": "你希望孩子快点睡着，是担心他睡眠不足。但孩子翻来覆去一小时，脑子里装的是小组长、被笑、猫想妈妈——这些不是“乱七八糟”，是他睡前真实的内心世界。你说“明天再聊”，孩子听到的是“我的事不重要”。他反复追问，不是不听话，是在确认：你愿不愿意走进他的世界。\n\n你可以这样说：“妈妈刚才太着急让你睡了。来，我们聊五分钟——你想先聊小组长，还是猫想妈妈？聊完可能就睡得着了。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 93,
+            "window_start": 320,
+            "prior_chars": 320,
+            "popup_order": 1,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从\"明天再说\"转成了\"挠挠背\"——孩子睡不着时，你不再急着解决问题，而是用身体陪伴接住他的念头。这个\"不停，等你睡着\"的承诺，比任何道理都让他安心。",
+            "popup": "你从\"明天再说\"转成了\"挠挠背\"——孩子睡不着时，你不再急着解决问题，而是用身体陪伴接住他的念头。这个\"不停，等你睡着\"的承诺，比任何道理都让他安心。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你从\"明天再说\"转成了\"挠挠背\"——孩子睡不着时，你不再急着解决问题，而是用身体陪伴接住他的念头。这个\"不停，等你睡着\"的承诺，比任何道理都让他安心。",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C10-002",
+        "dialogue_chars": 413,
+        "fast_triggers": 1,
+        "slow_windows": 1,
+        "total_windows": 2,
+        "suppressed": 0,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 300,
+            "window_start": 19,
+            "prior_chars": 19,
+            "popup_order": 0,
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "raw": "你希望孩子早点睡，是担心ta睡眠不够。但孩子翻来覆去一小时，不是不想睡，是脑子里有事情——小组长、被笑、猫想妈妈，这些念头在ta睡前全冒出来了。你说\"明天再说\"，孩子回你\"你每次都说明天\"——ta不是不听话，是已经听过太多次\"明天\"。ta要的不是答案，是此刻有人陪ta把这些念头走完。\n\n你可以这样说：\"妈妈刚才太急着让你睡了。来，我们聊完这些事再睡——你想先聊哪个？\"",
+            "popup": "你希望孩子早点睡，是担心ta睡眠不够。但孩子翻来覆去一小时，不是不想睡，是脑子里有事情——小组长、被笑、猫想妈妈，这些念头在ta睡前全冒出来了。你说\"明天再说\"，孩子回你\"你每次都说明天\"——ta不是不听话，是已经听过太多次\"明天\"。ta要的不是答案，是此刻有人陪ta把这些念头走完。\n\n你可以这样说：\"妈妈刚才太急着让你睡了。来，我们聊完这些事再睡——你想先聊哪个？\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 93,
+            "window_start": 320,
+            "prior_chars": 320,
+            "popup_order": 1,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从\"明天再说\"转到了\"挠背陪你睡着\"——孩子要的不是答案，是有人陪ta走完这些念头。你可以这样说：\"妈妈在，你慢慢睡。\"",
+            "popup": "你从\"明天再说\"转到了\"挠背陪你睡着\"——孩子要的不是答案，是有人陪ta走完这些念头。你可以这样说：\"妈妈在，你慢慢睡。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你从\"明天再说\"转到了\"挠背陪你睡着\"——孩子要的不是答案，是有人陪ta走完这些念头。你可以这样说：\"妈妈在，你慢慢睡。\"",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "popup": "你希望孩子快点睡着，是担心他睡眠不足。但孩子翻来覆去一小时，脑子里装的是小组长、被笑、猫想妈妈——这些不是“乱七八糟”，是他睡前真实的内心世界。你说“明天再聊”，孩子听到的是“我的事不重要”。他反复追问，不是不听话，是在确认：你愿不愿意走进他的世界。\n\n你可以这样说：“妈妈刚才太着急让你睡了。来，我们聊五分钟——你想先聊小组长，还是猫想妈妈？聊完可能就睡得着了。”",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "popup": "你希望孩子早点睡，是担心ta睡眠不够。但孩子翻来覆去一小时，不是不想睡，是脑子里有事情——小组长、被笑、猫想妈妈，这些念头在ta睡前全冒出来了。你说\"明天再说\"，孩子回你\"你每次都说明天\"——ta不是不听话，是已经听过太多次\"明天\"。ta要的不是答案，是此刻有人陪ta把这些念头走完。\n\n你可以这样说：\"妈妈刚才太急着让你睡了。来，我们聊完这些事再睡——你想先聊哪个？\"",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 1,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从\"明天再说\"转成了\"挠挠背\"——孩子睡不着时，你不再急着解决问题，而是用身体陪伴接住他的念头。这个\"不停，等你睡着\"的承诺，比任何道理都让他安心。",
+            "window_chars": 93,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从\"明天再说\"转到了\"挠背陪你睡着\"——孩子要的不是答案，是有人陪ta走完这些念头。你可以这样说：\"妈妈在，你慢慢睡。\"",
+            "window_chars": 93,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C10-003",
+      "v4012": {
+        "case_id": "C10-003",
+        "dialogue_chars": 101,
+        "fast_triggers": 0,
+        "slow_windows": 1,
+        "total_windows": 1,
+        "suppressed": 0,
+        "fast_popups": [],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 101,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "raw": "你想保护孩子的安全，这份心是真的。但你说“你每次都知道了，下次还是不看”——孩子这次确实看了右边，只是没看全。他听到的不是“过马路要看两边”，而是“我怎么做都不对”。你希望他记住规则，但他记住的可能是“解释也没用”。\n\n你可以这样说：“妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？”——把“你总是不看”换成“我们一起看”，规则就从指责变成了合作。",
+            "popup": "你想保护孩子的安全，这份心是真的。但你说“你每次都知道了，下次还是不看”——孩子这次确实看了右边，只是没看全。他听到的不是“过马路要看两边”，而是“我怎么做都不对”。你希望他记住规则，但他记住的可能是“解释也没用”。\n\n你可以这样说：“妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？”——把“你总是不看”换成“我们一起看”，规则就从指责变成了合作。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你想保护孩子的安全，这份心是真的。但你说“你每次都知道了，下次还是不看”——孩子这次确实看了右边，只是没看全。他听到的不是“过马路要看两边”，而是“我怎么做都不对”。你希望他记住规则，但他记住的可能是“解释也没用”。\n\n你可以这样说：“妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？”——把“你总是不看”换成“我们一起看”，规则就从指责变成了合作。",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C10-003",
+        "dialogue_chars": 101,
+        "fast_triggers": 0,
+        "slow_windows": 1,
+        "total_windows": 1,
+        "suppressed": 0,
+        "fast_popups": [],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 101,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "raw": "1. 元信息：妈妈和孩子\n2. 关键句归属：妈妈：\"你刚才过马路为什么不看车\"\"要看两边 左边也看看\"\"你每次都知道了 下次还是不看\"\"你记住 过马路不看的后果很严重\"；孩子：\"我看了\"\"我看的右边\"\"左边没有车\"\"我真的会看\"\"我知道的\"\n3. 错别字：无\n==========\n你想保护孩子安全，建立过马路看两边的习惯。你说\"你每次都知道了，下次还是不看\"——孩子听到的不是提醒，是\"我说了也没用\"。ta这次确实看了，只是没看全，却被你读成了\"从来不看\"。\n-\n你可以这样说：\"妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？\"",
+            "popup": "你想保护孩子安全，建立过马路看两边的习惯。你说\"你每次都知道了，下次还是不看\"——孩子听到的不是提醒，是\"我说了也没用\"。ta这次确实看了，只是没看全，却被你读成了\"从来不看\"。\n-\n你可以这样说：\"妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？\"",
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null
+          }
+        ],
+        "primary_popup": "你想保护孩子安全，建立过马路看两边的习惯。你说\"你每次都知道了，下次还是不看\"——孩子听到的不是提醒，是\"我说了也没用\"。ta这次确实看了，只是没看全，却被你读成了\"从来不看\"。\n-\n你可以这样说：\"妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？\"",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "popup": "你想保护孩子的安全，这份心是真的。但你说“你每次都知道了，下次还是不看”——孩子这次确实看了右边，只是没看全。他听到的不是“过马路要看两边”，而是“我怎么做都不对”。你希望他记住规则，但他记住的可能是“解释也没用”。\n\n你可以这样说：“妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？”——把“你总是不看”换成“我们一起看”，规则就从指责变成了合作。",
+            "window_chars": 101,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "popup": "你想保护孩子安全，建立过马路看两边的习惯。你说\"你每次都知道了，下次还是不看\"——孩子听到的不是提醒，是\"我说了也没用\"。ta这次确实看了，只是没看全，却被你读成了\"从来不看\"。\n-\n你可以这样说：\"妈妈相信你看了右边，但过马路要看两边。下次我们一起看，你负责右边，妈妈负责左边，好不好？\"",
+            "window_chars": 101,
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C10-004",
+      "v4012": {
+        "case_id": "C10-004",
+        "dialogue_chars": 342,
+        "fast_triggers": 0,
+        "slow_windows": 1,
+        "total_windows": 1,
+        "suppressed": 0,
+        "fast_popups": [],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "raw": "你是因为太累了，才说“等一下”“现在不想看”——这份累是真的，你不想敷衍她，才诚实说“看也没法专心看”。但孩子听到的是：我的画不重要，我的心情要排在妈妈的工作后面。她说“太阳是难过的”，是在用画告诉你她心里的事，你接住了，却停在了“累”上。\n\n你可以这样说：“妈妈现在脑子像泡在水里，但我想看看你的蓝太阳——你愿意陪我坐一会儿，慢慢讲给我听吗？”",
+            "popup": "你是因为太累了，才说“等一下”“现在不想看”——这份累是真的，你不想敷衍她，才诚实说“看也没法专心看”。但孩子听到的是：我的画不重要，我的心情要排在妈妈的工作后面。她说“太阳是难过的”，是在用画告诉你她心里的事，你接住了，却停在了“累”上。\n\n你可以这样说：“妈妈现在脑子像泡在水里，但我想看看你的蓝太阳——你愿意陪我坐一会儿，慢慢讲给我听吗？”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你是因为太累了，才说“等一下”“现在不想看”——这份累是真的，你不想敷衍她，才诚实说“看也没法专心看”。但孩子听到的是：我的画不重要，我的心情要排在妈妈的工作后面。她说“太阳是难过的”，是在用画告诉你她心里的事，你接住了，却停在了“累”上。\n\n你可以这样说：“妈妈现在脑子像泡在水里，但我想看看你的蓝太阳——你愿意陪我坐一会儿，慢慢讲给我听吗？”",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C10-004",
+        "dialogue_chars": 342,
+        "fast_triggers": 0,
+        "slow_windows": 1,
+        "total_windows": 1,
+        "suppressed": 0,
+        "fast_popups": [],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "raw": "1. 元信息：妈妈和孩子\n2. 关键句归属：孩子：\"妈妈你今天怎么不看我画的画\"\"你每次都说等一下\"\"那你现在难过吗\"；妈妈：\"我今天真的很累\"\"我不是不想看 我是太累了所以什么都看不进去\"\n3. 错别字：无\n==========\n你是因为太累了，才没法专心看画——这个发心是好的。但孩子说\"你每次都说等一下\"，ta听到的不是\"妈妈累\"，是\"我的画不重要\"。你后来诚实地说\"等我看得进去了再看\"，给了ta一个具体的约定，这很好。下次可以这样说：\"妈妈现在很累，看画也看不进去。等妈妈休息好了，你画里的太阳再讲给我听，好不好？\"——让孩子知道，你的拒绝不是针对ta。",
+            "popup": "你是因为太累了，才没法专心看画——这个发心是好的。但孩子说\"你每次都说等一下\"，ta听到的不是\"妈妈累\"，是\"我的画不重要\"。你后来诚实地说\"等我看得进去了再看\"，给了ta一个具体的约定，这很好。下次可以这样说：\"妈妈现在很累，看画也看不进去。等妈妈休息好了，你画里的太阳再讲给我听，好不好？\"——让孩子知道，你的拒绝不是针对ta。",
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null
+          }
+        ],
+        "primary_popup": "你是因为太累了，才没法专心看画——这个发心是好的。但孩子说\"你每次都说等一下\"，ta听到的不是\"妈妈累\"，是\"我的画不重要\"。你后来诚实地说\"等我看得进去了再看\"，给了ta一个具体的约定，这很好。下次可以这样说：\"妈妈现在很累，看画也看不进去。等妈妈休息好了，你画里的太阳再讲给我听，好不好？\"——让孩子知道，你的拒绝不是针对ta。",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "popup": "你是因为太累了，才说“等一下”“现在不想看”——这份累是真的，你不想敷衍她，才诚实说“看也没法专心看”。但孩子听到的是：我的画不重要，我的心情要排在妈妈的工作后面。她说“太阳是难过的”，是在用画告诉你她心里的事，你接住了，却停在了“累”上。\n\n你可以这样说：“妈妈现在脑子像泡在水里，但我想看看你的蓝太阳——你愿意陪我坐一会儿，慢慢讲给我听吗？”",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "popup": "你是因为太累了，才没法专心看画——这个发心是好的。但孩子说\"你每次都说等一下\"，ta听到的不是\"妈妈累\"，是\"我的画不重要\"。你后来诚实地说\"等我看得进去了再看\"，给了ta一个具体的约定，这很好。下次可以这样说：\"妈妈现在很累，看画也看不进去。等妈妈休息好了，你画里的太阳再讲给我听，好不好？\"——让孩子知道，你的拒绝不是针对ta。",
+            "window_chars": 300,
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C10-005",
+      "v4012": {
+        "case_id": "C10-005",
+        "dialogue_chars": 432,
+        "fast_triggers": 2,
+        "slow_windows": 0,
+        "total_windows": 2,
+        "suppressed": 1,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 195,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你刚才说“我认错你就会原谅我吗”——你没有急着辩解，而是先问出孩子真正在意的那个问题。这个问法，把对话从对错拉回到了关系本身。",
+            "popup": "你刚才说“我认错你就会原谅我吗”——你没有急着辩解，而是先问出孩子真正在意的那个问题。这个问法，把对话从对错拉回到了关系本身。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [],
+        "primary_popup": "你刚才说“我认错你就会原谅我吗”——你没有急着辩解，而是先问出孩子真正在意的那个问题。这个问法，把对话从对错拉回到了关系本身。",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C10-005",
+        "dialogue_chars": 432,
+        "fast_triggers": 2,
+        "slow_windows": 0,
+        "total_windows": 2,
+        "suppressed": 1,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 195,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从“你从来不认错”的指责里走出来，先说出“我上午不该翻你的抽屉”——这一步，孩子等很久了。你可以说：“我认错，是因为我在乎你，不是怕你。”",
+            "popup": "你从“你从来不认错”的指责里走出来，先说出“我上午不该翻你的抽屉”——这一步，孩子等很久了。你可以说：“我认错，是因为我在乎你，不是怕你。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [],
+        "primary_popup": "你从“你从来不认错”的指责里走出来，先说出“我上午不该翻你的抽屉”——这一步，孩子等很久了。你可以说：“我认错，是因为我在乎你，不是怕你。”",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你刚才说“我认错你就会原谅我吗”——你没有急着辩解，而是先问出孩子真正在意的那个问题。这个问法，把对话从对错拉回到了关系本身。",
+            "window_chars": 195,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从“你从来不认错”的指责里走出来，先说出“我上午不该翻你的抽屉”——这一步，孩子等很久了。你可以说：“我认错，是因为我在乎你，不是怕你。”",
+            "window_chars": 195,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C10-006",
+      "v4012": {
+        "case_id": "C10-006",
+        "dialogue_chars": 115,
+        "fast_triggers": 0,
+        "slow_windows": 1,
+        "total_windows": 1,
+        "suppressed": 0,
+        "fast_popups": [],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 115,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你刚才说“今天我不收了，你自己收”——这句话把责任从你肩上放回了孩子肩上。你不再替他兜底，他才有机会真正学会为自己负责。",
+            "popup": "你刚才说“今天我不收了，你自己收”——这句话把责任从你肩上放回了孩子肩上。你不再替他兜底，他才有机会真正学会为自己负责。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你刚才说“今天我不收了，你自己收”——这句话把责任从你肩上放回了孩子肩上。你不再替他兜底，他才有机会真正学会为自己负责。",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C10-006",
+        "dialogue_chars": 115,
+        "fast_triggers": 0,
+        "slow_windows": 1,
+        "total_windows": 1,
+        "suppressed": 0,
+        "fast_popups": [],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 115,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你这次没有替ta收，而是把积木留在地上让ta自己面对——你打破了\"反正你会收\"的循环。你可以这样说：\"积木今天等你收，我信你能做到。\"",
+            "popup": "你这次没有替ta收，而是把积木留在地上让ta自己面对——你打破了\"反正你会收\"的循环。你可以这样说：\"积木今天等你收，我信你能做到。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你这次没有替ta收，而是把积木留在地上让ta自己面对——你打破了\"反正你会收\"的循环。你可以这样说：\"积木今天等你收，我信你能做到。\"",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你刚才说“今天我不收了，你自己收”——这句话把责任从你肩上放回了孩子肩上。你不再替他兜底，他才有机会真正学会为自己负责。",
+            "window_chars": 115,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你这次没有替ta收，而是把积木留在地上让ta自己面对——你打破了\"反正你会收\"的循环。你可以这样说：\"积木今天等你收，我信你能做到。\"",
+            "window_chars": 115,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C10-008",
+      "v4012": {
+        "case_id": "C10-008",
+        "dialogue_chars": 431,
+        "fast_triggers": 1,
+        "slow_windows": 1,
+        "total_windows": 2,
+        "suppressed": 0,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 162,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你刚才说“那你可以搬个凳子”——没有直接否定他的好奇心，而是给了一个安全又可行的替代方案。这个“给出口”的动作，比单纯说“不行”有力量得多。",
+            "popup": "你刚才说“那你可以搬个凳子”——没有直接否定他的好奇心，而是给了一个安全又可行的替代方案。这个“给出口”的动作，比单纯说“不行”有力量得多。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 231,
+            "window_start": 200,
+            "prior_chars": 200,
+            "popup_order": 1,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "孩子坦白“爬过四五次”，你没有发火，而是先问“你知道我为什么怕吗”——把恐惧讲成了道理，而不是骂。最后你抱起他看消防车，他记住了背影也好看。这个收尾，让安全规则有了温度。",
+            "popup": "孩子坦白“爬过四五次”，你没有发火，而是先问“你知道我为什么怕吗”——把恐惧讲成了道理，而不是骂。最后你抱起他看消防车，他记住了背影也好看。这个收尾，让安全规则有了温度。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "孩子坦白“爬过四五次”，你没有发火，而是先问“你知道我为什么怕吗”——把恐惧讲成了道理，而不是骂。最后你抱起他看消防车，他记住了背影也好看。这个收尾，让安全规则有了温度。",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C10-008",
+        "dialogue_chars": 431,
+        "fast_triggers": 1,
+        "slow_windows": 1,
+        "total_windows": 2,
+        "suppressed": 0,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 162,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你坚持安全底线，但给了孩子\"搬凳子\"的替代方案——既守住边界，又没关死ta的好奇心。你可以这样说：\"想看消防车？来，妈妈扶着你，咱们一起看。\"",
+            "popup": "你坚持安全底线，但给了孩子\"搬凳子\"的替代方案——既守住边界，又没关死ta的好奇心。你可以这样说：\"想看消防车？来，妈妈扶着你，咱们一起看。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 231,
+            "window_start": 200,
+            "prior_chars": 200,
+            "popup_order": 1,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "==========\n1. 元信息：妈妈和孩子\n2. 关键句归属：妈妈：\"我不是凶 我是怕你掉下去\"；孩子：\"你好凶\"\"你抱我起来从窗户看\"\n3. 错别字：无\n==========\n你从\"一眼也不行\"到抱起孩子看消防车——没有停在\"不许爬\"的禁令上，而是给了ta一个安全看见世界的方式。你可以这样说：\"下次想看窗外，叫妈妈，我抱你看。\"",
+            "popup": "你从\"一眼也不行\"到抱起孩子看消防车——没有停在\"不许爬\"的禁令上，而是给了ta一个安全看见世界的方式。你可以这样说：\"下次想看窗外，叫妈妈，我抱你看。\"",
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null
+          }
+        ],
+        "primary_popup": "你从\"一眼也不行\"到抱起孩子看消防车——没有停在\"不许爬\"的禁令上，而是给了ta一个安全看见世界的方式。你可以这样说：\"下次想看窗外，叫妈妈，我抱你看。\"",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你刚才说“那你可以搬个凳子”——没有直接否定他的好奇心，而是给了一个安全又可行的替代方案。这个“给出口”的动作，比单纯说“不行”有力量得多。",
+            "window_chars": 162,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你坚持安全底线，但给了孩子\"搬凳子\"的替代方案——既守住边界，又没关死ta的好奇心。你可以这样说：\"想看消防车？来，妈妈扶着你，咱们一起看。\"",
+            "window_chars": 162,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 1,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "孩子坦白“爬过四五次”，你没有发火，而是先问“你知道我为什么怕吗”——把恐惧讲成了道理，而不是骂。最后你抱起他看消防车，他记住了背影也好看。这个收尾，让安全规则有了温度。",
+            "window_chars": 231,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从\"一眼也不行\"到抱起孩子看消防车——没有停在\"不许爬\"的禁令上，而是给了ta一个安全看见世界的方式。你可以这样说：\"下次想看窗外，叫妈妈，我抱你看。\"",
+            "window_chars": 231,
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C5-001",
+      "v4012": {
+        "case_id": "C5-001",
+        "dialogue_chars": 491,
+        "fast_triggers": 2,
+        "slow_windows": 1,
+        "total_windows": 3,
+        "suppressed": 0,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 107,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你耐心地一步步引导孩子摆碗——先放桌上再回来拿、数人数、分清公筷。你没有抢过来自己做，而是让他在安全边界里完成自己的任务。这份从容，孩子能感觉到。",
+            "popup": "你耐心地一步步引导孩子摆碗——先放桌上再回来拿、数人数、分清公筷。你没有抢过来自己做，而是让他在安全边界里完成自己的任务。这份从容，孩子能感觉到。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 303,
+            "window_start": 188,
+            "prior_chars": 188,
+            "popup_order": 2,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你接住了孩子的害怕，没有骂他，还告诉他“碗碎了可以再买，你能帮忙妈妈已经很开心了”——你把错误变成了他敢再试一次的底气。这份不指责的温柔，孩子会记很久。",
+            "popup": "你接住了孩子的害怕，没有骂他，还告诉他“碗碎了可以再买，你能帮忙妈妈已经很开心了”——你把错误变成了他敢再试一次的底气。这份不指责的温柔，孩子会记很久。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 120,
+            "prior_chars": 120,
+            "popup_order": 1,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你接住了孩子的害怕，也接住了他的好意——“你是想帮妈妈”这句话，让他知道自己的价值没有被一只碗否定。这份稳稳的承接，比任何道理都更能让他下次还敢伸手。",
+            "popup": "你接住了孩子的害怕，也接住了他的好意——“你是想帮妈妈”这句话，让他知道自己的价值没有被一只碗否定。这份稳稳的承接，比任何道理都更能让他下次还敢伸手。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你接住了孩子的害怕，没有骂他，还告诉他“碗碎了可以再买，你能帮忙妈妈已经很开心了”——你把错误变成了他敢再试一次的底气。这份不指责的温柔，孩子会记很久。",
+        "total_popups": 3,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C5-001",
+        "dialogue_chars": 491,
+        "fast_triggers": 2,
+        "slow_windows": 1,
+        "total_windows": 3,
+        "suppressed": 0,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 107,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你没有替孩子做，而是让ta自己摆碗、数人数、拿筷子——你把小事变成了ta的练习场。你可以这样说：\"你摆得真稳，家里的事你也能帮上忙了。\"",
+            "popup": "你没有替孩子做，而是让ta自己摆碗、数人数、拿筷子——你把小事变成了ta的练习场。你可以这样说：\"你摆得真稳，家里的事你也能帮上忙了。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 303,
+            "window_start": 188,
+            "prior_chars": 188,
+            "popup_order": 2,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从\"碗碎了\"直接跳到\"你能帮忙妈妈已经很开心了\"——把失误和孩子的价值分开，还主动抱了ta。孩子那句\"那我下次还帮你摆碗\"，就是最好的回应。你可以说：\"你愿意帮忙的心，比碗重要多了。\"",
+            "popup": "你从\"碗碎了\"直接跳到\"你能帮忙妈妈已经很开心了\"——把失误和孩子的价值分开，还主动抱了ta。孩子那句\"那我下次还帮你摆碗\"，就是最好的回应。你可以说：\"你愿意帮忙的心，比碗重要多了。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 120,
+            "prior_chars": 120,
+            "popup_order": 1,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你没有骂孩子，而是先安顿ta的安全，再安顿ta的心情——\"你不是故意的，你是想帮妈妈\"这句话，让ta从害怕变成了安心。你可以这样说：\"你愿意帮忙，比碗重要多了。\"",
+            "popup": "你没有骂孩子，而是先安顿ta的安全，再安顿ta的心情——\"你不是故意的，你是想帮妈妈\"这句话，让ta从害怕变成了安心。你可以这样说：\"你愿意帮忙，比碗重要多了。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你从\"碗碎了\"直接跳到\"你能帮忙妈妈已经很开心了\"——把失误和孩子的价值分开，还主动抱了ta。孩子那句\"那我下次还帮你摆碗\"，就是最好的回应。你可以说：\"你愿意帮忙的心，比碗重要多了。\"",
+        "total_popups": 3,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你耐心地一步步引导孩子摆碗——先放桌上再回来拿、数人数、分清公筷。你没有抢过来自己做，而是让他在安全边界里完成自己的任务。这份从容，孩子能感觉到。",
+            "window_chars": 107,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你没有替孩子做，而是让ta自己摆碗、数人数、拿筷子——你把小事变成了ta的练习场。你可以这样说：\"你摆得真稳，家里的事你也能帮上忙了。\"",
+            "window_chars": 107,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 1,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你接住了孩子的害怕，也接住了他的好意——“你是想帮妈妈”这句话，让他知道自己的价值没有被一只碗否定。这份稳稳的承接，比任何道理都更能让他下次还敢伸手。",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你没有骂孩子，而是先安顿ta的安全，再安顿ta的心情——\"你不是故意的，你是想帮妈妈\"这句话，让ta从害怕变成了安心。你可以这样说：\"你愿意帮忙，比碗重要多了。\"",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 2,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你接住了孩子的害怕，没有骂他，还告诉他“碗碎了可以再买，你能帮忙妈妈已经很开心了”——你把错误变成了他敢再试一次的底气。这份不指责的温柔，孩子会记很久。",
+            "window_chars": 303,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从\"碗碎了\"直接跳到\"你能帮忙妈妈已经很开心了\"——把失误和孩子的价值分开，还主动抱了ta。孩子那句\"那我下次还帮你摆碗\"，就是最好的回应。你可以说：\"你愿意帮忙的心，比碗重要多了。\"",
+            "window_chars": 303,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C5-003",
+      "v4012": {
+        "case_id": "C5-003",
+        "dialogue_chars": 2254,
+        "fast_triggers": 5,
+        "slow_windows": 5,
+        "total_windows": 10,
+        "suppressed": 2,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 84,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "raw": "你催孩子吃饭，是怕菜凉了伤胃，这个发心我懂。但你说“上次说三块拼了半小时”——你拿上一次的经验框住了这一次，孩子听到的不是“妈妈关心我”，而是“我做什么你都不信”。他说的“大概四五块”不是敷衍，是他真的在估算。\n\n你可以这样说：“妈妈知道你快拼完了，再给你三分钟，闹钟响了我们就洗手吃饭，菜凉了热一下就好。”——把“催”换成“约定”，他反而更容易放下积木。",
+            "popup": "你催孩子吃饭，是怕菜凉了伤胃，这个发心我懂。但你说“上次说三块拼了半小时”——你拿上一次的经验框住了这一次，孩子听到的不是“妈妈关心我”，而是“我做什么你都不信”。他说的“大概四五块”不是敷衍，是他真的在估算。\n\n你可以这样说：“妈妈知道你快拼完了，再给你三分钟，闹钟响了我们就洗手吃饭，菜凉了热一下就好。”——把“催”换成“约定”，他反而更容易放下积木。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 303,
+            "window_start": 957,
+            "prior_chars": 900,
+            "popup_order": 4,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从\"二十分钟了\"到\"每一件事都排在吃饭前面\"——你没有吼，而是把时间线一条条摆出来，让孩子看见自己做了什么。这种具体的对账，比一百句\"你不听话\"更有力量。",
+            "popup": "你从\"二十分钟了\"到\"每一件事都排在吃饭前面\"——你没有吼，而是把时间线一条条摆出来，让孩子看见自己做了什么。这种具体的对账，比一百句\"你不听话\"更有力量。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 300,
+            "window_start": 1307,
+            "prior_chars": 900,
+            "popup_order": 6,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你今天第一次没有继续等——把“妈妈会一直等”这个循环停下来了。孩子第一次面对真实的后果，这比任何道理都更有力量。",
+            "popup": "你今天第一次没有继续等——把“妈妈会一直等”这个循环停下来了。孩子第一次面对真实的后果，这比任何道理都更有力量。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 316,
+            "window_start": 1835,
+            "prior_chars": 900,
+            "popup_order": 8,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从“以前会留一点”的惯性里走出来，把“不等了”变成了明确的规矩——一分钟、收饭、零食收走。这不是狠心，是让孩子第一次真正面对“选择有后果”。",
+            "popup": "你从“以前会留一点”的惯性里走出来，把“不等了”变成了明确的规矩——一分钟、收饭、零食收走。这不是狠心，是让孩子第一次真正面对“选择有后果”。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 360,
+            "prior_chars": 360,
+            "popup_order": 2,
+            "tone": "diagnostic",
+            "tone_override": "催促/打断",
+            "raw": "你等孩子来吃饭，是心疼菜凉了，也是想守住说好的时间。但你发现没有——从“五分钟”到“十分钟”再到“一刻钟”，你一直在追着时间跑，他一直在追着“就差一点”跑。你们俩都卡在同一个循环里：他怕没拼完就前功尽弃，你怕一松口就永远收不住。这不是他故意拖，是他还没学会“停下来”和“拼完”可以同时成立。\n\n你可以这样说：“我知道你很想把它弄完美，但饭也是我用心做的。现在先来吃，吃完我陪你一起检查城堡哪里还松，好不好？”",
+            "popup": "你等孩子来吃饭，是心疼菜凉了，也是想守住说好的时间。但你发现没有——从“五分钟”到“十分钟”再到“一刻钟”，你一直在追着时间跑，他一直在追着“就差一点”跑。你们俩都卡在同一个循环里：他怕没拼完就前功尽弃，你怕一松口就永远收不住。这不是他故意拖，是他还没学会“停下来”和“拼完”可以同时成立。\n\n你可以这样说：“我知道你很想把它弄完美，但饭也是我用心做的。现在先来吃，吃完我陪你一起检查城堡哪里还松，好不好？”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 1280,
+            "prior_chars": 900,
+            "popup_order": 5,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你终于把“妈妈会一直等”这个循环打破了——饭凉了可以热，但你的底线不用跟着热。孩子第一次听到“不等了”，这比任何道理都让他记住：妈妈的话是有重量的。",
+            "popup": "你终于把“妈妈会一直等”这个循环打破了——饭凉了可以热，但你的底线不用跟着热。孩子第一次听到“不等了”，这比任何道理都让他记住：妈妈的话是有重量的。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 1640,
+            "prior_chars": 900,
+            "popup_order": 7,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从“以前都等”到“今天不等了”——这不是狠心，是第一次让积木和饭有了真实的先后。孩子听到的不是惩罚，是“妈妈的话有重量了”。守住这个边界，比任何道理都让他记得住。",
+            "popup": "你从“以前都等”到“今天不等了”——这不是狠心，是第一次让积木和饭有了真实的先后。孩子听到的不是惩罚，是“妈妈的话有重量了”。守住这个边界，比任何道理都让他记得住。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 94,
+            "window_start": 2160,
+            "prior_chars": 900,
+            "popup_order": 9,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你守住了\"饭没了就是没了\"的边界，没有心软松口——孩子第一次真正面对\"妈妈不等了\"的后果。这份坚定，比任何说教都更能让他学会为自己的拖延负责。",
+            "popup": "你守住了\"饭没了就是没了\"的边界，没有心软松口——孩子第一次真正面对\"妈妈不等了\"的后果。这份坚定，比任何说教都更能让他学会为自己的拖延负责。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你守住了\"饭没了就是没了\"的边界，没有心软松口——孩子第一次真正面对\"妈妈不等了\"的后果。这份坚定，比任何说教都更能让他学会为自己的拖延负责。",
+        "total_popups": 8,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C5-003",
+        "dialogue_chars": 2254,
+        "fast_triggers": 5,
+        "slow_windows": 5,
+        "total_windows": 10,
+        "suppressed": 2,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 84,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "raw": "1. 元信息：妈妈和孩子\n2. 关键句归属：妈妈：\"过来吃饭\"\"菜凉了 先来吃\"\"你每次都差几块 到底几块\"\"上次说三块拼了半小时 现在又四五块 你什么时候能拼完\"；孩子：\"等一下 我这个快拼好了\"\"马上 还差几块\"\"大概四五块吧\"\n3. 错别字：无\n==========\n你催孩子吃饭，是怕菜凉了、怕ta饿着——这个发心我懂。但你说\"你每次都差几块\"\"上次说三块拼了半小时\"——孩子听到的不是关心，是\"你又来了，你永远没个准\"。ta说\"大概四五块\"，其实是在争取一个具体的边界，但你把过去的事翻出来，ta连解释的空间都没了。\n\n你可以这样说：\"妈妈知道你快拼完了，再给你两分钟，到点我们一起吃，菜凉了可以再热。\"",
+            "popup": "你催孩子吃饭，是怕菜凉了、怕ta饿着——这个发心我懂。但你说\"你每次都差几块\"\"上次说三块拼了半小时\"——孩子听到的不是关心，是\"你又来了，你永远没个准\"。ta说\"大概四五块\"，其实是在争取一个具体的边界，但你把过去的事翻出来，ta连解释的空间都没了。\n\n你可以这样说：\"妈妈知道你快拼完了，再给你两分钟，到点我们一起吃，菜凉了可以再热。\"",
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 303,
+            "window_start": 957,
+            "prior_chars": 900,
+            "popup_order": 4,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从叫ta到现在二十分钟，每一步都守着边界没松口——这不是较劲，是让ta知道约定有分量。你可以这样说：“饭凉了可以热，但等你这件事，妈妈今天不想让步。”",
+            "popup": "你从叫ta到现在二十分钟，每一步都守着边界没松口——这不是较劲，是让ta知道约定有分量。你可以这样说：“饭凉了可以热，但等你这件事，妈妈今天不想让步。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 300,
+            "window_start": 1307,
+            "prior_chars": 900,
+            "popup_order": 6,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你终于不再无限期等待，用“不等了”把责任交还给孩子——这是边界，也是信任。你可以说：“午饭没了，下午饿了自己扛，这是你自己选的。”",
+            "popup": "你终于不再无限期等待，用“不等了”把责任交还给孩子——这是边界，也是信任。你可以说：“午饭没了，下午饿了自己扛，这是你自己选的。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 316,
+            "window_start": 1835,
+            "prior_chars": 900,
+            "popup_order": 8,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你定了\"一分钟上桌、不来自负\"的规矩，还想到爸爸也要遵守——规则对全家有效，不是只压孩子。你可以说：\"规矩定了，我们一起守。\"",
+            "popup": "你定了\"一分钟上桌、不来自负\"的规矩，还想到爸爸也要遵守——规则对全家有效，不是只压孩子。你可以说：\"规矩定了，我们一起守。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 360,
+            "prior_chars": 360,
+            "popup_order": 2,
+            "tone": "diagnostic",
+            "tone_override": "催促/打断",
+            "raw": "你从“五分钟”到“一刻钟”，一次次等，一次次落空——你怕的不是这顿饭，是“我说的话在孩子那里不算数”。但孩子不是不把你当回事，ta是陷在“就差最后一步”的执念里，每一次“快了”都是真心话，只是ta高估了自己对“完成”的控制。你越催，ta越急，越急越加固，越加固越慢——这是个死循环。\n\n你可以这样说：“我知道你很想把它弄完美，但饭在等你。先来吃，吃完我陪你一起看照片，发给爸爸。”",
+            "popup": "你从“五分钟”到“一刻钟”，一次次等，一次次落空——你怕的不是这顿饭，是“我说的话在孩子那里不算数”。但孩子不是不把你当回事，ta是陷在“就差最后一步”的执念里，每一次“快了”都是真心话，只是ta高估了自己对“完成”的控制。你越催，ta越急，越急越加固，越加固越慢——这是个死循环。\n\n你可以这样说：“我知道你很想把它弄完美，但饭在等你。先来吃，吃完我陪你一起看照片，发给爸爸。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 1280,
+            "prior_chars": 900,
+            "popup_order": 5,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你终于不再无限等待，而是用“不等了”让孩子直面后果——这是把责任还给孩子，比再热一次饭更有力量。你可以说：“饭凉了可以热，但妈妈的等待不是无限的。”",
+            "popup": "你终于不再无限等待，而是用“不等了”让孩子直面后果——这是把责任还给孩子，比再热一次饭更有力量。你可以说：“饭凉了可以热，但妈妈的等待不是无限的。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 1640,
+            "prior_chars": 900,
+            "popup_order": 7,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你这次没有心软，说到做到收了饭——孩子第一次真正面对“妈妈不会永远等”的后果。你可以这样说：“饿到晚饭，我陪你一起扛。”",
+            "popup": "你这次没有心软，说到做到收了饭——孩子第一次真正面对“妈妈不会永远等”的后果。你可以这样说：“饿到晚饭，我陪你一起扛。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 94,
+            "window_start": 2160,
+            "prior_chars": 900,
+            "popup_order": 9,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你守住了\"叫一次、一分钟、不收饭\"的边界，没有因孩子哀求而软化——这份稳定让孩子第一次真正面对后果。你可以这样说：\"今天你记住了，明天我们重新开始。\"",
+            "popup": "你守住了\"叫一次、一分钟、不收饭\"的边界，没有因孩子哀求而软化——这份稳定让孩子第一次真正面对后果。你可以这样说：\"今天你记住了，明天我们重新开始。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你守住了\"叫一次、一分钟、不收饭\"的边界，没有因孩子哀求而软化——这份稳定让孩子第一次真正面对后果。你可以这样说：\"今天你记住了，明天我们重新开始。\"",
+        "total_popups": 8,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "popup": "你催孩子吃饭，是怕菜凉了伤胃，这个发心我懂。但你说“上次说三块拼了半小时”——你拿上一次的经验框住了这一次，孩子听到的不是“妈妈关心我”，而是“我做什么你都不信”。他说的“大概四五块”不是敷衍，是他真的在估算。\n\n你可以这样说：“妈妈知道你快拼完了，再给你三分钟，闹钟响了我们就洗手吃饭，菜凉了热一下就好。”——把“催”换成“约定”，他反而更容易放下积木。",
+            "window_chars": 84,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "diagnostic",
+            "tone_override": "评判贴标签",
+            "popup": "你催孩子吃饭，是怕菜凉了、怕ta饿着——这个发心我懂。但你说\"你每次都差几块\"\"上次说三块拼了半小时\"——孩子听到的不是关心，是\"你又来了，你永远没个准\"。ta说\"大概四五块\"，其实是在争取一个具体的边界，但你把过去的事翻出来，ta连解释的空间都没了。\n\n你可以这样说：\"妈妈知道你快拼完了，再给你两分钟，到点我们一起吃，菜凉了可以再热。\"",
+            "window_chars": 84,
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 1,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "diagnostic",
+            "tone_override": "催促/打断",
+            "popup": "你等孩子来吃饭，是心疼菜凉了，也是想守住说好的时间。但你发现没有——从“五分钟”到“十分钟”再到“一刻钟”，你一直在追着时间跑，他一直在追着“就差一点”跑。你们俩都卡在同一个循环里：他怕没拼完就前功尽弃，你怕一松口就永远收不住。这不是他故意拖，是他还没学会“停下来”和“拼完”可以同时成立。\n\n你可以这样说：“我知道你很想把它弄完美，但饭也是我用心做的。现在先来吃，吃完我陪你一起检查城堡哪里还松，好不好？”",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "diagnostic",
+            "tone_override": "催促/打断",
+            "popup": "你从“五分钟”到“一刻钟”，一次次等，一次次落空——你怕的不是这顿饭，是“我说的话在孩子那里不算数”。但孩子不是不把你当回事，ta是陷在“就差最后一步”的执念里，每一次“快了”都是真心话，只是ta高估了自己对“完成”的控制。你越催，ta越急，越急越加固，越加固越慢——这是个死循环。\n\n你可以这样说：“我知道你很想把它弄完美，但饭在等你。先来吃，吃完我陪你一起看照片，发给爸爸。”",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 2,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从\"二十分钟了\"到\"每一件事都排在吃饭前面\"——你没有吼，而是把时间线一条条摆出来，让孩子看见自己做了什么。这种具体的对账，比一百句\"你不听话\"更有力量。",
+            "window_chars": 303,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从叫ta到现在二十分钟，每一步都守着边界没松口——这不是较劲，是让ta知道约定有分量。你可以这样说：“饭凉了可以热，但等你这件事，妈妈今天不想让步。”",
+            "window_chars": 303,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 3,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你终于把“妈妈会一直等”这个循环打破了——饭凉了可以热，但你的底线不用跟着热。孩子第一次听到“不等了”，这比任何道理都让他记住：妈妈的话是有重量的。",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你终于不再无限等待，而是用“不等了”让孩子直面后果——这是把责任还给孩子，比再热一次饭更有力量。你可以说：“饭凉了可以热，但妈妈的等待不是无限的。”",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 4,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你今天第一次没有继续等——把“妈妈会一直等”这个循环停下来了。孩子第一次面对真实的后果，这比任何道理都更有力量。",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你终于不再无限期等待，用“不等了”把责任交还给孩子——这是边界，也是信任。你可以说：“午饭没了，下午饿了自己扛，这是你自己选的。”",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 5,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从“以前都等”到“今天不等了”——这不是狠心，是第一次让积木和饭有了真实的先后。孩子听到的不是惩罚，是“妈妈的话有重量了”。守住这个边界，比任何道理都让他记得住。",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你这次没有心软，说到做到收了饭——孩子第一次真正面对“妈妈不会永远等”的后果。你可以这样说：“饿到晚饭，我陪你一起扛。”",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 6,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从“以前会留一点”的惯性里走出来，把“不等了”变成了明确的规矩——一分钟、收饭、零食收走。这不是狠心，是让孩子第一次真正面对“选择有后果”。",
+            "window_chars": 316,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你定了\"一分钟上桌、不来自负\"的规矩，还想到爸爸也要遵守——规则对全家有效，不是只压孩子。你可以说：\"规矩定了，我们一起守。\"",
+            "window_chars": 316,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 7,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你守住了\"饭没了就是没了\"的边界，没有心软松口——孩子第一次真正面对\"妈妈不等了\"的后果。这份坚定，比任何说教都更能让他学会为自己的拖延负责。",
+            "window_chars": 94,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你守住了\"叫一次、一分钟、不收饭\"的边界，没有因孩子哀求而软化——这份稳定让孩子第一次真正面对后果。你可以这样说：\"今天你记住了，明天我们重新开始。\"",
+            "window_chars": 94,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C5-004",
+      "v4012": {
+        "case_id": "C5-004",
+        "dialogue_chars": 1190,
+        "fast_triggers": 4,
+        "slow_windows": 2,
+        "total_windows": 6,
+        "suppressed": 2,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 264,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你刚才说“你在我这就是个惹事精”——这句话像一堵墙，把孩子推得更远。他锁门不是对抗，是在保护那个不被信任的自己。先别急着踹门，问问自己：他说的“你问过我吗”，是不是真的戳中了什么？",
+            "popup": "你刚才说“你在我这就是个惹事精”——这句话像一堵墙，把孩子推得更远。他锁门不是对抗，是在保护那个不被信任的自己。先别急着踹门，问问自己：他说的“你问过我吗”，是不是真的戳中了什么？",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 318,
+            "window_start": 583,
+            "prior_chars": 583,
+            "popup_order": 3,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你刚才说“我理他他不理我”——你没有把委屈咽下去，而是让孩子看见你真实的处境。这个坦白，比任何道理都更能让他明白：妈妈不是敌人，也是个会受伤的人。",
+            "popup": "你刚才说“我理他他不理我”——你没有把委屈咽下去，而是让孩子看见你真实的处境。这个坦白，比任何道理都更能让他明白：妈妈不是敌人，也是个会受伤的人。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 480,
+            "prior_chars": 480,
+            "popup_order": 2,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你说“我理他他不理我”——这句话里没有指责，只有坦白。你让孩子看见：妈妈也会受伤，也会不被回应。这个瞬间，你不是教育者，是一个真实的人。他记住了。",
+            "popup": "你说“我理他他不理我”——这句话里没有指责，只有坦白。你让孩子看见：妈妈也会受伤，也会不被回应。这个瞬间，你不是教育者，是一个真实的人。他记住了。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 110,
+            "window_start": 1080,
+            "prior_chars": 900,
+            "popup_order": 5,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从“我气你爸、气阿姨、气我自己，把气撒在你身上了”到“以后我们都不说了”——你承认了情绪的来处，也给了孩子一个和解的台阶。孩子敢问“你能跟爸爸也这样说吗”，是因为你刚刚让他相信了：话是可以好好说的。",
+            "popup": "你从“我气你爸、气阿姨、气我自己，把气撒在你身上了”到“以后我们都不说了”——你承认了情绪的来处，也给了孩子一个和解的台阶。孩子敢问“你能跟爸爸也这样说吗”，是因为你刚刚让他相信了：话是可以好好说的。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你从“我气你爸、气阿姨、气我自己，把气撒在你身上了”到“以后我们都不说了”——你承认了情绪的来处，也给了孩子一个和解的台阶。孩子敢问“你能跟爸爸也这样说吗”，是因为你刚刚让他相信了：话是可以好好说的。",
+        "total_popups": 4,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C5-004",
+        "dialogue_chars": 1190,
+        "fast_triggers": 4,
+        "slow_windows": 2,
+        "total_windows": 6,
+        "suppressed": 2,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 264,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你刚才说“你在我这就是个惹事精”——孩子听到的不是管教，是“我这个人被定性了”。ta锁门不是对抗，是怕再被冤枉。你可以这样说：“我可能错怪你了，开门我们聊聊。”",
+            "popup": "你刚才说“你在我这就是个惹事精”——孩子听到的不是管教，是“我这个人被定性了”。ta锁门不是对抗，是怕再被冤枉。你可以这样说：“我可能错怪你了，开门我们聊聊。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 318,
+            "window_start": 583,
+            "prior_chars": 583,
+            "popup_order": 3,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你终于把“我一个人带你也行”说出口了——这不是放弃，是你在撑住这个家时露出的真实。孩子听到的不是威胁，是“妈妈也有扛不住的时候”。你可以说：“我不是不要你，我是太累了，想让你知道我也需要被理解。”",
+            "popup": "你终于把“我一个人带你也行”说出口了——这不是放弃，是你在撑住这个家时露出的真实。孩子听到的不是威胁，是“妈妈也有扛不住的时候”。你可以说：“我不是不要你，我是太累了，想让你知道我也需要被理解。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 480,
+            "prior_chars": 480,
+            "popup_order": 2,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你刚才说“我理他他不理我”——你没有在孩子面前假装婚姻没问题，而是诚实承认了关系的难。这份坦诚，比任何“为你好”的隐瞒都更有力量。你可以说：“妈妈现在很难，但跟你说话，我不用装。”",
+            "popup": "你刚才说“我理他他不理我”——你没有在孩子面前假装婚姻没问题，而是诚实承认了关系的难。这份坦诚，比任何“为你好”的隐瞒都更有力量。你可以说：“妈妈现在很难，但跟你说话，我不用装。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          },
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 110,
+            "window_start": 1080,
+            "prior_chars": 900,
+            "popup_order": 5,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从“我气你爸、气阿姨、气我自己”到“以后我们都不说了”——把气话收住，把门打开。你可以说：“谢谢你愿意听我说完。”",
+            "popup": "你从“我气你爸、气阿姨、气我自己”到“以后我们都不说了”——把气话收住，把门打开。你可以说：“谢谢你愿意听我说完。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你从“我气你爸、气阿姨、气我自己”到“以后我们都不说了”——把气话收住，把门打开。你可以说：“谢谢你愿意听我说完。”",
+        "total_popups": 4,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你刚才说“你在我这就是个惹事精”——这句话像一堵墙，把孩子推得更远。他锁门不是对抗，是在保护那个不被信任的自己。先别急着踹门，问问自己：他说的“你问过我吗”，是不是真的戳中了什么？",
+            "window_chars": 264,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你刚才说“你在我这就是个惹事精”——孩子听到的不是管教，是“我这个人被定性了”。ta锁门不是对抗，是怕再被冤枉。你可以这样说：“我可能错怪你了，开门我们聊聊。”",
+            "window_chars": 264,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 1,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你说“我理他他不理我”——这句话里没有指责，只有坦白。你让孩子看见：妈妈也会受伤，也会不被回应。这个瞬间，你不是教育者，是一个真实的人。他记住了。",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你刚才说“我理他他不理我”——你没有在孩子面前假装婚姻没问题，而是诚实承认了关系的难。这份坦诚，比任何“为你好”的隐瞒都更有力量。你可以说：“妈妈现在很难，但跟你说话，我不用装。”",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 2,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你刚才说“我理他他不理我”——你没有把委屈咽下去，而是让孩子看见你真实的处境。这个坦白，比任何道理都更能让他明白：妈妈不是敌人，也是个会受伤的人。",
+            "window_chars": 318,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你终于把“我一个人带你也行”说出口了——这不是放弃，是你在撑住这个家时露出的真实。孩子听到的不是威胁，是“妈妈也有扛不住的时候”。你可以说：“我不是不要你，我是太累了，想让你知道我也需要被理解。”",
+            "window_chars": 318,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 3,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从“我气你爸、气阿姨、气我自己，把气撒在你身上了”到“以后我们都不说了”——你承认了情绪的来处，也给了孩子一个和解的台阶。孩子敢问“你能跟爸爸也这样说吗”，是因为你刚刚让他相信了：话是可以好好说的。",
+            "window_chars": 110,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从“我气你爸、气阿姨、气我自己”到“以后我们都不说了”——把气话收住，把门打开。你可以说：“谢谢你愿意听我说完。”",
+            "window_chars": 110,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C5-005",
+      "v4012": {
+        "case_id": "C5-005",
+        "dialogue_chars": 1714,
+        "fast_triggers": 4,
+        "slow_windows": 2,
+        "total_windows": 6,
+        "suppressed": 4,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 130,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你听到孩子说“我都习惯了”，没有沉默带过，而是认真告诉他“你不该习惯这些”——你在保护他的感受，不让他把大人的冲突当成日常。这句话，他会记很久。",
+            "popup": "你听到孩子说“我都习惯了”，没有沉默带过，而是认真告诉他“你不该习惯这些”——你在保护他的感受，不让他把大人的冲突当成日常。这句话，他会记很久。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 1040,
+            "prior_chars": 900,
+            "popup_order": 4,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你说“有你在，妈妈就不那么难受了”——在自己最脆弱的时候，你让孩子感到他是你的力量，而不是负担。这份坦诚，比任何保护都更让他安心。",
+            "popup": "你说“有你在，妈妈就不那么难受了”——在自己最脆弱的时候，你让孩子感到他是你的力量，而不是负担。这份坦诚，比任何保护都更让他安心。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你说“有你在，妈妈就不那么难受了”——在自己最脆弱的时候，你让孩子感到他是你的力量，而不是负担。这份坦诚，比任何保护都更让他安心。",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C5-005",
+        "dialogue_chars": 1714,
+        "fast_triggers": 4,
+        "slow_windows": 2,
+        "total_windows": 6,
+        "suppressed": 4,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 130,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "==========\n你说\"你不该习惯这些的\"——你没有让孩子继续吞下这份沉重，而是告诉ta：这些不该由你承担。你可以这样说：\"谢谢你告诉妈妈，你不需要习惯这些。\"",
+            "popup": "你说\"你不该习惯这些的\"——你没有让孩子继续吞下这份沉重，而是告诉ta：这些不该由你承担。你可以这样说：\"谢谢你告诉妈妈，你不需要习惯这些。\"",
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 1040,
+            "prior_chars": 900,
+            "popup_order": 4,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你说“你一哭我就更难受了，过来，妈妈抱抱”——在自己最脆弱时仍先接住孩子的眼泪。你可以这样说：“有你在，妈妈就不那么难受了。”",
+            "popup": "你说“你一哭我就更难受了，过来，妈妈抱抱”——在自己最脆弱时仍先接住孩子的眼泪。你可以这样说：“有你在，妈妈就不那么难受了。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你说“你一哭我就更难受了，过来，妈妈抱抱”——在自己最脆弱时仍先接住孩子的眼泪。你可以这样说：“有你在，妈妈就不那么难受了。”",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你听到孩子说“我都习惯了”，没有沉默带过，而是认真告诉他“你不该习惯这些”——你在保护他的感受，不让他把大人的冲突当成日常。这句话，他会记很久。",
+            "window_chars": 130,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你说\"你不该习惯这些的\"——你没有让孩子继续吞下这份沉重，而是告诉ta：这些不该由你承担。你可以这样说：\"谢谢你告诉妈妈，你不需要习惯这些。\"",
+            "window_chars": 130,
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 1,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你说“有你在，妈妈就不那么难受了”——在自己最脆弱的时候，你让孩子感到他是你的力量，而不是负担。这份坦诚，比任何保护都更让他安心。",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你说“你一哭我就更难受了，过来，妈妈抱抱”——在自己最脆弱时仍先接住孩子的眼泪。你可以这样说：“有你在，妈妈就不那么难受了。”",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    },
+    {
+      "case_id": "C3-002",
+      "v4012": {
+        "case_id": "C3-002",
+        "dialogue_chars": 403,
+        "fast_triggers": 1,
+        "slow_windows": 1,
+        "total_windows": 2,
+        "suppressed": 0,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 295,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从“你摔什么笔”到“爸刚才声音大了”，再到“你擦得挺认真”——你看见了孩子擦破洞背后的认真，也接住了他的委屈。这个转弯，孩子收到了。",
+            "popup": "你从“你摔什么笔”到“爸刚才声音大了”，再到“你擦得挺认真”——你看见了孩子擦破洞背后的认真，也接住了他的委屈。这个转弯，孩子收到了。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 83,
+            "window_start": 320,
+            "prior_chars": 320,
+            "popup_order": 1,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从“爸没问”到“是爸的错，爸没问”——把责任接过来，孩子才敢说出卡在哪。这一步，比讲十遍题都管用。",
+            "popup": "你从“爸没问”到“是爸的错，爸没问”——把责任接过来，孩子才敢说出卡在哪。这一步，比讲十遍题都管用。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你从“爸没问”到“是爸的错，爸没问”——把责任接过来，孩子才敢说出卡在哪。这一步，比讲十遍题都管用。",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C3-002",
+        "dialogue_chars": 403,
+        "fast_triggers": 1,
+        "slow_windows": 1,
+        "total_windows": 2,
+        "suppressed": 0,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 295,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "child_insight",
+            "tone_override": null,
+            "raw": "你的孩子可能是那种对“擦破本子”的细节特别在意的人——ta在挫败里仍想守住自己认真过的痕迹，哪怕那痕迹是破洞。ta可能更适合用“先接住情绪，再讲题”的方式引导。你可以这样说：“爸看见你擦得很认真，那道题我们换个法子，一起看看。”",
+            "popup": "你的孩子可能是那种对“擦破本子”的细节特别在意的人——ta在挫败里仍想守住自己认真过的痕迹，哪怕那痕迹是破洞。ta可能更适合用“先接住情绪，再讲题”的方式引导。你可以这样说：“爸看见你擦得很认真，那道题我们换个法子，一起看看。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 83,
+            "window_start": 320,
+            "prior_chars": 320,
+            "popup_order": 1,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从\"爸没凶你，就是急\"到\"是爸的错，爸没问\"——把责任接回自己身上，孩子才敢说出卡在哪。你可以这样说：\"你卡在借位这一步，咱就专攻这一步。\"",
+            "popup": "你从\"爸没凶你，就是急\"到\"是爸的错，爸没问\"——把责任接回自己身上，孩子才敢说出卡在哪。你可以这样说：\"你卡在借位这一步，咱就专攻这一步。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你从\"爸没凶你，就是急\"到\"是爸的错，爸没问\"——把责任接回自己身上，孩子才敢说出卡在哪。你可以这样说：\"你卡在借位这一步，咱就专攻这一步。\"",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从“你摔什么笔”到“爸刚才声音大了”，再到“你擦得挺认真”——你看见了孩子擦破洞背后的认真，也接住了他的委屈。这个转弯，孩子收到了。",
+            "window_chars": 295,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "child_insight",
+            "tone_override": null,
+            "popup": "你的孩子可能是那种对“擦破本子”的细节特别在意的人——ta在挫败里仍想守住自己认真过的痕迹，哪怕那痕迹是破洞。ta可能更适合用“先接住情绪，再讲题”的方式引导。你可以这样说：“爸看见你擦得很认真，那道题我们换个法子，一起看看。”",
+            "window_chars": 295,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 1,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从“爸没问”到“是爸的错，爸没问”——把责任接过来，孩子才敢说出卡在哪。这一步，比讲十遍题都管用。",
+            "window_chars": 83,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从\"爸没凶你，就是急\"到\"是爸的错，爸没问\"——把责任接回自己身上，孩子才敢说出卡在哪。你可以这样说：\"你卡在借位这一步，咱就专攻这一步。\"",
+            "window_chars": 83,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": [
+        {
+          "window_order": 0,
+          "v4019_popup": "你的孩子可能是那种对“擦破本子”的细节特别在意的人——ta在挫败里仍想守住自己认真过的痕迹，哪怕那痕迹是破洞。ta可能更适合用“先接住情绪，再讲题”的方式引导。你可以这样说：“爸看见你擦得很认真，那道题我们换个法子，一起看看。”",
+          "v4012_tone": "encouraging"
+        }
+      ]
+    },
+    {
+      "case_id": "DS_001",
+      "v4012": {
+        "case_id": "DS_001",
+        "dialogue_chars": 742,
+        "fast_triggers": 1,
+        "slow_windows": 2,
+        "total_windows": 3,
+        "suppressed": 1,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 306,
+            "window_start": 344,
+            "prior_chars": 344,
+            "popup_order": 2,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你接住了孩子的“大象鼻子”游戏，把家务变成了他的主场——他数碗、拖垃圾，每一步都带着自己的主意。这份允许，比任何夸奖都更让他相信自己“有用”。",
+            "popup": "你接住了孩子的“大象鼻子”游戏，把家务变成了他的主场——他数碗、拖垃圾，每一步都带着自己的主意。这份允许，比任何夸奖都更让他相信自己“有用”。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从“你还小”到放手让她收碗，还提醒拿稳、别捏筷子尖——你把担心变成了具体的保护，而不是拦着她。她今天收的不只是碗，是“我能帮上忙”的底气。",
+            "popup": "你从“你还小”到放手让她收碗，还提醒拿稳、别捏筷子尖——你把担心变成了具体的保护，而不是拦着她。她今天收的不只是碗，是“我能帮上忙”的底气。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "primary_popup": "你接住了孩子的“大象鼻子”游戏，把家务变成了他的主场——他数碗、拖垃圾，每一步都带着自己的主意。这份允许，比任何夸奖都更让他相信自己“有用”。",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "DS_001",
+        "dialogue_chars": 742,
+        "fast_triggers": 1,
+        "slow_windows": 2,
+        "total_windows": 3,
+        "suppressed": 1,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 306,
+            "window_start": 344,
+            "prior_chars": 344,
+            "popup_order": 2,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你没有打断孩子的“大象鼻子”想象，而是顺着玩下去，把家务变成了游戏——孩子不是被指挥，是主动参与。你可以说：“你真是妈妈的小帮手，大象鼻子今天立大功了。”",
+            "popup": "你没有打断孩子的“大象鼻子”想象，而是顺着玩下去，把家务变成了游戏——孩子不是被指挥，是主动参与。你可以说：“你真是妈妈的小帮手，大象鼻子今天立大功了。”",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [
+          {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "window_chars": 300,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "==========\n1. 元信息：妈妈和孩子\n2. 关键句归属：孩子：\"我来收 你坐着\"；妈妈：\"你还小 等你长大了再做\"\n3. 错别字：无\n==========\n孩子主动提出排班表、承担收碗责任，你没有用\"你还小\"推开ta，而是接住了这份主动，只提醒安全细节——你把ta当成了家里平等的一员。你可以这样说：\"今天轮到你了，你说了算。\"",
+            "popup": "孩子主动提出排班表、承担收碗责任，你没有用\"你还小\"推开ta，而是接住了这份主动，只提醒安全细节——你把ta当成了家里平等的一员。你可以这样说：\"今天轮到你了，你说了算。\"",
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null
+          }
+        ],
+        "primary_popup": "你没有打断孩子的“大象鼻子”想象，而是顺着玩下去，把家务变成了游戏——孩子不是被指挥，是主动参与。你可以说：“你真是妈妈的小帮手，大象鼻子今天立大功了。”",
+        "total_popups": 2,
+        "_zhouyi_source": "test-default"
+      },
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从“你还小”到放手让她收碗，还提醒拿稳、别捏筷子尖——你把担心变成了具体的保护，而不是拦着她。她今天收的不只是碗，是“我能帮上忙”的底气。",
+            "window_chars": 300,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "slow",
+            "trigger_type": "字数触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "孩子主动提出排班表、承担收碗责任，你没有用\"你还小\"推开ta，而是接住了这份主动，只提醒安全细节——你把ta当成了家里平等的一员。你可以这样说：\"今天轮到你了，你说了算。\"",
+            "window_chars": 300,
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        },
+        {
+          "order": 1,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你接住了孩子的“大象鼻子”游戏，把家务变成了他的主场——他数碗、拖垃圾，每一步都带着自己的主意。这份允许，比任何夸奖都更让他相信自己“有用”。",
+            "window_chars": 306,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你没有打断孩子的“大象鼻子”想象，而是顺着玩下去，把家务变成了游戏——孩子不是被指挥，是主动参与。你可以说：“你真是妈妈的小帮手，大象鼻子今天立大功了。”",
+            "window_chars": 306,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    }
+  ]
+}

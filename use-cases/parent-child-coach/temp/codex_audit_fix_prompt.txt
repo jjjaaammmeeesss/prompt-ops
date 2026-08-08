@@ -1,0 +1,26 @@
+你是代码审计专家。上一轮审计识别出 v4.0.18 管线测试器的 9 个缺口，现已全部修复。请重新审计，逐项确认是否已修复。
+
+## 修改的文件
+
+1. `scripts/run_v418_pipeline.py` — 主测试管线（已重写 generate_popup, run_case）
+2. `demos/run_demo.py` — simulate_pipeline 新增 slow_threshold 参数
+
+## 请逐项审计
+
+| # | 原缺口 | 修复内容 |
+|---|--------|---------|
+| 1 | 跳过 Stage 1 周易分析 | 新增 `_build_default_zhouyi_context()` 注入默认卦象上下文到 system message |
+| 2 | user_msg 格式不匹配 | 重写 `generate_popup()` 的 user_msg，含 type_instruction + 输出格式要求 |
+| 3 | 无去抖门控 | run_case 新增 `debounce_enabled` 参数，同通道同 trigger 连续时跳过 |
+| 4 | 无 FC_TONE_OFF | 新增 `PARENT_OVERRIDE_KEYWORDS` + `detect_parent_override()`，调 LLM 前扫描并强制 tone |
+| 5 | 无 FC_STALE 语义去重 | 新增 `semantic_similarity()` difflib 比对，与最近 5 条历史弹窗去重 |
+| 6 | 无 P2 话术检查 | 新增 `has_quotable_phrase()`，鼓励式弹窗缺失话术时重试一次，仍缺则拒绝 |
+| 7 | 窗口参数不一致 | `simulate_pipeline` 新增 `slow_threshold` 参数；`run_case` 传入 `window_size`；`--window-size` 已接线 |
+| 8 | strip 缺分隔符时无处理 | `generate_popup` 新增 `separator_missing` 字段标记缺分隔符的情况 |
+| 9 | primary_popup 时间顺序错误 | 改为 `popup_order` 字段排序，按时间线取最后一个非空弹窗 |
+
+## 输出格式
+
+对每项输出：`FIXED`（已修复）/ `PARTIAL`（部分修复）/ `NOT_FIXED`（未修复），附证据（文件+行号）。
+
+然后给出总体结论：是否可以交付验收。

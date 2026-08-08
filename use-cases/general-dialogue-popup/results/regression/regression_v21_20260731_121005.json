@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "timestamp": "20260731_121005",
+    "prompt_version": "v2.1",
+    "n_cases": 5,
+    "gen_model": "anthropic/claude-sonnet-4-20250514",
+    "judge_model": "openai/glm-5.2"
+  },
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5
+  },
+  "results": [
+    {
+      "case_id": "regression_ws08_ding_industry_norm",
+      "expect": "安静",
+      "popup_text": null,
+      "pass": true,
+      "note": "正确保持安静"
+    },
+    {
+      "case_id": "regression_ws08_wu_one_liner",
+      "expect": "安静",
+      "popup_text": null,
+      "pass": true,
+      "note": "正确保持安静"
+    },
+    {
+      "case_id": "regression_ws09_jia_frame_shift",
+      "expect": "弹窗",
+      "popup_text": null,
+      "pass": false,
+      "note": "应弹未弹"
+    },
+    {
+      "case_id": "regression_ws09_yi_decision_boundary",
+      "expect": "弹窗",
+      "popup_text": "客户方说“我老板给我的预算就是三十万”，这话听起来像谈判筹码，其实更像权限边界——老板不是给客户方留空间，而是把天花板钉死了。\n\n方案方接下来说的是拆三年付款，这很巧妙，但对方真正卡住的是老板批的钱，不是现金流。\n\n继续绕“怎么付”，可能让以后的人继续扛这个雷。",
+      "pass": true,
+      "aggregate": 4.8,
+      "soft": {
+        "insight": 5,
+        "third_party": 5,
+        "language": 4,
+        "evidence": 5,
+        "focus": 5,
+        "comment": "精准点出“预算权限”与“现金流”的错位盲区，锚点清晰且立场中立，但结尾略带评判，假设语气可更浓。"
+      },
+      "hard": {
+        "pass": true,
+        "violations": []
+      },
+      "comment": "精准点出“预算权限”与“现金流”的错位盲区，锚点清晰且立场中立，但结尾略带评判，假设语气可更浓。",
+      "keyword_hits": [
+        "老板",
+        "预算",
+        "三十万"
+      ],
+      "note": ""
+    },
+    {
+      "case_id": "regression_ws09_ding_natural_close",
+      "expect": "安静",
+      "popup_text": null,
+      "pass": true,
+      "note": "正确保持安静"
+    }
+  ]
+}

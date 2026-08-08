@@ -1,0 +1,132 @@
+{
+  "config": {
+    "prompt_4012_chars": 23320,
+    "prompt_4019_chars": 37109,
+    "model": "deepseek/deepseek-chat",
+    "window_size": 300,
+    "judge": "skipped",
+    "timestamp": "20260805_155733"
+  },
+  "summary": {
+    "total_cases": 1,
+    "v4012": {
+      "tones": {
+        "diagnostic": 0,
+        "encouraging": 1,
+        "child_insight": 0
+      },
+      "total_popups": 1,
+      "fc_tone_off": 0
+    },
+    "v4019": {
+      "tones": {
+        "diagnostic": 0,
+        "encouraging": 1,
+        "child_insight": 0
+      },
+      "total_popups": 1,
+      "fc_tone_off": 0
+    },
+    "child_insight_mappings": [],
+    "child_insight_count": 0
+  },
+  "codex_scores": {},
+  "cases": [
+    {
+      "case_id": "C10-005",
+      "v4012": {
+        "case_id": "C10-005",
+        "dialogue_chars": 432,
+        "fast_triggers": 2,
+        "slow_windows": 0,
+        "total_windows": 2,
+        "suppressed": 1,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 195,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "## 预分析\n\n**元信息：**\n- 卦象上下文：☷ 坤（控控控）— 稳定承载型，风险低\n- 但实际对话显示：家长在追问中不断施压，孩子从沉默到被迫认错——这与坤卦的\"稳定承载\"不符。实际是家长单方面追问、孩子防御性退缩的结构。\n- tone 标注：鼓励式（系统要求）\n\n**关键句归属：**\n- 妈妈：\"吃饭了\"\"你中午也没怎么吃\"\"是不是还在为上午的事生气\"\"你的表情就是有\"\"你到底想怎样\"\"你这样不说话算什么\"\"你对我没话说\"\"你这是什么态度\"\"你觉得我在跟你吵架\"\"那件事本来就是你不对\"\"你从来不认错\"\"你不认错我怎么原谅\"\"还有呢\"\n- 孩子：\"我不饿\"\"不想吃\"\"没有\"\"你觉得有就有吧\"\"不想怎样\"\"没话说\"\"对\"\"就是不想吵架的态度\"\"你上午就是在跟我吵\"\"我不对又怎样\"\"我认错你就会原谅我吗\"\"那我认错 我上午不该翻你的抽屉\"\"不该看\"\n\n**错别字检查：** 无。\n\n**tone 灵活覆盖判定：**\n- 家长积极行为扫描：追问孩子情绪（\"是不是还在为上午的事生气\"）——1个，但后续全是追问施压。没有澄清、没有接住情绪、没有道歉、没有给选择权。\n- 不满足 ≥2 个积极行为，**不触发** tone 灵活覆盖。\n- 但系统明确要求生成**鼓励式弹窗**——按系统指令执行，从对话中寻找可鼓励的点。\n\n**可鼓励的点：**\n- 妈妈主动问\"是不是还在为上午的事生气\"——她在尝试关心孩子的情绪状态，虽然后续追问方式让孩子关闭了。\n- 妈妈最后说\"还有呢\"——她在给孩子空间补充，虽然语气仍是追问。\n\n**弹窗方向：**\n鼓励妈妈主动开口关心孩子情绪的那一步——但需温和指出追问方式让孩子关闭了。系统要求鼓励式（20-80字），需具体点出积极模式。\n\n---\n\n## 弹窗\n\n你主动问\"是不是还在为上午的事生气\"——你在试着走进他的情绪，这一步是对的。只是追问太密，他来不及打开就关上了。下次问完，停三秒，等他自己说。",
+            "popup": "## 弹窗\n\n你主动问\"是不是还在为上午的事生气\"——你在试着走进他的情绪，这一步是对的。只是追问太密，他来不及打开就关上了。下次问完，停三秒，等他自己说。",
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null
+          }
+        ],
+        "slow_popups": [],
+        "primary_popup": "## 弹窗\n\n你主动问\"是不是还在为上午的事生气\"——你在试着走进他的情绪，这一步是对的。只是追问太密，他来不及打开就关上了。下次问完，停三秒，等他自己说。",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C10-005",
+        "dialogue_chars": 432,
+        "fast_triggers": 2,
+        "slow_windows": 0,
+        "total_windows": 2,
+        "suppressed": 1,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 195,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "1. 元信息：妈妈和孩子两人对话\n2. 关键句归属：妈妈：“吃饭了”“是不是还在为上午的事生气”“你到底想怎样”“你从来不认错”“你不认错我怎么原谅”“还有呢”；孩子：“我不饿”“没有”“你觉得有就有吧”“没话说”“对”“就是不想吵架的态度”“你上午就是在跟我吵”“我不对又怎样”“我认错 我上午不该翻你的抽屉”“不该看”\n3. 错别字：无\n==========\n孩子终于认错时，你没有急着翻篇，而是追问“还有呢”——你在等ta把话说完，而不是只收一个台阶。你可以这样说：“谢谢你愿意告诉我，我听着。”",
+            "popup": "孩子终于认错时，你没有急着翻篇，而是追问“还有呢”——你在等ta把话说完，而不是只收一个台阶。你可以这样说：“谢谢你愿意告诉我，我听着。”",
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null
+          }
+        ],
+        "slow_popups": [],
+        "primary_popup": "孩子终于认错时，你没有急着翻篇，而是追问“还有呢”——你在等ta把话说完，而不是只收一个台阶。你可以这样说：“谢谢你愿意告诉我，我听着。”",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "_dialogue": "1.吃饭了\n2.我不饿\n3.你中午也没怎么吃\n4.不想吃\n5.是不是还在为上午的事生气\n6.没有\n7.你的表情就是有\n8.你觉得有就有吧\n9.你到底想怎样\n10.不想怎样\n11.你这样不说话算什么\n12.没话说\n13.你对我没话说\n14.对\n15.你这是什么态度\n16.就是不想吵架的态度\n17.你觉得我在跟你吵架\n18.你上午就是在跟我吵\n19.那件事本来就是你不对\n20.我不对又怎样\n21.你从来不认错\n22.我认错你就会原谅我吗\n23.你不认错我怎么原谅\n24.那我认错 我上午不该翻你的抽屉\n25.还有呢\n26.不该看你同学录\n27.还有呢\n28.不该把那个女生给你写的纸条念出来\n29.你知道那是我的隐私\n30.我知道 但是我控制不住\n31.为什么控制不住\n32.因为我怕你早恋\n33.我没有早恋 那只是同学之间的鼓励\n34.鼓励什么\n35.鼓励我好好学习 她写的是我们一起加油\n36.那你为什么不给我看\n37.因为我知道你会多想 你每次都多想\n38.我多想是因为我在乎你\n39.你在乎我的方式让我喘不过气\n40.那我怎么改\n41.你翻我东西之前先问我 我同意了再翻\n42.如果你不同意呢\n43.那就不要翻\n44.那我怎么知道你有没有早恋\n46.你问 我会告诉你\n47.真的\n48.真的 你试试信任我一次\n49.好 我试试",
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "## 弹窗\n\n你主动问\"是不是还在为上午的事生气\"——你在试着走进他的情绪，这一步是对的。只是追问太密，他来不及打开就关上了。下次问完，停三秒，等他自己说。",
+            "window_chars": 195,
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "孩子终于认错时，你没有急着翻篇，而是追问“还有呢”——你在等ta把话说完，而不是只收一个台阶。你可以这样说：“谢谢你愿意告诉我，我听着。”",
+            "window_chars": 195,
+            "has_pre_analysis": true,
+            "separator_missing": false,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    }
+  ]
+}

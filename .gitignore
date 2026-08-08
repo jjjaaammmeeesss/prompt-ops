@@ -120,3 +120,9 @@ frontend/backend/coverage.json
 frontend/backend/backend.log
 frontend/backend/uploaded_datasets/*
 !frontend/backend/uploaded_datasets/.gitkeep
+
+# Tool runtime garbage (not source of truth)
+.claude/
+.playwright-mcp/
+.loopx/
+/temp/

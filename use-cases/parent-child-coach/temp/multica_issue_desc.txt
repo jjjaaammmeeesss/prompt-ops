@@ -1,0 +1,59 @@
+## 任务
+
+修复 v4.0.18 管线测试器 (`run_v418_pipeline.py`) 与生产系统 (`realtime/stream_orchestrator.py` + `popup_generator.py`) 之间的 9 个中危以上缺口。
+
+## 结果
+
+12 题全量测试通过，Codex 裁判平均 5.875/10。
+
+### 修复的 9 个缺口（Codex 审计确认）
+
+| # | 缺口 | 判定 | 说明 |
+|---|------|------|------|
+| 1 | 跳过 Stage 1 周易分析 | FIXED* | 注入默认坤卦上下文（有意简化：不跑真实 Stage 1 LLM） |
+| 2 | user_msg 格式不匹配 | FIXED | 含 type_instruction + 输出格式要求 |
+| 3 | 无去抖门控 | FIXED | 同通道同 trigger 连续抑制 |
+| 4 | 无 FC_TONE_OFF | FIXED | 关键词扫描 + 默认 encouraging，命中则强制 diagnostic |
+| 5 | 无 FC_STALE 语义去重 | FIXED | difflib 比对最近 5 条历史弹窗 |
+| 6 | 无 P2 话术检查 | FIXED | 鼓励式弹窗检查引号话术，缺失重试+拒绝 |
+| 7 | 窗口参数不一致 | FIXED | slow_threshold 全链路接线 |
+| 8 | strip 缺分隔符处理 | FIXED | separator_missing 字段 |
+| 9 | primary_popup 顺序 | FIXED | popup_order 时间线排序 |
+
+### 12 题 Codex 评分
+
+| Case | Score | 备注 |
+|------|-------|------|
+| C5-001 | 9.0 | 最优：不骂+童年经历精准锚定 |
+| C3-002 | 9.0 | 最优："你没问我"精准锚定 |
+| DS_001 | 8.5 | 大象鼻子游戏化参与 |
+| C10-003 | 8.0 | 人称扣分（用"他"而非"ta"）|
+| C10-006 | 8.0 | 兜底循环识别准确 |
+| C10-008 | 7.5 | 事实描述有出入 |
+| C10-002 | 5.5 | "没有催"与对话事实不符 |
+| C10-004 | 4.0 | 人称错误+事实归因失真 |
+| C10-005 | 3.0 | 人物行为归因严重失真 |
+| C5-004 | 3.0 | 漏掉阴阳怪气和夫妻矛盾倾倒 |
+| C5-005 | 1.0 | 强化孩子对婚姻的过度责任感 |
+| C5-003 | 0.5 | 严重美化惩罚+漏检反话 |
+
+### 已知限制
+
+- **无真实 Stage 1**：测试管线使用默认坤卦上下文，不跑 ZhouYiAnalyzer（避免 API 调用量翻倍）
+- **去抖为简化版**：仅按 (channel, trigger_type) 连续抑制，不做生产级时间冷却/卦象变化/risk 变化判断
+- **生成模型依赖**：使用 DeepSeek V4，不同模型可能产出不同结果
+
+### 修改文件
+
+- `scripts/run_v418_pipeline.py` — 主测试管线（重写 generate_popup, run_case）
+- `demos/run_demo.py` — simulate_pipeline 新增 slow_threshold 参数
+- `specs/fix-pipeline-gaps-spec.md` — 修复规格文档
+- `results/pipeline_tests/v4018_pipeline_all12_20260805_111759.json` — 最终测试结果
+
+### 相关 commit
+
+`f6072e7` feat: v4.0.18 管线测试器 9 缺口修复 — 生产级 Stage 2 等价调用
+
+### 仓库
+
+https://github.com/jjjaaammmeeesss/prompt-ops/tree/feat/compare-scripts-and-v30

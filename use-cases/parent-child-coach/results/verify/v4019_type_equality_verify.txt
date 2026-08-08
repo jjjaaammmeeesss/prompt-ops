@@ -1,0 +1,130 @@
+2026-08-05 21:03:49,101 | INFO    | Loading system prompt from: D:\prompt-ops\.claude\worktrees\tone-equality\use-cases\parent-child-coach\system_prompt_v4.0.19.txt
+2026-08-05 21:03:49,102 | INFO    | PopupGenerator initialized with system prompt (36929 chars)
+2026-08-05 21:03:49,103 | INFO    | soft-bias FC_TONE_OFF: 命中「评判贴标签」，注入诊断倾向（原 suggested_tone=PopupTone.ENCOURAGING）
+2026-08-05 21:03:51,670 | INFO    | Generated encouraging popup (73 chars): 你接住了孩子"怕被笑"的担忧，又用猫想妈妈回应了ta的牵挂...
+2026-08-05 21:03:53,530 | INFO    | Generated encouraging popup (70 chars): 孩子睡不着，你没有催，而是用挠背接住ta的焦躁...
+2026-08-05 21:03:53,533 | INFO    | soft-bias FC_TONE_OFF: 命中「评判贴标签」，注入诊断倾向（原 suggested_tone=PopupTone.ENCOURAGING）
+2026-08-05 21:03:55,897 | INFO    | Generated diagnostic popup (158 chars): 你担心孩子过马路不安全，这份紧张是真的。但孩子这次确实看了，只是没看左边...
+2026-08-05 21:03:55,898 | INFO    | soft-bias FC_TONE_OFF: 命中「评判贴标签」，注入诊断倾向（原 suggested_tone=PopupTone.ENCOURAGING）
+2026-08-05 21:03:57,655 | INFO    | Generated encouraging popup (59 chars): 你从"等一下"到"等我看得进去了再看"...
+2026-08-05 21:04:00,832 | INFO    | Generated diagnostic popup (178 chars): 你问“是不是还在生气”，是想靠近ta...
+2026-08-05 21:04:03,799 | INFO    | Generated diagnostic popup (153 chars): 你是因为怕孩子永远学不会负责，才一次次替ta收...
+2026-08-05 21:04:06,612 | INFO    | Generated diagnostic popup (177 chars): 你担心孩子掉下去，这份怕是真的。但孩子说"我扶着窗户的""你现在看着我了"...
+2026-08-05 21:04:08,308 | INFO    | Generated encouraging popup (60 chars): 你从"不许爬"转到"抱起来看"...
+2026-08-05 21:04:10,666 | INFO    | Generated child_insight popup (95 chars): 你的孩子可能是那种做事有自己节奏的人...
+2026-08-05 21:04:12,660 | INFO    | Generated encouraging popup (80 chars): 孩子打碎碗后，你没有骂，反而说"你能帮忙妈妈已经很开心了"...
+2026-08-05 21:04:14,768 | WARNING | FC_STALE dedup: 与最近第 1 条弹窗相似度 0.84 ≥ 0.7，拒绝弹窗（避免复读）
+2026-08-05 21:04:14,770 | INFO    | soft-bias FC_TONE_OFF: 命中「评判贴标签」，注入诊断倾向（原 suggested_tone=PopupTone.ENCOURAGING）
+2026-08-05 21:04:17,615 | INFO    | Generated diagnostic popup (155 chars): 你急着让孩子吃饭，是怕菜凉了伤胃。但“你每次都差几块”“上次说三块拼了半小时”...
+2026-08-05 21:04:17,615 | INFO    | soft-bias FC_TONE_OFF: 命中「催促/打断」，注入诊断倾向（原 suggested_tone=PopupTone.ENCOURAGING）
+2026-08-05 21:04:20,250 | WARNING | Child insight popup too long: 121 chars (max 100)
+2026-08-05 21:04:20,251 | INFO    | Generated child_insight popup (123 chars): 你的孩子可能是那种对"完成"有执念的人...
+2026-08-05 21:04:23,368 | INFO    | Generated diagnostic popup (171 chars): 你从叫ta到现在二十分钟，饭热了又凉，你心里急的是“ta根本没把吃饭当回事”。但孩子说“我刚才不饿，现在有点饿了”...
+2026-08-05 21:04:26,501 | INFO    | Generated diagnostic popup (200 chars): 你是因为孩子一次次拖延吃饭，攒了太多失望，才用"倒掉"来让孩子记住这次教训...
+2026-08-05 21:04:29,312 | INFO    | Generated diagnostic popup (151 chars): 你等了很多次，今天终于不想再等了...
+2026-08-05 21:04:32,636 | INFO    | Generated diagnostic popup (175 chars): 你是因为怕孩子不把吃饭当回事，才把后果说得这么硬...
+2026-08-05 21:04:35,998 | INFO    | Generated diagnostic popup (219 chars): 你是因为怕孩子养成拖沓的习惯，才定下这个一分钟的规矩...
+2026-08-05 21:04:38,888 | INFO    | Generated diagnostic popup (170 chars): 你留住了城堡，是想肯定孩子今天的投入...
+2026-08-05 21:04:41,746 | INFO    | Generated diagnostic popup (183 chars): 你是因为怕孩子走偏，才急着把每件事都算到ta头上...
+2026-08-05 21:04:45,232 | INFO    | Generated diagnostic popup (174 chars): 你说"你跟你爸有什么区别"...
+2026-08-05 21:04:48,112 | INFO    | Generated diagnostic popup (179 chars): 你说"你跟你爸有什么区别""学到最后你也搬出去"...
+2026-08-05 21:04:50,102 | INFO    | Generated encouraging popup (65 chars): 你接住了孩子的气话，没有较真，而是说"以后我们都不说了"...
+2026-08-05 21:04:52,476 | WARNING | Child insight popup too long: 130 chars (max 100)
+2026-08-05 21:04:52,476 | INFO    | Generated child_insight popup (132 chars): 你的孩子可能是那种对家庭氛围极其敏感的人...
+2026-08-05 21:04:54,466 | INFO    | Generated encouraging popup (81 chars): 你说"我不想让你选"，把离婚的重量从孩子肩上拿了下来；又说"有你在，妈妈就不那么难受了"，让孩子知道自己不是负担，而是力...
+2026-08-05 21:04:54,467 | INFO    | soft-bias FC_CHILD_INSIGHT: 检测到孩子特征表达信号，注入看见孩子倾向
+2026-08-05 21:04:56,721 | INFO    | Generated child_insight popup (120 chars): 你的孩子可能是那种“不会就是不会，绝不装懂”的人...
+2026-08-05 21:04:58,580 | INFO    | Generated encouraging popup (66 chars): 你接住孩子的卡点，还认了"爸没问"...
+2026-08-05 21:05:01,714 | WARNING | Child insight popup too long: 159 chars (max 100)
+2026-08-05 21:05:01,715 | INFO    | Generated child_insight popup (161 chars): 你的孩子可能是那种对“公平”和“责任”有天然直觉的人...
+2026-08-05 21:05:04,117 | INFO    | Generated child_insight popup (121 chars): 你的孩子可能是那种把琐事变成游戏的人...
+======================================================================
+v4.0.19 全量验证：12 题 | 生产 PopupGenerator | 初始倾向=encouraging
+======================================================================
+
+[1/12] C10-002 窗口=2 弹窗=2
+    类型分布: {'encouraging': 2}
+    fast#关键词触发 → encouraging(73字) 🔒卦象锁
+    slow#字数触发 → encouraging(70字) 🔒卦象锁
+    ---
+
+[2/12] C10-003 窗口=1 弹窗=1
+    类型分布: {'diagnostic': 1}
+    slow#字数触发 → diagnostic(158字) ✓综合裁决
+    ---
+
+[3/12] C10-004 窗口=1 弹窗=1
+    类型分布: {'encouraging': 1}
+    slow#字数触发 → encouraging(59字) 🔒卦象锁
+    ---
+
+[4/12] C10-005 窗口=1 弹窗=1
+    类型分布: {'diagnostic': 1}
+    fast#关键词触发 → diagnostic(178字) ✓综合裁决
+    ---
+
+[5/12] C10-006 窗口=1 弹窗=1
+    类型分布: {'diagnostic': 1}
+    slow#字数触发 → diagnostic(153字) ✓综合裁决
+    ---
+
+[6/12] C10-008 窗口=2 弹窗=2
+    类型分布: {'diagnostic': 1, 'encouraging': 1}
+    fast#关键词触发 → diagnostic(177字) ✓综合裁决
+    slow#字数触发 → encouraging(60字) 🔒卦象锁
+    ---
+
+[7/12] C5-001 窗口=3 弹窗=3
+    类型分布: {'child_insight': 1, 'encouraging': 2}
+    fast#关键词触发 → child_insight(95字) ✓综合裁决
+    slow#字数触发 → encouraging(80字) 🔒卦象锁
+    fast#关键词触发 → encouraging(74字) 🔒卦象锁
+    ---
+
+[8/12] C5-003 窗口=8 弹窗=8
+    类型分布: {'diagnostic': 7, 'child_insight': 1}
+    fast#关键词触发 → diagnostic(155字) ✓综合裁决
+    slow#字数触发 → child_insight(123字) ✓综合裁决
+    fast#关键词触发 → diagnostic(171字) ✓综合裁决
+    slow#字数触发 → diagnostic(200字) ✓综合裁决
+    fast#关键词触发 → diagnostic(151字) ✓综合裁决
+    slow#字数触发 → diagnostic(175字) ✓综合裁决
+    fast#关键词触发 → diagnostic(219字) ✓综合裁决
+    slow#字数触发 → diagnostic(170字) ✓综合裁决
+    ---
+
+[9/12] C5-004 窗口=4 弹窗=4
+    类型分布: {'diagnostic': 3, 'encouraging': 1}
+    fast#关键词触发 → diagnostic(183字) ✓综合裁决
+    slow#字数触发 → diagnostic(174字) ✓综合裁决
+    fast#关键词触发 → diagnostic(179字) ✓综合裁决
+    slow#字数触发 → encouraging(65字) 🔒卦象锁
+    ---
+
+[10/12] C5-005 窗口=2 弹窗=2
+    类型分布: {'child_insight': 1, 'encouraging': 1}
+    fast#关键词触发 → child_insight(132字) ✓综合裁决
+    slow#字数触发 → encouraging(81字) 🔒卦象锁
+    ---
+
+[11/12] C3-002 窗口=2 弹窗=2
+    类型分布: {'child_insight': 1, 'encouraging': 1}
+    fast#关键词触发 → child_insight(120字) ✓综合裁决
+    slow#字数触发 → encouraging(66字) 🔒卦象锁
+    ---
+
+[12/12] DS_001 窗口=2 弹窗=2
+    类型分布: {'child_insight': 2}
+    slow#字数触发 → child_insight(161字) ✓综合裁决
+    fast#关键词触发 → child_insight(121字) ✓综合裁决
+    ---
+
+======================================================================
+汇总
+======================================================================
+总弹窗: 29
+  diagnostic        14  (48.3%)
+  encouraging        9  (31.0%)
+  child_insight      6  (20.7%)
+
+未锁卦象（类型跟 LLM 综合裁决走）: 20/29 (69.0%)

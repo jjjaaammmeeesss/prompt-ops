@@ -1,0 +1,132 @@
+{
+  "config": {
+    "prompt_4012_chars": 23320,
+    "prompt_4019_chars": 37109,
+    "model": "deepseek/deepseek-chat",
+    "window_size": 300,
+    "judge": "skipped",
+    "timestamp": "20260805_162840"
+  },
+  "summary": {
+    "total_cases": 1,
+    "v4012": {
+      "tones": {
+        "diagnostic": 0,
+        "encouraging": 1,
+        "child_insight": 0
+      },
+      "total_popups": 1,
+      "fc_tone_off": 0
+    },
+    "v4019": {
+      "tones": {
+        "diagnostic": 0,
+        "encouraging": 1,
+        "child_insight": 0
+      },
+      "total_popups": 1,
+      "fc_tone_off": 0
+    },
+    "child_insight_mappings": [],
+    "child_insight_count": 0
+  },
+  "codex_scores": {},
+  "cases": [
+    {
+      "case_id": "C10-005",
+      "v4012": {
+        "case_id": "C10-005",
+        "dialogue_chars": 432,
+        "fast_triggers": 2,
+        "slow_windows": 0,
+        "total_windows": 2,
+        "suppressed": 1,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 195,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你追问\"还有呢\"——没有在他说出第一句认错后就收手，而是让他把错认完整。这个不放过，恰恰是在告诉他：道歉要具体，不能糊弄。",
+            "popup": "你追问\"还有呢\"——没有在他说出第一句认错后就收手，而是让他把错认完整。这个不放过，恰恰是在告诉他：道歉要具体，不能糊弄。",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [],
+        "primary_popup": "你追问\"还有呢\"——没有在他说出第一句认错后就收手，而是让他把错认完整。这个不放过，恰恰是在告诉他：道歉要具体，不能糊弄。",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "v4019": {
+        "case_id": "C10-005",
+        "dialogue_chars": 432,
+        "fast_triggers": 2,
+        "slow_windows": 0,
+        "total_windows": 2,
+        "suppressed": 1,
+        "fast_popups": [
+          {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "window_chars": 195,
+            "window_start": 0,
+            "prior_chars": 0,
+            "popup_order": 0,
+            "tone": "encouraging",
+            "tone_override": null,
+            "raw": "你从\"你从来不认错\"追到孩子说出\"不该翻你的抽屉\"——你没有停在质问，而是给了ta认错的空间。你可以这样说：\"我听到了，谢谢你愿意告诉我。\"",
+            "popup": "你从\"你从来不认错\"追到孩子说出\"不该翻你的抽屉\"——你没有停在质问，而是给了ta认错的空间。你可以这样说：\"我听到了，谢谢你愿意告诉我。\"",
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null
+          }
+        ],
+        "slow_popups": [],
+        "primary_popup": "你从\"你从来不认错\"追到孩子说出\"不该翻你的抽屉\"——你没有停在质问，而是给了ta认错的空间。你可以这样说：\"我听到了，谢谢你愿意告诉我。\"",
+        "total_popups": 1,
+        "_zhouyi_source": "test-default"
+      },
+      "_dialogue": "1.吃饭了\n2.我不饿\n3.你中午也没怎么吃\n4.不想吃\n5.是不是还在为上午的事生气\n6.没有\n7.你的表情就是有\n8.你觉得有就有吧\n9.你到底想怎样\n10.不想怎样\n11.你这样不说话算什么\n12.没话说\n13.你对我没话说\n14.对\n15.你这是什么态度\n16.就是不想吵架的态度\n17.你觉得我在跟你吵架\n18.你上午就是在跟我吵\n19.那件事本来就是你不对\n20.我不对又怎样\n21.你从来不认错\n22.我认错你就会原谅我吗\n23.你不认错我怎么原谅\n24.那我认错 我上午不该翻你的抽屉\n25.还有呢\n26.不该看你同学录\n27.还有呢\n28.不该把那个女生给你写的纸条念出来\n29.你知道那是我的隐私\n30.我知道 但是我控制不住\n31.为什么控制不住\n32.因为我怕你早恋\n33.我没有早恋 那只是同学之间的鼓励\n34.鼓励什么\n35.鼓励我好好学习 她写的是我们一起加油\n36.那你为什么不给我看\n37.因为我知道你会多想 你每次都多想\n38.我多想是因为我在乎你\n39.你在乎我的方式让我喘不过气\n40.那我怎么改\n41.你翻我东西之前先问我 我同意了再翻\n42.如果你不同意呢\n43.那就不要翻\n44.那我怎么知道你有没有早恋\n46.你问 我会告诉你\n47.真的\n48.真的 你试试信任我一次\n49.好 我试试",
+      "window_pairs": [
+        {
+          "order": 0,
+          "v4012": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你追问\"还有呢\"——没有在他说出第一句认错后就收手，而是让他把错认完整。这个不放过，恰恰是在告诉他：道歉要具体，不能糊弄。",
+            "window_chars": 195,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          },
+          "v4019": {
+            "channel": "fast",
+            "trigger_type": "关键词触发",
+            "tone": "encouraging",
+            "tone_override": null,
+            "popup": "你从\"你从来不认错\"追到孩子说出\"不该翻你的抽屉\"——你没有停在质问，而是给了ta认错的空间。你可以这样说：\"我听到了，谢谢你愿意告诉我。\"",
+            "window_chars": 195,
+            "has_pre_analysis": false,
+            "separator_missing": true,
+            "error": null,
+            "p2_retry": null,
+            "p2_rejected": null,
+            "dedup_suppressed": null
+          }
+        }
+      ],
+      "child_insight_mappings": []
+    }
+  ]
+}

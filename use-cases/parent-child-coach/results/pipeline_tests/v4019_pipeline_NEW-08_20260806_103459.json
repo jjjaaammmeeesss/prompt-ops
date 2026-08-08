@@ -1,0 +1,16 @@
+{
+  "config": {
+    "prompt": "system_prompt_v4.0.19.txt",
+    "prompt_chars": 37563,
+    "gen_model": "deepseek/deepseek-chat",
+    "window_size": 300,
+    "judge": "none",
+    "timestamp": "20260806_103459"
+  },
+  "summary": {
+    "total_cases": 0,
+    "cases_with_popup": 0,
+    "avg_codex_score": null
+  },
+  "results": []
+}

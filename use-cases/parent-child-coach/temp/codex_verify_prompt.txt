@@ -1,0 +1,161 @@
+你是代码审计专家。请对照以下 9 条关于"v4.0.18 管线测试执行器"的缺陷声称，逐条阅读相关文件，判断每条声称是否属实。
+
+对每条给出判定: VERIFIED (属实) / PARTIAL (部分属实) / NOT_REPRODUCED (不属实)，并附证据（引用具体文件和行号）。
+
+---
+
+## 项目背景
+
+- 生产系统: `realtime/stream_orchestrator.py` (主编排器) + `realtime/popup_generator.py` (Stage 2 弹窗生成器)
+- 测试管线: `scripts/run_v418_pipeline.py` (批量测试器) + `demos/run_demo.py` (管线模拟器 simulate_pipeline)
+- 窗口规格: `channel_spec.py` (唯一权威参数)
+- 测试数据集: `data/new_12_independent.json` (12 题)
+
+生产管线流程:
+```
+TextBuffer → TriggerEngine → ZhouYiAnalyzer(Stage 1) → P0硬拦截 → DebounceGate → PopupGenerator(Stage 2,含 FC_TONE_OFF + P2话术检查 + FC_STALE语义去重) → 弹窗
+```
+
+测试管线流程:
+```
+simulate_pipeline(快慢通道切窗) → 逐窗口 generate_popup(litellm直接调DeepSeek, 仅传system_prompt+window_text) → strip_pre_analysis → Codex裁判
+```
+
+---
+
+## 缺陷 #1: 完全跳过 Stage 1 周易卦象分析 [致命]
+
+**声称**: run_v418_pipeline.py 的 `generate_popup()` 完全没有调用 ZhouYiAnalyzer。prompt 第八节要求"上方附有周易卦象上下文"，但测试管线从未提供卦象/风险/容器判定。测试的不是生产系统行为。
+
+**验证方法**:
+1. 阅读 `scripts/run_v418_pipeline.py` 的 `generate_popup()` 函数
+2. 确认它是否 import 或调用了 `ZhouYiAnalyzer` 或任何 zhouyi 相关模块
+3. 阅读 `realtime/popup_generator.py` 的 `_build_messages()` (第330-381行)，确认生产代码将 zhouyi_context 注入了 system_content
+4. 对比两者的 system message 构造
+
+**声称证据**:
+- 生产: `popup_generator.py:343-354` — `system_content = zhouyi_context + "\n" + self.system_prompt`
+- 测试: `run_v418_pipeline.py:91-93` — `messages=[{"role":"system","content":system_prompt},{"role":"user","content":user_msg}]`
+
+---
+
+## 缺陷 #2: user_msg 格式与生产不匹配 [致命]
+
+**声称**: 测试管线的 user_msg 格式是 `"当前对话：\n{window_text}"`（纯文本），但生产代码的 user_msg 包含 type_instruction（诊断式/鼓励式的生成引导）和输出格式要求。
+
+**验证方法**:
+1. 阅读 `run_v418_pipeline.py:85-87` 的 user_msg 构造
+2. 阅读 `popup_generator.py:357-376` 的 `_build_messages` 中 user_content 构造
+3. 对比两者的差异
+
+**声称证据**:
+- 测试: `run_v418_pipeline.py:87` — `f"当前对话：\n{window_text}"`
+- 生产: `popup_generator.py:370-376` — 含 type_instruction + extra_instruction + 输出格式要求
+
+---
+
+## 缺陷 #3: 没有任何去抖门控 (DebounceGate) [高危]
+
+**声称**: 生产系统有完整的 DebounceGate（5条规则：context-drift放行、卦象变化、冷却时间、同卦tone抑制、P0硬拦截）。测试管线完全没有去抖——每个窗口无差别调LLM。
+
+**验证方法**:
+1. 搜索 `run_v418_pipeline.py` 中是否有 `debounce`、`DebounceGate`、`suppress` 等字样
+2. 搜索 `run_demo.py` 中是否有任何去抖逻辑
+3. 阅读 `stream_orchestrator.py:245-403` 的 DebounceGate 完整实现
+4. 阅读 `stream_orchestrator.py:539-555` 的 P0硬拦截逻辑
+5. 确认测试管线是否可能产生"实际生产会被拦截"的弹窗
+
+---
+
+## 缺陷 #4: 缺少 FC_TONE_OFF 代码层 tone 强制 [高危]
+
+**声称**: 生产 PopupGenerator.generate() 在调 LLM 之前扫描对话文本，命中家长行为 override 关键词（催促/评判/命令/贬低）时强制 tone=DIAGNOSTIC。测试管线没有这一步。
+
+**验证方法**:
+1. 阅读 `popup_generator.py:83-122` — PARENT_OVERRIDE_KEYWORDS 和 detect_parent_override()
+2. 阅读 `popup_generator.py:267-273` — generate() 中的 override 调用
+3. 搜索 `run_v418_pipeline.py` 中是否有类似逻辑
+4. 搜索 `run_demo.py` 中是否有类似逻辑
+
+---
+
+## 缺陷 #5: 缺少 FC_STALE 跨窗口语义去重 [高危]
+
+**声称**: 生产 PopupGenerator.generate() 在 LLM 返回后用 difflib 比对历史弹窗，ratio>0.70 则拒绝弹窗。测试管线各窗口完全独立，可能产出重复弹窗。
+
+**验证方法**:
+1. 阅读 `popup_generator.py:125-135` — semantic_similarity()
+2. 阅读 `popup_generator.py:301-318` — generate() 中的去重逻辑
+3. 搜索 `run_v418_pipeline.py` 中是否有 difflib、similarity、dedup 相关代码
+4. 阅读 `run_v418_pipeline.py:120-168` 的 run_case()，确认各窗口是否独立调LLM、无去重
+
+---
+
+## 缺陷 #6: 缺少 P2 鼓励式话术强制检查 [中危]
+
+**声称**: 生产代码对鼓励式弹窗强制要求含 ≥4字的引号话术，缺失则重试一次，仍缺失则拒绝弹窗(should_popup=False)。测试管线无此检查。
+
+**验证方法**:
+1. 阅读 `popup_generator.py:61-76` — has_quotable_phrase() 和 _QUOTABLE_PHRASE_RE
+2. 阅读 `popup_generator.py:279-299` — generate() 中的 P2 检查
+3. 搜索 `run_v418_pipeline.py` 中是否有 quotable、repair phrase、话术检查
+
+---
+
+## 缺陷 #7: 窗口模拟参数与生产不一致 [中危]
+
+**声称**: 多个参数存在差异：
+
+| 参数 | 生产 | 测试 simulate_pipeline |
+|------|------|----------------------|
+| 分析窗口大小 | 3000字 (TextBuffer, stream_orchestrator.py:442) | 300字 (channel_spec.py:23 SLOW_THRESHOLD_CHARS) |
+| 关键词搜索范围 | 完整对话历史 (stream_orchestrator.py:193 text=self.buffer.full_text) | 仅新40字chunk (run_demo.py:158 _first_keyword(chunk, keywords)) |
+| 慢通道触发字数 | char_trigger=120 (stream_orchestrator.py:135) | SLOW_THRESHOLD_CHARS=300 (channel_spec.py:23) |
+
+**验证方法**:
+1. 阅读 `stream_orchestrator.py:41-96` TextBuffer 的 window_size (默认3000)
+2. 阅读 `stream_orchestrator.py:193` TriggerEngine.feed() 中传给 _match_keywords 的 text 参数是什么
+3. 阅读 `run_demo.py:110-120` _first_keyword 的搜索范围
+4. 阅读 `run_demo.py:151` simulate_pipeline 的 chunk_size (40)
+5. 确认这些参数差异是否真实存在
+
+---
+
+## 缺陷 #8: strip_pre_analysis 依赖 LLM 遵循它不知道的格式 [中危]
+
+**声称**: v4.0.18 prompt 要求 LLM 输出 `==========` 预分析分隔符，但测试管线的 user_msg (`run_v418_pipeline.py:87`) 没有要求这个格式。LLM 可能直接输出弹窗正文而不加分隔符，strip 机制形同虚设。另外生产代码 `popup_generator.py:370-376` 的 user_msg 也未要求预分析格式。
+
+**验证方法**:
+1. 阅读 `run_v418_pipeline.py:60-82` strip_pre_analysis()
+2. 阅读 `run_v418_pipeline.py:85-87` user_msg 构造 — 确认没有提及预分析格式
+3. 阅读 `popup_generator.py:370-376` 生产 user_msg — 同样确认是否提及预分析格式
+4. 阅读 system_prompt_v4.0.18.txt，确认 prompt 内部是否要求了该格式（如果 prompt 本身要求了，LLM 是否可能遵循）
+5. 如果 prompt 内部有格式要求但 user_msg 没有，判定为 PARTIAL
+
+---
+
+## 缺陷 #9: primary_popup 选择逻辑武断 [中危]
+
+**声称**: `run_v418_pipeline.py:165` 取最后一个非空弹窗作为主弹窗。12 条数据集全部是短对话(单窗口)，多窗口对话中"最后一个"没有特殊意义。
+
+**验证方法**:
+1. 阅读 `run_v418_pipeline.py:157-166` primary_popup 的选择逻辑
+2. 阅读 `data/new_12_independent.json` 确认是否所有 case 都是短对话(单窗口)
+3. 确认在多窗口场景下，取"最后一个非空弹窗"是否武断
+
+**声称证据**: `run_v418_pipeline.py:165` — `result["primary_popup"] = all_popups[-1] if all_popups else ""`
+
+---
+
+## 输出格式
+
+请为每条输出:
+```json
+{
+  "issue_1": {"verdict": "VERIFIED|PARTIAL|NOT_REPRODUCED", "evidence": "...", "file_lines": ["file:line"]},
+  ...
+  "issue_9": {"verdict": "...", "evidence": "...", "file_lines": [...]}
+}
+```
+
+然后给出总结: 哪些属实需要修复，哪些部分属实需要调整，哪些不属实可以排除。

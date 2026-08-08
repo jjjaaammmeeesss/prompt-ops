@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "timestamp": "20260731_145530",
+    "prompt_version": "v2.3_pdo",
+    "n_cases": 5,
+    "gen_model": "anthropic/claude-sonnet-4-20250514"
+  },
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5
+  },
+  "results": [
+    {
+      "case_id": "regression_ws08_ding_industry_norm",
+      "expect": "安静",
+      "popup_text": null,
+      "pass": true,
+      "note": "正确保持安静"
+    },
+    {
+      "case_id": "regression_ws08_wu_one_liner",
+      "expect": "安静",
+      "popup_text": null,
+      "pass": true,
+      "note": "正确保持安静"
+    },
+    {
+      "case_id": "regression_ws09_jia_frame_shift",
+      "expect": "弹窗",
+      "popup_text": null,
+      "pass": false,
+      "note": "应弹未弹"
+    },
+    {
+      "case_id": "regression_ws09_yi_decision_boundary",
+      "expect": "弹窗",
+      "popup_text": "守住预算边界的一方把三十万当成硬杠杆，而方案提供方把它理解成现金流节奏——于是价值之争变成了分期之争。继续谈下去，真正要问的“这功能值不值”可能会被还账压力和明年的不确定性慢慢盖住。",
+      "pass": true,
+      "wc": 91,
+      "has_ni": false,
+      "violations": [],
+      "keyword_hits": [
+        "预算",
+        "三十万"
+      ],
+      "note": ""
+    },
+    {
+      "case_id": "regression_ws09_ding_natural_close",
+      "expect": "安静",
+      "popup_text": null,
+      "pass": true,
+      "note": "正确保持安静"
+    }
+  ]
+}

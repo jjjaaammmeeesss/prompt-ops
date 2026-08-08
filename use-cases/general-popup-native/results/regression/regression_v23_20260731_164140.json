@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "timestamp": "20260731_164140",
+    "prompt_version": "ty2.4",
+    "n_cases": 5,
+    "gen_model": "anthropic/claude-sonnet-4-20250514"
+  },
+  "summary": {
+    "passed": 0,
+    "failed": 5,
+    "total": 5
+  },
+  "results": [
+    {
+      "case_id": "regression_ws08_ding_industry_norm",
+      "expect": "安静",
+      "error": "litellm.APIConnectionError: AnthropicException - {\"error\":{\"type\":\"permission_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. To continue now, purchase extra usage or upgrade your plan: https://www.kimi.com/code/#pricing\"},\"type\":\"error\"}",
+      "pass": false
+    },
+    {
+      "case_id": "regression_ws08_wu_one_liner",
+      "expect": "安静",
+      "error": "litellm.APIConnectionError: AnthropicException - {\"error\":{\"type\":\"permission_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. To continue now, purchase extra usage or upgrade your plan: https://www.kimi.com/code/#pricing\"},\"type\":\"error\"}",
+      "pass": false
+    },
+    {
+      "case_id": "regression_ws09_jia_frame_shift",
+      "expect": "弹窗",
+      "error": "litellm.APIConnectionError: AnthropicException - {\"error\":{\"type\":\"permission_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. To continue now, purchase extra usage or upgrade your plan: https://www.kimi.com/code/#pricing\"},\"type\":\"error\"}",
+      "pass": false
+    },
+    {
+      "case_id": "regression_ws09_yi_decision_boundary",
+      "expect": "弹窗",
+      "error": "litellm.APIConnectionError: AnthropicException - {\"error\":{\"type\":\"permission_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. To continue now, purchase extra usage or upgrade your plan: https://www.kimi.com/code/#pricing\"},\"type\":\"error\"}",
+      "pass": false
+    },
+    {
+      "case_id": "regression_ws09_ding_natural_close",
+      "expect": "安静",
+      "error": "litellm.APIConnectionError: AnthropicException - {\"error\":{\"type\":\"permission_error\",\"message\":\"You've reached your usage limit for this billing cycle. Your quota will be refreshed in the next cycle. To continue now, purchase extra usage or upgrade your plan: https://www.kimi.com/code/#pricing\"},\"type\":\"error\"}",
+      "pass": false
+    }
+  ]
+}

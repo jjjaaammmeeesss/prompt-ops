@@ -1,0 +1,254 @@
+{
+  "config": {
+    "prompt": "system_prompt_v4.0.19.txt",
+    "prompt_chars": 37511,
+    "gen_model": "deepseek/deepseek-chat",
+    "window_size": 300,
+    "judge": "none",
+    "timestamp": "20260806_155153"
+  },
+  "summary": {
+    "total_cases": 2,
+    "cases_with_popup": 2,
+    "avg_codex_score": null
+  },
+  "results": [
+    {
+      "case_id": "C5-005",
+      "dialogue_chars": 1714,
+      "fast_triggers": 4,
+      "slow_windows": 2,
+      "total_windows": 6,
+      "suppressed": 5,
+      "fast_popups": [
+        {
+          "channel": "fast",
+          "trigger_type": "关键词触发",
+          "window_chars": 130,
+          "window_start": 0,
+          "prior_chars": 0,
+          "popup_order": 0,
+          "tone": "child_insight",
+          "tone_override": "",
+          "source": "production_popup_generator_v4.0.19",
+          "popup": "你的孩子可能是那种对家庭情绪极其敏锐的人\n——\n隔着门听到争吵，就能猜到源头，还主动来确认你的状态。ta说\"我都习惯了\"，不是麻木，是ta一直在默默承接。ta可能更适合用\"坦诚但不过载\"的方式沟通——告诉ta发生了什么、会怎么变，ta反而比大人想象中更稳。",
+          "raw": "",
+          "has_pre_analysis": false,
+          "separator_missing": false,
+          "error": null,
+          "prod_tone": "child_insight",
+          "zhouyi": {
+            "trigram": "坤",
+            "symbol": "☷",
+            "risk_level": "中",
+            "suggested_tone": "encouraging",
+            "container_status": "不适用",
+            "confidence": 0.88
+          }
+        },
+        {
+          "channel": "fast",
+          "trigger_type": "关键词触发",
+          "window_chars": 302,
+          "window_start": 136,
+          "prior_chars": 136,
+          "popup_order": 1,
+          "tone": "encouraging",
+          "tone_override": "",
+          "source": "production_popup_generator_v4.0.19",
+          "popup": "",
+          "raw": "",
+          "has_pre_analysis": false,
+          "separator_missing": false,
+          "error": "debounced",
+          "prod_tone": "encouraging",
+          "debounce_reason": "卦象和弹窗类型均未变化",
+          "zhouyi": {
+            "trigram": "坤",
+            "symbol": "☷",
+            "risk_level": "中",
+            "suggested_tone": "encouraging",
+            "container_status": "不适用",
+            "confidence": 0.88
+          }
+        },
+        {
+          "channel": "fast",
+          "trigger_type": "关键词触发",
+          "window_chars": 311,
+          "window_start": 414,
+          "prior_chars": 414,
+          "popup_order": 2,
+          "tone": "encouraging",
+          "tone_override": "",
+          "source": "production_popup_generator_v4.0.19",
+          "popup": "",
+          "raw": "",
+          "has_pre_analysis": false,
+          "separator_missing": false,
+          "error": "debounced",
+          "prod_tone": "encouraging",
+          "debounce_reason": "卦象和弹窗类型均未变化",
+          "zhouyi": {
+            "trigram": "坤",
+            "symbol": "☷",
+            "risk_level": "中",
+            "suggested_tone": "encouraging",
+            "container_status": "不适用",
+            "confidence": 0.9
+          }
+        },
+        {
+          "channel": "fast",
+          "trigger_type": "关键词触发",
+          "window_chars": 310,
+          "window_start": 703,
+          "prior_chars": 703,
+          "popup_order": 3,
+          "tone": "encouraging",
+          "tone_override": "",
+          "source": "production_popup_generator_v4.0.19",
+          "popup": "",
+          "raw": "",
+          "has_pre_analysis": false,
+          "separator_missing": false,
+          "error": "debounced",
+          "prod_tone": "encouraging",
+          "debounce_reason": "卦象和弹窗类型均未变化",
+          "zhouyi": {
+            "trigram": "坤",
+            "symbol": "☷",
+            "risk_level": "中",
+            "suggested_tone": "encouraging",
+            "container_status": "不适用",
+            "confidence": 0.9
+          }
+        }
+      ],
+      "slow_popups": [
+        {
+          "channel": "slow",
+          "trigger_type": "字数触发",
+          "window_chars": 300,
+          "window_start": 1040,
+          "prior_chars": 900,
+          "popup_order": 4,
+          "tone": "encouraging",
+          "tone_override": "",
+          "source": "production_popup_generator_v4.0.19",
+          "popup": "",
+          "raw": "",
+          "has_pre_analysis": false,
+          "separator_missing": false,
+          "error": "debounced",
+          "prod_tone": "encouraging",
+          "debounce_reason": "卦象和弹窗类型均未变化",
+          "zhouyi": {
+            "trigram": "坤",
+            "symbol": "☷",
+            "risk_level": "中",
+            "suggested_tone": "encouraging",
+            "container_status": "不适用",
+            "confidence": 0.88
+          }
+        },
+        {
+          "channel": "slow",
+          "trigger_type": "字数触发",
+          "window_chars": 300,
+          "window_start": 1340,
+          "prior_chars": 900,
+          "popup_order": 5,
+          "tone": "encouraging",
+          "tone_override": "",
+          "source": "production_popup_generator_v4.0.19",
+          "popup": "",
+          "raw": "",
+          "has_pre_analysis": false,
+          "separator_missing": false,
+          "error": "debounced",
+          "prod_tone": "encouraging",
+          "debounce_reason": "卦象和弹窗类型均未变化",
+          "zhouyi": {
+            "trigram": "坤",
+            "symbol": "☷",
+            "risk_level": "中",
+            "suggested_tone": "encouraging",
+            "container_status": "不适用",
+            "confidence": 0.92
+          }
+        }
+      ],
+      "primary_popup": "你的孩子可能是那种对家庭情绪极其敏锐的人\n——\n隔着门听到争吵，就能猜到源头，还主动来确认你的状态。ta说\"我都习惯了\"，不是麻木，是ta一直在默默承接。ta可能更适合用\"坦诚但不过载\"的方式沟通——告诉ta发生了什么、会怎么变，ta反而比大人想象中更稳。",
+      "total_popups": 1,
+      "_zhouyi_source": "production-analyzer",
+      "_dialogue": "妈妈你在干嘛\n没事 你去看电视\n你在切菜吗\n嗯 切菜\n可是你一直站着没动\n妈妈在想事情\n是不是爸爸又气你了\n你怎么知道\n我刚才听到你们在吵\n对不起 让你听见了\n没关系 我都习惯了\n你不该习惯这些的\n爸爸讲他要搬出去住\n他跟你说的\n不是 他跟电话里的人说的 我在门口听到的\n他是在说气话\n什么是气话\n就是生气的时候说的话 不一定算数\n那你会不会也搬出去\n妈妈不走 你在哪妈妈在哪\n可是我看你一直在哭\n妈妈不是哭 就是眼睛进了东西\n你骗我 你眼睛红了\n好吧 妈妈刚才哭了一会儿 但不是因为你 是因为你爸爸\n他为什么老是气你\n他不是故意气我 他是跟我过不到一块去了\n什么叫过不到一块\n就是两个人在一起不开心 天天吵 吃饭吵 看个电视也吵 你上个幼儿园也吵 什么事都能吵起来\n那你们以前是不是开心的\n以前好过 刚结婚的时候 后来你出生了 事情多了 就慢慢不好了\n是因为我吗\n不是 跟你没关系 是我们自己变得不一样了\n那你们不能变回去吗\n有些东西变了就回不去了 你爸爸觉得这个家闷 想出去透透气 我不想让他出去 他就更想出去\n那你就让他出去透透气 透完了再回来\n他不只是透气 他是想再也不回来了\n是不要我们了吗\n不是不要你 他跟我说过 他想要你 但是他不想要我了\n那你就一个人了\n对 但是妈妈不怕一个人 我怕的是你没有爸爸\n我有爸爸 他在外面 他不是还在电话里跟你吵架吗\n是 他还在 但是我不知道还能在多久 他今天说下个月搬出去 你听到了\n嗯 我在门口听到的\n所以我哭 不是因为今天吵架了 是因为他这次好像是说真的\n什么是说真的\n就是以前他说要搬 说了很多次 每次都没搬 但是这次他收拾东西了 你看到门口的箱子了吗\n看到了 我以为是要扔的\n不是要扔 是他收拾的 他准备走了\n那你拦他了吗\n没拦 这次不想拦了 以前每次拦 拦一次管用一个月 然后又吵 然后又拦 我累了 拦不动了\n那你就让他走吗\n我不知道 我要是让他走 你就没有爸爸在家了 我要是不让他走 他又不开心 我也为难\n那我能做什么\n你不用做什么 这是大人的事 你吃好饭 上好学 照顾好自己就行了\n可是你一个人怎么办 你晚上一个人睡会害怕吗\n会 但是习惯了就好了 妈妈以前也是一个人 后来有了你才不是一个人\n那我能不能让爸爸别走\n你试过吗\n我没有 我不敢 我怕他骂我\n他不会骂你 他从来不对你发火 他生我的气 不关你的事\n那你们为什么总吵架 不能好好说吗\n能好好说的时候我们也是好好说的 但是后来说着说着就吵起来了 我也不知道怎么就这样了\n那你还喜欢他吗\n我也不知道 大概不怎么喜欢了 但是在一起过了这么久 分开了我也不习惯\n那你是为了我才不离婚的吗\n你听谁说的离婚\n电视里看的 爸爸讲要搬出去 你们是不是要离婚了\n如果离了呢\n那我跟谁\n你想跟谁\n我想跟你 但是我也不想没有爸爸\n所以妈妈不想离 离了你就要选 我不想让你选\n那你就忍着吗\n忍啊 好多人都这样 你同学的妈妈可能也是 大人的事大人自己解决 你还小 不要操心\n可是我看你哭我也会哭\n你别哭 你一哭我就更难受了 过来 妈妈抱抱\n抱紧一点\n好 紧紧的\n我今天能不能跟你睡\n好 今天我们一起睡 明天的事明天再说\n那你明天还哭吗\n不知道 但是有你在 妈妈就不那么难受了\n那我每天都能跟你睡吗\n你想的话就可以 但是爸爸要是在家的话 你还是自己睡\n那爸爸要是不在家呢\n他不在家的时候你就过来 妈妈的床够大\n那以后是不是就我们两个人了\n不一定 也许爸爸过几天又回来了 以前也这样 走了又回来\n他回来你还哭吗\n不哭了 哭够了 下次他跟我吵我就坐着不说话 等他自己累了就不吵了\n他骂你你也不说话\n骂就骂 又不会少块肉 你以后被人骂了也别怕 人家骂你是人家的问题 不是你不好\n那你觉得我好吗\n你当然好 你是妈妈最不后悔的事 要不是有你 我早就撑不住了\n我以后长大了保护你\n你先保护好自己 别学你爸 也别学我 做你自己\n那我能帮你做什么\n你帮我把菜端桌上去 我们俩吃饭 不等他了\n他不回来吃吗\n不回来 我们两个人吃 多吃点\n那你能多吃点吗 你中午就没怎么吃\n你注意到了\n嗯 你只吃了半碗饭\n那妈妈今天多吃一碗 跟你比谁吃得多\n你肯定输 我能吃两碗"
+    },
+    {
+      "case_id": "C3-002",
+      "dialogue_chars": 403,
+      "fast_triggers": 1,
+      "slow_windows": 1,
+      "total_windows": 2,
+      "suppressed": 0,
+      "fast_popups": [
+        {
+          "channel": "fast",
+          "trigger_type": "关键词触发",
+          "window_chars": 295,
+          "window_start": 0,
+          "prior_chars": 0,
+          "popup_order": 0,
+          "tone": "child_insight",
+          "tone_override": "",
+          "source": "production_popup_generator_v4.0.19",
+          "popup": "你的孩子可能是那种必须真正理解才能记住的人\n——\nta说\"我就是不会\"，不是不用心，是没听懂就绝不假装会。ta擦破本子时反复擦了三遍，说明ta对\"做对\"有很执的要求。ta可能更适合用\"慢下来、拆开讲\"的方式引导——你放慢节奏后，ta立刻说出了真实困难。",
+          "raw": "",
+          "has_pre_analysis": false,
+          "separator_missing": false,
+          "error": null,
+          "prod_tone": "child_insight",
+          "zhouyi": {
+            "trigram": "坎",
+            "symbol": "☵",
+            "risk_level": "中",
+            "suggested_tone": "encouraging",
+            "container_status": "有容器",
+            "confidence": 0.9
+          }
+        }
+      ],
+      "slow_popups": [
+        {
+          "channel": "slow",
+          "trigger_type": "字数触发",
+          "window_chars": 83,
+          "window_start": 320,
+          "prior_chars": 320,
+          "popup_order": 1,
+          "tone": "child_insight",
+          "tone_override": "",
+          "source": "production_popup_generator_v4.0.19",
+          "popup": "你的孩子可能是那种需要把步骤拆到最小才安心的人\n——\n不是不会，是卡在\"借3之后剩几\"这个具体节点上，却不知道怎么开口说。ta擦破本子也要擦三次，说明ta对\"做对\"有执念。ta可能更适合用\"你卡在哪一步\"来引导——你问得具体，ta就答得出来。",
+          "raw": "",
+          "has_pre_analysis": false,
+          "separator_missing": false,
+          "error": null,
+          "prod_tone": "child_insight",
+          "zhouyi": {
+            "trigram": "艮",
+            "symbol": "☶",
+            "risk_level": "中",
+            "suggested_tone": "encouraging",
+            "container_status": "有容器",
+            "confidence": 0.9
+          }
+        }
+      ],
+      "primary_popup": "你的孩子可能是那种需要把步骤拆到最小才安心的人\n——\n不是不会，是卡在\"借3之后剩几\"这个具体节点上，却不知道怎么开口说。ta擦破本子也要擦三次，说明ta对\"做对\"有执念。ta可能更适合用\"你卡在哪一步\"来引导——你问得具体，ta就答得出来。",
+      "total_popups": 2,
+      "_zhouyi_source": "production-analyzer",
+      "_dialogue": "7加6，你再看一遍，7先凑成10，得借几？\n借3。\n对，借3，那10再加剩下的，是多少？\n11。\n怎么又是11？我小棒都摆给你看了，你眼睛看哪儿呢。\n我没看窗外。\n你刚才我讲的到底听进去没有，同一道题错三遍了。\n嗯。\n嗯什么嗯，是不会还是不用心，你给我说清楚。\n我就是不会。\n你摔什么笔！本子都给你擦破一个洞了，你看看你。\n那你别讲了。\n行，不写了是吧，那今天都别写了。\n你哭什么。\n你讲不明白，你还凶我。\n爸没凶你，爸就是急。\n你声音那么大。\n是，爸刚才声音大了。\n我擦了三次才擦破的。\n我知道，你擦得挺认真。爸看见破洞的时候没想到这个。\n那道题我真的不会。\n行，那咱不着急，爸也讲累了。\n嗯。\n先喝口水，缓缓。破的地方一会儿拿胶带粘一下。\n还写吗。\n写。但这回你说哪儿卡住了，别光点头。\n就是借了3以后，我不知道剩几。\n哦——就这一步啊，那早说。\n你没问我。\n行，是爸的错，爸没问。来，这一步咱慢慢来。"
+    }
+  ]
+}

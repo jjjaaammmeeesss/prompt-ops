@@ -1,0 +1,28 @@
+## 审计结论
+
+结论：**5 项 FIXED，4 项 PARTIAL，不可交付验收。**
+
+| # | 判定 | 证据与原因 |
+|---|---|---|
+| 1 | **PARTIAL** | 默认周易上下文已构建并注入 system message：[run_v418_pipeline.py:47-62](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:47)、[run_v418_pipeline.py:185-186](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:185)、[run_v418_pipeline.py:281-282](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:281)。但仍未执行真实 Stage 1；更关键的是默认状态为“坤、低风险、容器不适用”，生产管线会被 P0 直接拦截：[stream_orchestrator.py:525-528](D:/prompt-ops/use-cases/parent-child-coach/realtime/stream_orchestrator.py:525)、[stream_orchestrator.py:544-555](D:/prompt-ops/use-cases/parent-child-coach/realtime/stream_orchestrator.py:544)，测试器却继续生成弹窗。因此只修复了“缺上下文”，没有修复 Stage 1/P0 行为差异。 |
+| 2 | **FIXED** | `generate_popup()` 已根据 tone 构造诊断式/鼓励式 `type_instruction`，并加入直接输出要求：[run_v418_pipeline.py:188-208](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:188)。结构与生产实现一致：[popup_generator.py:357-376](D:/prompt-ops/use-cases/parent-child-coach/realtime/popup_generator.py:357)。mock 捕获的实际 user message 同时包含类型指令和输出格式要求。 |
+| 3 | **PARTIAL** | 已实现 `debounce_enabled` 及连续相同 `(channel, trigger_type)` 抑制：[run_v418_pipeline.py:253-260](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:253)、[run_v418_pipeline.py:291-299](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:291)。mock 确认连续重复会跳过。但生产门控还包含风险升级、卦象变化、时间冷却、tone 变化与 P0：[stream_orchestrator.py:310-371](D:/prompt-ops/use-cases/parent-child-coach/realtime/stream_orchestrator.py:310)。测试器仍可能生成生产会拦截的弹窗，只能认定为简化版。 |
+| 4 | **FIXED** | 关键词表与生产代码一致；`run_case()` 在 LLM 调用前扫描窗口，并将命中项强制改为 `diagnostic`：[run_v418_pipeline.py:66-98](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:66)、[run_v418_pipeline.py:301-309](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:301)。mock 确认“我说了算”记录为“命令单向权力”并传入 diagnostic。残余风险是整窗裸子串扫描可能误命中孩子发言，但这与现有生产实现相同。 |
+| 5 | **FIXED** | 已使用 `SequenceMatcher`，阈值默认 `0.70`，与最近 5 条已展示弹窗比对，命中后清空并标记抑制：[run_v418_pipeline.py:111-117](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:111)、[run_v418_pipeline.py:332-345](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:332)。mock 输入三条相同弹窗，结果保留 1 条、抑制 2 条。 |
+| 6 | **PARTIAL** | 正则、重试和二次失败拒绝逻辑已经存在：[run_v418_pipeline.py:101-108](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:101)、[run_v418_pipeline.py:311-330](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:311)。但 `run_case()` 的 tone 只可能是 `auto` 或 `diagnostic`：[run_v418_pipeline.py:301-305](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:301)，没有任何路径赋值 `encouraging`，因此 P2 分支在真实测试流程中不可达。另一个缺口是重试返回 error/空文本时，原始不合格弹窗不会被拒绝。 |
+| 7 | **PARTIAL** | 参数接线本身已修复：`slow_threshold` 被实际用于切窗，[run_demo.py:133-151](D:/prompt-ops/use-cases/parent-child-coach/demos/run_demo.py:133)、[run_demo.py:205-217](D:/prompt-ops/use-cases/parent-child-coach/demos/run_demo.py:205)；`run_case()` 和 CLI 也已传递该值：[run_v418_pipeline.py:278-279](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:278)、[run_v418_pipeline.py:496-497](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:496)、[run_v418_pipeline.py:540](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:540)。mock 中 650 字在 300/200/120 阈值下分别产生 2/3/5 个窗口。但生产当前配置是 `char_trigger=200`、分析窗口 `window_size=3000`：[config.yaml:51-56](D:/prompt-ops/use-cases/parent-child-coach/realtime/config.yaml:51)、[stream_orchestrator.py:435-443](D:/prompt-ops/use-cases/parent-child-coach/realtime/stream_orchestrator.py:435)；测试仍把触发阈值和窗口大小合并为一个参数，且关键词只扫描新 chunk，生产扫描完整文本。因此原始“与生产参数/语义不一致”没有完全修复。 |
+| 8 | **FIXED** | 无分隔符时 `strip_pre_analysis()` 保留完整原文：[run_v418_pipeline.py:146-168](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:146)；`generate_popup()` 返回 `separator_missing=True`：[run_v418_pipeline.py:224-237](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:224)。mock 已确认正文未丢失且标记正确。 |
+| 9 | **FIXED** | 每个窗口保留原始 `popup_order`，合并 fast/slow 后按该字段排序，再倒序取最后一个非空弹窗：[run_v418_pipeline.py:291](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:291)、[run_v418_pipeline.py:347-370](D:/prompt-ops/use-cases/parent-child-coach/scripts/run_v418_pipeline.py:347)。mock 的 `fast → slow → fast` 序列正确选择第三条。 |
+
+## 总体判定
+
+**不可交付验收。**
+
+直接阻塞项：
+
+- P2 检查在实际 `run_case()` 中不可达，鼓励式弹窗约束没有真正接入。
+- 默认周易状态在生产会触发 P0 拦截，测试器却继续生成，结果不能代表生产行为。
+- 去抖和窗口逻辑仍只是简化模拟，原始生产等价性缺口没有闭合。
+
+已完成的验证：Python AST 解析通过、CLI `--help` 通过、demo 冒烟通过、`git diff --check` 无空白错误、针对性 mock 测试通过。未调用外部 LLM 跑全量 12 题，因为上述结构性问题已经足以阻止交付。本次未修改任何文件。
+

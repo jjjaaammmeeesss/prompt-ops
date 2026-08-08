@@ -1,0 +1,293 @@
+{
+  "system_a_name": "v2.0",
+  "system_b_name": "v3.1",
+  "total_cases": 10,
+  "v1_comparison": {
+    "dimension": "V1",
+    "system_a_mean": 0.84,
+    "system_b_mean": 0.86,
+    "delta": 0.02,
+    "ci_lower": -0.08,
+    "ci_upper": 0.12,
+    "significant": false,
+    "p_value_approx": 0.726314,
+    "wilcoxon_p_value": 0.705457,
+    "wilcoxon_w": 16.0,
+    "system_a_pass_rate": 1.0,
+    "system_b_pass_rate": 1.0,
+    "interpretation": "召回（该弹的是否弹了）维度无实质差异（v2.0=84%, v3.1=86%, 差值=+2%）。两版在此维度表现一致。"
+  },
+  "v2_comparison": {
+    "dimension": "V2",
+    "system_a_mean": 0.88,
+    "system_b_mean": 0.7,
+    "delta": -0.18,
+    "ci_lower": -0.32,
+    "ci_upper": -0.04,
+    "significant": true,
+    "p_value_approx": 0.054274,
+    "wilcoxon_p_value": 0.057806,
+    "wilcoxon_w": 7.0,
+    "system_a_pass_rate": 1.0,
+    "system_b_pass_rate": 0.9,
+    "interpretation": "精确（不该弹的是否没弹）维度：v2.0 显著优于 v3.1（v2.0=88% → v3.1=70%, 差值=-18%, 95% CI 不含零, p≈0.0543 (t-test) / p≈0.0578 (Wilcoxon)）。"
+  },
+  "v3_comparison": {
+    "dimension": "V3",
+    "system_a_mean": 0.84,
+    "system_b_mean": 0.74,
+    "delta": -0.1,
+    "ci_lower": -0.2,
+    "ci_upper": 0.0,
+    "significant": false,
+    "p_value_approx": 0.095734,
+    "wilcoxon_p_value": 0.095581,
+    "wilcoxon_w": 3.0,
+    "system_a_pass_rate": 1.0,
+    "system_b_pass_rate": 1.0,
+    "interpretation": "Tone路由（弹窗基调是否正确）维度：v3.1 低于 v2.0 10%，但此差异统计上不显著（置信区间跨零）。这通常意味着用例间波动较大或样本量不足——差值未稳定到可以下结论的程度。建议：增加每用例重复次数或扩大用例集后再对比。"
+  },
+  "v4_comparison": {
+    "dimension": "V4",
+    "system_a_mean": 0.9,
+    "system_b_mean": 0.96,
+    "delta": 0.06,
+    "ci_lower": -0.08,
+    "ci_upper": 0.2,
+    "significant": false,
+    "p_value_approx": 0.43438,
+    "wilcoxon_p_value": null,
+    "wilcoxon_w": null,
+    "system_a_pass_rate": 1.0,
+    "system_b_pass_rate": 1.0,
+    "interpretation": "V4维度：v3.1 高于 v2.0 6%，但此差异统计上不显著（置信区间跨零）。这通常意味着用例间波动较大或样本量不足——差值未稳定到可以下结论的程度。建议：增加每用例重复次数或扩大用例集后再对比。"
+  },
+  "v5_comparison": null,
+  "v6_comparison": {
+    "dimension": "V6",
+    "system_a_mean": 0.0,
+    "system_b_mean": 0.0,
+    "delta": 0.0,
+    "ci_lower": 0.0,
+    "ci_upper": 0.0,
+    "significant": false,
+    "p_value_approx": 1.0,
+    "wilcoxon_p_value": null,
+    "wilcoxon_w": null,
+    "system_a_pass_rate": 0.0,
+    "system_b_pass_rate": 0.0,
+    "interpretation": "V6维度无实质差异（v2.0=0%, v3.1=0%, 差值=+0%）。两版在此维度表现一致。"
+  },
+  "l4_sentence_delta": {},
+  "l5_root_cause": null,
+  "winner": "A",
+  "confidence": "medium",
+  "verdict_summary": "综合裁决：v2.0 优于 v3.1（信心：中）\n\n  V1: v2.0=84% v3.1=86% 差值=+2%↑\n  V2: v2.0=88% v3.1=70% 差值=-18%↓ ✓显著\n  V3: v2.0=84% v3.1=74% 差值=-10%↓\n  V4: v2.0=90% v3.1=96% 差值=+6%↑\n  V6: v2.0=0% v3.1=0% 差值=+0%↓\n\n  v2.0占优案例: 5 个\n  v3.1占优案例: 2 个\n  关键差异案例: pre_sales_demo_challenge, project_retrosive_blame, sales_overpromise_complaint, sales_payment_collection, weekly_report_lag",
+  "advantage_cases": {
+    "A": [
+      "pre_sales_demo_challenge",
+      "project_retrosive_blame",
+      "sales_overpromise_complaint",
+      "sales_payment_collection",
+      "weekly_report_lag"
+    ],
+    "B": [
+      "business_negotiation_payment",
+      "project_schedule_conflict"
+    ],
+    "tie": [
+      "cross_department_resource_fight",
+      "sales_pressure_discount",
+      "scope_creep_no_budget"
+    ]
+  },
+  "raw_data": {
+    "per_case": {
+      "business_negotiation_payment": {
+        "a": {
+          "mean_v1": 0.6,
+          "mean_v2": 0.6,
+          "mean_v3": 0.6,
+          "mean_v4": 0.6,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 0.8,
+          "mean_v2": 0.8,
+          "mean_v3": 0.8,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      },
+      "cross_department_resource_fight": {
+        "a": {
+          "mean_v1": 0.8,
+          "mean_v2": 1.0,
+          "mean_v3": 0.8,
+          "mean_v4": 0.8,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 0.8,
+          "mean_v2": 0.8,
+          "mean_v3": 0.8,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      },
+      "pre_sales_demo_challenge": {
+        "a": {
+          "mean_v1": 0.8,
+          "mean_v2": 1.0,
+          "mean_v3": 0.8,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 1.0,
+          "mean_v2": 0.4,
+          "mean_v3": 0.6,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      },
+      "project_retrosive_blame": {
+        "a": {
+          "mean_v1": 1.0,
+          "mean_v2": 0.8,
+          "mean_v3": 1.0,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 0.8,
+          "mean_v2": 0.6,
+          "mean_v3": 0.6,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      },
+      "project_schedule_conflict": {
+        "a": {
+          "mean_v1": 0.6,
+          "mean_v2": 0.6,
+          "mean_v3": 0.6,
+          "mean_v4": 0.6,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 0.8,
+          "mean_v2": 0.8,
+          "mean_v3": 0.6,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      },
+      "sales_overpromise_complaint": {
+        "a": {
+          "mean_v1": 1.0,
+          "mean_v2": 1.0,
+          "mean_v3": 1.0,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 1.0,
+          "mean_v2": 0.6,
+          "mean_v3": 0.8,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      },
+      "sales_payment_collection": {
+        "a": {
+          "mean_v1": 0.8,
+          "mean_v2": 1.0,
+          "mean_v3": 0.8,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 0.6,
+          "mean_v2": 0.6,
+          "mean_v3": 0.6,
+          "mean_v4": 0.6,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      },
+      "sales_pressure_discount": {
+        "a": {
+          "mean_v1": 0.8,
+          "mean_v2": 0.8,
+          "mean_v3": 1.0,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 1.0,
+          "mean_v2": 0.8,
+          "mean_v3": 0.8,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      },
+      "scope_creep_no_budget": {
+        "a": {
+          "mean_v1": 1.0,
+          "mean_v2": 1.0,
+          "mean_v3": 0.8,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 1.0,
+          "mean_v2": 0.8,
+          "mean_v3": 0.8,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      },
+      "weekly_report_lag": {
+        "a": {
+          "mean_v1": 1.0,
+          "mean_v2": 1.0,
+          "mean_v3": 1.0,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        },
+        "b": {
+          "mean_v1": 0.8,
+          "mean_v2": 0.8,
+          "mean_v3": 1.0,
+          "mean_v4": 1.0,
+          "mean_v5": null,
+          "mean_v6": 0.0
+        }
+      }
+    }
+  },
+  "metadata": {
+    "ci_level": 0.95,
+    "n_bootstrap": 2000,
+    "source": "pre_evaluated_reports"
+  }
+}
