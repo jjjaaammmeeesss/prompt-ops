@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 from runner_v10 import V10Runner
@@ -28,7 +29,7 @@ def run_version(version: str, cases: list[dict]) -> list[dict]:
         prompt_path=f"system_prompt_{version}.txt",
         model="anthropic/claude-opus-4-7",
         api_base="https://luanapi.xingluan.cn",
-        api_key="06131c3816c4483c8a4da408102d52e3",
+        api_key=os.environ.get("XINGLUAN_AUTH_TOKEN"),
         window_size=5000,
     )
     results = []

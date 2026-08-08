@@ -34,11 +34,11 @@ CLAUDE_OPUS_MODEL = "claude-opus-4-7"
 
 # === Fallback Judge 1: Claude Opus 4.7 (星鸾) ===
 CLAUDE_OPUS_FALLBACK_URL = "https://api.xingluan.vip/runningai/open/v1/messages"
-CLAUDE_OPUS_FALLBACK_KEY = "06131c3816c4483c8a4da408102d52e3"
+CLAUDE_OPUS_FALLBACK_KEY = os.environ.get("XINGLUAN_AUTH_TOKEN")
 
 # === Fallback Judge 2: GLM-5.2 (智谱) ===
 GLM_API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
-GLM_API_KEY = "6152d59501254ab3916dfce0a6ff6092.Oo26YzT1AZy3xPAi"
+GLM_API_KEY = os.environ.get("GLM_API_KEY")
 GLM_MODEL = "glm-5.2"
 
 # === Judge Prompt Template ===

@@ -32,13 +32,12 @@ sys.path.insert(0, str(_realtime_parent / "scripts"))
 from llm_judge_metric import LLMJudgeMetric
 
 # ── 生成模型：DeepSeek ──
-_raw_key = os.getenv("DEEPSEEK_API_KEY", "")
-GEN_API_KEY = _raw_key if _raw_key and "PLACEHOLDER" not in _raw_key else "sk-8063c7285a50489e98cf73f50b3c0ec4"
+GEN_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 GEN_API_BASE = os.getenv("DEEPSEEK_BASE_URL") or "https://api.deepseek.com"
 GEN_MODEL = os.getenv("DEEPSEEK_MODEL") or "deepseek-chat"
 
 # ── 评委模型：XINGLUAN Claude ──
-JUDGE_API_KEY = os.getenv("XINGLUAN_AUTH_TOKEN", "06131c3816c4483c8a4da408102d52e3")
+JUDGE_API_KEY = os.getenv("XINGLUAN_AUTH_TOKEN")
 JUDGE_API_BASE = "https://luanapi.xingluan.cn/v1"
 
 # 路径

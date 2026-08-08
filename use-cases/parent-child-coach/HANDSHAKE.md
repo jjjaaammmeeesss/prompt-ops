@@ -36,7 +36,7 @@ DEEPSEEK_MODEL=deepseek-chat
 
 ### 裁判模型：xingluan Claude（待启用）
 - endpoint: `https://api.xingluan.vip/runningai/open/v1`
-- key: `06131c3816c4483c8a4da408102d52e3` (CONSULTANT_API_KEY)
+- key: `<XINGLUAN_AUTH_TOKEN 环境变量>` (CONSULTANT_API_KEY)
 - model: `claude-opus-4-7`
 - 用户要求：被测用例用 xingluan Claude 做裁判（替代当前 DeepSeek judge）
 - **尚未实施**：`optimizer.py` / `baseline_runner.py` 的 judge 目前硬编码用 DeepSeek (`DEEPSEEK_MODEL`)。需新增 judge 走 xingluan Claude 的逻辑
