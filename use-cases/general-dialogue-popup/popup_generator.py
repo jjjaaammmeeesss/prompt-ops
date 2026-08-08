@@ -16,10 +16,10 @@ __version__ 自增记录本执行器迭代；PROMPT_VERSION 声明它适配的 p
 与 use-cases/general-dialogue-popup/system_prompt_v2.0.txt 保持双向对齐。
 """
 
-__version__ = "1.0"           # 生产执行器版本号
-PROMPT_VERSION = "v2.0"       # 适配的 prompt 版本（= system_prompt_v2.0.txt）
-
 from __future__ import annotations
+
+__version__ = "1.1"           # 生产执行器版本号（v1.1：修复 __future__ import 位置导致的 import 失败）
+PROMPT_VERSION = "v2.0"       # 适配的 prompt 版本（= system_prompt_v2.0.txt）
 
 import os
 import re
