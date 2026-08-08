@@ -47,7 +47,7 @@ python scripts/compare_four_versions.py --n 12 --rounds 3
 
 ### 执行器清单
 - **生产执行器**：`realtime/popup_generator.py`（Stage 2 弹窗生成）
-- **测试执行器**：`scripts/run_v418_pipeline.py`（管线测试器，`@transient`）
+- **测试执行器**：`scripts/run_v4019_pipeline.py`（管线测试器，`@transient`）
 - `realtime/stream_orchestrator.py` / `zhouyi_analyzer.py` / `zhouyi_prompts.py` 为 realtime 子系统，随生产执行器一同维护
 
 ### 执行器版本号规范
@@ -82,7 +82,7 @@ python scripts/check_prompt_executor_sync.py --strict   # 任一 WARN 也拦截�
 - **已停用（保留文件不删）**：v1.7、v1.12、v2.3（均确认劣于 v4.0.12）
 - **残留硬骨头**：C10-004、C5-001（四版全败，系统性难题）
 - **快速通道**：KeywordTrigger 是基础设施层，所有版本共享
-- **管线测试器**：`scripts/run_v418_pipeline.py`（匹配 prompt v4.0.19）
+- **管线测试器**：`scripts/run_v4019_pipeline.py`（匹配 prompt v4.0.19）
   - 9 缺口已修复：生产级 Stage 2 等价调用（ZhouYi/debounce/FC_TONE_OFF/FC_STALE/P2 + FC_CHILD_INSIGHT）
   - P2 话术检查：诊断式和 child_insight 均需 quotable phrase
   - 三弹窗类型：diagnostic（100-200字）/ encouraging（30-60字）/ child_insight（50-100字）
@@ -94,6 +94,6 @@ python scripts/check_prompt_executor_sync.py --strict   # 任一 WARN 也拦截�
 
 ## 下一步
 
-- 运行 `run_v418_pipeline.py --prompt v4.0.19` 12 题全量测试，确认 child_insight 触发率
+- 运行 `run_v4019_pipeline.py --prompt v4.0.19` 12 题全量测试，确认 child_insight 触发率
 - 观察 v4.0.19 生产数据，确认三弹窗类型的分布合理性
 - 考虑将 LLM 输出前缀（元信息/关键句归属）从弹窗正文字数中分离，解决字数虚高问题

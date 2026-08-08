@@ -184,8 +184,10 @@ class ZhouYiAnalyzer:
             trigram = self._fallback_trigram(lower, middle, upper)
 
         # 解析建议类型
-        tone_str = data.get("建议类型", "诊断式")
-        if "鼓励" in tone_str:
+        suggestion = str(data.get("建议类型", "诊断式"))
+        if "看见孩子" in suggestion:
+            suggested_tone = PopupTone.CHILD_INSIGHT
+        elif "鼓励" in suggestion:
             suggested_tone = PopupTone.ENCOURAGING
         else:
             suggested_tone = PopupTone.DIAGNOSTIC
@@ -198,6 +200,7 @@ class ZhouYiAnalyzer:
             container_status=str(data.get("容器判定", "不适用")),
             risk_level=str(data.get("风险", "低")),
             suggested_tone=suggested_tone,
+            suggestion=suggestion,
             confidence=float(data.get("置信度", 0.5)),
             brief_reason=str(data.get("一句话", "")),
         )

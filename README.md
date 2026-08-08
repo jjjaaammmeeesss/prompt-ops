@@ -1,207 +1,133 @@
-<h1 align="center"> Prompt Ops </h1>
+<h1 align="center">Prompt Ops</h1>
 
-### 🎉 New: Prompt Duel Optimizer (PDO) Published!
+<p align="center">
+  <a href="https://pypi.org/project/prompt-ops/"><img src="https://img.shields.io/pypi/v/prompt-ops.svg" /></a>
+  <a href="https://www.llama.com/docs/overview/"><img alt="Llama Documentation" src="https://img.shields.io/badge/Llama_OSS-Documentation-4BA9FE?logo=meta" /></a>
+  <a href="https://github.com/meta-llama/prompt-ops"><img alt="Llama Tools prompt-ops" src="https://img.shields.io/badge/Llama_Tools-prompt--ops-orange?logo=meta" /></a>
+</p>
 
-We've published a new paper on **PDO (Prompt Duel Optimizer)** - an efficient label-free prompt optimization method using dueling bandits and Thompson sampling. PDO achieves state-of-the-art results on BIG-bench Hard and MS MARCO benchmarks.
+**prompt-ops** 是一个用于**提示词（prompt）自动迁移与优化的框架与工作区**。它包含两部分：
 
-📄 **Read the paper:** [LLM Prompt Duel Optimizer: Efficient Label-Free Prompt Optimization](https://www.arxiv.org/abs/2510.13907) (arXiv:2510.13907)
+1. **底层框架**（继承自 [meta-llama/prompt-ops](https://github.com/meta-llama/prompt-ops)）：用 DSPy MIPROv2 / PDO 优化器把「能用的 prompt」自动改成「针对你场景更优的 prompt」，可配置、可度量、可复现。
+2. **优化运营工作区**（本仓库 fork 后沉淀的实践）：一套「版本族管理 + 双版本对比脚本 + 国产模型当裁判」的工程化方法，用来长期迭代、回溯、验收生产 prompt 版本。
 
-🧪 **Try it yourself:** Check out the [Web of Lies use case](use-cases/web-of-lies-pdo/) demonstrating PDO on logical reasoning tasks
-
-⭐ **Star this repo** and follow along - we'll be publishing a detailed tutorial notebook soon!
+> 一句话：**框架负责优化，工作区负责让优化这件事变得可追溯、可验收。**
 
 ---
 
-## What is prompt-ops?
-<p align="center">
-  <a href="https://pypi.org/project/prompt-ops/"><img src="https://img.shields.io/pypi/v/prompt-ops.svg" /></a>
-</p>
-<p align="center">
-  <a href="https://llama.developer.meta.com/?utm_source=prompt-ops&utm_medium=readme&utm_campaign=main"><img src="https://img.shields.io/badge/Llama_API-Join_Waitlist-brightgreen?logo=meta" /></a>
-  <a href="https://llama.developer.meta.com/docs?utm_source=prompt-ops&utm_medium=readme&utm_campaign=main"><img src="https://img.shields.io/badge/Llama_API-Documentation-4BA9FE?logo=meta" /></a>
+## 1. 底层框架
 
-</p>
-
-<p align="center">
-  <a href="https://github.com/meta-llama/llama-models/blob/main/models/?utm_source=prompt-ops&utm_medium=readme&utm_campaign=main"><img alt="Llama Model cards" src="https://img.shields.io/badge/Llama_OSS-Model_cards-green?logo=meta" /></a>
-  <a href="https://www.llama.com/docs/overview/?utm_source=prompt-ops&utm_medium=readme&utm_campaign=main"><img alt="Llama Documentation" src="https://img.shields.io/badge/Llama_OSS-Documentation-4BA9FE?logo=meta" /></a>
-  <a href="https://huggingface.co/meta-llama"><img alt="Hugging Face meta-llama" src="https://img.shields.io/badge/Hugging_Face-meta--llama-yellow?logo=huggingface" /></a>
-
-</p>
-<p align="center">
-  <a href="https://github.com/meta-llama/synthetic-data-kit"><img alt="Llama Tools Syntethic Data Kit" src="https://img.shields.io/badge/Llama_Tools-synthetic--data--kit-orange?logo=meta" /></a>
-  <a href="https://github.com/meta-llama/prompt-ops"><img alt="Llama Tools Syntethic Data Kit" src="https://img.shields.io/badge/Llama_Tools-prompt--ops-orange?logo=meta" /></a>
-    <a href="https://github.com/meta-llama/llama-cookbook"><img alt="Llama Cookbook" src="https://img.shields.io/badge/Llama_Cookbook-llama--cookbook-orange?logo=meta" /></a>
-</p>
-
-
-
-prompt-ops is a Python package that **automatically optimizes prompts** for Llama models. It transforms prompts that work well with other LLMs into prompts that are optimized for LLM models, improving performance and reliability.
-
-**Key Benefits:**
-- **No More Trial and Error**: Stop manually tweaking prompts to get better results
-- **Fast Optimization**: Get model-optimized prompts in minutes with template-based optimization
-- **Data-Driven Improvements**: Use your own examples to create prompts that work for your specific use case
-- **Measurable Results**: Evaluate prompt performance with customizable metrics
-
-## Requirements
-
-To get started with prompt-ops, you'll need:
-
-- Existing System Prompt: Your existing system prompt that you want to optimize
-- Existing Query-Response Dataset: A JSON file containing query-response pairs (as few as 50 examples) for evaluation and optimization (see [prepare your dataset](#preparing-your-data) below)
-- Configuration File: A YAML configuration file (config.yaml) specifying model hyperparameters, and optimization details (see [example configuration](configs/facility-simple.yaml))
-
-## How It Works
-
-```
-┌──────────────────────────┐  ┌──────────────────────────┐  ┌────────────────────┐
-│  Existing System Prompt  │  │  set(query, responses)   │  │ YAML Configuration │
-└────────────┬─────────────┘  └─────────────┬────────────┘  └───────────┬────────┘
-             │                              │                           │
-             │                              │                           │
-             ▼                              ▼                           ▼
-         ┌────────────────────────────────────────────────────────────────────┐
-         │                     prompt-ops migrate                       │
-         └────────────────────────────────────────────────────────────────────┘
-                                            │
-                                            │
-                                            ▼
-                                ┌──────────────────────┐
-                                │   Optimized Prompt   │
-                                └──────────────────────┘
-```
-
-### Simple Workflow
-
-1. **Start with your existing system prompt**: Take your existing system prompt that works with other LLMs (see [example prompt](use-cases/facility-support-analyzer/facility_prompt_sys.txt))
-2. [**Prepare your dataset**](#preparing-your-data): Create a JSON file with query-response pairs for evaluation and optimization
-3. **Configure optimization**: Set up a simple YAML file with your dataset and preferences (see [example configuration](configs/facility-simple.yaml))
-4. [**Run optimization**](#step-4-run-optimization): Execute a single command to transform your prompt
-5. [**Get results**](#prompt-transformation-example): Receive a model-optimized prompt with performance metrics
-
-
-## Real-world Results
-
-### HotpotQA
-<table>
-<tr>
-<td width="100%"><img src="./docs/_static/output-hotpotqa.png" onerror="this.onerror=null;this.src='https://github.com/user-attachments/assets/52080f54-d1ca-4d21-8263-a9b2ee1d3c10'" alt="HotpotQA Benchmark Results"></td>
-</tr>
-</table>
-
-These results were measured on the [HotpotQA multi-hop reasoning benchmark](https://hotpotqa.github.io/), which tests a model's ability to answer complex questions requiring information from multiple sources. Our optimized prompts showed substantial improvements over baseline prompts across different model sizes.
-
-
-## Quick Start (5 minutes)
-
-### Step 1: Installation
-
-> **Note:** We recommend installing from source as we are currently transitioning package names on PyPI. This ensures you get the latest stable version without any naming conflicts.
+`src/prompt_ops/` 提供 `prompt-ops` 命令行工具：
 
 ```bash
-# Create a virtual environment
-conda create -n prompt-ops python=3.10
-conda activate prompt-ops
-
-# Recommended: Install from source
-git clone https://github.com/meta-llama/prompt-ops.git
-cd prompt-ops
-pip install -e .
-
-# Alternative: Install from PyPI (may have naming transition issues, still on version 0.0.7)
-# pip install llama-prompt-ops
-
+prompt-ops create my-project   # 生成带样例 config + dataset 的项目骨架
+prompt-ops migrate             # 用配置里的优化器把 prompt 优化一版，默认读 config.yaml
 ```
 
-### Step 2: Create a sample project
+**核心能力：**
 
-This will create a directory called my-project with a sample configuration and dataset in the current folder.
+- **Prompt 迁移/优化**：输入一段现有 system prompt + 一组 query-response 数据集 + 一份 YAML 配置，输出一版更优的 prompt 和对比指标。
+- **优化器**：
+  - **MIPROv2**（DSPy 内置贝叶斯优化）：用 bootstrapped few-shot 示例 + 指令候选 + 超参搜索，把 prompt 当可调参数、把指标当目标函数。
+  - **PDO**（Prompt Duel Optimizer，见 [arXiv:2510.13907](https://arxiv.org/abs/2510.13907)）：免标签的 prompt 优化，用 dueling bandits + Thompson sampling，在 BIG-bench Hard 与 MS MARCO 上达到 SOTA。
+- **可插拔 metric**：支持 `LLM-as-Judge`（让裁判 LLM 按维度打分）、文件路径动态加载自定义 metric 类、以及「N/A 维度权重再分配」防作弊机制。
+- **多推理后端**：经 LiteLLM 统一接入 OpenRouter / vLLM / NVIDIA NIMs 等。
 
-```bash
-prompt-ops create my-project
-cd my-project
-```
-
-### Step 3: Set Up Your API Key
-
-Add your API key to the `.env` file:
-
-```bash
-OPENROUTER_API_KEY=your_key_here
-```
-
-prompt-ops uses LiteLLM as a unified API client. LiteLLM automatically detects the provider from your model name (e.g., `openrouter/model`, `groq/model`) and looks for the corresponding provider-specific environment variable (`OPENROUTER_API_KEY`, `GROQ_API_KEY`, etc.). For more inference provider options, see [Inference Providers](./docs/inference_providers.md).
-
-### Step 4: Run Optimization
-The optimization will take about 5 minutes.
-
-```bash
-prompt-ops migrate # defaults to config.yaml if --config not specified
-```
-
-Done! The optimized prompt will be saved to the `results` directory with performance metrics comparing the original and optimized versions.
-
-To read more about this use case, we go into more detail in [Basic Tutorial](./docs/basic/readme.md).
-
-
-### Prompt Transformation Example
-
-Below is an example of a transformed system prompt from proprietary LM to Llama:
-
-| Original Proprietary LM Prompt | Optimized Llama Prompt |
-| --- | --- |
-| You are a helpful assistant. Extract and return a JSON with the following keys and values:<br><br>1. "urgency": one of `high`, `medium`, `low`<br>2. "sentiment": one of `negative`, `neutral`, `positive`<br>3. "categories": Create a dictionary with categories as keys and boolean values (True/False), where the value indicates whether the category matches tags like `emergency_repair_services`, `routine_maintenance_requests`, etc.<br><br>Your complete message should be a valid JSON string that can be read directly. | You are an expert in analyzing customer service messages. Your task is to categorize the following message based on urgency, sentiment, and relevant categories.<br><br>Analyze the message and return a JSON object with these fields:<br><br>1. "urgency": Classify as "high", "medium", or "low" based on how quickly this needs attention<br>2. "sentiment": Classify as "negative", "neutral", or "positive" based on the customer's tone<br>3. "categories": Create a dictionary with facility management categories as keys and boolean values<br><br>Only include these exact keys in your response. Return a valid JSON object without code blocks, prefixes, or explanations. |
-
-
-## Preparing Your Data
-
-To use prompt-ops for prompt optimization, you'll need to prepare a dataset with your prompts and expected responses. The standard format is a JSON file structured like this:
+**标准数据格式**（`StandardJSONAdapter` 自动处理）：
 
 ```json
-[
-    {
-        "question": "Your input query here",
-        "answer": "Expected response here"
-    },
-    {
-        "question": "Another input query",
-        "answer": "Another expected response"
-    }
-]
+[ { "question": "输入", "answer": "期望输出" } ]
 ```
 
-If your data matches this format, you can use the built-in [`StandardJSONAdapter`](src/prompt_ops/core/datasets.py) which will handle it automatically.
+自定义格式可继承 `DatasetAdapter`。详见 [docs](docs/)。
 
-### Custom Data Formats
+---
 
-If your data is formatted differently, and there isn't a built-in dataset adapter, you can create a custom dataset adapter by extending the `DatasetAdapter` class. See the [Dataset Adapter Selection Guide](docs/dataset_adapter_selection_guide.md) for more details.
+## 2. 优化运营工作区（本仓库主要实践）
 
-## Multiple Inference Provider Support
+日常的 prompt 迭代不靠记忆和对话，靠**可回溯的脚本 + 存档 + 版本族**。核心约定：
 
-prompt-ops supports various inference providers and endpoints to fit your infrastructure needs. See our [detailed guide on inference providers](./docs/inference_providers.md) for configuration examples with:
+### 版本族管理
 
-- OpenRouter (cloud-based API)
-- vLLM (local deployment)
-- NVIDIA NIMs (optimized containers)
+以 `use-cases/parent-child-coach/` 的「亲子沟通弹窗」为例，prompt 分四条路线、以版本族为单位管理：
 
-## Documentation and Examples
+| 路线 | 说明 | 最新生产版 |
+|------|------|-----------|
+| **A 轨 v1.x** | 原始对抗性修复路线 | v1.13（验证通过） |
+| **A 轨 v2.x** | 专家手工标注基线 | v2.3（已确认劣于 v4.0.x，保留作回退） |
+| **A 轨 v4.0.x** | DSPy MIPROv2 + 手工迭代，**当前生产** | **v4.0.23** |
+| **B 轨 星灵多智能体** | 感知/生产/总控三层多智能体 | 独立仓库 |
 
-For more detailed information, check out these resources:
+**版本号铁律**（见 `CLAUDE.md`）：文件名 = 内部标题版本号；改版必须同步更新代码引用；一个版本号 = 一个文件 = 一条 commit；中间版本确认不回退即清理。
 
-- [Quick Start Guide](docs/basic/readme.md): Get up and running with prompt-ops in 5 minutes
-- [Intermediate Configuration Guide](docs/intermediate/readme.md): Learn how to configure datasets, metrics, and optimization strategies
-- [Dataset Adapter Selection Guide](docs/dataset_adapter_selection_guide.md): Choose the right adapter for your dataset format
-- [Metric Selection Guide](docs/metric_selection_guide.md): Select appropriate evaluation metrics for your use case
-- [Inference Providers Guide](docs/inference_providers.md): Configure different model providers and endpoints
+### 双版本对比方法论
 
-## Acknowledgements
-This project leverages some of awesome open source projects including [DSPy](https://github.com/stanfordnlp/dspy), thanks to the team for the inspiring work!
+任何「新版本是否晋升」都必须跑**同 judge、同 case、同 n** 的横向对比，而不是口头判断：
 
-## Contributing
+- 对比脚本统一放各 use-case 根目录：`compare_v151_v30.py`、`compare_v154_v155.py`、`compare_v155_v20.py`、`compare_v20_v21.py`、`compare_four_versions.py` 等。
+- 裁判统一用**国产模型**（优先 DeepSeek，Claude 只做 Judge 不参与生成）。
+- 结果以 JSON 存档进 `results/`，逐条可回溯「谁赢、赢在哪、输在哪」。
+- 结论也回填进内存记忆（如「v2.1 未通过 Δ=-0.847」「v1.13 66.7% 决胜率」），避免重复踩坑。
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+### 运行方式示例
+
+```bash
+# 用 PDO / MIPROv2 优化一段通用弹窗 prompt
+prompt-ops migrate --config use-cases/general-popup-native/config_pdo.yaml \
+                   --output-dir use-cases/general-popup-native/results
+
+# 横向对比两个版本（同 judge 同 case 同 n）
+python use-cases/general-dialogue-popup/compare_v155_v20.py
+```
+
+---
+
+## 3. use-cases 清单
+
+| 目录 | 内容 | 状态 |
+|------|------|------|
+| `parent-child-coach/` | 亲子沟通现场弹窗——**主战场**，四条版本族 + 多智能体 + 真实管线 | 活跃，生产 v4.0.23 |
+| `general-dialogue-popup/` | 通用对话弹窗（上下级/同事/情侣等），双版本对比脚本齐全 | 活跃 |
+| `general-popup-native/` | 用原生优化器对比 PDO vs MIPROv2 优化通用弹窗 | 活跃 |
+| `web-of-lies-pdo/` | PDO 在逻辑推理任务上的演示（Web of Lies） | 演示 |
+| `ms-marco-pdo/` | PDO 在信息检索（MS MARCO）上的评测 | 演示 |
+| `facility-support-analyzer/` | 设施客服消息分类 prompt 迁移示例 | 样例 |
+| `hotpotqa/` | HotpotQA 多跳推理基准 | 样例 |
+
+---
+
+## 4. 快速开始（框架）
+
+```bash
+conda create -n prompt-ops python=3.10 && conda activate prompt-ops
+pip install -e .          # 推荐源码安装
+prompt-ops create my-project && cd my-project
+# 在 .env 里配置 OPENROUTER_API_KEY 等
+prompt-ops migrate        # 默认读 config.yaml，结果输出到 results/
+```
+
+详细教程见 [docs/basic/readme.md](docs/basic/readme.md)。
+
+---
+
+## 5. 文档与索引
+
+- [CONCEPTS.md](CONCEPTS.md)：本项目专属概念词典（Master/Production/Validator 智能体、诊断式/鼓励式弹窗、FC_TONE_OFF、P2 引语检查等）。
+- [docs/](docs/)：框架使用指南（Quick Start / 配置 / 数据集适配 / metric 选择 / 推理后端）。
+- 各 use-case 根目录的 `README*.md`：对应场景的部署与运行说明。
+
+## 开发
+
+```bash
+pip install -e ".[dev]"
+pytest                          # 跑测试
+black . && isort . && mypy src   # 格式化与类型检查
+```
+
+## 致谢
+
+底层框架基于 [meta-llama/prompt-ops](https://github.com/meta-llama/prompt-ops)（MIT），并借鉴 [DSPy](https://github.com/stanfordnlp/dspy) 的优化思路。
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT — 见 [LICENSE](LICENSE)。

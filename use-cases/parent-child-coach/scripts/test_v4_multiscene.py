@@ -195,6 +195,31 @@ SCENES = [
         "brief_reason": "学骑车过程中充满兴奋和即兴尝试，能量全开但关系底盘稳实——安全型的生命外放",
         "check": "轻轻鼓励即可——不打断流动的能量，肯定陪伴的质量",
     },
+    {
+        "id": "G",
+        "label": "坤（看见孩子）— 孩子展现特征",
+        "tone": PopupTone.CHILD_INSIGHT,
+        "dialogue": """你为什么又把积木按颜色分开了
+因为这样好看 红色跟红色在一起 蓝色跟蓝色在一起
+可是图纸上不是这样摆的 你应该按图纸来
+图纸是别人想的 我自己想的更好看
+你这样搭出来跟图纸不一样 等下又说不像城堡
+城堡不一定有尖顶 我上次在书上看到 有的城堡是圆的
+圆的也是城堡吗
+圆的也是城堡 还有三角形的塔 书上说那个叫角楼
+你从哪本书上看到的
+图书馆那本大的 封面上有个大城堡 我借回来给你看
+好 那你搭吧 搭完叫妈妈来看
+你看 我把红色的放这边 像不像太阳下山的样子
+还真有点像
+对吧 我不是乱摆的 我有自己的想法的""",
+        "trigram": Trigram.KUN,
+        "yao_states": (YaoState.RONG_QI, YaoState.RONG_QI, YaoState.RONG_QI),
+        "container_status": "有容器",
+        "risk_level": "低",
+        "brief_reason": "全程稳定承载——孩子展现了自己独特的审美逻辑和创造力，妈妈从纠正到接纳",
+        "check": "看见孩子——洞察孩子'有自己的审美秩序'这个特征，给出匹配的教育方式",
+    },
 ]
 
 
@@ -222,8 +247,8 @@ def main():
     print("=" * 70)
     print("  v4.0 多场景弹窗质量测试")
     print(f"  时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"  提示词: system_prompt_v4.0.txt (44.8KB)")
-    print(f"  场景数: {len(SCENES)} (覆盖坤/震/坎/兑/艮/离/巽/乾安全/乾危险)")
+    print(f"  提示词: system_prompt_v4.0.19.txt")
+    print(f"  场景数: {len(SCENES)} (覆盖坤/兑/离/坎/艮/乾安全/乾危险 + child_insight)")
     print("=" * 70)
 
     # 加载模型
@@ -233,12 +258,12 @@ def main():
         max_tokens=640,
     )
 
-    # 加载 PopupGenerator（使用 v4.0 prompt）
+    # 加载 PopupGenerator（使用 v4.0.19 prompt）
     generator = PopupGenerator(
         model_adapter=model,
-        system_prompt_path=str(_realtime_parent / "system_prompt_v4.0.txt"),
+        system_prompt_path=str(_realtime_parent / "system_prompt_v4.0.19.txt"),
     )
-    print(f"\n✅ PopupGenerator loaded with v4.0 prompt ({len(generator.system_prompt)} chars)")
+    print(f"\n✅ PopupGenerator loaded with v4.0.19 prompt ({len(generator.system_prompt)} chars)")
 
     results = []
     total = 0
@@ -265,7 +290,12 @@ def main():
             )
             elapsed = time.time() - start
 
-            tone_icon = "🔍" if popup.tone == PopupTone.DIAGNOSTIC else "💚"
+            if popup.tone == PopupTone.DIAGNOSTIC:
+                tone_icon = "🔍"
+            elif popup.tone == PopupTone.CHILD_INSIGHT:
+                tone_icon = "👁️"
+            else:
+                tone_icon = "💚"
             print(f"  {tone_icon} {popup.tone.value}弹窗 ({popup.char_count}字, {elapsed:.1f}s)")
             print(f"  ┌{'─' * 52}┐")
 
@@ -300,6 +330,16 @@ def main():
                     if not any(kw in full_text for kw in ["停", "降温", "分开", "冷静",
                                                           "先不", "暂停", "刹车", "先放"]):
                         issues.append("高危乾卦可考虑更明确的喊停/降温信号")
+
+            # 看见孩子专项检查
+            if popup.tone == PopupTone.CHILD_INSIGHT:
+                if popup.char_count < 50:
+                    issues.append(f"看见孩子太短 ({popup.char_count}字 < 50)")
+                elif popup.char_count > 120:
+                    issues.append(f"看见孩子超长 ({popup.char_count}字 > 120)")
+                # 检查是否包含特征描述
+                if not any(phrase in full_text for phrase in ["你的孩子可能", "你的孩子是", "ta可能是"]):
+                    issues.append("看见孩子弹窗缺少特征描述（'你的孩子可能是…'）")
 
             # 鼓励式专项检查
             if popup.tone == PopupTone.ENCOURAGING:
@@ -344,7 +384,12 @@ def main():
         if "error" in r:
             print(f"  [{r['id']}] {r['label']}: ❌ {r['error']}")
         else:
-            tone_icon = "🔍" if r["tone"] == "诊断式" else "💚"
+            if r["tone"] in ("diagnostic", "诊断式"):
+                tone_icon = "🔍"
+            elif r["tone"] == "child_insight":
+                tone_icon = "👁️"
+            else:
+                tone_icon = "💚"
             status = "✅" if not r["issues"] else "⚠️"
             print(f"  [{r['id']}] {r['label']}: {tone_icon} {r['tone']} "
                   f"({r['chars']}字) {status}")
